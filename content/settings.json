@@ -6,5 +6,6 @@
     "dark": "/logo-dark.svg"
   },
   "github": "hoppscotch/docs",
-  "twitter": "hoppscotch_io"
+  "twitter": "hoppscotch_io",
+  "defaultDir": ""
 }
