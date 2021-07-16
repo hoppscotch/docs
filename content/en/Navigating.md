@@ -68,7 +68,7 @@ Hoppscotch allows you to organize your API requests with collections and folders
 ### **Environments:**
 
 
-<img src="/Resoucres/en/Navigation/EnvironmentSC.png"  height="300" width="265" alt="Environments Sidepanel"/>
+<img src="/Resources/en/Navigation/EnvironmentSC.png"  height="300" width="265" alt="Environments Sidepanel"/>
 Store variables and reuse values in your requests and scripts To set environment select from the drop down list of available environments.
 
 <b>*See Also :* <nuxt-link to='/RestAPI platform'> Using Variables (Guide) </nuxt-link></b>
