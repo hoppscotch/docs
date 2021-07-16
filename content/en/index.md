@@ -2,7 +2,7 @@
 title: Introduction
 description: "Open source API development ecosystem"
 position: 1
-category: ""
+category: "Getting started"
 features:
   - "❤️ Lightweight: Crafted with minimalistic UI design"
   - "⚡️ Fast: Send requests and get/copy responses in real-time"
