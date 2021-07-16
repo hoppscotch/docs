@@ -18,6 +18,7 @@ If you’re just starting to learn about GraphQl ,here are a few useful links:</
 <br></br>
 Lets go over the features provided by the hoppscotch GraphQl Editor and how to use them.
 <br></br>
+
 ###  <h3 style="font-size:20px">Url</h3>
 <hr>
 <br></br>
