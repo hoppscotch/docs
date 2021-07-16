@@ -14,8 +14,8 @@ This documentation is a work in progress!
 
 Hoppscotch provides a variety of functionalities and was built from ground-up with accessibility and ease of use in mind.
 <br/><br/>
-<img src="/preview.png"  width="1280" height="640" alt=""/>
-<img src="/preview-dark.png"  width="1280" height="640" alt=""/>
+
+<img src="/Resources/en/Navigation/preview-dark.png"  width="1280" height="640" alt=""/>
 <br/><br/>
 The Hoppscotch UI is made up of the following components:
 
@@ -35,7 +35,7 @@ The Hoppscotch UI is made up of the following components:
 
 <br/><br/>
 
-<img src="/preview-dark.png"  width="1280" height="640" alt=""/>
+<img src="/Resources/en/Navigation/preview-dark.png"  width="1280" height="640" alt=""/>
 <br/><br/>
 
 
@@ -51,14 +51,14 @@ The Hoppscotch UI is made up of the following components:
 ### **History:**
 
 
-<img src="/HistoryPanel.png" height="300" width="265" alt="History Sidepanel"/>
+<img src="/Resources/en/Navigation/HistoryPanel.png" height="300" width="265" alt="History Sidepanel"/>
 Shows the recent API requests you’ve made, allowing you start back right where you left it.
 
 <br></br>
 
 ### **Collections:**
 
-<img src="/collectionsSC.png"  height="300" width="265" alt="Collections Sidepanel"/>
+<img src="/Resources/en/Navigation/collectionsSC.png"  height="300" width="265" alt="Collections Sidepanel"/>
 Hoppscotch allows you to organize your API requests with collections and folders.
 
 <b>*See Also :* <nuxt-link to='/RestAPI platform'> Using Collections (Guide) </nuxt-link></b>
@@ -68,7 +68,7 @@ Hoppscotch allows you to organize your API requests with collections and folders
 ### **Environments:**
 
 
-<img src="/EnvironmentSC.png"  height="300" width="265" alt="Environments Sidepanel"/>
+<img src="/Resoucres/en/Navigation/EnvironmentSC.png"  height="300" width="265" alt="Environments Sidepanel"/>
 Store variables and reuse values in your requests and scripts To set environment select from the drop down list of available environments.
 
 <b>*See Also :* <nuxt-link to='/RestAPI platform'> Using Variables (Guide) </nuxt-link></b>
@@ -77,7 +77,7 @@ Store variables and reuse values in your requests and scripts To set environment
 
 ## <h2 style="font-size:24px">GraphQL Editor</h2>
 <hr>
-<img src="/graphqlpageSC.png"  width="1280" height="640" alt=""/>
+<img src="/Resources/en/Navigation/graphqlpageSC.png"  width="1280" height="640" alt=""/>
 
 
 - The Center area is where you work with your graphql Queries.
@@ -90,7 +90,7 @@ Store variables and reuse values in your requests and scripts To set environment
 
 ## <h2 style="font-size:24px">Realtime Editor</h2>
 <hr>
-<img src="/RealtimeWebSocketpageSC.png"  width="1280" height="640" alt=""/>
+<img src="/Resources/en/Navigation/RealtimeWebSocketpageSC.png"  width="1280" height="640" alt=""/>
 <br></br>
 Switch Between WebSocket, SSE ,Socket.IO ,MQTT in the top bar
 
@@ -104,7 +104,7 @@ Switch Between WebSocket, SSE ,Socket.IO ,MQTT in the top bar
 
 ## <h2 style="font-size:24px">API documentation generator</h2>
 <hr>
-<img src="/APIDocsImportHighlight.png"  width="1280" height="640" alt=""/>
+<img src="/Resources/en/Navigation/APIDocsImportHighlight.png"  width="1280" height="640" alt=""/>
 <br></br>
 You can import collections.
 Or choose from existing Collections you’ve made in Hoppscotch from the right panel.
@@ -117,7 +117,7 @@ Click on Generate Documentation to Get the API documentation.
 ##  <h2 style="font-size:24px">Change Language</h2>
 <hr>
 
-<img src="/changeLang.png"  width="1280" height="640" alt=""/>
+<img src="/Resources/en/Navigation/changeLang.png"  width="1280" height="640" alt=""/>
 <br></br>
 Hoppscotch currently supports 18 languages, you can choose any one of them from the list.
 
