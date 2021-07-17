@@ -90,6 +90,32 @@ The response from the `API endpoint` can be viewed here. You can download or cop
 
 <br></br>
 
+## Keyboard shortcuts
+
+**Optimized for efficiency.**
+
+<p>
+
+| Shortcut                       | Action                 |
+| -------------------------------| -----------------------|
+| <kbd>Ctrl</kbd> + <kbd>G</kbd>  |  Send/Cancel Request   |
+| <kbd>Ctrl</kbd> + <kbd>S</kbd>   |  Save to Collections  |
+| <kbd>Ctrl</kbd> + <kbd>K</kbd>   |  Copy Request Link    |
+| <kbd>Ctrl</kbd> + <kbd>I</kbd>  |  Reset Request        |
+| <kbd>Alt</kbd> + <kbd>🠋</kbd>  |  Select Next method    |
+| <kbd>Alt</kbd> + <kbd>🠉</kbd>  |  Select Previous method|
+| <kbd>Alt</kbd> + <kbd>G</kbd>   |  Select `GET` method   |
+| <kbd>Alt</kbd> + <kbd>H</kbd>   |  Select `HEAD` method  |
+| <kbd>Alt</kbd> + <kbd>P</kbd>   |  Select `POST` method  |
+| <kbd>Alt</kbd> + <kbd>U</kbd>   |  Select `PUT` method   |
+| <kbd>Alt</kbd> + <kbd>X</kbd>   |  Select `DELETE` method|
+
+
+
+
+</p>
+<br></br>
+
 ### <b> <h3 style="font-size:20px"> TroubleShooting </h3> </b>
 <hr>
 <br></br>
@@ -106,16 +132,18 @@ TroubleShooting Guide  needs review
 
 #### <b> <h3 style="font-size:16px">What is CORS?</h3></b>
 <br></br>
-`CORS `or Cross-Origin Resource Sharing is a security mechanism built into modern web-browers.
-It may cause the following error when testing local API endpoints or some other API endpoints with Hoppscotch.
+`CORS` or Cross-Origin Resource Sharing is a security mechanism built into modern web-browers.
+It may cause the following error when testing local `API endpoints` or some other API endpoints with Hoppscotch.
 <br></br>
 
 <img src="/Resources/en/API/CORS error example.png"   alt=""/>
+<br></br>
 
 This is Due to the API not sending the proper API headers( `Access-Control-Allow`). This issue can be solved in two ways.
+<br></br>
 
 1.  Ask whoever manages the API to add CORS support.
-2. Use Middleware like ProxyScotch and the<a href="https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en"> Hoppscotch Web Extension.</a>
+2. Use Middleware like ProxyScotch or the<a href="https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en"> Hoppscotch Web Extension.</a>
 
 </br>
 
@@ -141,6 +169,11 @@ Enable it in settings.
 <br></br>
 
 You can replace this with your own proxy middleware if you wish.
+
+This will now route the `URL` through the proxy server, adding required headers. 
+<br></br>
+
+You can also enable Extension in the settings and Use the Extension which routes requests through proxyScotch.
 
 <br></br>
 
