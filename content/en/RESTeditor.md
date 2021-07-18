@@ -2,6 +2,7 @@
 title: RestAPI platform
 description: 'Know your way around the Hoppscotch Interface'
 position: 3
+
 category: Getting started
 
 ---
@@ -32,7 +33,7 @@ Lets go over the features offered by Hoppscotch API platoform:
 <br></br>
 
 
-## <h2 style="font-size:24px">Main</h2>
+## <h2 style="font-size:24px">How to Use </h2>
 
 <hr>
 <br></br>
@@ -90,8 +91,11 @@ The response from the `API endpoint` can be viewed here. You can download or cop
 
 <br></br>
 
-## Keyboard shortcuts
+<b>*See Also :* <nuxt-link to='/Guides/APIguide'> Using Environments (Guide) </nuxt-link></b>
+<br></br>
 
+## Keyboard shortcuts
+----------------------------------------------------------------------
 **Optimized for efficiency.**
 
 <p>
@@ -116,7 +120,7 @@ The response from the `API endpoint` can be viewed here. You can download or cop
 </p>
 <br></br>
 
-### <b> <h3 style="font-size:20px"> TroubleShooting </h3> </b>
+## <b> <h3 style="font-size:20px"> TroubleShooting </h3> </b>
 <hr>
 <br></br>
 

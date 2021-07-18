@@ -12,14 +12,14 @@ category: Getting started
 </video>
 <br></br>
 If you’re just starting to learn about GraphQl ,here are a few useful links:</br>
-1 . <nuxt-link to='/graphql'> Graphql ( Hoppscotch Guide) </nuxt-link> </br>
+1 . <nuxt-link to='/Guides/Graphqlguide'> Graphql ( Hoppscotch Guide) </nuxt-link> </br>
 2. <a href="https://www.howtographql.com/">howtographql.com</a> </br>
 3. <a href="https://graphql.org/learn/">howtographql.com</a>
 <br></br>
 Lets go over the features provided by the hoppscotch GraphQl Editor and how to use them.
 <br></br>
 
-###  <h3 style="font-size:20px">Url</h3>
+###  <h3 style="font-size:20px">URL</h3>
 <hr>
 <br></br>
 

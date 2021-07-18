@@ -44,7 +44,7 @@ The Hoppscotch UI is made up of the following components:
 - The Right panel allows you to view your recent API request history,
 <nuxt-link to="/articles">Collections</nuxt-link> and <nuxt-link to="/articles">Environments</nuxt-link> .
 <br></br>
-<b>*See Also :* <nuxt-link to='/RestAPI platform'> RESTful API platform</nuxt-link></b>
+<b>*See Also :* <nuxt-link to='/RESTeditor'> RESTful API platform</nuxt-link></b>
 
 <br></br>
 
@@ -71,7 +71,7 @@ Hoppscotch allows you to organize your API requests with collections and folders
 <img src="/Resources/en/Navigation/EnvironmentSC.png"  height="300" width="265" alt="Environments Sidepanel"/>
 Store variables and reuse values in your requests and scripts To set environment select from the drop down list of available environments.
 
-<b>*See Also :* <nuxt-link to='/RestAPI platform'> Using Variables (Guide) </nuxt-link></b>
+<b>*See Also :* <nuxt-link to='/Guides/APIguide'> Using Variables (Guide) </nuxt-link></b>
 <br></br>
 
 
@@ -85,7 +85,7 @@ Store variables and reuse values in your requests and scripts To set environment
 - The Right panel has tabs for schema documentation, query, history and collections. This panel can be hidden for convenience.
 
 
-<b>*See Also :* <nuxt-link to='/GraphQl platform'>GraphQl Editor </nuxt-link></b>
+<b>*See Also :* <nuxt-link to='/GraphqlEditor'>GraphQl Editor </nuxt-link></b>
 <br></br>
 
 ## <h2 style="font-size:24px">Realtime Editor</h2>
@@ -96,7 +96,7 @@ Switch Between WebSocket, SSE ,Socket.IO ,MQTT in the top bar
 
 
 <b>*See Also :*   
-<nuxt-link to='/GraphQl platform'>Realtime Editor. </nuxt-link>	 <br></br>	
+<nuxt-link to='/RealtimeEditor>Realtime Editor. </nuxt-link>	 <br></br>	
 <nuxt-link to='/GraphQl platform'>Working with real-time data(Guide) </nuxt-link>
 </b>
 
@@ -110,7 +110,7 @@ You can import collections.
 Or choose from existing Collections you’ve made in Hoppscotch from the right panel.
 Click on Generate Documentation to Get the API documentation.
 
-<b>*See Also :*   <nuxt-link to='/GraphQl platform'>Documenting Collections(Guide) </nuxt-link>
+<b>*See Also :*   <nuxt-link to='/Guides/DocumentAPI'>Documenting Collections(Guide) </nuxt-link>
 </b>
 <br></br>
 
@@ -121,4 +121,4 @@ Click on Generate Documentation to Get the API documentation.
 <br></br>
 Hoppscotch currently supports 18 languages, you can choose any one of them from the list.
 
-> hoppscotch uses (i18n) internationalization to translate.
+> hoppscotch uses (i18n) internationalization.
