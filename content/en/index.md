@@ -1,8 +1,10 @@
 ---
-title: Introduction
+title: Welcome To Hoppscotch
+menuTitle: Introduction
 description: "Open source API development ecosystem"
 position: 1
-category: ""
+category: "Getting started"
+badge: 'v1.12'
 features:
   - "❤️ Lightweight: Crafted with minimalistic UI design"
   - "⚡️ Fast: Send requests and get/copy responses in real-time"
