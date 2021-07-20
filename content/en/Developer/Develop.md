@@ -2,7 +2,7 @@
 title: Running Hopscotch locally or on docker
 menuTitle: Develop
 description: "Hoppscotch Guide for REST newbies"
-position: 11
+position: 9
 category: Developer Resources
 ---
 
