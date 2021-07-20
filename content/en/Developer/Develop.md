@@ -6,7 +6,6 @@ position: 11
 category: Developer Resources
 ---
 
-
 ## **Developing**
 
 Update [`.env.example`](https://github.com/hoppscotch/hoppscotch/blob/main/.env.example) file found in repository's root directory with your own keys and rename it to `.env`.

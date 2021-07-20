@@ -6,8 +6,8 @@ position: 8
 category: Guide
 ---
 
-<Alert>
+<alert>
 
 This Guide is a work in progress!
 
-</Alert>
+</alert>

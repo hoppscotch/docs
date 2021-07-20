@@ -4,7 +4,7 @@ menuTitle: Introduction
 description: "Open source API development ecosystem"
 position: 1
 category: "Getting started"
-badge: 'v1.12'
+badge: "v1.12"
 features:
   - "❤️ Lightweight: Crafted with minimalistic UI design"
   - "⚡️ Fast: Send requests and get/copy responses in real-time"
@@ -35,12 +35,8 @@ features:
   - "🌱 Environments : Environment variables allow you to store and reuse values in your requests and scripts"
 ---
 
-<br/><br/>
-
 <img src="/preview.png" class="light-img" width="1280" height="640" alt=""/>
 <img src="/preview-dark.png" class="dark-img" width="1280" height="640" alt=""/>
-
-<br/><br/>
 
 [Documentation]() for [Hoppscotch](https://hoppscotch.io).
 
@@ -53,5 +49,3 @@ This documentation is a work in progress!
 ## Features
 
 <list :items="features"></list>
-
-<br/><br/>

@@ -6,7 +6,11 @@ export default theme({
   },
   pwa: {
     manifest: {
-      name: 'Nuxt Content'
-    }
-  }
+      name: "Hoppscotch Documentation",
+    },
+  },
+  buildModules: [
+    // Doc: https://github.com/nuxt-community/tailwindcss-module
+    "@nuxtjs/tailwindcss",
+  ],
 });
