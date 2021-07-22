@@ -1,6 +1,6 @@
 ---
 title: RestAPI platform
-description: "Know your way around the Hoppscotch Interface"
+description: "REst Editor "
 position: 3
 
 category: Getting started
@@ -69,8 +69,8 @@ The response from the `API endpoint` can be viewed here. You can download or cop
 _See Also :_ <nuxt-link to='/Guides/APIguide'> Using Environments (Guide) </nuxt-link>
 
 ## Keyboard shortcuts
-
----**Optimized for efficiency.**
+-----------------------------------------
+**Optimized for efficiency.**
 
 <p>
 

@@ -1,0 +1,429 @@
+[
+  {
+    "requests": [
+      {
+        "passwordFieldType": "password",
+        "headers": [],
+        "bodyParams": [],
+        "name": "covid by countries",
+        "bearerToken": "",
+        "httpPassword": "",
+        "auth": "None",
+        "params": [
+          {
+            "value": "?include=timeline",
+            "active": true,
+            "key": "timeframe",
+            "type": "query"
+          }
+        ],
+        "method": "GET",
+        "httpUser": "",
+        "rawInput": true,
+        "preRequestScript": "// pw.env.set('variable', 'value');",
+        "requestType": "curl",
+        "url": "https://corona-api.com",
+        "rawParams": "",
+        "path": "/countries",
+        "contentType": "",
+        "testScript": "// pw.expect('variable').toBe('value');"
+      },
+      {
+        "passwordFieldType": "password",
+        "httpPassword": "",
+        "method": "GET",
+        "httpUser": "",
+        "contentType": "",
+        "auth": "None",
+        "testScript": "// pw.expect('variable').toBe('value');",
+        "requestType": "nodejs-native",
+        "bearerToken": "",
+        "name": "covid timeline",
+        "headers": [],
+        "rawInput": true,
+        "url": "https://corona-api.com",
+        "bodyParams": [],
+        "rawParams": "",
+        "preRequestScript": "// pw.env.set('variable', 'value');",
+        "params": [
+          {
+            "active": true,
+            "type": "query",
+            "key": "timeframe",
+            "value": "?include=timeline"
+          }
+        ],
+        "path": "/timeline"
+      }
+    ],
+    "folders": [],
+    "name": "covid19"
+  },
+  {
+    "folders": [],
+    "requests": [
+      {
+        "path": "/v4/launches/latest",
+        "bodyParams": [],
+        "url": "https://api.spacexdata.com",
+        "contentType": "",
+        "testScript": "// pw.expect('variable').toBe('value');",
+        "headers": [
+          {
+            "key": "",
+            "active": true,
+            "value": ""
+          }
+        ],
+        "rawParams": "",
+        "httpPassword": "",
+        "passwordFieldType": "password",
+        "method": "GET",
+        "params": [
+          {
+            "key": "",
+            "type": "query",
+            "active": true,
+            "value": ""
+          }
+        ],
+        "httpUser": "",
+        "rawInput": true,
+        "requestType": "curl",
+        "name": "Launches by SpaceX ",
+        "bearerToken": "",
+        "auth": "None",
+        "preRequestScript": "// pw.env.set('variable', 'value');"
+      }
+    ],
+    "name": "SpaceX"
+  },
+  {
+    "name": "Httpbin Collection",
+    "requests": [
+      {
+        "url": "https://www.httpbin.org",
+        "contentType": "application/json",
+        "path": "/get",
+        "requestType": "curl",
+        "method": "GET",
+        "auth": "None",
+        "testScript": "// pw.expect('variable').toBe('value');",
+        "params": [
+          {
+            "active": true,
+            "key": "",
+            "type": "query",
+            "value": ""
+          }
+        ],
+        "name": "get",
+        "passwordFieldType": "password",
+        "rawParams": "{}",
+        "preRequestScript": "// pw.env.set('variable', 'value');",
+        "bearerToken": "",
+        "httpUser": "",
+        "httpPassword": "",
+        "headers": [
+          {
+            "value": "",
+            "key": "",
+            "active": true
+          }
+        ],
+        "bodyParams": [],
+        "rawInput": false
+      },
+      {
+        "method": "GET",
+        "httpUser": "",
+        "httpPassword": "",
+        "auth": "None",
+        "bodyParams": [],
+        "bearerToken": "",
+        "rawParams": "{}",
+        "path": "/headers",
+        "params": [
+          {
+            "type": "query",
+            "active": true,
+            "key": "",
+            "value": ""
+          }
+        ],
+        "name": "getheaders",
+        "requestType": "curl",
+        "passwordFieldType": "password",
+        "contentType": "application/json",
+        "url": "https://www.httpbin.org",
+        "headers": [
+          {
+            "key": "",
+            "active": true,
+            "value": ""
+          }
+        ],
+        "preRequestScript": "// pw.env.set('variable', 'value');",
+        "rawInput": false,
+        "testScript": "// pw.expect('variable').toBe('value');"
+      },
+      {
+        "path": "/get",
+        "httpPassword": "",
+        "testScript": "// pw.expect('variable').toBe('value');",
+        "requestType": "curl",
+        "headers": [],
+        "method": "GET",
+        "bearerToken": "",
+        "auth": "None",
+        "rawParams": "{}",
+        "rawInput": false,
+        "httpUser": "",
+        "preRequestScript": "// pw.env.set('variable', 'value');",
+        "passwordFieldType": "password",
+        "contentType": "application/json",
+        "params": [],
+        "bodyParams": [],
+        "name": "Untitled request",
+        "url": "https://httpbin.org"
+      }
+    ],
+    "folders": [
+      {
+        "name": "post",
+        "requests": [
+          {
+            "requestType": "curl",
+            "bodyParams": [],
+            "path": "/status/400",
+            "rawParams": "{}",
+            "rawInput": false,
+            "headers": [
+              {
+                "key": "",
+                "active": true,
+                "value": ""
+              }
+            ],
+            "passwordFieldType": "password",
+            "url": "https://www.httpbin.org",
+            "method": "POST",
+            "httpUser": "",
+            "httpPassword": "",
+            "preRequestScript": "// pw.env.set('variable', 'value');",
+            "bearerToken": "",
+            "contentType": "application/json",
+            "params": [
+              {
+                "type": "query",
+                "key": "",
+                "active": true,
+                "value": ""
+              }
+            ],
+            "auth": "None",
+            "name": "post Httpbin",
+            "testScript": "// pw.expect('variable').toBe('value');"
+          },
+          {
+            "httpUser": "",
+            "bearerToken": "",
+            "preRequestScript": "// pw.env.set('variable', 'value');",
+            "bodyParams": [],
+            "rawParams": "{}",
+            "auth": "None",
+            "name": "post Httpbin 600",
+            "httpPassword": "",
+            "passwordFieldType": "password",
+            "method": "POST",
+            "headers": [
+              {
+                "key": "",
+                "active": true,
+                "value": ""
+              }
+            ],
+            "testScript": "// pw.expect('variable').toBe('value');",
+            "rawInput": false,
+            "params": [
+              {
+                "value": "",
+                "type": "query",
+                "active": true,
+                "key": ""
+              }
+            ],
+            "contentType": "application/json",
+            "path": "/status/600",
+            "requestType": "curl",
+            "url": "https://www.httpbin.org"
+          }
+        ],
+        "folders": []
+      }
+    ]
+  },
+  {
+    "requests": [
+      {
+        "headers": [
+          {
+            "value": "",
+            "active": true,
+            "key": ""
+          }
+        ],
+        "testScript": "// pw.expect('variable').toBe('value');",
+        "rawParams": "{}",
+        "httpPassword": "",
+        "contentType": "application/json",
+        "rawInput": false,
+        "url": "https://rickandmortyapi.com",
+        "preRequestScript": "// pw.env.set('variable', 'value');",
+        "method": "GET",
+        "passwordFieldType": "password",
+        "name": "Tutorial",
+        "path": "/api/character/",
+        "httpUser": "",
+        "requestType": "curl",
+        "params": [
+          {
+            "active": true,
+            "value": "morty",
+            "type": "query",
+            "key": "name"
+          },
+          {
+            "type": "query",
+            "value": "alive",
+            "active": true,
+            "key": "status"
+          }
+        ],
+        "auth": "None",
+        "bearerToken": "",
+        "bodyParams": []
+      }
+    ],
+    "name": "rickandmortyAPI",
+    "folders": [
+      {
+        "folders": [],
+        "requests": [
+          {
+            "url": "https://rickandmortyapi.com",
+            "path": "/api/character/",
+            "method": "GET",
+            "auth": "None",
+            "httpUser": "",
+            "httpPassword": "",
+            "passwordFieldType": "password",
+            "bearerToken": "",
+            "headers": [
+              {
+                "value": "",
+                "key": "",
+                "active": true
+              }
+            ],
+            "params": [
+              {
+                "value": "rick",
+                "key": "name",
+                "type": "query",
+                "active": true
+              },
+              {
+                "key": "status",
+                "type": "query",
+                "active": true,
+                "value": "dead"
+              }
+            ],
+            "bodyParams": [],
+            "rawParams": "{}",
+            "rawInput": false,
+            "contentType": "application/json",
+            "requestType": "curl",
+            "preRequestScript": "// pw.env.set('variable', 'value');",
+            "testScript": "// pw.expect('variable').toBe('value');",
+            "name": "Number of ricks dead"
+          }
+        ],
+        "name": "Rick"
+      },
+      {
+        "name": "Locations",
+        "requests": [
+          {
+            "requestType": "curl",
+            "headers": [
+              {
+                "active": true,
+                "value": "",
+                "key": ""
+              }
+            ],
+            "httpUser": "",
+            "rawInput": false,
+            "rawParams": "{}",
+            "bodyParams": [],
+            "httpPassword": "",
+            "path": "/api/location/",
+            "name": "location",
+            "passwordFieldType": "password",
+            "params": [
+              {
+                "key": "type",
+                "value": "planet",
+                "type": "query",
+                "active": true
+              }
+            ],
+            "contentType": "application/json",
+            "testScript": "// pw.expect('variable').toBe('value');",
+            "bearerToken": "",
+            "url": "https://rickandmortyapi.com",
+            "auth": "None",
+            "preRequestScript": "// pw.env.set('variable', 'value');",
+            "method": "GET"
+          },
+          {
+            "url": "https://rickandmortyapi.com",
+            "path": "/api/location/",
+            "method": "GET",
+            "auth": "None",
+            "httpUser": "",
+            "httpPassword": "",
+            "passwordFieldType": "password",
+            "bearerToken": "",
+            "headers": [
+              {
+                "active": true,
+                "value": "",
+                "key": ""
+              }
+            ],
+            "params": [
+              {
+                "key": "type",
+                "value": "planet",
+                "type": "query",
+                "active": true
+              }
+            ],
+            "bodyParams": [],
+            "rawParams": "{}",
+            "rawInput": false,
+            "contentType": "application/json",
+            "requestType": "curl",
+            "preRequestScript": "// pw.env.set('variable', 'value');",
+            "testScript": "// pw.expect('variable').toBe('value');",
+            "name": "planets in Rick And Morty Universe"
+          }
+        ],
+        "folders": []
+      }
+    ]
+  }
+]

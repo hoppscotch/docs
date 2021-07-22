@@ -1,6 +1,6 @@
 ---
 title: Realtime platform
-description: "Know your way around the Hoppscotch Interface"
+description: "using Realtime Paltform"
 position: 5
 category: Getting started
 features:
