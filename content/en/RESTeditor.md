@@ -1,6 +1,6 @@
 ---
 title: RestAPI platform
-description: "Know your way around the Hoppscotch Interface"
+description: "REst Editor "
 position: 3
 
 category: Getting started

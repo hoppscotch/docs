@@ -42,14 +42,14 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 
 ## Write bug reports with detail, background, and sample code
 
-[This is an example](http://stackoverflow.com/q/12088905/180626) of a bug report I wrote, and I think it's not a bad model. Here's [another example from Craig Hockenberry](http://www.openradar.me/11905408), an app developer whom I greatly respect.
+[This is an example](http://stackoverflow.com/q/12088905/180626) of a bug report I wrote, and I think it's not a bad model. Here's [another example](http://www.openradar.me/11905408).
 
 **Great Bug Reports** tend to have:
 
 - A quick summary and/or background
 - Steps to reproduce
   - Be specific!
-  - Give sample code if you can. [My stackoverflow question](http://stackoverflow.com/q/12088905/180626) includes sample code that _anyone_ with a base R setup can run to reproduce what I was seeing
+  - Give sample code if you can. 
 - What you expected would happen
 - What actually happens
 - Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
@@ -61,7 +61,7 @@ People _love_ thorough bug reports. I'm not even kidding.
 I'm again borrowing these from [Facebook's Guidelines](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md)
 
 - 2 spaces for indentation rather than tabs
-- You can try running `npm run lint` for style unification
+- You can try using Eslint code extensions in vs code or something similar.
 
 ## License
 
