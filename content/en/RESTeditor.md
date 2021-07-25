@@ -100,7 +100,7 @@ TroubleShooting Guide needs review
 
 </alert>
 
-### Removing CORS restrictions
+# Removing CORS restrictions
 
 #### What is CORS?
 
@@ -112,18 +112,19 @@ It may cause the following error when testing local `API endpoints` or some othe
 This is Due to the API not sending the proper API headers( `Access-Control-Allow`). This issue can be solved in two ways.
 
 1.  Ask whoever manages the API to add CORS support.
-2.  Use Middleware like ProxyScotch or the<a href="https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en"> Hoppscotch Web Extension.</a>
+2.  Use Middleware like ProxyScotch or the [Hoppscotch Web Extension.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
 
-### Setting Up Proxy and WebExtension
 
-<br>
-Download the Hoppscotch WebExtension <a href="https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en"> here.</a>
-
-<img src="/Resources/en/API/Extension.png"  height="400" width="300" halt=""/>
-
-Using Middle ware : Since `CORS` is as simple as adding some HTTP headers, and it’s the only browser blocked, then you can build some proxy-like component that will basically make a call for you, get the response from the desired API, add those headers on top, and then send it back to Hoppscotch.
+### ProxyScotch
 
 Hoppscotch has in-house Porxy server ProxyScotch built to handle this.
+
+#### How it works 
+
+<img src="/Resources/en/API/ProxyScotch-light.png" class="light-img"  alt=""/>
+
+<img src="/Resources/en/API/ProxyScotch-dark.png" class="dark-img"  alt=""/>
+
 
 Enable it in settings.
 
@@ -133,8 +134,19 @@ Enable it in settings.
 
 You can replace this with your own proxy middleware if you wish.
 
-This will now route the `URL` through the proxy server, adding required headers.
+#### Using Middle ware 
 
-You can also enable Extension in the settings and Use the Extension which routes requests through proxyScotch.
+ Since `CORS` is as simple as adding some HTTP headers, and it’s the only browser blocked, then you can build some proxy-like component that will basically make a call for you, get the response from the desired API, add those headers on top, and then send it back to Hoppscotch.
 
 _See Also :_ <a href="https://github.com/hoppscotch/hoppscotch/wiki/Proxy">ProxyScotch GitHub Wiki</a>
+
+### Hoppscotch Web Extension
+
+1. Download the Hoppscotch WebExtension [here.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
+
+2. Enable it in Settings.
+
+3. Open the extension and add new origins
+<img src="/Resources/en/API/Extension.png"  height="400" width="300" halt=""/>
+
+Hoppscotch extension routes all added origins to PorxyScotch.
