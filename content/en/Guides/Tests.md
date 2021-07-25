@@ -185,3 +185,43 @@ pw.test("Response is ok", () => {
 
 ### Testing status code 
 
+Let us write a test to check whether the response to our request has a status code of `200` and that there are no errors in the response body.
+We'll use the URL `https://www.httpbin.org/status/200` and Method `GET`
+In this case we'll need to write two `expect` statements one for checking the status and another for checking the response body.
+However we can wrap `expect` statements with `pw.test` to group and describe related statements.
+
+There are two ways to test the status code 
+- check if it is exactly `200` : `pw.expect(pw.response.status)toBe(200)`
+- use the  matcher functions for quick and convenient testing of the http status code ,in this case `toBeLevel2xx()` : `pw.expect(pw.response.status)toBeLevel2xx()`
+<code-group>
+
+<code-block label = "Test Script" active>
+
+```javascript
+pw.test("Response is ok", () => {
+  pw.expect(pw.response.status).toBe(200);
+  pw.expect(pw.response.body).not.toHaveProperty("errors");
+});
+```
+
+</code-block>
+
+<code-block label="Alternate">
+
+```javascript
+pw.test("Response is ok", () => {
+  pw.expect(pw.response.status).toBeLevel2xx();
+  pw.expect(pw.response.body).not.toHaveProperty("errors");
+});
+```
+
+</code-block>
+
+</code-group>
+
+These tests will sccuessfully pass once you send the request.
+
+
+<img src="/Resources/en/Tests/response-dark.png" class="dark-img"  alt=""/>
+
+<img src="/Resources/en/Tests/response-light.png" class="light-img"  alt=""/>
