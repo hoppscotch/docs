@@ -35,7 +35,13 @@ export default theme({
       iso: 'en-US',
       file: 'en-US.js',
       name: 'English'
-    }],
+    },{
+      code: "cn",
+      name: "简体中文",
+      iso: "zh-CN",
+      file: "zh-CN.js",
+    }
+],
     defaultLocale: 'en'
   },
 });
