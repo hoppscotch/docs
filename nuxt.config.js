@@ -13,7 +13,7 @@ export default theme({
     // Doc: https://github.com/nuxt-community/tailwindcss-module
     "@nuxtjs/tailwindcss",
   ],
-
+  
   i18n: {
     locales: () => [{
       code: 'es',
