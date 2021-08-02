@@ -2,7 +2,7 @@
 title: Writing Tests in Hoppscotch
 menuTitle: Writing Tests
 description: "Hoppscotch Guide to write pre-request scripts and tests for REST API"
-position: 11
+position: 10
 category: Guide
 ---
 
