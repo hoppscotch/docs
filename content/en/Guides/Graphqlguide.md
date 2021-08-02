@@ -1,6 +1,7 @@
 ---
-title: Hoppscotch GraphQl Guide For Newbies!
+title: Hoppscotch GraphQl Guide
 menuTitle: GraphQl Guide
+
 description: "Hoppscotch Guide for graphql newbies"
 position: 11
 category: Guide
