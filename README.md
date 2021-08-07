@@ -1,3 +1,5 @@
+![Group 7281 (2)](https://user-images.githubusercontent.com/22007192/128598473-eb5a5c17-d044-4f1d-adbd-69bab8fe8110.png)
+
 # docs
 
 Hoppscotch documentation https://docs.hoppscotch.io

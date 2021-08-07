@@ -20,15 +20,11 @@ Lets go over the features provided by the hoppscotch GraphQl Editor and how to u
 
 ### URL
 
----
-
 <img src="/Resources/en/Graphql/GraphqlURLHighlight.png" class="dark-img" height="1280" width="640" alt="graphqlURL"/>
 <img src="/Resources/en/Graphql/GraphqlURLHighlight.png" class="light-img" height="1280" width="640" alt="graphqlURL"/>
 Enter The URL of the GraphQl End point here.
 
 ### Headers
-
----
 
 <img src="/Resources/en/Graphql/GraphQlHeaderHighlight.png" class="dark-img" height="1280" width="640" alt="History Sidepanel"/>
 <img src="/Resources/en/Graphql/GraphQlHeaderHighlight.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
@@ -38,16 +34,12 @@ Accessing a secure endpoint may need Authentication.
 
 ### Schema
 
----
-
 <img src="/Resources/en/Graphql/GraphqlSchemaHighlight.png" class="dark-img" height="1280" width="640" alt="History Sidepanel"/>
 <img src="/Resources/en/Graphql/GraphqlSchemaHighlight.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
 
 You can view the schema of GraphQl Endpoint that you’ve connected to in this window. The Schema can be downloaded as a JSON file or copied to your clipboard.
 
 ### Queries
-
----
 
 <img src="/Resources/en/Graphql/graphQlQueriesandvariablesSC.png" class="dark-img" height="1280" width="640" alt="History Sidepanel"/>
 <img src="/Resources/en/Graphql/graphQlQueriesandvariablesSC.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
@@ -57,15 +49,11 @@ To keep the Query uncluttered or to help easy debugging, you can use the variabl
 
 ### Response
 
----
-
 <img src="/Resources/en/Graphql/GraphQlResponse.png" class="dark-img" height="1280" width="640" alt="History Sidepanel"/>
 <img src="/Resources/en/Graphql/GraphQlResponse.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
 The response returned by the endpoint on your query is displayed at the end of the page , this can be copied to your clipboard or exported as a JSON file.
 
 ### Schema Documentation
-
----
 
 <img src="/Resources/en/Graphql/GraphQlSchemaHighlight.png" class="dark-img" height="1000" width="640" alt="History Sidepanel"/>
 <img src="/Resources/en/Graphql/GraphQlSchemaHighlight.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
@@ -74,15 +62,11 @@ The documentation is searchable and documentation for Queries, Mutations, Subscr
 
 ### History
 
----
-
 <img src="/Resources/en/Graphql/history.png" class="dark-img" height="1000" width="640" alt="History Sidepanel"/>
 <img src="/Resources/en/Graphql/history.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
 All your recent Requests can be accessed from the History tab, and you can pick up right were left it.
 
 ### Collections
-
----
 
 <img src="/Resources/en/Graphql/GraphQlcollectionHighlight.png" class="dark-img" height="1000" width="640" alt="History Sidepanel"/>
 <img src="/Resources/en/Graphql/GraphQlcollectionHighlight.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>

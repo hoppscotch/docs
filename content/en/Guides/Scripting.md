@@ -2,7 +2,7 @@
 title: Scripting in Hoppscotch
 menuTitle: Writing Scripts
 description: "Hoppscotch Guide to write pre-request scripts and tests for REST API"
-position: 10
+position: 9
 category: Guide
 ---
 

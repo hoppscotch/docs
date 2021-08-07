@@ -13,5 +13,6 @@
     "nuxt": "^2.15.4",
     "@nuxtjs/tailwindcss": "3.2.0",
     "@tailwindcss/typography": "0.2.0"
+
   }
 }
