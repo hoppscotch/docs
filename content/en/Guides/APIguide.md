@@ -9,9 +9,9 @@ category: Guide
 
 If you are new to API development and want to know more about the basics of APIs ,follow along this guide !
 
+   <img src="/Resources/en/APIGuide/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
+
 ## Sending Requests
-
-
 
 Lets Build Our First REST API request!
 
