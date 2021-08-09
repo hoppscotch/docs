@@ -13,6 +13,8 @@ features:
   - "MQTT"
 ---
 
+<img src="/Resources/en/RealtimeGuide/Realtime-dark.png"   class="dark-img" width="1280" height="640" alt=""/>
+<img src="/Resources/en/RealtimeGuide/Realtime-light.png" class="light-img"  width="1280" height="640" alt=""/>
 <alert type="success">
 
 This documentation is a work in progress!
