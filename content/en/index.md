@@ -54,8 +54,15 @@ Beta feature: 🌎Seamlessly collaborate with your [team](https://github.com/hop
 - Make your APIs accessible to others by creating 📄Documentation and publishing them as Gists.
 
 
-
 ## Sponsors
+
+
+
+## Tweets
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Hoppscotch is an open source API development ecosystem.
+Since the initial commit (~2 years ago), Hoppscotch has evolved from being a side project to an enterprise developer tool. Here's a sneak peek of what we're building at Hoppscotch.</p>&mdash; Liyas Thomas (@liyasthomas) <a href="https://twitter.com/liyasthomas/status/1417870391922487297">July 21, 2021</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## FAQ
 
