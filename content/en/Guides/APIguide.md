@@ -9,9 +9,10 @@ category: Guide
 
 If you are new to API development and want to know more about the basics of APIs ,follow along this guide !
 
+   <img src="/Resources/en/APIGuide/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
+    <img src="/Resources/en/APIGuide/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>
+
 ## Sending Requests
-
-
 
 Lets Build Our First REST API request!
 
@@ -185,7 +186,7 @@ Let us take some of our Rick And Morty Queries and organize them into a collecti
   <source src="/Resources/en/APIGuide/collections.mp4"  type="video/mp4"  />
 </video>
 
-## Using Variables and storing them in environments
+## Environment Variables
 
 
 
@@ -224,7 +225,7 @@ Select the Environment whose variables you wish to access.
 It's desirable to write environment variables against a request. This is done by accessing the `<<variable_name>>` object in request section.
 
 ```javascript
-<<baseURL>>><<path>>
+<<baseURL>><<path>>
 ```
 
 <img src="/Resources/en/APIGuide/env1-dark.png" class="dark-img" height="1280" width="640" alt=""/>

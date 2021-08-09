@@ -13,7 +13,7 @@ ipts for your API requests in `javaScript`.
 
 # Writing Tests
 
-In the last section <nuxt-link to='/Scripting'> pre-request scripting</nuxt-link> we worked with dynamically modifying requests. In this we'll work with response.
+In the last section <nuxt-link to='/Scripting'> pre-request scripting</nuxt-link> we worked with dynamically modifying requests. In this we'll work with the response received .
 
 ## `pw` API
 

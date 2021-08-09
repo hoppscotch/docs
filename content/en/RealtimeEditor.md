@@ -13,6 +13,8 @@ features:
   - "MQTT"
 ---
 
+<img src="/Resources/en/RealtimeGuide/Realtime-dark.png"   class="dark-img" width="1280" height="640" alt=""/>
+<img src="/Resources/en/RealtimeGuide/Realtime-light.png" class="light-img"  width="1280" height="640" alt=""/>
 <alert type="success">
 
 This documentation is a work in progress!
@@ -34,10 +36,10 @@ Enter Your `Websocket URL` ,valid protocols and click on connect . Once successf
 
 ### Troubleshooting
 
-Make sure you entered valid websocket URL:
-<img src="/Resources/en/Realtime/websocketURL-light.png" width="600" height="100" alt="web socket URL structure"/>
+- Make sure you entered valid websocket URL:
+<img src="/Resources/en/Realtime/websocketURL-light.png" width="600" height="74" alt="web socket URL structure"/>
 
-Donot add invalid/blank protocol before you connect to a websocket.
+- Do not add invalid/blank protocol before you connect to a websocket.
 
 ## MQTT
 
