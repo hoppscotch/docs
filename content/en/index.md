@@ -34,7 +34,7 @@ It is free-to-use and as an added perk completely Open Source!
 <list :items="features"></list>
 
 <alert type="success"> 
-Beta feature: 🌎Seamlessly collaborate with your [team](https://github.com/hoppscotch/hoppscotch/wiki/Teams) to design ,develop and test APIs faster
+Beta feature: 🌎Seamlessly collaborate with your <a href = "https://github.com/hoppscotch/hoppscotch/wiki/Teams">Team</a> 
 </alert>
 
 ### Rest API platform
