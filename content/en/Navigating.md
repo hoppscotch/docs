@@ -2,14 +2,12 @@
 title: Navigating Hoppscotch
 menuTitle: Navigation
 description: "Know your way around the Hoppscotch Interface"
-position: 2
-category: Getting started
 ---
 
 <alert type="warning">
 This documentation is a work in progress!
 </alert>
-
+ 
 Hoppscotch provides a variety of functionalities and was built from ground-up with accessibility and ease of use in mind.
 
 <img src="/Resources/en/Navigation/preview-dark.png"  width="1280" height="640" alt=""/>

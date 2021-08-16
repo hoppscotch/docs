@@ -1,8 +1,6 @@
 ---
 title: Syncing Your Work
 description: "syncing work by logging in."
-position: 6
-category: Getting started
 ---
 
 ## Managing your account

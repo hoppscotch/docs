@@ -2,8 +2,6 @@
 title: Running Hopscotch locally or on docker
 menuTitle: Develop
 description: "Work with hoppscotch in your local environment"
-position: 9
-category: Developer Resources
 ---
 
 ## **Developing**
