@@ -1,10 +1,8 @@
 ---
-title: Welcome To Hoppscotch
+title: Introduction
 menuTitle: Introduction
+category: Getting started
 description: "Open source API development ecosystem"
-position: 1
-category: "Getting started"
-badge: "v1.12"
 features:
   - "❤️ Lightweight: Crafted with minimalistic UI design"
   - "⚡️ Fast: Send requests and get/copy responses in real-time"
@@ -15,16 +13,13 @@ features:
   - "🌩 Socket.IO: Send and Receive data with SocketIO server"
   - "🦟 MQTT: Subscribe and Publish to topics of a MQTT Broker"
   - "📄 API Documentation: Create and share dynamic API documentation easily, quickly"
+position: 0
 ---
 
 <img src="/preview.png" class="light-img" width="1280" height="640" alt=""/>
 <img src="/preview-dark.png" class="dark-img" width="1280" height="640" alt=""/>
 
-<alert type="success">
-
-This documentation is a work in progress!
-
-</alert>
+## Overview
 
 [Hoppscotch](https://www.hoppscotch.io) is light-weight,web based API development suite. It was built from ground up with ease of use and accessibility in mind providing all the functionality needed for API developers with minimalist,unobtrusive UI.
 It is free-to-use and as an added perk completely Open Source!
@@ -38,25 +33,22 @@ Beta feature: 🌎Seamlessly collaborate with your <a href = "https://github.com
 </alert>
 
 ### Rest API platform
+
 - build 🚀requests, add scripts ,test responses with support for 🗄️collections and 📁environments
 - Access browser blocked APIS with 🌐[proxyscotch](https://github.com/hoppscotch/proxyscotch)
 - ⏰ History: Request entries are synced with cloud / local session storage to restore with a single click
 
 ### GraphQl platform
+
 - Peak into your graphql endpoint,build your queries,organise them into 🗄️collections
 
-
 ### Realtime Paltform
+
 - Test 🔌Websocket 🌩Socket.io 🦟MQtt and 📡SSE connections all from one place
 
-
 ### API Documentation
+
 - Make your APIs accessible to others by creating 📄Documentation and publishing them as Gists.
-
-
-## Sponsors
-
-
 
 ## Tweets
 
@@ -67,11 +59,12 @@ Since the initial commit (~2 years ago), Hoppscotch has evolved from being a sid
 ## FAQ
 
 ## Quick Links
+
 - [Github](https://github.com/hoppscotch)
 - <nuxt-link to="/Developer/ContribGuide" >Contribution Guide</nuxt-link>
 
 ## Other Links
+
 - [Terms of use](https://github.com/hoppscotch/hoppscotch/wiki/Terms-&-Conditions)
 - [Privacy Policy](https://github.com/hoppscotch/hoppscotch/wiki/Privacy-Policy)
 - [Privacy Policy(proxyscotch)](https://github.com/hoppscotch/proxyscotch/wiki/Privacy-policy)
-

@@ -1,16 +1,14 @@
 ---
 title: REST API Guide
+description: Sample
 menuTitle: API Guide
-description: "Hoppscotch Guide for REST newbies"
-position: 7
-category: Guide
-
+position: 1
 ---
 
 If you are new to API development and want to know more about the basics of APIs ,follow along this guide !
 
-   <img src="/Resources/en/APIGuide/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
-    <img src="/Resources/en/APIGuide/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>
+<img src="/Resources/en/APIGuide/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
+<img src="/Resources/en/APIGuide/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>
 
 ## Sending Requests
 
@@ -97,8 +95,6 @@ https://rickandmortyapi.com/api/character
  </i>
 
 ## Using parameters
-
-
 
 In the previous section we got a long response with details on all the characters of the Rick And Morty show.
 You can also get details on a single character .
@@ -188,8 +184,6 @@ Let us take some of our Rick And Morty Queries and organize them into a collecti
 
 ## Environment Variables
 
-
-
 **Environment variables allow you to store and reuse values in your requests and scripts**
 
 Use-cases:
@@ -200,8 +194,6 @@ Use-cases:
 
 ### **Creating Environment**
 
-
-
 Create a new environment from the right sidebar.
 <img src="/Resources/en/APIGuide/env-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/Resources/en/APIGuide/env-light.png" class="light-img" height="1280" width="640" alt=""/>
@@ -210,16 +202,12 @@ Choose the desired environment from the sidebar dropdown menu in the environment
 
 ### **Adding environment variables**
 
-
-
 Click on an environment to add/edit/delete variables.
 
 <img src="/Resources/en/APIGuide/envcreate-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/Resources/en/APIGuide/envcreate-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 ### **Accessing environment data.**
-
-
 
 Select the Environment whose variables you wish to access.
 It's desirable to write environment variables against a request. This is done by accessing the `<<variable_name>>` object in request section.

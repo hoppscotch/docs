@@ -1,9 +1,6 @@
 ---
 title: RestAPI platform
 description: "REst Editor "
-position: 3
-
-category: Getting started
 ---
 
 <alert type="success">
@@ -69,7 +66,9 @@ The response from the `API endpoint` can be viewed here. You can download or cop
 _See Also :_ <nuxt-link to='/Guides/APIguide'> Using Environments (Guide) </nuxt-link>
 
 ## Keyboard shortcuts
------------------------------------------
+
+---
+
 **Optimized for efficiency.**
 
 <p>
@@ -114,17 +113,15 @@ This is Due to the API not sending the proper API headers( `Access-Control-Allow
 1.  Ask whoever manages the API to add CORS support.
 2.  Use Middleware like ProxyScotch or the [Hoppscotch Web Extension.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
 
-
 ### ProxyScotch
 
 Hoppscotch has in-house Porxy server ProxyScotch built to handle this.
 
-#### How it works 
+#### How it works
 
 <img src="/Resources/en/API/ProxyScotch-light.png" class="light-img"  alt=""/>
 
 <img src="/Resources/en/API/ProxyScotch-dark.png" class="dark-img"  alt=""/>
-
 
 Enable it in settings.
 
@@ -134,9 +131,9 @@ Enable it in settings.
 
 You can replace this with your own proxy middleware if you wish.
 
-#### Using Middle ware 
+#### Using Middle ware
 
- Since `CORS` is as simple as adding some HTTP headers, and it’s the only browser blocked, then you can build some proxy-like component that will basically make a call for you, get the response from the desired API, add those headers on top, and then send it back to Hoppscotch.
+Since `CORS` is as simple as adding some HTTP headers, and it’s the only browser blocked, then you can build some proxy-like component that will basically make a call for you, get the response from the desired API, add those headers on top, and then send it back to Hoppscotch.
 
 _See Also :_ <a href="https://github.com/hoppscotch/hoppscotch/wiki/Proxy">ProxyScotch GitHub Wiki</a>
 
@@ -147,6 +144,6 @@ _See Also :_ <a href="https://github.com/hoppscotch/hoppscotch/wiki/Proxy">Proxy
 2. Enable it in Settings.
 
 3. Open the extension and add new origins
-<img src="/Resources/en/API/Extension.png"  height="400" width="300" halt=""/>
+   <img src="/Resources/en/API/Extension.png"  height="400" width="300" halt=""/>
 
 Hoppscotch extension routes all added origins to PorxyScotch.

@@ -1,15 +1,10 @@
 ---
 title: Realtime platform
 description: "using Realtime Paltform"
-position: 5
-category: Getting started
 features:
   - "WebSocket"
-
   - "SSE (server-sent Events)"
-
   - "Socket.IO"
-
   - "MQTT"
 ---
 
@@ -37,7 +32,7 @@ Enter Your `Websocket URL` ,valid protocols and click on connect . Once successf
 ### Troubleshooting
 
 - Make sure you entered valid websocket URL:
-<img src="/Resources/en/Realtime/websocketURL-light.png" width="600" height="74" alt="web socket URL structure"/>
+  <img src="/Resources/en/Realtime/websocketURL-light.png" width="600" height="74" alt="web socket URL structure"/>
 
 - Do not add invalid/blank protocol before you connect to a websocket.
 
