@@ -1,14 +1,14 @@
 ---
-title: Writing Tests in Hoppscotch
-menuTitle: Writing Tests
+title: Tests
+menuTitle: Post-request Tests
 description: "Hoppscotch Guide to write pre-request scripts and tests for REST API"
+position: 7
+category: quickstart
 ---
 
-You can write test scripts for your API requests in `javaScript`.
-
+You can write test scripts for your API requests in `javaScript`. 
 #### why write tests?
-
-_As you introduce new code ,tests ensure that your API is working as intended. The higher your test coverage, the more flexible and bug-resistant your code will be , the less time you'll spend wondering why_[ _deleting a picture of a coconut breaks your code._](https://www.thegamer.com/this-coconut-jpg-in-team-fortress-2s-game-files-if-deleted-breaks-the-game-and-no-one-knows-why/)
+ *As you introduce new code ,tests ensure that your API is working as intended. The higher your test coverage, the more flexible and bug-resistant your code will be , the less time you'll spend wondering why*[ *deleting a picture of a coconut breaks your code.*](https://www.thegamer.com/this-coconut-jpg-in-team-fortress-2s-game-files-if-deleted-breaks-the-game-and-no-one-knows-why/)
 
 # Writing Tests
 
@@ -17,6 +17,7 @@ In the last section <nuxt-link to='/Scripting'> pre-request scripting</nuxt-link
 ## `pw` API
 
 Hoppscotch has a powerful API called `pw` which handles pre-requests and tests.
+
 
 - [`.expect(value)`](a)
 - [`.not`](a)
@@ -34,6 +35,7 @@ Lets look at how to use `pw.expect()` and `pw.test()` to write our tests.
 
 ### pw.expect(`value`)
 
+
 `expect` returns an expectation object, on which you can call matcher functions. The example below calls the matcher function `toBe` on the expectation object that is returned by calling `pw.expect` with the response id (`pw.response.body.id`) as an argument.
 
 Use `pw.expect` directly for quick and convenient testing. Every `pw.expect` statement will generate a line on the test report.
@@ -45,6 +47,7 @@ pw.expect(1).toBe(1);
 // This test will fail
 pw.expect(2).not.toBe(2);
 ```
+
 
 ### .test(`name`,`fn`)
 
@@ -176,20 +179,20 @@ pw.test("Response is ok", () => {
 - `headers`: -object- The response headers.
 - `body`: -object- the data in the response. In many requests, this is the JSON sent by the server.
 
+
 ## Examples
 
-### Testing status code
+### Testing status code 
 
 Let us write a test to check whether the response to our request has a status code of `200` and that there are no errors in the response body.
 We'll use the URL `https://www.httpbin.org/status/200` and Method `GET`
 In this case we'll need to write two `expect` statements one for checking the status and another for checking the response body.
 However we can wrap `expect` statements with `pw.test` to group and describe related statements.
 
-There are two ways to test the status code
-
+There are two ways to test the status code 
 - check if it is exactly `200` : `pw.expect(pw.response.status)toBe(200)`
-- use the matcher functions for quick and convenient testing of the http status code ,in this case `toBeLevel2xx()` : `pw.expect(pw.response.status)toBeLevel2xx()`
-  <code-group>
+- use the  matcher functions for quick and convenient testing of the http status code ,in this case `toBeLevel2xx()` : `pw.expect(pw.response.status)toBeLevel2xx()`
+<code-group>
 
 <code-block label = "Test Script" active>
 
@@ -216,6 +219,7 @@ pw.test("Response is ok", () => {
 </code-group>
 
 These tests will sccuessfully pass once you send the request.
+
 
 <img src="/Resources/en/Tests/response-dark.png" class="dark-img"  alt=""/>
 

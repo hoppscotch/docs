@@ -1,6 +1,8 @@
 ---
 title: Graphql platform
 description: "More about Hoppscotch Graphql"
+position: 3
+category: Getting started
 ---
 
 <video loop playsinline controls>
