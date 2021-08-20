@@ -2,7 +2,7 @@
 title: Changelog
 menuTitle: Changelog
 category: Community
-position: 2
+position: 5
 ---
 
 changelog

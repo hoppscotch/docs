@@ -4,13 +4,10 @@ menuTitle: REST
 description: "Hoppscotch Guide for REST requests"
 position: 5
 category: quickstart
+---If you are new to API development and want to know more about the basics of APIs ,follow along this guide !
 
----
-
-If you are new to API development and want to know more about the basics of APIs ,follow along this guide !
-
-   <img src="/Resources/en/APIGuide/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
-    <img src="/Resources/en/APIGuide/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>
+   <img src="/APIGuide/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
+    <img src="/APIGuide/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>
 
 ## Sending Requests
 
@@ -18,9 +15,9 @@ Lets Build Our First REST API request!
 
 We are going to write a query with a simple `GET` method to get character information from <a href="https://www.rickandmortyapi.com">Rick and Morty</a> Tv show.
 
-<img src="/Resources/en/API/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/API/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
-<img src="/Resources/en/API/method-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/API/method-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 Start by choosing `GET` method and connecting to the URL below.
 click on `SEND`.
@@ -98,8 +95,6 @@ https://rickandmortyapi.com/api/character
 
 ## Using parameters
 
-
-
 In the previous section we got a long response with details on all the characters of the Rick And Morty show.
 You can also get details on a single character .
 
@@ -134,9 +129,9 @@ Add the key value pairs:
 
 This will be automatically appended to your API path .
 
-<img src="/Resources/en/APIGuide/param-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/param-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-<img src="/Resources/en/APIGuide/param-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/param-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 You will get the following response:
 
@@ -182,13 +177,11 @@ Let us take some of our Rick And Morty Queries and organize them into a collecti
 - you can further make sub folders inside a collection.
 
 <video loop playsinline controls>
-  <source src="/Resources/en/APIGuide/collections.webm" type="video/webm" />
-  <source src="/Resources/en/APIGuide/collections.mp4"  type="video/mp4"  />
+  <source src="/APIGuide/collections.webm" type="video/webm" />
+  <source src="/APIGuide/collections.mp4"  type="video/mp4"  />
 </video>
 
 ## Environment Variables
-
-
 
 **Environment variables allow you to store and reuse values in your requests and scripts**
 
@@ -200,26 +193,20 @@ Use-cases:
 
 ### **Creating Environment**
 
-
-
 Create a new environment from the right sidebar.
-<img src="/Resources/en/APIGuide/env-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/Resources/en/APIGuide/env-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/env-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/env-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 Choose the desired environment from the sidebar dropdown menu in the environments section.
 
 ### **Adding environment variables**
 
-
-
 Click on an environment to add/edit/delete variables.
 
-<img src="/Resources/en/APIGuide/envcreate-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/Resources/en/APIGuide/envcreate-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/envcreate-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/envcreate-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 ### **Accessing environment data.**
-
-
 
 Select the Environment whose variables you wish to access.
 It's desirable to write environment variables against a request. This is done by accessing the `<<variable_name>>` object in request section.
@@ -228,15 +215,15 @@ It's desirable to write environment variables against a request. This is done by
 <<baseURL>><<path>>
 ```
 
-<img src="/Resources/en/APIGuide/env1-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/Resources/en/APIGuide/env1-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/env1-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/env1-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 Use environment variables enclosed in double angular brackets (`<<>>`) anywhere in the request section.
 
 **Example: Environment variables with pre-request scripts**
 
-<img src="/Resources/en/APIGuide/envscript-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/Resources/en/APIGuide/envscript-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/envscript-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/envscript-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 <alert>
 Variables in an environment with the name `Globals` will be added globally (i.e to every other environment.)

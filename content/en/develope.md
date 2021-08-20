@@ -2,7 +2,7 @@
 title: Contribute to Hoppscotch
 menuTitle: Contribute
 description: "Contribute to Hoppscotch"
-position: 10
+position: 3
 category: Community
 features:
   - "Reporting a bug"
@@ -10,8 +10,6 @@ features:
   - "Submitting a fix"
   - "Proposing new features"
 ---
-
-<alert>This page needs review</alert>
 
 We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
 
@@ -32,6 +30,44 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 5. Make sure your code lints.
 6. Issue that pull request!
 
+## **Developing**
+
+Update [`.env.example`](https://github.com/hoppscotch/hoppscotch/blob/main/.env.example) file found in repository's root directory with your own keys and rename it to `.env`.
+
+_Sample keys only works with the [production build](https://hoppscotch.io)._
+
+### Browser based development environment
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hoppscotch/hoppscotch)
+
+### Local development environment
+
+1. [Clone this repo](https://github.com/hoppscotch/hoppscotch.git) with git.
+2. Install dependencies by running `npm install` within the directory that you cloned (probably `hoppscotch`).
+3. Start the development server with `npm run dev`.
+4. Open development site by going to [`http://localhost:3000`](http://localhost:3000) in your browser.
+
+### Docker compose
+
+1. [Clone this repo](https://github.com/hoppscotch/hoppscotch.git) with git.
+2. Run `docker-compose up`
+3. Open development site by going to [`http://localhost:3000`](http://localhost:3000) in your browser.
+
+## **Docker**
+
+**Official container** &nbsp; [![hoppscotch/hoppscotch](https://img.shields.io/docker/pulls/hoppscotch/hoppscotch?style=social)](https://hub.docker.com/r/hoppscotch/hoppscotch)
+
+```bash
+docker run --rm --name hoppscotch -p 3000:3000 hoppscotch/hoppscotch:latest
+```
+
+## **Releasing**
+
+1. [Clone this repo](https://github.com/hoppscotch/hoppscotch.git) with git.
+2. Install dependencies by running `npm install` within the directory that you cloned (probably `hoppscotch`).
+3. Build the release files with `npm run generate`.
+4. Find the built project in `./dist`.
+
 #### Any contributions you make will be under the MIT Software License
 
 In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
@@ -49,7 +85,7 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 - A quick summary and/or background
 - Steps to reproduce
   - Be specific!
-  - Give sample code if you can. 
+  - Give sample code if you can.
 - What you expected would happen
 - What actually happens
 - Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
@@ -65,8 +101,4 @@ I'm again borrowing these from [Facebook's Guidelines](https://github.com/facebo
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under its MIT License.
-
-## References
-
-This document was adapted from the open-source contribution guidelines for [Facebook's Draft](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md)
+By contributing, you agree that your contributions will be licensed under MIT License.

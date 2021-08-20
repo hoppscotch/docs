@@ -13,8 +13,8 @@ This documentation is a work in progress!
 </alert>
 
 <video loop playsinline controls>
-  <source src="/Resources/en/API/APIvid.webm" type="video/webm" />
-  <source src="/Resources/en/API/APIvid.mp4" type="video/mp4" />
+  <source src="/API/APIvid.webm" type="video/webm" />
+  <source src="/API/APIvid.mp4" type="video/mp4" />
 </video>
 You can make API requests and examine responses using Hoppscotch.
  An API request allows you to retrieve or send data to and from an API endpoint.
@@ -35,37 +35,37 @@ Lets go over the features offered by Hoppscotch API platoform:
 
 ### Choosing Methods:
 
-<img src="/Resources/en/API/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/API/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
-<img src="/Resources/en/API/method-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/API/method-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-### Collections 
+### Collections
+
 #### Adding requests to collections
 
-<img src="/Resources/en/API/nameRequest-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/API/nameRequest-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-<img src="/Resources/en/API/nameRequest-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/API/nameRequest-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 You can name your requests and add them to collections folders or subfolders.
 
-<img src="/Resources/en/API/saverequestTocollection-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/API/saverequestTocollection-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
-<img src="/Resources/en/API/saverequestTocollection-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/API/saverequestTocollection-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 ### Adding dynamic behavior to requests:
 
-<img src="/Resources/en/API/dynamic-light.png" class="light-img" height="1280" width="640" alt=""/>
-<img src="/Resources/en/API/dynamic-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/API/dynamic-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/API/dynamic-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 The editor allows you to add dynamic behaviour to requests and collections.This lets you add `parameters` , `Headers` , `Authentication` , build `pre-request scripts` and write `tests`.
 _See Also :_ <nuxt-link to='/quickstart/scripts'> Writing pre-request Scripts( quick start guide) </nuxt-link>
-             <nuxt-link to='/quickstart/tests'> Writing Tests(quick start guide) </nuxt-link>
-              
+<nuxt-link to='/quickstart/tests'> Writing Tests(quick start guide) </nuxt-link>
 
 ### Response body :
 
-<img src="/Resources/en/API/response-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/Resources/en/API/response-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/API/response-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/API/response-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 The response from the `API endpoint` can be viewed here. You can download or copy the response for further use.
 
@@ -110,36 +110,34 @@ TroubleShooting Guide needs review
 `CORS` or Cross-Origin Resource Sharing is a security mechanism built into modern web-browers.
 It may cause the following error when testing local `API endpoints` or some other API endpoints with Hoppscotch.
 
-<img src="/Resources/en/API/CORS error example.png"   alt=""/>
+<img src="/API/CORS error example.png"   alt=""/>
 
 This is Due to the API not sending the proper API headers( `Access-Control-Allow`). This issue can be solved in two ways.
 
 1.  Ask whoever manages the API to add CORS support.
 2.  Use Middleware like ProxyScotch or the [Hoppscotch Web Extension.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
 
-
 ### ProxyScotch
 
 Hoppscotch has in-house Porxy server ProxyScotch built to handle this.
 
-#### How it works 
+#### How it works
 
-<img src="/Resources/en/API/ProxyScotch-light.png" class="light-img"  alt=""/>
+<img src="/API/ProxyScotch-light.png" class="light-img"  alt=""/>
 
-<img src="/Resources/en/API/ProxyScotch-dark.png" class="dark-img"  alt=""/>
-
+<img src="/API/ProxyScotch-dark.png" class="dark-img"  alt=""/>
 
 Enable it in settings.
 
-<img src="/Resources/en/API/proxy-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/API/proxy-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-<img src="/Resources/en/API/proxy-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/API/proxy-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 You can replace this with your own proxy middleware if you wish.
 
-#### Using Middle ware 
+#### Using Middle ware
 
- Since `CORS` is as simple as adding some HTTP headers, and it’s the only browser blocked, then you can build some proxy-like component that will basically make a call for you, get the response from the desired API, add those headers on top, and then send it back to Hoppscotch.
+Since `CORS` is as simple as adding some HTTP headers, and it’s the only browser blocked, then you can build some proxy-like component that will basically make a call for you, get the response from the desired API, add those headers on top, and then send it back to Hoppscotch.
 
 _See Also :_ <a href="https://github.com/hoppscotch/hoppscotch/wiki/Proxy">ProxyScotch GitHub Wiki</a>
 
@@ -150,6 +148,6 @@ _See Also :_ <a href="https://github.com/hoppscotch/hoppscotch/wiki/Proxy">Proxy
 2. Enable it in Settings.
 
 3. Open the extension and add new origins
-<img src="/Resources/en/API/Extension.png"  height="400" width="300" halt=""/>
+   <img src="/API/Extension.png"  height="400" width="300" halt=""/>
 
 Hoppscotch extension routes all added origins to PorxyScotch.
