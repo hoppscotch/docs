@@ -1,6 +1,8 @@
 ---
 title: Graphql platform
 description: "More about Hoppscotch Graphql"
+position: 3
+category: Getting started
 ---
 
 <video loop playsinline controls>
@@ -9,7 +11,7 @@ description: "More about Hoppscotch Graphql"
 </video>
 
 If you’re just starting to learn about GraphQl ,here are a few useful links:
-1 . <nuxt-link to='/Guides/Graphqlguide'> Graphql ( Hoppscotch Guide) </nuxt-link>
+1 . <nuxt-link to='/quickstart/graphql'> Graphql (Quickstart Guide) </nuxt-link>
 
 2. <a href="https://www.howtographql.com/">howtographql.com</a>
 3. <a href="https://graphql.org/learn/">howtographql.com</a>

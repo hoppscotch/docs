@@ -1,11 +1,14 @@
 ---
-title: Contribute
+title: Contribute to Hoppscotch
 menuTitle: Contribute
+description: "Contribute to Hoppscotch"
+position: 10
 category: Community
-position: 1
 features:
-  - abc
-  - efg
+  - "Reporting a bug"
+  - "Discussing the current state of the code"
+  - "Submitting a fix"
+  - "Proposing new features"
 ---
 
 <alert>This page needs review</alert>
@@ -46,7 +49,7 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 - A quick summary and/or background
 - Steps to reproduce
   - Be specific!
-  - Give sample code if you can.
+  - Give sample code if you can. 
 - What you expected would happen
 - What actually happens
 - Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
