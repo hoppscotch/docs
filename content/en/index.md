@@ -57,7 +57,8 @@ Since the initial commit (~2 years ago), Hoppscotch has evolved from being a sid
 
 ## Quick Links
 - [Github](https://github.com/hoppscotch)
-- <nuxt-link to="/Developer/ContribGuide" >Contribution Guide</nuxt-link>
+- <nuxt-link to="/community/contribution-guide" >Contribute to Hoppscotch</nuxt-link>
+- <nuxt-link to="/community/local-setup">Setup Hoppscotch in Local Machine </nuxt-link>
 
 ## Other Links
 - [Terms of use](https://github.com/hoppscotch/hoppscotch/wiki/Terms-&-Conditions)
