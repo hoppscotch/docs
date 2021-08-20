@@ -29,7 +29,7 @@ GraphQL is a query language for APIs and a runtime for fulfilling those queries 
 ## Demo
 
 Let's try some interesting examples to get a feel of Hoppscotch's Grapql Interface.
-To know more about the components check <nuxt-link to='/GraphqlEditor'>GraphQl Editor </nuxt-link>
+To know more about the components check <nuxt-link to='/graphql'>GraphQl Editor </nuxt-link>
 
 ### Making a Query
 We'll be using the Unofficial but well maintained SpaceX graphql endpoint `https://api.spacex.land/graphql`.
