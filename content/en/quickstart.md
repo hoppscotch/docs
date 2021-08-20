@@ -34,9 +34,9 @@ The Hoppscotch UI is made up of the following components:
 - The center area is where you build and work with API requests.
 - In the left sidebar below the divider are icons the direct you to specific panes for request, option and response.
 - The Right panel allows you to view your recent API request history,
-  <nuxt-link to="/articles">Collections</nuxt-link> and <nuxt-link to="/articles">Environments</nuxt-link> .
+  <nuxt-link to="/rest#collections">Collections</nuxt-link> and <nuxt-link to="/rest#collections">Environments</nuxt-link> .
 
-_See Also :_ <nuxt-link to='/RESTeditor'> RESTful API platform</nuxt-link>
+_See Also :_ <nuxt-link to='/rest'> REST platform</nuxt-link>
 
 ### **History:**
 
@@ -48,14 +48,14 @@ Shows the recent API requests you’ve made, allowing you start back right where
 <img src="/Resources/en/Navigation/collectionsSC.png"  height="300" width="265" alt="Collections Sidepanel"/>
 Hoppscotch allows you to organize your API requests with collections and folders.
 
-_See Also :_ <nuxt-link to='/RestAPI platform'> Using Collections (Guide) </nuxt-link>
+_See Also :_ <nuxt-link to='/quickstart/rest#using-collections'> Using Collections (quick start Guide) </nuxt-link>
 
 ### **Environments:**
 
 <img src="/Resources/en/Navigation/EnvironmentSC.png"  height="300" width="265" alt="Environments Sidepanel"/>
 Store variables and reuse values in your requests and scripts To set environment select from the drop down list of available environments.
 
-_See Also :_ <nuxt-link to='/Guides/APIguide'> Using Variables (Guide) </nuxt-link>
+_See Also :_ <nuxt-link to='/quickstart/rest#environment-variables'> Using Variables (Guide) </nuxt-link>
 
 ## GraphQL Editor
 
@@ -67,7 +67,7 @@ _See Also :_ <nuxt-link to='/Guides/APIguide'> Using Variables (Guide) </nuxt-li
 - In the left sidebar below the divider are icons the direct you to specific panes for Schema, Query and Response.
 - The Right panel has tabs for schema documentation, query, history and collections. This panel can be hidden for convenience.
 
-_See Also :_ <nuxt-link to='/GraphqlEditor'>GraphQl Editor </nuxt-link>
+_See Also :_ <nuxt-link to='/graphql'>GraphQl platform </nuxt-link>
 
 ## Realtime Editor
 
@@ -77,9 +77,9 @@ _See Also :_ <nuxt-link to='/GraphqlEditor'>GraphQl Editor </nuxt-link>
 Switch Between WebSocket, SSE ,Socket.IO ,MQTT in the top bar
 
 _See Also :_  
-<nuxt-link to='/RealtimeEditor>Realtime Editor. </nuxt-link>
+<nuxt-link to='/realtime'> Realtime Editor. </nuxt-link>
 
-<nuxt-link to='/GraphQl platform'>Working with real-time data(Guide) </nuxt-link>
+<nuxt-link to='/realtime'>Working with real-time data(Guide) </nuxt-link>
 
 ## API documentation generator
 
@@ -90,7 +90,7 @@ You can import collections.
 Or choose from existing Collections you’ve made in Hoppscotch from the right panel.
 Click on Generate Documentation to Get the API documentation.
 
-_See Also :_ <nuxt-link to='/Guides/DocumentAPI'>Documenting Collections(Guide) </nuxt-link>
+_See Also :_ <nuxt-link to='/quickstart/documentation'>Documenting Collections(Guide) </nuxt-link>
 
 ## Change Language
 
