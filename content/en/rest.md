@@ -39,7 +39,8 @@ Lets go over the features offered by Hoppscotch API platoform:
 
 <img src="/Resources/en/API/method-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-### Adding requests to collections :
+### Collections 
+#### Adding requests to collections
 
 <img src="/Resources/en/API/nameRequest-light.png" class="light-img" height="1280" width="640" alt=""/>
 
@@ -57,7 +58,9 @@ You can name your requests and add them to collections folders or subfolders.
 <img src="/Resources/en/API/dynamic-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 The editor allows you to add dynamic behaviour to requests and collections.This lets you add `parameters` , `Headers` , `Authentication` , build `pre-request scripts` and write `tests`.
-_See Also :_ <nuxt-link to='/WritingScripts'> Writing Scripts(Guide) </nuxt-link>
+_See Also :_ <nuxt-link to='/quickstart/scripts'> Writing pre-request Scripts( quick start guide) </nuxt-link>
+             <nuxt-link to='/quickstart/tests'> Writing Tests(quick start guide) </nuxt-link>
+              
 
 ### Response body :
 
@@ -66,10 +69,10 @@ _See Also :_ <nuxt-link to='/WritingScripts'> Writing Scripts(Guide) </nuxt-link
 
 The response from the `API endpoint` can be viewed here. You can download or copy the response for further use.
 
-_See Also :_ <nuxt-link to='/Guides/APIguide'> Using Environments (Guide) </nuxt-link>
+_See Also :_ <nuxt-link to='/quickstart/rest#environment-variables'> Using Environments (quick start guide) </nuxt-link>
 
 ## Keyboard shortcuts
------------------------------------------
+
 **Optimized for efficiency.**
 
 <p>
