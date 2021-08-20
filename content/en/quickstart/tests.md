@@ -224,3 +224,22 @@ These tests will sccuessfully pass once you send the request.
 <img src="/Resources/en/Tests/response-dark.png" class="dark-img"  alt=""/>
 
 <img src="/Resources/en/Tests/response-light.png" class="light-img"  alt=""/>
+
+
+### Assert Properties from the response body
+Parse the data as JSON and assert properties from the response body.
+in this example we test whether a  user id points to a particular user
+Let us use the following GET API endpoint `https://reqres.in/api/users/10`. 
+We will use `.toBe` to assert specific values and `.toBeType` to assert specific data type as shown in the code snippet below.
+
+<code-block label = "Test Script" active>
+
+```javascript
+pw.test("", () => {
+  const user = pw.response.body.json();
+  pw.expect(user.first_name).toBe("Byron");
+  pw.expect(user.first_name).toBeType("string");
+});
+
+```
+</code-block>
