@@ -1,7 +1,16 @@
 <template>
   <a
     :href="link"
-    class="border rounded-lg cursor-pointer flex flex-col py-8 px-4 transition no-underline items-center justify-center dark:border-gray-800 hover:bg-gray-100 "
+    class="border rounded-lg cursor-pointer flex flex-col
+     bg-gray-100 border-gray-200 
+     py-8 
+     px-4 
+     transition
+      no-underline
+     items-center justify-center 
+     dark:bg-gray-800 dark:border-gray-700
+      hover:bg-gray-200 hover:border-gray-300 
+     hover:dark:border-gray-600 hover:dark:border-gray-400  "
     target="_blank"
   >
     <img class="w-16" layout="responsive" :src="logo" :alt="title" />
