@@ -91,11 +91,4 @@ Click on Generate Documentation to Get the API documentation.
 
 _See Also :_ <nuxt-link to='/quickstart/documentation'>Documenting Collections(Guide) </nuxt-link>
 
-## Change Language
-
----
-
-<img src="/Navigation/changeLang.png"  width="1280" height="640" alt=""/>
-Hoppscotch currently supports 18 languages, you can choose any one of them from the list.
-
 > hoppscotch uses (i18n) internationalization.

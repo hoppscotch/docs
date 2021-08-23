@@ -191,7 +191,8 @@ There are two ways to test the status code
 
 - check if it is exactly `200` : `pw.expect(pw.response.status)toBe(200)`
 - use the matcher functions for quick and convenient testing of the http status code ,in this case `toBeLevel2xx()` : `pw.expect(pw.response.status)toBeLevel2xx()`
-  <code-group>
+
+<code-group>
 
 <code-block label = "Test Script" active>
 
