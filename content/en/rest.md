@@ -95,8 +95,6 @@ _See Also :_ <nuxt-link to='/quickstart/rest#environment-variables'> Using Envir
 
 ## TroubleShooting
 
----
-
 <alert type="warning">
 
 TroubleShooting Guide needs review
