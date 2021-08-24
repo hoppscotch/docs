@@ -20,7 +20,7 @@ Benefits:
 ## How to Install:
 
 1. On your computer, open Chrome.
-2. Go to [hoppscotch.io](https://hoppscotch.io/) you want to install.
+2. Go to [hoppscotch.io](https://hoppscotch.io/).
 3. At the top right of the address bar, click Install ➕.
 4. Follow the onscreen instructions to install the PWA.
 
