@@ -215,8 +215,10 @@ It's desirable to write environment variables against a request. This is done by
 <<baseURL>><<path>>
 ```
 
-<img src="/APIGuide/env1-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/APIGuide/env1-light.png" class="light-img" height="1280" width="640" alt=""/>
+<video loop playsinline controls>
+  <source src="/APIGuide/environment.webm" type="video/webm" />
+  <source src="/APIGuide/environment.mp4"  type="video/mp4"  />
+</video>
 
 Use environment variables enclosed in double angular brackets (`<<>>`) anywhere in the request section.
 
