@@ -26,24 +26,13 @@ Hoppscotch currently allows the testing of the following Real-time Communication
 <list :items="features"></list>
 
 ## WebSockets
-
----
-
 <img src="/Realtime/Websocket-dark.png"   class="dark-img" width="1280" height="640" alt=""/>
 <img src="/Realtime/Websocket-light.png" class="light-img"  width="1280" height="640" alt=""/>
 
 Enter Your `Websocket URL` ,valid protocols and click on connect . Once successfully connected you can send messages and see the realtime response on the log pane.
-
-### Troubleshooting
-
-- Make sure you entered valid websocket URL:
-  <img src="/Realtime/websocketURL-light.png" width="600" height="74" alt="web socket URL structure"/>
-
-- Do not add invalid/blank protocol before you connect to a websocket.
+_See Also :_ <nuxt-link to='/quickstart/websocket'>WebSockets (hoppscotch quickstart guide) </nuxt-link>
 
 ## MQTT
-
----
 
 <video loop playsinline controls>
   <source src="/Realtime/mqtt.webm" type="video/webm" />
@@ -54,4 +43,4 @@ Enter Your `Websocket URL` ,valid protocols and click on connect . Once successf
 
 Once connected to the MQTT server, You can either publish a message under a topic or subscribe to a topic to get messages pertaining to that topic being sent across the server in real-time.
 
-_See Also :_ <nuxt-link to='/GraphQl platform'>Working with Real-time Web protocols(Guide) </nuxt-link>
+_See Also :_ <nuxt-link to='/quickstart/mqtt'>MQTT (hoppscotch quickstart guide) </nuxt-link>
