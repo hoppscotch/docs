@@ -17,7 +17,7 @@ This documentation is a work in progress!
   <source src="/API/APIvid.mp4" type="video/mp4" />
 </video>
 You can make API requests and examine responses using Hoppscotch.
- An API request allows you to retrieve or send data to and from an API endpoint.
+An API request allows you to retrieve or send data to and from an API endpoint.
 
 The common http methods used in API requests are:
 
@@ -33,25 +33,21 @@ Lets go over the features offered by Hoppscotch API platoform:
 
 ---
 
-### Choosing Methods:
+### Choosing Method:
 
 <img src="/API/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-
 <img src="/API/method-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 ### Collections
 
 #### Adding requests to collections
 
-<img src="/API/nameRequest-light.png" class="light-img" height="1280" width="640" alt=""/>
+Click on the save button ,next to `SEND` ,name your request and add to existing or new collections
 
+<img src="/API/nameRequest-light.png" class="light-img" height="1280" width="640" alt=""/>
 <img src="/API/nameRequest-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
-You can name your requests and add them to collections folders or subfolders.
-
-<img src="/API/saverequestTocollection-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-
-<img src="/API/saverequestTocollection-light.png" class="light-img" height="1280" width="640" alt=""/>
+You can add your requests to collections folders or subfolders.
 
 ### Adding dynamic behavior to requests:
 
@@ -70,6 +66,12 @@ _See Also :_ <nuxt-link to='/quickstart/scripts'> Writing pre-request Scripts( q
 The response from the `API endpoint` can be viewed here. You can download or copy the response for further use.
 
 _See Also :_ <nuxt-link to='/quickstart/rest#environment-variables'> Using Environments (quick start guide) </nuxt-link>
+
+## Environments
+
+<img src="/API/editEnv-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/API/editEnv-light.png" class="light-img" height="1280" width="640" alt=""/>
+
 
 ## Keyboard shortcuts
 
@@ -115,7 +117,7 @@ This is Due to the API not sending the proper API headers( `Access-Control-Allow
 1.  Ask whoever manages the API to add CORS support.
 2.  Use Middleware like ProxyScotch or the [Hoppscotch Web Extension.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
 
-### ProxyScotch
+### Interceptor
 
 Hoppscotch has in-house Porxy server ProxyScotch built to handle this.
 
@@ -127,9 +129,9 @@ Hoppscotch has in-house Porxy server ProxyScotch built to handle this.
 
 Enable it in settings.
 
-<img src="/API/proxy-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/API/Interceptor-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-<img src="/API/proxy-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/API/Interceptor-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 You can replace this with your own proxy middleware if you wish.
 
