@@ -69,10 +69,12 @@ _See Also :_ <nuxt-link to='/quickstart/rest#environment-variables'> Using Envir
 
 ## Environments
 
+Environment variables allow you to store and reuse values in your requests and scripts
+
 <img src="/API/editEnv-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/API/editEnv-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-
+**see also :** <nuxt-link to="/quickstart/rest#environment-variables">How To Environment variables in Hoppscotch</nuxt-link>
 ## Keyboard shortcuts
 
 **Optimized for efficiency.**
