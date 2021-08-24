@@ -41,8 +41,8 @@ You can view the schema of GraphQl Endpoint that you’ve connected to in this p
 
 ### Queries
 
-<img src="/Graphql/graphQlQueriesandvariablesSC.png" class="dark-img" height="1280" width="640" alt="History Sidepanel"/>
-<img src="/Graphql/graphQlQueriesandvariablesSC.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
+<img src="/Graphql/graphqlQuery-dark.png" class="dark-img" height="1280" width="640" alt="History Sidepanel"/>
+<img src="/Graphql/graphqlQuery-light.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
 
 Any Queries to be made to the GraphQl endpoint are typed out in this section , there is an inbuilt formatter that Prettifies the Query, this can be accessed in the top right corner of the Query Pane or with the shortcut  `Ctrl` + `P`.
 
@@ -73,11 +73,11 @@ All your recent Requests can be accessed from the History tab, and you can pick 
 
 ### Collections
 
-<img src="/Graphql/GraphQlcollectionHighlight.png" class="dark-img" height="1000" width="640" alt="History Sidepanel"/>
-<img src="/Graphql/GraphQlcollectionHighlight.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
+<img src="/Graphql/GraphQlcollectionHighlight.png" class="dark-img" height="500" width="440" alt="History Sidepanel"/>
+<img src="/Graphql/GraphQlcollectionHighlight-light.png" class="light-img" height="500" width="440" alt="History Sidepanel"/>
 Just Like Rest API collections , Hoppscotch lets you organize your GraphQl queries in collections.
 <img src="/Graphql/importOrExportGraphqlCollection.png" class="dark-img" height="1000" width="640" alt="History Sidepanel"/>
-<img src="/Graphql/importOrExportGraphqlCollection.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
+<img src="/Graphql/importOrExportGraphqlCollection-light.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
 
 You can Import existing collections(JSON) to replace current collection ,or preserve current collection as well as add new collection from your sources.
 Collections can be Exported as JSON as well
