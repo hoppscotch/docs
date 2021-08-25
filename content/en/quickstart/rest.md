@@ -224,11 +224,86 @@ Use environment variables enclosed in double angular brackets (`<<>>`) anywhere 
 
 **Example: Environment variables with pre-request scripts**
 
-<img src="/APIGuide/envscript-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/APIGuide/envscript-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/addingToEnv-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/addingToEnv-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 <alert>
 Variables in an environment with the name `Globals` will be added globally (i.e to every other environment.)
 </alert>
+
+
+## Using Auth Tokens
+
+In this section, we'll look at passing Authorization and Authentication Information in our requests,by accessing the gitHub API.
+
+- Make a GET request to the url `https://api.github.com/user`.
+- You'll get an error like this
+
+  ```javascript
+  {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest"
+  }
+  ```
+#### generating access token
+
+To get access to the Github API, you first need to generate a personal access token. For our demonstration we will generate one granting access to public repositories:
+
+  - Go to your [Github account settings](https://github.com/settings/profile) by clicking on your profile icon and clicking on Settings (at the bottom)
+  - Scroll down and click on Developer setting in the left menu
+
+    <img src="/APIGuide/github-developer-settings.png"/>
+
+  - In developer setting page, click on [Personal access tokens](https://github.com/settings/tokens)
+
+  <img src="/APIGuide/github-personal-access-tokens.png"/>
+
+  - Click on generate new token and check  ONLY the public_repo scope under repo.
+
+  <img src="/APIGuide/github-scopes-public.png" />
+
+  - Copy the generated opaque-string
+
+#### Storing Auth Token in Variable
+
+<alert type = "success">It is a recommended safe-practice to have your Auth Details in Enivronment variables rather than inputting it directly to the Authorization tab </alert>
+
+- Add the copied string to a new variable named 'token' in an existing or new environment.
+<img src="/APIGuide/addingToEnv-dark.png" class="dark-img" height="300" width="400" alt=""/>
+<img src="/APIGuide/addingToEnv-light.png" class="light-img" height="300" width="400" alt=""/>
+
+- Now open the Authorisation tab and select Bearer Token in the dropdown list.
+
+- call the variable token. 
+
+- click on send.
+
+<img src="/APIGuide/usingVar-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/APIGuide/usingVar-light.png" class="light-img" height="1280" width="640" alt=""/>
+
+Hoppscotch will automatically add the contents into the authorisation header
+
+**Result**
+
+You Should Be able to see the number of public repos you have made in GitHub.
+
+```javascript
+
+{
+  "login": "HoppscotchUser",
+  "url": "https://api.github.com/users/HoppscotchUser",
+  ...
+  "public_repos": 22,
+  "public_gists": 0,
+  "followers": 2,
+  "following": 3,
+  "created_at": "2016-09-05T14:18:09Z",
+  "updated_at": "2021-08-03T14:55:54Z"
+}
+
+```
+*To know more about other Auth Models Hoppscotch supports :* <nuxt-link to = "/features/authorization">Feature:Authorization</nuxt-link>
+
+
 
 ## <h2 >Additional Resources

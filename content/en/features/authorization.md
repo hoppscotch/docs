@@ -46,6 +46,7 @@ In this Authentication Model, you first retrieve an access token for the API, th
 
 4. You can save the token to be re-used later
 
+**See Also:** <nuxt-link to = "/quickstart/rest#using-auth-tokens">Passing Authorization Tokens (Hoppscotch Guide)</nuxt-link>
 
 [^1]: JSON Web Token : JSON Web Token (JWT) is  a compact and self-contained way for securely transmitting information between parties as a JSON object. This information is digitally signed. JWTs can be signed using a secret  or a public/private key pair 
 
