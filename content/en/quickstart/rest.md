@@ -234,7 +234,7 @@ Variables in an environment with the name `Globals` will be added globally (i.e 
 
 ## Using Auth Tokens
 
-In this section, we'll look at passing Authorization and Authentication Information in our requests,by accessing the gitHub API.
+In this section, we'll look at passing Authorization and Authentication Information in our requests,by accessing the **GitHub API**.
 
 - Make a GET request to the url `https://api.github.com/user`.
 - You'll get an error like this
