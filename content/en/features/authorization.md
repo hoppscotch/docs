@@ -33,6 +33,10 @@ Bearer <Your API key>
 ### OAuth 2.0
 In this Authentication Model, you first retrieve an access token for the API, then use that token to authenticate future requests.
 
+**An example OAuth 2.0 flow could run as follows:**
+
+<img src="/Features/OAuth2.0.png"  height="1280" width="640" alt=""/>
+
 #### Steps:
 1. In the Authorization tab for a request ,select **OAuth 2.0** from the  *Authorization Type* drop-down.
 
