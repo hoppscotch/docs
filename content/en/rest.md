@@ -65,8 +65,6 @@ _See Also :_ <nuxt-link to='/quickstart/scripts'> Writing pre-request Scripts( q
 
 The response from the `API endpoint` can be viewed here. You can download or copy the response for further use.
 
-_See Also :_ <nuxt-link to='/quickstart/rest#environment-variables'> Using Environments (quick start guide) </nuxt-link>
-
 ## Environments
 
 Environment variables allow you to store and reuse values in your requests and scripts
@@ -75,6 +73,7 @@ Environment variables allow you to store and reuse values in your requests and s
 <img src="/API/editEnv-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 **see also :** <nuxt-link to="/quickstart/rest#environment-variables">How to use  environment variables in Hoppscotch</nuxt-link>
+
 ## Keyboard shortcuts
 
 **Optimized for efficiency.**
