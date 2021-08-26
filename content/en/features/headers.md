@@ -5,13 +5,14 @@ menuTitle: Headers
 position: 14
 category: Features
 ---
-##  `Http` Request Header
+###  `Http` Request Header
 
 This can be used in an HTTP request to provide context to a request being made , so that the server can tailor the response.
 E.g `Accept-*`vheaders indicate the allowed and preferred formats of the response.
 Other Headers can be used to  supply Authentication credentials , to control caching , or to get infrmation about the user agent etc..,
 
 ## Modifying Request Header
+
 Got to the `Headers` Tab under the URL field and add your Headers to the Header List 
 
 <img src="/Features/Header-dark.png" class="dark-img" height="1280" width="640" alt="IMAGES"/>
@@ -20,7 +21,7 @@ Got to the `Headers` Tab under the URL field and add your Headers to the Header 
 
 
 
-## Commnly Used Headers
+## Commonly Used Headers
 
 | Common Headers |  Function    |
 |----------------|--------------|
