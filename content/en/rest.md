@@ -74,7 +74,7 @@ Environment variables allow you to store and reuse values in your requests and s
 <img src="/API/editEnv-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/API/editEnv-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-**see also :** <nuxt-link to="/quickstart/rest#environment-variables">How To Environment variables in Hoppscotch</nuxt-link>
+**see also :** <nuxt-link to="/quickstart/rest#environment-variables">How to use  environment variables in Hoppscotch</nuxt-link>
 ## Keyboard shortcuts
 
 **Optimized for efficiency.**
@@ -99,13 +99,25 @@ Environment variables allow you to store and reuse values in your requests and s
 
 ## TroubleShooting
 
-<alert type="warning">
+There are many possible reasons for your API requests not behaving as expected.
 
-TroubleShooting Guide needs review
+### Connectivity
 
-</alert>
+If Hoppscotch fails to send your request, you may be experiencing connectivity issues. Check your connection by attempting to open a page in your web browser.
 
-# Removing CORS restrictions
+### Firewalls
+
+Some firewalls may be configured to block non-browser connections. If this happens you will need to contact your network admins for hoppsocth to work.
+
+### Incorrect protocol
+
+Check if you're using https:// instead of http:// in your URL (or vice versa).
+
+### Hoppscotch errors
+
+It is possible that Hoppscotch might be making invalid requests to your API server. You can confirm this by checking your server logs (if available). If you believe this is happening, get in touch with the <nuxt-link to ="/community">Hoppscotch team.</nuxt-link> 
+
+### CORS restrictions
 
 #### What is CORS?
 
@@ -117,39 +129,6 @@ It may cause the following error when testing local `API endpoints` or some othe
 This is Due to the API not sending the proper API headers( `Access-Control-Allow`). This issue can be solved in two ways.
 
 1.  Ask whoever manages the API to add CORS support.
-2.  Use Middleware like ProxyScotch or the [Hoppscotch Web Extension.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
+2.  Use Middleware like ProxyScotch or the [Hoppscotch Web Extension.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en) and enable it in the **Interceptor** section of settings
 
-### Interceptor
-
-Hoppscotch has in-house Porxy server ProxyScotch built to handle this.
-
-#### How it works
-
-<img src="/API/ProxyScotch-light.png" class="light-img"  alt=""/>
-
-<img src="/API/ProxyScotch-dark.png" class="dark-img"  alt=""/>
-
-Enable it in settings.
-
-<img src="/API/Interceptor-light.png" class="light-img" height="1280" width="640" alt=""/>
-
-<img src="/API/Interceptor-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-
-You can replace this with your own proxy middleware if you wish.
-
-#### Using Middle ware
-
-Since `CORS` is as simple as adding some HTTP headers, and it’s the only browser blocked, then you can build some proxy-like component that will basically make a call for you, get the response from the desired API, add those headers on top, and then send it back to Hoppscotch.
-
-_See Also :_ <a href="https://github.com/hoppscotch/hoppscotch/wiki/Proxy">ProxyScotch GitHub Wiki</a>
-
-### Hoppscotch Web Extension
-
-1. Download the Hoppscotch WebExtension [here.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
-
-2. Enable it in Settings.
-
-3. Open the extension and add new origins
-   <img src="/API/Extension.png"  height="400" width="300" halt=""/>
-
-Hoppscotch extension routes all added origins to PorxyScotch.
+▶️**To know more about Interceptor** <nuxt-link to = "/features/interceptor">**Check this Guide** </nuxt-link>
