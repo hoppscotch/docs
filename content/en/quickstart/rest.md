@@ -137,7 +137,7 @@ You will get the following response:
 
 <code-block label= "Morty" active >
 
-```bash
+```javascript
 {
   "info": {
     "count": 54,
@@ -160,7 +160,8 @@ You will get the following response:
       "status": "Alive",
       "species": "Human",
       "type": "Human with antennae",
-    .......
+      ....
+    }
 ```
 
 </code-block>
