@@ -7,43 +7,42 @@ category: Features
 ---
 
 Improve your workflow by efficiently performing tasks straight from your keyboard.
+
 <alert type = "success">
-Bring up the shortcuts sidebar with `Ctrl` + `K`
+Bring up the shortcuts sidebar with <kbd>Ctrl</kbd> + <kbd>K</kbd>
 </alert>
 
 ## General Shortcuts
-| Shortcut                       | Action                 |
-| ------------------------------ | ---------------------- |
-| <kbd>Ctrl</kbd> + <kbd>K</kbd> | KeyBoard Shortcuts   |
-| <kbd>Esc</kbd> | Close current menu    |
 
-
+| Shortcut         | Action             |
+| ---------------- | ------------------ |
+| `Ctrl`&nbsp; `K` | KeyBoard Shortcuts |
+| `Esc`            | Close current menu |
 
 ## Navigation Shortcuts
-| Shortcut                       | Action                 |
-| ------------------------------ | ---------------------- |
-| <kbd>Ctrl</kbd> + <kbd>←</kbd> | Go Back to previous page   |
-| <kbd>Ctrl</kbd> + <kbd>→</kbd> | Go forward to next page    |
-| <kbd>Alt</kbd> + <kbd>R</kbd> | Go to REST page      |
-| <kbd>Alt</kbd> + <kbd>Q</kbd> | Go to GraphQL page          |
-| <kbd>Alt</kbd> + <kbd>W</kbd>  | Go to Realtime page    |
-| <kbd>Alt</kbd> + <kbd>D</kbd>  | Go to Documentation Page |
-| <kbd>Alt</kbd> + <kbd>S</kbd>  | Go to Settings page     |
 
-
+| Shortcut         | Action                   |
+| ---------------- | ------------------------ |
+| `Ctrl`&nbsp; `←` | Go Back to previous page |
+| `Ctrl`&nbsp; `→` | Go forward to next page  |
+| `Alt`&nbsp; `R`  | Go to REST page          |
+| `Alt`&nbsp; `Q`  | Go to GraphQL page       |
+| `Alt`&nbsp; `W`  | Go to Realtime page      |
+| `Alt`&nbsp; `D`  | Go to Documentation Page |
+| `Alt`&nbsp; `S`  | Go to Settings page      |
 
 ## Rest Platform Shortcuts
 
-| Shortcut                       | Action                 |
-| ------------------------------ | ---------------------- |
-| <kbd>Ctrl</kbd> + <kbd>G</kbd> | Send Request    |
-| <kbd>Ctrl</kbd> + <kbd>S</kbd> | Save to Collections    |
-| <kbd>Ctrl</kbd> + <kbd>U</kbd> | Copy Request Link      |
-| <kbd>Ctrl</kbd> + <kbd>I</kbd> | Reset Request          |
-| <kbd>Alt</kbd> + <kbd>🠉</kbd>  | Select Next method     |
-| <kbd>Alt</kbd> + <kbd>🠋</kbd>  | Select Previous method |
-| <kbd>Alt</kbd> + <kbd>G</kbd>  | Select `GET` method      |
-| <kbd>Alt</kbd> + <kbd>H</kbd>  | Select `HEAD` method     |
-| <kbd>Alt</kbd> + <kbd>P</kbd>  | Select `POST` method     |
-| <kbd>Alt</kbd> + <kbd>U</kbd>  | Select `PUT` method      |
-| <kbd>Alt</kbd> + <kbd>X</kbd>  | Select `DELETE` method   |
+| Shortcut         | Action                 |
+| ---------------- | ---------------------- |
+| `Ctrl`&nbsp; `G` | Send Request           |
+| `Ctrl`&nbsp; `S` | Save to Collections    |
+| `Ctrl`&nbsp; `U` | Copy Request Link      |
+| `Ctrl`&nbsp; `I` | Reset Request          |
+| `Alt`&nbsp; `↑`  | Select Next method     |
+| `Alt`&nbsp; `↓`  | Select Previous method |
+| `Alt`&nbsp; `G`  | Select `GET` method    |
+| `Alt`&nbsp; `H`  | Select `HEAD` method   |
+| `Alt`&nbsp; `P`  | Select `POST` method   |
+| `Alt`&nbsp; `U`  | Select `PUT` method    |
+| `Alt`&nbsp; `X`  | Select `DELETE` method |
