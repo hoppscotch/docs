@@ -19,6 +19,6 @@ Join our open communities and forums to stay up to date with the latest happenin
 
 <div class="grid gap-8 grid-cols-2 md:grid-cols-3">
     <community-card logo="/community/discord.svg" title="Join our Discord server" link="https://hoppscotch.io/discord"></community-card>
-    <community-card logo="/community/twitter.svg" title="Follow us on Twitter" link="https://twitter.com/hoppscotch_io"></community-card>
+    <community-card logo="/community/twitter.svg" title="Follow us on Twitter" link="https://hoppscotch.io/twitter"></community-card>
     <community-card logo="/community/github.svg" title="Follow us on GitHub" link="https://github.com/hoppscotch/hoppscotch"></community-card>
 </div>
