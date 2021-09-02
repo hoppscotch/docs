@@ -1,4 +1,5 @@
 ---
+
 title: Send a REST request
 menuTitle: REST
 description: "Hoppscotch Guide for REST requests"
@@ -6,8 +7,8 @@ position: 5
 category: quickstart
 ---If you are new to API development and want to know more about the basics of APIs ,follow along this guide !
 
-   <img src="/APIGuide/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
-    <img src="/APIGuide/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>
+   <img src="/guides/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
+    <img src="/guides/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>
 
 ## Sending Requests
 
@@ -15,9 +16,9 @@ Lets Build Our First REST API request!
 
 We are going to write a query with a simple `GET` method to get character information from <a href="https://www.rickandmortyapi.com">Rick and Morty</a> Tv show.
 
-<img src="/API/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/api/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
-<img src="/API/method-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/api/method-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 Start by choosing `GET` method and connecting to the URL below.
 click on `SEND`.
@@ -129,9 +130,9 @@ Add the key value pairs:
 
 This will be automatically appended to your API path .
 
-<img src="/APIGuide/param-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/guides/param-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-<img src="/APIGuide/param-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/guides/param-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 You will get the following response:
 
@@ -178,8 +179,8 @@ Let us take some of our Rick And Morty Queries and organize them into a collecti
 - you can further make sub folders inside a collection.
 
 <video loop playsinline controls>
-  <source src="/APIGuide/collections.webm" type="video/webm" />
-  <source src="/APIGuide/collections.mp4"  type="video/mp4"  />
+  <source src="/guides/collections.webm" type="video/webm" />
+  <source src="/guides/collections.mp4"  type="video/mp4"  />
 </video>
 
 ## Environment Variables
@@ -195,8 +196,8 @@ Use-cases:
 ### **Creating Environment**
 
 Create a new environment from the right sidebar.
-<img src="/APIGuide/env-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/APIGuide/env-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/guides/env-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/guides/env-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 Choose the desired environment from the sidebar dropdown menu in the environments section.
 
@@ -204,8 +205,8 @@ Choose the desired environment from the sidebar dropdown menu in the environment
 
 Click on an environment to add/edit/delete variables.
 
-<img src="/APIGuide/envcreate-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/APIGuide/envcreate-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/guides/envcreate-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/guides/envcreate-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 ### **Accessing environment data.**
 
@@ -217,21 +218,20 @@ It's desirable to write environment variables against a request. This is done by
 ```
 
 <video loop playsinline controls>
-  <source src="/APIGuide/environment.webm" type="video/webm" />
-  <source src="/APIGuide/environment.mp4"  type="video/mp4"  />
+  <source src="/guides/environment.webm" type="video/webm" />
+  <source src="/guides/environment.mp4"  type="video/mp4"  />
 </video>
 
 Use environment variables enclosed in double angular brackets (`<<>>`) anywhere in the request section.
 
 **Example: Environment variables with pre-request scripts**
 
-<img src="/APIGuide/addingToEnv-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/APIGuide/addingToEnv-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/guides/addingToEnv-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/guides/addingToEnv-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 <alert>
 Variables in an environment with the name `Globals` will be added globally (i.e to every other environment.)
 </alert>
-
 
 ## Using Auth Tokens
 
@@ -246,41 +246,42 @@ In this section, we'll look at passing Authorization and Authentication Informat
   "documentation_url": "https://docs.github.com/rest"
   }
   ```
+
 #### generating access token
 
 To get access to the Github API, you first need to generate a personal access token. For our demonstration we will generate one granting access to public repositories:
 
-  - Go to your [Github account settings](https://github.com/settings/profile) by clicking on your profile icon and clicking on Settings (at the bottom)
-  - Scroll down and click on Developer setting in the left menu
+- Go to your [Github account settings](https://github.com/settings/profile) by clicking on your profile icon and clicking on Settings (at the bottom)
+- Scroll down and click on Developer setting in the left menu
 
-    <img src="/APIGuide/github-developer-settings.png"/>
+  <img src="/guides/github-developer-settings.png"/>
 
-  - In developer setting page, click on [Personal access tokens](https://github.com/settings/tokens)
+- In developer setting page, click on [Personal access tokens](https://github.com/settings/tokens)
 
-  <img src="/APIGuide/github-personal-access-tokens.png"/>
+  <img src="/guides/github-personal-access-tokens.png"/>
 
-  - Click on generate new token and check  ONLY the public_repo scope under repo.
+- Click on generate new token and check ONLY the public_repo scope under repo.
 
-  <img src="/APIGuide/github-scopes-public.png" />
+  <img src="/guides/github-scopes-public.png" />
 
-  - Copy the generated opaque-string
+- Copy the generated opaque-string
 
 #### Storing Auth Token in Variable
 
 <alert type = "success">It is a recommended safe-practice to have your Auth Details in Enivronment variables rather than inputting it directly to the Authorization tab </alert>
 
 - Add the copied string to a new variable named 'token' in an existing or new environment.
-<img src="/APIGuide/addingToEnv-dark.png" class="dark-img" height="300" width="400" alt=""/>
-<img src="/APIGuide/addingToEnv-light.png" class="light-img" height="300" width="400" alt=""/>
+  <img src="/guides/addingToEnv-dark.png" class="dark-img" height="300" width="400" alt=""/>
+  <img src="/guides/addingToEnv-light.png" class="light-img" height="300" width="400" alt=""/>
 
 - Now open the Authorisation tab and select Bearer Token in the dropdown list.
 
-- call the variable token. 
+- call the variable token.
 
 - click on send.
 
-<img src="/APIGuide/usingVar-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/APIGuide/usingVar-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/guides/usingVar-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/guides/usingVar-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 Hoppscotch will automatically add the contents into the authorisation header
 
@@ -303,8 +304,7 @@ You Should Be able to see the number of public repos you have made in GitHub.
 }
 
 ```
-*To know more about other Auth Models Hoppscotch supports :* <nuxt-link to = "/features/authorization">Feature:Authorization</nuxt-link>
 
-
+_To know more about other Auth Models Hoppscotch supports :_ <nuxt-link to = "/features/authorization">Feature:Authorization</nuxt-link>
 
 ## <h2 >Additional Resources

@@ -13,16 +13,16 @@ And share them through [gists.](https://docs.github.com/en/github/writing-on-git
 
 ### Documenting an existing collection
 
-<img src="/APIdocGuide/document-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
-<img src="/APIdocGuide/document-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
+<img src="/documentation/document-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
+<img src="/documentation/document-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
 
 To generate and view documentation for local collections, click on import
 and select the `.JSON` file containing your collection.
 
 ### Documenting a collection created in hoppscotch
 
-<img src="/APIdocGuide/fromcollection-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
-<img src="/APIdocGuide/fromcollection-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
+<img src="/documentation/fromcollection-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
+<img src="/documentation/fromcollection-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
 
 Select the collection you want to documentation for from the right side-bar.
 Click on Generate Documentation
@@ -31,8 +31,8 @@ A preview of the documentation can be seen in the documentation section.
 
 ### Creating gist
 
-<img src="/APIdocGuide/local-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
-<img src="/APIdocGuide/local-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
+<img src="/documentation/local-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
+<img src="/documentation/local-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
 
 <alert> This feature requires you to log in with your github account</alert>
 

@@ -35,8 +35,8 @@ Add the key value pairs:
 
 This will be automatically appended to your API path .
 
-<img src="/APIGuide/param-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/guides/param-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-<img src="/APIGuide/param-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/guides/param-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 <nuxt-link to="/quickstart/rest#using-parameters"> Using parameters (Hoppscotch Quickstart Guide) </nuxt-link>

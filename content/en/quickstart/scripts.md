@@ -8,8 +8,8 @@ category: quickstart
 
 ## Scripts
 
-<img src="/Scripting/Script -order-dark.png" class="dark-img" height="1280" width="640" alt="History Sidepanel"/>
-<img src="/Scripting/Script -order-light.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
+<img src="/scripting/Script -order-dark.png" class="dark-img" height="1280" width="640" alt="History Sidepanel"/>
+<img src="/scripting/Script -order-light.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
 
 Hoppscotch lets you to add **dynamic behaviour** to REST requests . This allows you to write test suites and build requests that can contain dynamic parameters.
 You can add `javaScript` code that executes at 2 events in the flow :
@@ -63,8 +63,8 @@ to access these newly set variables use:
 <<<variable_name>>>
 ```
 
-<img src="/Scripting/envscript-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/Scripting/envscript-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/scripting/envscript-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/scripting/envscript-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 ### Generating random Values to test API
 

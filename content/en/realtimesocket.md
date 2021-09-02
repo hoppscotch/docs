@@ -13,8 +13,8 @@ features:
   - "MQTT"
 ---
 
-<img src="/RealtimeGuide/Realtime-dark.png"   class="dark-img" width="1280" height="640" alt=""/>
-<img src="/RealtimeGuide/Realtime-light.png" class="light-img"  width="1280" height="640" alt=""/>
+<img src="/realtime/Realtime-dark.png"   class="dark-img" width="1280" height="640" alt=""/>
+<img src="/realtime/Realtime-light.png" class="light-img"  width="1280" height="640" alt=""/>
 <alert type="success">
 
 This documentation is a work in progress!
@@ -26,8 +26,9 @@ Hoppscotch currently allows the testing of the following Real-time Communication
 <list :items="features"></list>
 
 ## WebSockets
-<img src="/Realtime/Websocket-dark.png"   class="dark-img" width="1280" height="640" alt=""/>
-<img src="/Realtime/Websocket-light.png" class="light-img"  width="1280" height="640" alt=""/>
+
+<img src="/realtime/Websocket-dark.png"   class="dark-img" width="1280" height="640" alt=""/>
+<img src="/realtime/Websocket-light.png" class="light-img"  width="1280" height="640" alt=""/>
 
 Enter Your `Websocket URL` ,valid protocols and click on connect . Once successfully connected you can send messages and see the realtime response on the log pane.
 _See Also :_ <nuxt-link to='/quickstart/websocket'>WebSockets (hoppscotch quickstart guide) </nuxt-link>
@@ -35,8 +36,8 @@ _See Also :_ <nuxt-link to='/quickstart/websocket'>WebSockets (hoppscotch quicks
 ## MQTT
 
 <video loop playsinline controls>
-  <source src="/Realtime/mqtt.webm" type="video/webm" />
- <source src="/Realtime/mqtt.mp4" type="video/mp4" />
+  <source src="/realtime/mqtt.webm" type="video/webm" />
+ <source src="/realtime/mqtt.mp4" type="video/mp4" />
 </video>
 
 `MQTT` (Message Queuing Telemetry Transport) protocol.

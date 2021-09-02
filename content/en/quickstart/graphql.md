@@ -41,8 +41,8 @@ We'll be using the Unofficial but well maintained SpaceX graphql endpoint `https
 
 Navigate to the [GraphQL editor](https://hoppscotch.io/graphql) and connect to the URL mentioned above.
 
-<img src="/Graphql/GraphqlURL-dark.png" class="dark-img" height="1280" width="640" alt="graphqlURL"/>
-<img src="/Graphql/GraphqlURL-light.png" class="light-img" height="1280" width="640" alt="graphqlURL"/>
+<img src="/graphql/GraphqlURL-dark.png" class="dark-img" height="1280" width="640" alt="graphqlURL"/>
+<img src="/graphql/GraphqlURL-light.png" class="light-img" height="1280" width="640" alt="graphqlURL"/>
 
 #### Step 2:
 
@@ -53,8 +53,8 @@ It is important to explore the schema to understand the different `queries`, `mu
 
 The Docs Section assists you to understand these .
 
-<img src="/Graphql/schemadocs-dark.png" class="dark-img" height="1000" width="640" alt="Schema Docs"/>
-<img src="/Graphql/schemadocs-light.png" class="light-img" height="1280" width="640" alt="Schema Docs"/>
+<img src="/graphql/schemadocs-dark.png" class="dark-img" height="1000" width="640" alt="Schema Docs"/>
+<img src="/graphql/schemadocs-light.png" class="light-img" height="1280" width="640" alt="Schema Docs"/>
 
 #### Step 3 :
 
@@ -133,13 +133,13 @@ To demonstrate the use of vaiables lets write a query to find mission details fo
 
 - Inside the Query access declared variables this way:
 
-   ```javascript
-      query QueryName($var: type!){
-          mission(count: $var){
-              ...
-          }
-      }
-   ```
+  ```javascript
+     query QueryName($var: type!){
+         mission(count: $var){
+             ...
+         }
+     }
+  ```
 
   In our example.
 

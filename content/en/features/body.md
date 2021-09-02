@@ -5,14 +5,16 @@ menuTitle: Body
 position: 12
 category: Features
 ---
-<img src="/Features/body-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
-<img src="/Features/body-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
+
+<img src="/features/body-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
+<img src="/features/body-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
 
 ### Sending Data in Request Body
 
-A request body is data sent by the client to your API. You will need to send body data with requests whenever you need to modify data in the API . *E.g when sending a request to add a new student to a college database, you might include the student's data in `JSON`.*
+A request body is data sent by the client to your API. You will need to send body data with requests whenever you need to modify data in the API . _E.g when sending a request to add a new student to a college database, you might include the student's data in `JSON`._
 
 The body section is typically used when you choose the following methods:
+
 - `PUT`
 - `POST`
 - `PATCH`

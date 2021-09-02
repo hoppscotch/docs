@@ -5,15 +5,16 @@ menuTitle: MQTT
 position: 13
 category: quickstart
 ---
+
 ## `MQTT` (Message Queuing Telemetry Transport) protocol.
 
-MQTT is a publish/subscribe protocol that is lightweight and requires  minimal memory,CPU and bandwidth to connect an IoT devices. Unlike HTTP’s request/response paradigm, MQTT is event driven and enables messages to be pushed to clients.
+MQTT is a publish/subscribe protocol that is lightweight and requires minimal memory,CPU and bandwidth to connect an IoT devices. Unlike HTTP’s request/response paradigm, MQTT is event driven and enables messages to be pushed to clients.
 
 Once connected to the MQTT server, You can either publish a message under a topic or subscribe to a topic to get messages pertaining to that topic being sent across the server in real-time.
 
 <video loop playsinline controls>
-  <source src="/Realtime/MQTT.webm" type="video/webm" />
- <source src="/Realtime/MQTT.mp4" type="video/mp4" />
+  <source src="/realtime/MQTT.webm" type="video/webm" />
+ <source src="/realtime/MQTT.mp4" type="video/mp4" />
 </video>
 
 ### Steps to use MQTT platform

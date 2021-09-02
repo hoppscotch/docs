@@ -17,7 +17,7 @@ features:
   - "📄 API Documentation: Create and share dynamic API documentation easily, quickly"
 ---
 
-<img src="/preview.png" class="light-img" width="1280" height="640" alt=""/>
+<img src="/preview-light.png" class="light-img" width="1280" height="640" alt=""/>
 <img src="/preview-dark.png" class="dark-img" width="1280" height="640" alt=""/>
 
 <alert type="success">
@@ -32,19 +32,21 @@ It is free-to-use and as an added perk completely Open Source!
 ## Features
 
 ### Rest API platform
+
 - build 🚀requests, add scripts ,test responses with support for 🗄️collections and 📁environments
 - Access browser blocked APIS with 🌐[proxyscotch](https://github.com/hoppscotch/proxyscotch)
 - ⏰ History: Request entries are synced with cloud / local session storage to restore with a single click
 
 ### GraphQl platform
+
 - Peak into your graphql endpoint,build your queries,organise them into 🗄️collections
 
-
 ### Realtime platform
+
 - Test 🔌Websocket 🌩Socket.io 🦟MQtt and 📡SSE connections all from one place
 
-
 ### API Documentation
+
 - Make your APIs accessible to others by creating 📄Documentation and publishing them as Gists.
 
 ## Tweets
@@ -56,12 +58,13 @@ Since the initial commit (~2 years ago), Hoppscotch has evolved from being a sid
 ## FAQ
 
 ## Quick Links
+
 - [Github](https://github.com/hoppscotch)
 - <nuxt-link to="/community/contribution-guide" >Contribute to Hoppscotch</nuxt-link>
 - <nuxt-link to="/community/local-setup">Setup Hoppscotch in Local Machine </nuxt-link>
 
 ## Other Links
+
 - [Terms of use](https://github.com/hoppscotch/hoppscotch/wiki/Terms-&-Conditions)
 - [Privacy Policy](https://github.com/hoppscotch/hoppscotch/wiki/Privacy-Policy)
 - [Privacy Policy(proxyscotch)](https://github.com/hoppscotch/proxyscotch/wiki/Privacy-policy)
-

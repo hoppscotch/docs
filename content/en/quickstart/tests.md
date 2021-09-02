@@ -220,9 +220,9 @@ pw.test("Response is ok", () => {
 
 These tests will sccuessfully pass once you send the request.
 
-<img src="/Tests/response-dark.png" class="dark-img"  alt=""/>
+<img src="/tests/response-dark.png" class="dark-img"  alt=""/>
 
-<img src="/Tests/response-light.png" class="light-img"  alt=""/>
+<img src="/tests/response-light.png" class="light-img"  alt=""/>
 
 ### Assert Properties from the response body
 
