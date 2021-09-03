@@ -8,13 +8,11 @@ category: quickstart
 
 You can write test scripts for your API requests in `javaScript`.
 
-#### why write tests?
-
-_As you introduce new code ,tests ensure that your API is working as intended. The higher your test coverage, the more flexible and bug-resistant your code will be , the less time you'll spend wondering why_[ _deleting a picture of a coconut breaks your code._](https://www.thegamer.com/this-coconut-jpg-in-team-fortress-2s-game-files-if-deleted-breaks-the-game-and-no-one-knows-why/)
+_As you introduce new code, tests ensure that your API is working as intended. The higher your test coverage, the more flexible and bug-resistant your code will be, the less time you'll spend wondering why_[_deleting a picture of a coconut breaks your code._](https://www.thegamer.com/this-coconut-jpg-in-team-fortress-2s-game-files-if-deleted-breaks-the-game-and-no-one-knows-why/)
 
 # Writing Tests
 
-In the last section <nuxt-link to='/quickstart/scripts'> pre-request scripting</nuxt-link> we worked with dynamically modifying requests. In this we'll work with the response received .
+In the last section ([pre-request scripting](/quickstart/scripts)) we worked with dynamically modifying requests. In this we'll work with the response received .
 
 ## `pw` API
 
@@ -190,7 +188,7 @@ However we can wrap `expect` statements with `pw.test` to group and describe rel
 There are two ways to test the status code
 
 - check if it is exactly `200` : `pw.expect(pw.response.status)toBe(200)`
-- use the matcher functions for quick and convenient testing of the http status code ,in this case `toBeLevel2xx()` : `pw.expect(pw.response.status)toBeLevel2xx()`
+- use the matcher functions for quick and convenient testing of the http status code, in this case `toBeLevel2xx()` : `pw.expect(pw.response.status)toBeLevel2xx()`
 
 <code-group>
 

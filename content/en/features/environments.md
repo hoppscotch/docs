@@ -18,4 +18,4 @@ Store variables and reuse values in your requests and scripts
 
 **To set environment select from the drop down list of available environments.**
 
-_See Also :_ <nuxt-link to='/quickstart/rest#environment-variables'> Using Variables (Guide) </nuxt-link>
+_See Also :_ [Using environment variables](/quickstart/rest#environment-variables)

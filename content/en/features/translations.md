@@ -24,6 +24,6 @@ To set the app to your language follow these steps:
 <img src="/features/languageSelect-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 <alert>
-Don't See your language in the dropdown ? 
-<nuxt-link to='/i18n'> Help us translate</nuxt-link>
+
+Don't See your language in the dropdown? [Help us translate](/i18n)
 </alert>

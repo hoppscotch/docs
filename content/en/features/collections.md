@@ -1,4 +1,5 @@
 ---
+
 title: Save, Group, Share API in Collections
 description: Sample
 menuTitle: Collections
@@ -15,4 +16,4 @@ Access the collections tab in the Right side-panel.
 
 <img src="/navigation/collectionsSC.png"  height="300" width="265" alt="Collections Sidepanel"/>
 
-_See Also :_ <nuxt-link to='/quickstart/rest#using-collections'> Using Collections (quick start Guide) </nuxt-link>
+_See Also :_ [Collections](/quickstart/rest#using-collections)

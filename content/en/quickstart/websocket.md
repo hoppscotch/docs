@@ -15,7 +15,7 @@ Once established, the channel is kept open, offering a very fast connection with
 <img src="/realtime/Websocket-dark.png"   class="dark-img" width="1280" height="640" alt=""/>
 <img src="/realtime/Websocket-light.png" class="light-img"  width="1280" height="640" alt=""/>
 
-Enter Your `Websocket URL` ,valid protocols and click on connect . Once successfully connected you can send messages and see the realtime response on the log pane.
+Enter Your `Websocket URL`, valid protocols and click on connect . Once successfully connected you can send messages and see the realtime response on the log pane.
 
 ### Troubleshooting
 

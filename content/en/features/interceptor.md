@@ -8,9 +8,9 @@ category: Features
 
 **Access APIs blocked by CORS restriction by using either proxyscotch/custom middleware or Hoppscotch web extension.**
 
-## Using Proxy Scotch
+## Using Proxy
 
-Enable proxyScotch in settings.
+Enable proxy in settings.
 
 <img src="/api/Interceptor-light.png" class="light-img" height="1280" width="640" alt=""/>
 
@@ -32,13 +32,13 @@ _See Also :_ [ProxyScotch GitHub Wiki](https://github.com/hoppscotch/hoppscotch/
 
 ### Using Hoppscotch Web Extension
 
-1. Download the Hoppscotch WebExtension [here.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
+1. Download the Hoppscotch browser extension [here.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
 
-2. Enable it in Settings.
+2. Enable it in settings.
 
 3. Open the extension and add new origins
    <img src="/api/Extension.png"  height="400" width="300" halt=""/>
 
-Hoppscotch extension routes all added origins to PorxyScotch.
+Hoppscotch extension routes all added origins to Proxy.
 
-**What Is CORS restriction :** <nuxt-link to="/rest#cors-restrictions"> Bypassing CORS restriction using proxy in hoppscotch </nuxt-link>
+**What is CORS restriction :** [Learn how to bypass CORS restriction using proxy in Hoppscotch](/rest#cors-restrictions)

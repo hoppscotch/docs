@@ -5,7 +5,7 @@ menuTitle: REST
 description: "Hoppscotch Guide for REST requests"
 position: 5
 category: quickstart
----If you are new to API development and want to know more about the basics of APIs ,follow along this guide !
+---If you are new to API development and want to know more about the basics of APIs, follow along this guide !
 
    <img src="/guides/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
     <img src="/guides/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>
@@ -88,7 +88,7 @@ https://rickandmortyapi.com/api/character
 
 </code-group>
 
-<i>Congratulations on the Successful API request , Try experimenting with
+<i>Congratulations on the Successful API request, Try experimenting with
 
 `/location` and `/episode` as well.
 
@@ -105,8 +105,8 @@ You can send path and query parameters with your requests using the `URL` field 
 
 **In the URL field:**
 
-- To add Query parameters ,append `?` to the end of the request URL
-- add parameter `id=1` , if adding multiple parameters separate them with `&`
+- To add Query parameters, append `?` to the end of the request URL
+- add parameter `id=1`, if adding multiple parameters separate them with `&`
 
 Like so:
 
@@ -305,6 +305,4 @@ You Should Be able to see the number of public repos you have made in GitHub.
 
 ```
 
-_To know more about other Auth Models Hoppscotch supports :_ <nuxt-link to = "/features/authorization">Feature:Authorization</nuxt-link>
-
-## <h2 >Additional Resources
+[Checkout Authorization modes](/features/authorization)

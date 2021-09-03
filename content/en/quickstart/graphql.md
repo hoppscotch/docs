@@ -15,7 +15,7 @@ GraphQL is a query language for APIs and a runtime for fulfilling those queries 
 
 ## Resources to learn more about GraphQL
 
-There are tons of guides and resources on GraphQL all over the internet , We wont be going over the basics here. _This Guide is to demo Hoppscotch's GraphQL editor_ .However if you want to know more about GraphQL here is a list of resources and tutorials that most people found useful:
+There are tons of guides and resources on GraphQL all over the internet, We wont be going over the basics here. _This Guide is to demo Hoppscotch's GraphQL editor_ .However if you want to know more about GraphQL here is a list of resources and tutorials that most people found useful:
 
 #### Level : Beginner
 
@@ -31,7 +31,7 @@ There are tons of guides and resources on GraphQL all over the internet , We won
 ## Demo
 
 Let's try some interesting examples to get a feel of Hoppscotch's Grapql Interface.
-To know more about the components check <nuxt-link to='/graphql'>GraphQl Editor </nuxt-link>
+To know more about the components check [GraphQL section](/graphql).
 
 ### Making a Query
 
@@ -58,7 +58,7 @@ The Docs Section assists you to understand these .
 
 #### Step 3 :
 
-Lets us know write a query _GetCapsuleInfo_ ,to get data associated with Crew Dragon Capsule that was used to launch Astronauts.
+Lets us know write a query _GetCapsuleInfo_, to get data associated with Crew Dragon Capsule that was used to launch Astronauts.
 
 Go to the Queries Sections and write your Query
 

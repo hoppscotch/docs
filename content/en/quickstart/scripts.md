@@ -28,7 +28,7 @@ Pre-request scripts is a piece of code that will run before the execution of req
 
 We can use the pre-request script for a pre-processing task such as:
 
-- Setting parameters ,headers
+- Setting parameters, headers
 - Adding body data
 - Adding variable values
 - Including timestamps in request headers

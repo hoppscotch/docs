@@ -33,9 +33,9 @@ It is free-to-use and as an added perk completely Open Source!
 
 ### Rest API platform
 
-- build 🚀requests, add scripts ,test responses with support for 🗄️collections and 📁environments
-- Access browser blocked APIS with 🌐[proxyscotch](https://github.com/hoppscotch/proxyscotch)
-- ⏰ History: Request entries are synced with cloud / local session storage to restore with a single click
+- Build requests, add scripts, test responses with support for collections and environments
+- Access browser blocked APIS with [proxy](https://github.com/hoppscotch/proxyscotch)
+- History: Request entries are synced with cloud/local session storage to restore with a single click
 
 ### GraphQl platform
 
@@ -43,28 +43,23 @@ It is free-to-use and as an added perk completely Open Source!
 
 ### Realtime platform
 
-- Test 🔌Websocket 🌩Socket.io 🦟MQtt and 📡SSE connections all from one place
+- Test
+- Websocket
+- Socket.io
+- MQtt
+- SSE connections
 
 ### API Documentation
 
-- Make your APIs accessible to others by creating 📄Documentation and publishing them as Gists.
-
-## Tweets
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Hoppscotch is an open source API development ecosystem.
-Since the initial commit (~2 years ago), Hoppscotch has evolved from being a side project to an enterprise developer tool. Here's a sneak peek of what we're building at Hoppscotch.</p>&mdash; Liyas Thomas (@liyasthomas) <a href="https://twitter.com/liyasthomas/status/1417870391922487297">July 21, 2021</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-## FAQ
+- Make your APIs accessible to others by creating documentation and publishing them as gists.
 
 ## Quick Links
 
 - [Github](https://github.com/hoppscotch)
-- <nuxt-link to="/community/contribution-guide" >Contribute to Hoppscotch</nuxt-link>
-- <nuxt-link to="/community/local-setup">Setup Hoppscotch in Local Machine </nuxt-link>
+- [Contribute to Hoppscotch](/community/contribution-guide)
+- [Setup Hoppscotch in local environment](/community/local-setup)
 
 ## Other Links
 
-- [Terms of use](https://github.com/hoppscotch/hoppscotch/wiki/Terms-&-Conditions)
-- [Privacy Policy](https://github.com/hoppscotch/hoppscotch/wiki/Privacy-Policy)
-- [Privacy Policy(proxyscotch)](https://github.com/hoppscotch/proxyscotch/wiki/Privacy-policy)
+- [Terms of use](/terms)
+- [Privacy Policy](/privacy)

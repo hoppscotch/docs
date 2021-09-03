@@ -49,7 +49,7 @@ For detailed explanation on how things work, checkout [nuxt/content](https://con
            }
    ```
 
-3. To add translated content , naviagate to `\content` ,add a folder with langauge code as the name and add `.md` files.
+3. To add translated content, naviagate to `\content`, add a folder with langauge code as the name and add `.md` files.
    ```bash
       content
       |

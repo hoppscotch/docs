@@ -11,5 +11,5 @@ Hoppscotch Keeps a record of your recent API calls along with all its parameters
 <img src="/navigation/HistoryPanel.png" height="300" width="265" alt="History Sidepanel"/>
 
 <alert type = "warning">
-If you haven't logged in , History is saved in local session and will be lost if browser cache is cleared !
+If you haven't logged in, History is saved in local session and will be lost if browser cache is cleared !
 </alert>

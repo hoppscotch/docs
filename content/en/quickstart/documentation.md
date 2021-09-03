@@ -19,7 +19,7 @@ And share them through [gists.](https://docs.github.com/en/github/writing-on-git
 To generate and view documentation for local collections, click on import
 and select the `.JSON` file containing your collection.
 
-### Documenting a collection created in hoppscotch
+### Documenting a collection
 
 <img src="/documentation/fromcollection-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
 <img src="/documentation/fromcollection-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
