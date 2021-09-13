@@ -19,4 +19,4 @@ This week marks the 2nd anniversary of the Hoppscotch project. The initial commi
 
 These metrics are crazy and we want to thank all our users, our supporters, and our open source friends and contributors for helping us reach these numbers. Due to these huge numbers, we have realized we have large shoes to fill now. There is a much bigger expectation of what Hoppscotch is and should be. This marked a requirement for the project to be refactored so that every component of it can grow effectively with the expanded scope and today we are announcing our initial efforts towards this huge goal.
 
-[Read more on blog →](https://dev.to/hoppscotch/introducing-hoppscotch-2-0-a-fresh-new-perspective-1j44)
+[Read more →](https://hoppscotch.launchnotes.io/announcements/hoppscotch-v2)
