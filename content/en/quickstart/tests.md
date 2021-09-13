@@ -18,17 +18,17 @@ In the last section ([pre-request scripting](/quickstart/scripts)) we worked wit
 
 Hoppscotch has a powerful API called `pw` which handles pre-requests and tests.
 
-- [`.expect(value)`](a)
-- [`.not`](a)
-- [`.toBe(value)`](a)
-- [`.toBeLevel2xx(value)`](a)
-- [`.toBeLevel3xx(value)`](a)
-- [`.toBeLevel4xx(value)`](a)
-- [`.toBeLevel5xx(value)`](a)
-- [`.toBeType(type)`](a)
-- [`.toHaveLength(number)`](a)
-- [`.test(name, fn)`](a)
-- [`.repsonse.`](a)
+- <nuxt-link to="/quickstart/tests#pwexpectvalue"> `.expect(value)`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#not">`.not`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#toBevalue">`.toBe(value)`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#toBeLevel2xxvalue">`.toBeLevel2xx(value)`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#toBeLevel3xxvalue">`.toBeLevel3xx(value)`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#toBeLevel4xxvalue">`.toBeLevel4xx(value)`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#toBeLevel5xxvalue">`.toBeLevel5xx(value)`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#toBeTypetype">`.toBeType(type)`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#toHaveLengthnumber">`.toHaveLength(number)`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#testnamefn">`.test(name, fn)`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#repsonse">`.repsonse.`</nuxt-link>
 
 Lets look at how to use `pw.expect()` and `pw.test()` to write our tests.
 
