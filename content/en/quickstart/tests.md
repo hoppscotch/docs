@@ -178,7 +178,9 @@ pw.test("Response is ok", () => {
 
 ## Examples
 
-### Testing status code
+Lets now look at examples of basic API tests.
+
+### Testing `HTTP` status code
 
 Let us write a test to check whether the response to our request has a status code of `200` and that there are no errors in the response body.
 We'll use the URL `https://www.httpbin.org/status/200` and Method `GET`
@@ -222,10 +224,10 @@ These tests will sccuessfully pass once you send the request.
 
 <img src="/tests/response-light.png" class="light-img"  alt=""/>
 
-### Assert Properties from the response body
+### Assert Response payload
 
 Parse the data as JSON and assert properties from the response body.
-in this example we test whether a user id points to a particular user
+In this example we test whether a user id points to a particular user
 Let us use the following GET API endpoint `https://reqres.in/api/users/10`.
 We will use `.toBe` to assert specific values and `.toBeType` to assert specific data type as shown in the code snippet below.
 
@@ -240,3 +242,7 @@ pw.test("", () => {
 ```
 
 </code-block>
+
+
+### Verify response headers
+

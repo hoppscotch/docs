@@ -44,3 +44,27 @@ You can compose test scripts for your Hoppscotch API demands in JavaScript. Test
     <img src="/features/TestRes-dark.png" class="dark-img" height="1280" width="640" alt=""/>
     <img src="/features/TestRes-light.png" class="light-img" height="1280" width="640" alt=""/>
 
+
+## So, what aspects of the API should we test?
+
+  Each test is comprised of test actions. These are the individual actions a test needs to take per API test flow. For each API request, an ideal test would need to take the following actions: 
+
+1.<nuxt-link to = "/quickstart/tests#testing-http-status-code">**Verify correct HTTP status code.**</nuxt-link>
+ For example, creating a resource should return 201 CREATED and unpermitted requests should return 403 FORBIDDEN, etc.
+
+2.<nuxt-link to = "/quickstart/tests">**Verify response payload.**</nuxt-link>
+ Check valid JSON body and correct field names, types, and values — including in error responses.
+
+
+3.<nuxt-link to = "/quickstart/tests">**Verify response headers.**</nuxt-link>
+ HTTP server headers have implications on both security and performance.
+
+
+4.<nuxt-link to = "/quickstart/tests">**Verify correct application state.**</nuxt-link>
+ This is optional and applies mainly to manual testing, or when a UI or another interface can be easily inspected.
+
+
+5.<nuxt-link to = "/quickstart/tests">**Verify basic performance sanity.**</nuxt-link>
+ If an operation was completed successfully but took an unreasonable amount of time, the test fails.
+
+
