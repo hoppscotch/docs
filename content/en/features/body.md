@@ -22,6 +22,26 @@ The body section is typically used when you choose the following methods:
 The Body tab in Hoppscotch allows you to specify the data you need to send with a request.
 You can choosefrom the dropdown menu various different content-types of body data to suit your API.
 
+
+
+## Content Types
+
+
 <alert>
 By default, Hoppscotch will select None—leave it selected if you do not need to send a body with your request.
 </alert>
+
+| Content Type                      |  Function      |
+|-----------------------------------|----------------|
+| applcation/json                   | Indicates that the request body format is JSON.                |
+| application/Id + json             |  For JSON-LD           |
+| application/hal+json              | To Respond to APIs requiring mediatype for HyperText Application Language | 
+| application/ vnd.api + json       | The application/vnd.api+json MIME type is reserved for communication using the  `JSON API` protocol.|
+| application/xml                   | Indicates that the request body format is XML. |
+| application/x-www-form-url-encoded|   describes form data that is sent in a single block in the HTTP message body |
+| multipart/form-data               | message body is divided into parts, each containing a discrete section of data.Each part can contain a different content type; for example, `text/plain`, `image/png`, `image/gif` |
+| text/html                         | The text/html content type is an Internet Media Type as well as a MIME content type | 
+| text/plain                        | The text/plain content type is the generic subtype for plain text. |
+
+
+**See also**: <nuxt-link to= "">Upload Content using form-data (Hoppscotch Quickstart)</nuxt-link>

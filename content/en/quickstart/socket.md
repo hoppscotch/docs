@@ -28,11 +28,11 @@ The Hoppscotch Socket.io Testing Tool lets you test out your Socket.io services
   
 #### Listen to Events Broadcasted by the server 
    All Events are Automatically Shown in the log
-   
+
 
 
 #### Emit Messages 
    Use the right sidebar to add Event Name and send messages ot the server
 <img src="/Realtime/socketioEmit-dark.png" class="dark-img" height="450" width= "250"   alt=""/>
-  <img src="/Realtime/socketioEmit-light.png" class="light-img" height="450" width= "250" alt=""/>
+<img src="/Realtime/socketioEmit-light.png" class="light-img" height="450" width= "250" alt=""/>
   
