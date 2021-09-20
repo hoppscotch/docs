@@ -306,3 +306,36 @@ You Should Be able to see the number of public repos you have made in GitHub.
 ```
 
 [Checkout Authorization modes](/features/authorization)
+
+
+## Uploading data via API request
+
+APIs are used to upload encoded content to a server as well. This is usually done with `PUT` or `POST` Methods.
+
+The Most Common Content Types are:
+- `application/json` : For  content in JSON format.
+- `multipart/form-data` : For Uploading Encoded Files.
+
+[Full List of Supported Content Types](/features/body#content-types)
+
+Let us  take a look at uploading an image file into an `API` using hoppscotch.
+
+### Uploading Files via an API
+
+The data you send in a `POST` request must be of the following content types:
+
+- `application/x-www-form-encoded`
+- `multipart/form-data`
+
+#### Steps :
+
+1. select `POST` http method and set your API Endpoint URL
+2. Add necessary Headers
+3. To add your image file click in the **body** tab and select `mulitpart/form-data` in the content-type dropdown.
+4. Give your file a name and click on the 📎 icon to select your file.
+
+  <img src="/guides/upload-dark.png" class="dark-img" alt=""/>
+  <img src="/guides/upload-light.png" class="light-img"  alt=""/>
+
+5. Click SEND to upload your file via the API 
+
