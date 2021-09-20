@@ -44,4 +44,4 @@ By default, Hoppscotch will select None—leave it selected if you do not need t
 | text/plain                        | The text/plain content type is the generic subtype for plain text. |
 
 
-**See also**: <nuxt-link to= "">Upload Content using form-data (Hoppscotch Quickstart)</nuxt-link>
+**See also**: <nuxt-link to= "/quickstart/rest#uploading-files-via-an-api">Upload Content using form-data (Hoppscotch Quickstart)</nuxt-link>
