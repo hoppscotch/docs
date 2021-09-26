@@ -1,4 +1,4 @@
-![Banner](/static/Banner.png)
+![Banner](/static/banner.png)
 
 # Docs
 
