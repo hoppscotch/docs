@@ -27,7 +27,7 @@ The common http methods used in API requests are:
 - `DELETE` : Delete a REST API resource or related component
 
 Other methods like `HEAD`,`CONNECT`, `OPTIONS`,`TRACE`,`PATCH`and other `CUSTOM`methods can also be used.
-Lets go over the features offered by Hoppscotch API platoform:
+Let's go over the features offered by Hoppscotch API platform:
 
 ## How to Use
 
