@@ -26,7 +26,7 @@ This documentation is a work in progress!
 
 </alert>
 
-[Hoppscotch](https://www.hoppscotch.io) is light-weight,web based API development suite. It was built from ground up with ease of use and accessibility in mind providing all the functionality needed for API developers with minimalist,unobtrusive UI.
+[Hoppscotch](https://www.hoppscotch.io) is light-weight, web based API development suite. It was built from ground up with ease of use and accessibility in mind providing all the functionality needed for API developers with minimalist, unobtrusive UI.
 It is free-to-use and as an added perk completely Open Source!
 
 ## Features
@@ -39,7 +39,7 @@ It is free-to-use and as an added perk completely Open Source!
 
 ### GraphQl platform
 
-- Peak into your graphql endpoint,build your queries,organise them into 🗄️collections
+- Peak into your graphql endpoint, build your queries, organise them into 🗄️collections
 
 ### Realtime platform
 
