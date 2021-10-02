@@ -55,4 +55,4 @@ pw.env.set("randomNumber", randomArbitrary.toString());
 
 ## Next Steps
 
-For more details on how to use pre-request scripts,checkout <nuxt-link to= "/quickstart/scripts">Pre-Request Scripts (Guide)</nuxt-link> , <nuxt-link to= "/features/tests">Writing Tests</nuxt-link> 
+For more details on how to use pre-request scripts, checkout <nuxt-link to= "/quickstart/scripts">Pre-Request Scripts (Guide)</nuxt-link>, <nuxt-link to= "/features/tests">Writing Tests</nuxt-link> 
