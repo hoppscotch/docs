@@ -49,7 +49,7 @@ Navigate to the [GraphQL editor](https://hoppscotch.io/graphql) and connect to t
 Once Connected, Hoppscotch will automatically show you the
 _full schema_ of the Endpoint.
 
-It is important to explore the schema to understand the different `queries`, `mutations`,`types` and `subscriptions` that are offered by the Endpoint.
+It is important to explore the schema to understand the different `queries`, `mutations`, `types` and `subscriptions` that are offered by the Endpoint.
 
 The Docs Section assists you to understand these .
 
@@ -107,7 +107,7 @@ query GetCapsuleInfo{
 </code-block>
 </code-group>
 
-Now go to the docs section,search for capsule and look at all supported queries and customizethe current query. \
+Now go to the docs section, search for capsule and look at all supported queries and customizethe current query. \
 **Challenge:** Get the mission name for capusle `c205`
 
 ## Using Variables
