@@ -9,7 +9,7 @@ category: Features
 REST APIs use authorizatiom to ensure that a client has secure access only to the resources permitted by their roles.
 If you are building or integrating with a 3rd party API, you can choose between **Basic Auth**, **Bearer Tokens** and **OAuth2.0**.
 
-Auth details can be added to a header,body or as parameters to a request.However if you enter your auth details in the **Authorization Tab**, Hoppscotch will automatically modify the relevant parts of the request based on your chosen `Auth` type.
+Auth details can be added to a header, body or as parameters to a request.However if you enter your auth details in the **Authorization Tab**, Hoppscotch will automatically modify the relevant parts of the request based on your chosen `Auth` type.
 Storing _Auth Credentials_ or _Bearer Tokens_ as enironment variables, lets you re-use these more safely and efficiently.
 
 ## Supported Auth Models
