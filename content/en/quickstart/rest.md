@@ -5,7 +5,7 @@ menuTitle: REST
 description: "Hoppscotch Guide for REST requests"
 position: 5
 category: quickstart
----If you are new to API development and want to know more about the basics of APIs, follow along this guide !
+---If you are new to API development and want to know more about the basics of APIs, follow along this guide!
 
    <img src="/guides/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
     <img src="/guides/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>

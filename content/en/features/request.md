@@ -15,7 +15,7 @@ The common http methods used in API requests are:
 - `PUT` : Update a REST API resource
 - `DELETE` : Delete a REST API resource or related component
 
-Other methods like `HEAD`,`CONNECT`, `OPTIONS`,`TRACE`,`PATCH`and other `CUSTOM`methods can also be used.
+Other methods like `HEAD`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`and other `CUSTOM` methods can also be used.
 
 <img src="/api/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/api/method-light.png" class="light-img" height="1280" width="640" alt=""/>
@@ -27,4 +27,4 @@ Hoppscotch Lets you add DynamicBehaviours to your requests including :
 - Authorization Headers
 - Parameters
 - Pre Request Scripts
-  -Post request Tests
+- Post request Tests
