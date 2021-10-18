@@ -1,18 +1,18 @@
 ---
-title: Customization
-description: Sample
-menuTitle: Customization
+title: Personnalisation
+description: Exemple
+menuTitle: Personnalisation
 position: 18
-category: Features
+category: Fonctionnalités
 features:
-  - ☀️ LightMode or 🌑 DarkMode
-  - 🌈 Theme Colours
-  - 🔍 Font Size
-  - 🌎 Languages
+  - ☀️ LightMode ou 🌑 DarkMode
+  - 🌈 Couleurs du thème
+  - 🔍 Taille de la police
+  - 🌎 Langues
   - 👁️ Zen-Mode
 ---
 
-Customize Hoppscotch to suite your Style!
+Personnalisez Hoppscotch en fonction de votre style !
 
 <list :items="features"></list>
 <video loop playsinline controls>

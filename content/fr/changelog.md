@@ -1,7 +1,7 @@
 ---
 title: Changelog
 menuTitle: Changelog
-category: Community
+category: Communauté
 position: 5
 ---
 

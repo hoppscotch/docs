@@ -3,102 +3,102 @@ title: Contribute to Hoppscotch
 menuTitle: Contribute
 description: "Contribute to Hoppscotch"
 position: 3
-category: Community
+category: Communauté
 features:
-  - "Reporting a bug"
-  - "Discussing the current state of the code"
-  - "Submitting a fix"
-  - "Proposing new features"
+  - "Rapporter un bug"
+  - "Discuter de l'état actuel du code"
+  - "Soumettre un correctif"
+  - "Proposer de nouvelles fonctionnalités"
 ---
 
-We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
+Nous aimons votre contribution ! Nous voulons rendre la contribution à ce projet aussi facile et transparente que possible, qu'il s'agisse.. :
 
 <list :items="features"></list>
 
-## We Develop with Github
+## Nous développons avec Github
 
-We use github to host code, to track issues and feature requests, as well as accept pull requests.
+Nous utilisons github pour héberger le code, pour suivre les problèmes et les demandes de fonctionnalités, ainsi que pour accepter les pull requests.
 
-#### We Use [Github Flow](https://guides.github.com/introduction/flow/index.html), So All Code Changes Happen Through Pull Requests
+#### Nous utilisons [Github Flow](https://guides.github.com/introduction/flow/index.html), Donc tous les changements de code se font par le biais des Pull Requests.
 
-Pull requests are the best way to propose changes to the codebase (we use [Github Flow](https://guides.github.com/introduction/flow/index.html)). We actively welcome your pull requests:
+Un pull request est le meilleur moyen de proposer des changements au codebase (nous utilisons [Github Flow](https://guides.github.com/introduction/flow/index.html)). Nous accueillons avec plaisir vos pull requests:
 
-1. Fork the repo and create your branch from `main`.
-2. If you've added code that should be tested, add tests.
-3. If you've changed APIs, update the documentation.
-4. Ensure the test suite passes.
-5. Make sure your code lints.
-6. Issue that pull request!
+1. Embranchez le répertoire (aussi appelé un Fork) et créer votre branche à partir de `main`.
+2. Si vous avez ajouté du code qui doit être testé, ajoutez des tests.
+3. Si vous avez changé d'API, mettez à jour la documentation.
+4. Assurez-vous que la suite de tests passe.
+5. Assurez-vous que votre code est correct.
+7. Créez un pull request avec vos changements!
 
-## **Developing**
+## **Développer**
 
-Update [`.env.example`](https://github.com/hoppscotch/hoppscotch/blob/main/.env.example) file found in repository's root directory with your own keys and rename it to `.env`.
+Mettez à jour le fichier [`.env.example`](https://github.com/hoppscotch/hoppscotch/blob/main/.env.example) trouvé dans le répertoire racine avec vos propres clés et renommez-le en `.env`.
 
-_Sample keys only works with the [production build](https://hoppscotch.io)._
+_Les exemples de clés ne fonctionnent qu'avec le [build de production](https://hoppscotch.io)._
 
-### Browser based development environment
+### Environnement de développement basé sur un navigateur
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hoppscotch/hoppscotch)
 
-### Local development environment
+### Environnement de développement local
 
-1. [Clone this repo](https://github.com/hoppscotch/hoppscotch.git) with git.
-2. Install dependencies by running `npm install` within the directory that you cloned (probably `hoppscotch`).
-3. Start the development server with `npm run dev`.
-4. Open development site by going to [`http://localhost:3000`](http://localhost:3000) in your browser.
+1. [Clonez ce répertoire](https://github.com/hoppscotch/hoppscotch.git) avec git.
+2. Installez les dépendances en exécutant `npm install` dans le répertoire que vous avez cloné (probablement `hoppscotch`).
+3. Démarrez le serveur de développement avec `npm run dev`.
+4. Ouvrez le site de développement en allant sur [`http://localhost:3000`](http://localhost:3000) dans votre navigateur.
 
 ### Docker compose
 
-1. [Clone this repo](https://github.com/hoppscotch/hoppscotch.git) with git.
-2. Run `docker-compose up`
-3. Open development site by going to [`http://localhost:3000`](http://localhost:3000) in your browser.
+1. [Clonez ce répertoire](https://github.com/hoppscotch/hoppscotch.git) avec git.
+2. Exécutez `docker-compose up`
+3. Ouvrez le site de développement en allant sur [`http://localhost:3000`](http://localhost:3000) dans votre navigateur.
 
 ## **Docker**
 
-**Official container** &nbsp; [![hoppscotch/hoppscotch](https://img.shields.io/docker/pulls/hoppscotch/hoppscotch?style=social)](https://hub.docker.com/r/hoppscotch/hoppscotch)
+**Conteneur officiel** &nbsp; [![hoppscotch/hoppscotch](https://img.shields.io/docker/pulls/hoppscotch/hoppscotch?style=social)](https://hub.docker.com/r/hoppscotch/hoppscotch)
 
 ```bash
 docker run --rm --name hoppscotch -p 3000:3000 hoppscotch/hoppscotch:latest
 ```
 
-## **Releasing**
+## **Publication**
 
-1. [Clone this repo](https://github.com/hoppscotch/hoppscotch.git) with git.
-2. Install dependencies by running `npm install` within the directory that you cloned (probably `hoppscotch`).
-3. Build the release files with `npm run generate`.
-4. Find the built project in `./dist`.
+1. [Clonez ce dépôt](https://github.com/hoppscotch/hoppscotch.git) avec git.
+2. Installez les dépendances en exécutant `npm install` dans le répertoire que vous avez cloné (probablement `hoppscotch`).
+3. Build les fichiers de sortie avec `npm run generate`.
+4. Trouvez le build dans `./dist`.
 
-#### Any contributions you make will be under the MIT Software License
+#### Toutes les contributions que vous ferez seront sous la licence logicielle MIT.
 
-In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
+En bref, lorsque vous soumettez des modifications de code, il est entendu que ces modifications sont soumises à la même [licence MIT](http://choosealicense.com/licenses/mit/) qui couvre le projet. N'hésitez pas à contacter les mainteneurs si cela vous préoccupe.
 
-#### Report bugs using Github's [issues](https://github.com/hoppscotch/hoppscotch/issues)
+#### Signaler les bugs à l'aide de l'outil Github [issues](https://github.com/hoppscotch/hoppscotch/issues)
 
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/hoppscotch/hoppscotch/issues); it's that easy!
+Nous utilisons les issues de GitHub pour suivre les bugs publics. Signalez un bug en [ouvrant un nouveau issue](https://github.com/hoppscotch/hoppscotch/issues); c'est aussi simple que ça !
 
-#### Write bug reports with detail, background, and sample code
+#### Rédiger des rapports de bug avec des détails, du contexte et des exemples de code.
 
-[This is an example](http://stackoverflow.com/q/12088905/180626) of a bug report I wrote, and I think it's not a bad model. Here's [another example](http://www.openradar.me/11905408).
+[Voici un exemple](http://stackoverflow.com/q/12088905/180626) d'un rapport de bug que j'ai écrit, et je pense que ce n'est pas un mauvais modèle. Voici un [autre exemple](http://www.openradar.me/11905408).
 
-**Great Bug Reports** tend to have:
+**Les bons rapports de bug** ont tendance à avoir:
 
-- A quick summary and/or background
-- Steps to reproduce
-  - Be specific!
-  - Give sample code if you can.
-- What you expected would happen
-- What actually happens
-- Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
+- Un résumé rapide et/ou le contexte
+- Étapes à reproduire
+  - Soyez précis !
+  - Donnez un exemple de code si vous le pouvez.
+- Ce que vous pensiez qu'il allait se passer
+- Ce qui se passe réellement
+- Notes (incluant éventuellement la raison pour laquelle vous pensez que cela peut se produire, ou des choses que vous avez essayées et qui n'ont pas fonctionné)
 
-People _love_ thorough bug reports. I'm not even kidding.
+Les gens _adorent_ les rapports de bug détaillés. Je ne plaisante même pas.
 
-#### Use a Consistent Coding Style
+#### Utilisez un style de codage cohérent
 
-I'm again borrowing these from [Facebook's Guidelines](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md)
+Je les emprunte à nouveau aux [Directives de Facebook](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md)
 
-- 2 spaces for indentation rather than tabs
-- You can try using Eslint code extensions in vs code or something similar.
+- 2 espaces pour l'indentation plutôt que des tabulations
+- Vous pouvez essayer d'utiliser les extensions de code Eslint dans vs code ou quelque chose de similaire.
 
-## License
+## Licence
 
-By contributing, you agree that your contributions will be licensed under MIT License.
+En contribuant, vous acceptez que vos contributions soient sous licence MIT.

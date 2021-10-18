@@ -1,19 +1,19 @@
 ---
-title: Request Parameters
-description: Sample
-menuTitle: Parameters
+title: Paramètres de requête
+description: Exemple
+menuTitle: Paramètres
 position: 13
-category: Features
+category: Fonctionnalités
 ---
 
-## `Http` Query parameters
+## Paramètres de la requête `Http`
 
-**In the URL field:**
+**Dans le champ URL:**
 
-- To add Query parameters, append `?` to the end of the request URL
-- add parameter `id=1`, if adding multiple parameters separate them with `&`
+- Pour ajouter des paramètres de requête, ajoutez `?` à la fin de l'URL de la requête
+- Ajoutez le paramètre `id=1`, si vous ajoutez plusieurs paramètres, séparez-les avec `&`.
 
-Like so:
+Comme ceci:
 
 <code-group>
 <code-block label= "URL parameters" active >
@@ -25,18 +25,18 @@ https://rickandmortyapi.com/api/character/?name=morty&status=alive
 </code-block>
 </code-group>
 
-**Using Parameters tab:**
+**Utilisation de l'onglet Paramètres:**
 
-Add the key value pairs:
+Ajoutez les paires clé-valeur:
 
 - `name` `morty`
 
 * `status` `alive`
 
-This will be automatically appended to your API path .
+Ceci sera automatiquement ajouté à votre chemin d'accès à l'API.
 
 <img src="/guides/param-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 <img src="/guides/param-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
-[Learn how to modify parameters](/quickstart/rest#using-parameters)
+[Apprenez à modifier les paramètres](/quickstart/rest#using-parameters)

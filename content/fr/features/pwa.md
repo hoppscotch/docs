@@ -1,27 +1,24 @@
 ---
 title: PWA
-description: Sample
+description: Exemple
 menuTitle: PWA
 position: 17
-category: Features
+category: Fonctionnalités
 features:
-  - 💹 Better performance
-  - 📱 Mobile optimized UI
-  - 🕙 Automatically Updates
+  - 💹 Meilleures performances
+  - 📱 Interface utilisateur optimisée pour les mobiles
+  - 🕙 Mises à jour automatiques
   - 💻📱 Cross-Paltform
-
 ---
 
-Hoppscotch is also available as PWA Progressive Web App.
+Hoppscotch est également disponible en tant que PWA Progressive Web App.
 
-Benefits:
+Avantages:
 <list :items="features"></list>
 
-## How to Install:
+## Comment installer:
 
-1. On your computer, open Chrome.
-2. Go to [hoppscotch.io](https://hoppscotch.io/).
-3. At the top right of the address bar, click Install ➕.
-4. Follow the onscreen instructions to install the PWA.
-
-
+1. Sur votre ordinateur, ouvrez Chrome.
+2. Allez sur [hoppscotch.io](https://hoppscotch.io/).
+3. En haut à droite de la barre d'adresse, cliquez sur Installer ➕.
+4. Suivez les instructions qui s'affichent à l'écran pour installer la PWA.

@@ -1,8 +1,8 @@
 ---
-title: Community
+title: Communauté
 description: Sample
-menuTitle: Community
-category: Community
+menuTitle: Communauté
+category: Communauté
 position: 1
 features:
   - Plus de 30 500 étoiles sur GitHub

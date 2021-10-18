@@ -1,7 +1,7 @@
 ---
-title: Sign in with ease
-description: Sample
-menuTitle: Authentication
+title: Connectez-vous en toute simplicité
+description: Exemple
+menuTitle: Authentification
 position: 5
-category: Features
+category: Fonctionnalités
 ---

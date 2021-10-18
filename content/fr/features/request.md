@@ -1,30 +1,30 @@
 ---
-title: Request
-description: Sample
-menuTitle: Request
+title: Requête
+description: Exemple
+menuTitle: Requête
 position: 16
-category: Features
+category: Fonctionnalités
 ---
 
-An API request allows you to retrieve or send data to and from an API endpoint.
+Une requête d'API vous permet de récupérer ou d'envoyer des données vers et depuis un point de terminaison de l'API.
 
-The common http methods used in API requests are:
+Les méthodes http courantes utilisées dans les demandes d'API sont :
 
-- `GET` : Retrieve information about the REST API resource
-- `POST` : Create a REST API resource
-- `PUT` : Update a REST API resource
-- `DELETE` : Delete a REST API resource or related component
+- `GET` : Récupérer des informations sur la ressource API REST
+- `POST` : Créer une ressource API REST
+- `PUT` : Mise à jour d'une ressource d'API REST
+- `DELETE` : Supprimer une ressource API REST ou un composant connexe
 
-Other methods like `HEAD`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`and other `CUSTOM` methods can also be used.
+D'autres méthodes comme `HEAD`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH` et d'autres méthodes `CUSTOM` peuvent également être utilisées.
 
 <img src="/api/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/api/method-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-Hoppscotch Lets you add DynamicBehaviours to your requests including :
+Hoppscotch vous permet d'ajouter des DynamicBehaviours à vos requêtes, notamment :
 
-- Headers
-- Request Body
-- Authorization Headers
-- Parameters
-- Pre Request Scripts
-- Post request Tests
+- En-têtes
+- Corps de la requête
+- En-têtes d'autorisation
+- Paramètres
+- Scripts pré-requête
+- Tests post-requête

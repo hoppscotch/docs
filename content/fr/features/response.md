@@ -1,14 +1,14 @@
 ---
-title: Response
-description: Sample
-menuTitle: Response
+title: Réponse
+description: Exemple
+menuTitle: Réponse
 position: 11
-category: Features
+category: Fonctionnalités
 ---
 
-### Response body :
+### Corps de la réponse:
 
 <img src="/api/response-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/api/response-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-The response from the `API endpoint` can be viewed here. You can download or copy the response for further use.
+La réponse du «point de terminaison de l'API» peut être consultée ici. Vous pouvez télécharger ou copier la réponse pour une utilisation ultérieure.

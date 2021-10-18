@@ -1,32 +1,32 @@
 ---
-title: Send a MQTT request
-description: Sample
+title: Envoyer une requête MQTT
+description: Exemple
 menuTitle: MQTT
 position: 13
-category: quickstart
+category: Démarrage rapide
 ---
 
-## `MQTT` (Message Queuing Telemetry Transport) protocol.
+## Protocole `MQTT` (Message Queuing Telemetry Transport).
 
-MQTT is a publish/subscribe protocol that is lightweight and requires minimal memory, CPU and bandwidth to connect an IoT devices. Unlike HTTP’s request/response paradigm, MQTT is event driven and enables messages to be pushed to clients.
+MQTT est un protocole de publication/abonnement léger qui nécessite un minimum de mémoire, de CPU et de bande passante pour connecter des appareils IoT. Contrairement au paradigme requête/réponse de HTTP, MQTT est axé sur les événements et permet d'envoyer des messages aux clients.
 
-Once connected to the MQTT server, You can either publish a message under a topic or subscribe to a topic to get messages pertaining to that topic being sent across the server in real-time.
+Une fois connecté au serveur MQTT, vous pouvez soit publier un message sous un sujet, soit vous abonner à un sujet pour obtenir les messages relatifs à ce sujet envoyés à travers le serveur en temps réel.
 
 <video loop playsinline controls>
   <source src="/realtime/MQTT.webm" type="video/webm" />
  <source src="/realtime/MQTT.mp4" type="video/mp4" />
 </video>
 
-### Steps to use MQTT platform
+### Étapes pour utiliser la plateforme MQTT
 
-1. Connect to the mqtt server (e.g `wss://test.mosquitto.org:8081`)
+1. Connectez-vous au serveur mqtt (par exemple `wss://test.mosquitto.org:8081`)
 
-2. Check Log to see if conncetionnwas successful or not
+2. Vérifiez le journal pour voir si la connexion a réussi ou non.
 
-3. To test your server add messages under a topic and publish it.
+3. Pour tester votre serveur, ajoutez des messages sous un sujet et publiez-les.
 
-4. Any other device in the server that has subscribed to that topic will get your communication
+4. Tout autre dispositif du serveur qui a souscrit à ce sujet recevra votre communication.
 
-5. You can recieve messages by subscribing to a topic that some other device in the server is transmitting in.
+5. Vous pouvez recevoir des messages en vous abonnant à un sujet dans lequel un autre appareil du serveur émet.
 
-6. All results will be available in the Log section.
+6. Tous les résultats seront disponibles dans la section Journal.

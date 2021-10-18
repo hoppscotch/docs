@@ -1,21 +1,21 @@
 ---
-title: Environments
-description: Sample
-menuTitle: Environments
+title: Environnements
+description: Exemple
+menuTitle: Environnements
 position: 2
-category: Features
+category: Fonctionnalités
 ---
 
-Fast-track your API development by creating `Enviroments` to store variables and reuse their values in your requests and scripts
+Accélérez le développement de votre API en créant des `Environnements` pour stocker des variables et réutiliser leurs valeurs dans vos requêtes et scripts.
 
 <img src="/navigation/EnvironmentSC.png"  height="300" width="265" alt="Environments Sidepanel"/>
 
 <alert type="success">
-Variabes stored in Global can be accessed from any other environment
+Les variables stockées dans Global sont accessibles depuis n'importe quel autre environnement.
 </alert>
 
-Store variables and reuse values in your requests and scripts
+Stockez les variables et réutilisez les valeurs dans vos requêtes et vos scripts.
 
-**To set environment select from the drop down list of available environments.**
+**Pour définir l'environnement, sélectionnez dans la liste déroulante des environnements disponibles.**
 
-_See Also :_ [Using environment variables](/quickstart/rest#environment-variables)
+_Voir assi :_ [Utilisation des variables d'environnement](/quickstart/rest#environment-variables)

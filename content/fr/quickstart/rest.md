@@ -1,142 +1,146 @@
 ---
 
-title: Send a REST request
+title: Envoyer une requête REST
 menuTitle: REST
-description: "Hoppscotch Guide for REST requests"
+description: "Guide de Hoppscotch pour les requêtes REST"
 position: 5
-category: quickstart
----If you are new to API development and want to know more about the basics of APIs, follow along this guide!
+category: Démarrage rapide
+---Si vous êtes nouveau dans le développement d'API et que vous voulez en savoir plus sur les bases des API, suivez ce guide !
 
    <img src="/guides/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
-    <img src="/guides/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>
+   <img src="/guides/Illustration-light.png" class="light-img" height="600" width="640" alt=""/>
 
-## Sending Requests
+## Envoi de requêtes
 
-Lets Build Our First REST API request!
+Créons notre première requête API REST !
 
-We are going to write a query with a simple `GET` method to get character information from <a href="https://www.rickandmortyapi.com">Rick and Morty</a> Tv show.
+Nous allons écrire une requête avec une simple méthode `GET` pour obtenir des informations sur les personnages de <a href="https://www.rickandmortyapi.com">Rick and Morty</a> Tv show.
 
 <img src="/api/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 <img src="/api/method-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-Start by choosing `GET` method and connecting to the URL below.
-click on `SEND`.
-Scroll down to the response panel and you see the following Response.
+Commencez par choisir la méthode `GET` et connectez-vous à l'URL ci-dessous.
+Cliquez sur `ENVOYER`.
+Faites défiler jusqu'au panneau de réponse et vous voyez la réponse suivante.
 
 <code-group>
-<code-block label ="URL" active>
-
-```bash
-https://rickandmortyapi.com/api
-```
-
-</code-block>
-
-<code-block label="Response" active>
-
-```bash
-{
-  "characters": "https://rickandmortyapi.com/api/character",
-  "locations": "https://rickandmortyapi.com/api/location",
-  "episodes": "https://rickandmortyapi.com/api/episode"
-}
-```
-
-</code-block>
+  <code-block label ="URL" active>
+  
+  ```bash
+  https://rickandmortyapi.com/api
+  ```
+  
+  </code-block>
+  
+  <code-block label="Response" active>
+  
+  ```bash
+  {
+    "characters": "https://rickandmortyapi.com/api/character",
+    "locations": "https://rickandmortyapi.com/api/location",
+    "episodes": "https://rickandmortyapi.com/api/episode"
+  }
+  ```
+  
+  </code-block>
 </code-group>
 
 Now lets Try to Get results on the characters.
 in the URL add `/character`. and give it a run.
 the response should be like this:
 
+Maintenant, essayons d'obtenir des résultats sur les caractères.
+dans l'URL ajoutez `/character`. et donnez-lui un essai.
+la réponse devrait être comme ceci :
+
 <code-group>
 
-<code-block label = "Response" active>
-
-```bash
-{
-  "info": {
-    "count": 671,
-    "pages": 34,
-    "next": "https://rickandmortyapi.com/api/character?page=2",
-    "prev": null
-  },
-  "results": [
-    {
-      "id": 1,
-      "name": "Rick Sanchez",
-      "status": "Alive",
-      "species": "Human",
-      "type": "",
-      "gender": "Male",
-      "origin": {
-        "name": "Earth (C-137)",
-
-      }//.......
-```
-
-</code-block>
-
-<code-block label="API Endpoint">
-
-```bash
-https://rickandmortyapi.com/api/character
-```
-
-</code-block>
-
+  <code-block label = "Response" active>
+  
+  ```bash
+  {
+    "info": {
+      "count": 671,
+      "pages": 34,
+      "next": "https://rickandmortyapi.com/api/character?page=2",
+      "prev": null
+    },
+    "results": [
+      {
+        "id": 1,
+        "name": "Rick Sanchez",
+        "status": "Alive",
+        "species": "Human",
+        "type": "",
+        "gender": "Male",
+        "origin": {
+          "name": "Earth (C-137)",
+  
+        }//.......
+  ```
+  
+  </code-block>
+  
+  <code-block label="API Endpoint">
+  
+  ```bash
+  https://rickandmortyapi.com/api/character
+  ```
+  
+  </code-block>
+  
 </code-group>
 
-<i>Congratulations on the Successful API request, Try experimenting with
+<i>Félicitations pour la requête API réussie, Essayez d'expérimenter avec.
 
-`/location` and `/episode` as well.
+`/location` et `/episode` également.
 
  </i>
 
-## Using parameters
+## Utilisation des paramètres
 
-In the previous section we got a long response with details on all the characters of the Rick And Morty show.
-You can also get details on a single character .
+Dans la section précédente, nous avons obtenu une longue réponse avec des détails sur tous les personnages de la série Rick And Morty.
+Vous pouvez également obtenir des détails sur un seul personnage .
 
-Lets use parameters section of Hoppscotch to get details of all versions of Morty Smith alive in the multiverse.
+Utilisons la section paramètres de Hoppscotch pour obtenir des détails sur toutes les versions de Morty Smith en vie dans le multivers.
+
+Vous pouvez envoyer des paramètres de chemin et de requête avec vos requêtes en utilisant le champ `URL` et le champ `paramètres`.
 
 You can send path and query parameters with your requests using the `URL` field and the `parameters` field.
 
-**In the URL field:**
+**Dans le champ URL:**
 
-- To add Query parameters, append `?` to the end of the request URL
-- add parameter `id=1`, if adding multiple parameters separate them with `&`
+- Pour ajouter des paramètres de requête, ajoutez `?` à la fin de l'URL de la requête
+- Ajoutez le paramètre `id=1`, si vous ajoutez plusieurs paramètres, séparez-les par `&`.
 
-Like so:
+Comme ceci :
 
 <code-group>
-<code-block label= "URL parameters" active >
-
-```bash
-https://rickandmortyapi.com/api/character/?name=morty&status=alive
-```
-
-</code-block>
+  <code-block label= "Paramètres d'URL" active >
+  
+  ```bash
+  https://rickandmortyapi.com/api/character/?name=morty&status=alive
+  ```
+  
+  </code-block>
 </code-group>
 
-**Using Parameters tab:**
-
-Add the key value pairs:
+**Utilisation de l'onglet Paramètres:**
 
 - `name` `morty`
 
 * `status` `alive`
 
-This will be automatically appended to your API path .
+Ceci sera automatiquement ajouté à votre chemin d'accès à l'API .
 
 <img src="/guides/param-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 <img src="/guides/param-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
-You will get the following response:
+Vous obtiendrez la réponse suivante:
 
-<code-block label= "Morty" active >
+<code-block label= "Morty" active>
 
 ```javascript
 {
@@ -167,51 +171,51 @@ You will get the following response:
 
 </code-block>
 
-## Using Collections
+## Utilisation des collections
 
-When you are working and testing multiple Endpoints its always a good idea to organize them categorically for future reference or for collaboration with other developers.
-Let us take some of our Rick And Morty Queries and organize them into a collection.
+Lorsque vous travaillez et testez plusieurs points de terminaison, c'est toujours une bonne idée de les organiser par catégorie pour une référence future ou pour la collaboration avec d'autres développeurs.
+Prenons certaines de nos requêtes Rick And Morty et organisons-les dans une collection.
 
-- Go to the Collections tab in the right side-bar.
-- Create a new Collection called `rick&mortyAPI`.
-- name the current query you are working on.
-- add it to the collection.
-- you can further make sub folders inside a collection.
+- Allez dans l'onglet Collections dans la barre latérale de droite.
+- Créez une nouvelle collection appelée `rick&mortyAPI`.
+- Nommez la requête sur laquelle vous travaillez actuellement.
+- Ajoutez-la à la collection.
+- Vous pouvez également créer des sous-dossiers à l'intérieur d'une collection.
 
 <video loop playsinline controls>
   <source src="/guides/collections.webm" type="video/webm" />
   <source src="/guides/collections.mp4"  type="video/mp4"  />
 </video>
 
-## Environment Variables
+## Variables d'environnement
 
-**Environment variables allow you to store and reuse values in your requests and scripts**
+**Les variables d'environnement vous permettent de stocker et de réutiliser des valeurs dans vos requêtes et scripts**
 
-Use-cases:
+Cas d'utilisation :
 
-- By storing a value in a variable, you can reference it throughout your request section
-- If you need to update the value, you only have to change it in one place
-- Using variables increases your ability to work efficiently and minimizes the likelihood of error
+- En stockant une valeur dans une variable, vous pouvez la référencer tout au long de votre section de requête.
+- Si vous devez mettre à jour la valeur, vous ne devez la modifier qu'à un seul endroit.
+- L'utilisation de variables augmente votre capacité à travailler efficacement et minimise les risques d'erreur.
 
-### **Creating Environment**
+### **Création d'un environnement**
 
-Create a new environment from the right sidebar.
+Créez un nouvel environnement à partir de la barre latérale droite.
 <img src="/guides/env-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/guides/env-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-Choose the desired environment from the sidebar dropdown menu in the environments section.
+Choisissez l'environnement souhaité dans le menu déroulant de la barre latérale dans la section des environnements.
 
-### **Adding environment variables**
+### **Ajout de variables d'environnement**
 
-Click on an environment to add/edit/delete variables.
+Cliquez sur un environnement pour ajouter/modifier/supprimer des variables.
 
 <img src="/guides/envcreate-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/guides/envcreate-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-### **Accessing environment data.**
+### **Accéder aux données de l'environnement.**
 
-Select the Environment whose variables you wish to access.
-It's desirable to write environment variables against a request. This is done by accessing the `<<variable_name>>` object in request section.
+Sélectionnez l'environnement dont vous souhaitez accéder aux variables.
+Il est souhaitable d'écrire les variables d'environnement lors d'une requête. Cela se fait en accédant à l'objet `<<variable_name>>` dans la section requête.
 
 ```javascript
 <<baseURL>><<path>>
@@ -222,72 +226,74 @@ It's desirable to write environment variables against a request. This is done by
   <source src="/guides/environment.mp4"  type="video/mp4"  />
 </video>
 
-Use environment variables enclosed in double angular brackets (`<<>>`) anywhere in the request section.
+Utilisez les variables d'environnement entourées de doubles crochets angulaires (`<<>>`) n'importe où dans la section de la requête.
 
-**Example: Environment variables with pre-request scripts**
+**Exemple : Variables d'environnement avec des scripts de pré-requête**
 
 <img src="/guides/addingToEnv-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/guides/addingToEnv-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 <alert>
-Variables in an environment with the name `Globals` will be added globally (i.e to every other environment.)
+  Les variables d'un environnement portant le nom `Globals` seront ajoutées de manière globale (c'est-à-dire à tous les autres environnements.)
 </alert>
 
-## Using Auth Tokens
+## Utilisation des jetons d'authentification
 
-In this section, we'll look at passing Authorization and Authentication Information in our requests,by accessing the **GitHub API**.
+Dans cette section, nous allons voir comment passer les informations d'autorisation et d'authentification dans nos requêtes, en accédant à **l'API de GitHub**.
 
-- Make a GET request to the url `https://api.github.com/user`.
-- You'll get an error like this
+- Faites une requête GET vers l'url `https://api.github.com/user`.
+- Vous obtiendrez une erreur comme celle-ci
 
   ```javascript
   {
-  "message": "Bad credentials",
-  "documentation_url": "https://docs.github.com/rest"
+    "message": "Bad credentials",
+    "documentation_url": "https://docs.github.com/rest"
   }
   ```
 
-#### generating access token
+#### Générer un jeton d'accès
 
-To get access to the Github API, you first need to generate a personal access token. For our demonstration we will generate one granting access to public repositories:
+Pour avoir accès à l'API de Github, vous devez d'abord générer un jeton d'accès personnel. Pour notre démonstration, nous allons en générer un qui donne accès aux dépôts publics :
 
-- Go to your [Github account settings](https://github.com/settings/profile) by clicking on your profile icon and clicking on Settings (at the bottom)
-- Scroll down and click on Developer setting in the left menu
+- Accédez à vos [paramètres de compte Github](https://github.com/settings/profile) en cliquant sur l'icône de votre profil, puis sur Paramètres (en bas).
+- Faites défiler la page et cliquez sur Paramètres du développeur dans le menu de gauche.
 
   <img src="/guides/github-developer-settings.png"/>
 
-- In developer setting page, click on [Personal access tokens](https://github.com/settings/tokens)
+- Dans la page des paramètres du développeur, cliquez sur [Personal access tokens](https://github.com/settings/tokens)
 
   <img src="/guides/github-personal-access-tokens.png"/>
 
-- Click on generate new token and check ONLY the public_repo scope under repo.
+- Cliquez sur générer un nouveau jeton et vérifiez UNIQUEMENT la portée public_repo sous repo.
 
   <img src="/guides/github-scopes-public.png" />
 
-- Copy the generated opaque-string
+- Copiez la chaîne opaque générée
 
-#### Storing Auth Token in Variable
+#### Stocker le jeton d'authentification dans une variable
 
-<alert type = "success">It is a recommended safe-practice to have your Auth Details in Enivronment variables rather than inputting it directly to the Authorization tab </alert>
+<alert type = "success">
+C'est une pratique sûre recommandée d'avoir vos détails d'Auth dans des variables d'Enivronment plutôt que de les saisir directement dans l'onglet Autorisation
+</alert>
 
-- Add the copied string to a new variable named 'token' in an existing or new environment.
+- Ajoutez la chaîne copiée à une nouvelle variable nommée 'token' dans un environnement existant ou nouveau.
   <img src="/guides/addingToEnv-dark.png" class="dark-img" height="300" width="400" alt=""/>
   <img src="/guides/addingToEnv-light.png" class="light-img" height="300" width="400" alt=""/>
 
-- Now open the Authorisation tab and select Bearer Token in the dropdown list.
+- Ouvrez maintenant l'onglet Autorisation et sélectionnez Bearer Token dans la liste déroulante.
 
-- call the variable token.
+- appelez la variable token.
 
-- click on send.
+- cliquez sur envoyer.
 
 <img src="/guides/usingVar-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/guides/usingVar-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-Hoppscotch will automatically add the contents into the authorisation header
+Hoppscotch ajoutera automatiquement le contenu dans l'en-tête d'autorisation
 
-**Result**
+**Résultat**
 
-You Should Be able to see the number of public repos you have made in GitHub.
+Vous devriez être en mesure de voir le nombre de dépôts publics que vous avez créés dans GitHub.
 
 ```javascript
 
@@ -305,37 +311,36 @@ You Should Be able to see the number of public repos you have made in GitHub.
 
 ```
 
-[Checkout Authorization modes](/features/authorization)
+[Modes d'autorisation de paiement](/features/authorization)
 
+## Téléchargement de données via une requête API
 
-## Uploading data via API request
+Les API sont également utilisées pour télécharger du contenu codé vers un serveur. Cela se fait généralement avec les méthodes `PUT` ou `POST`.
 
-APIs are used to upload encoded content to a server as well. This is usually done with `PUT` or `POST` Methods.
+Les types de contenu les plus courants sont :
 
-The Most Common Content Types are:
-- `application/json` : For  content in JSON format.
-- `multipart/form-data` : For Uploading Encoded Files.
+- `application/json` : Pour le contenu au format JSON.
+- `multipart/form-data` : Pour le téléchargement de fichiers codés.
 
-[Full List of Supported Content Types](/features/body#content-types)
+[Liste complète des types de contenu pris en charge](/features/body#content-types)
 
-Let us  take a look at uploading an image file into an `API` using hoppscotch.
+Voyons comment télécharger un fichier image dans une `API` en utilisant hoppscotch.
 
-### Uploading Files via an API
+### Télécharger des fichiers via une API
 
-The data you send in a `POST` request must be of the following content types:
+Les données que vous envoyez dans une requête `POST` doivent être des types de contenu suivants :
 
 - `application/x-www-form-encoded`
-- `multipart/form-data`
+- `multipart/form-data`.
 
-#### Steps :
+#### Étapes :
 
-1. select `POST` http method and set your API Endpoint URL
-2. Add necessary Headers
-3. To add your image file click in the **body** tab and select `mulitpart/form-data` in the content-type dropdown.
-4. Give your file a name and click on the 📎 icon to select your file.
+1. sélectionnez la méthode http `POST` et définissez votre URL de point de terminaison API
+2. Ajoutez les en-têtes nécessaires
+3. Pour ajouter votre fichier image, cliquez sur l'onglet **corps** et sélectionnez `mulitpart/form-data` dans le menu déroulant content-type.
+4. Donnez un nom à votre fichier et cliquez sur l'icône 📎 pour sélectionner votre fichier.
 
   <img src="/guides/upload-dark.png" class="dark-img" alt=""/>
   <img src="/guides/upload-light.png" class="light-img"  alt=""/>
 
-5. Click SEND to upload your file via the API 
-
+5.  Cliquez sur ENVOYER pour télécharger votre fichier via l'API.

@@ -1,7 +1,7 @@
 ---
-title: Collaborate with Teams in real-time
-description: Sample
-menuTitle: Collaborate
+title: Collaborez avec des équipes en temps réel
+description: Exemple
+menuTitle: Collaborer
 position: 1
-category: Features
+category: Fonctionnalités
 ---

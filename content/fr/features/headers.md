@@ -1,32 +1,32 @@
 ---
-title: Request Headers
-description: Sample
-menuTitle: Headers
+title: Requête des En-têtes
+description: Exemple
+menuTitle: En-têtes
 position: 14
-category: Features
+category: Fonctionnalités
 ---
 
-### `Http` Request Header
+### En-tête de requête `Http`
 
-This can be used in an HTTP request to provide context to a request being made, so that the server can tailor the response.
-E.g `Accept-*`vheaders indicate the allowed and preferred formats of the response.
-Other Headers can be used to supply Authentication credentials, to control caching, or to get infrmation about the user agent etc..,
+Ceci peut être utilisé dans une requête HTTP pour fournir un contexte à une requête en cours, afin que le serveur puisse adapter la réponse.
+Par exemple, les en-têtes `Accept-*`v indiquent les formats autorisés et préférés de la réponse.
+D'autres part les en-têtes peuvent être utilisés pour fournir des informations d'authentification, pour contrôler la mise en cache, ou pour obtenir des informations sur l'agent utilisateur, etc..,
 
-## Modifying Request Header
+## Modifier l'en-tête de la requête
 
-Got to the `Headers` Tab under the URL field and add your Headers to the Header List
+Allez dans l'onglet `En-têtes` sous le champ URL et ajoutez vos en-têtes à la liste des en-têtes
 
 <img src="/features/Header-dark.png" class="dark-img" height="1280" width="640" alt="IMAGES"/>
 <img src="/features/Header-light.png" class="light-img" height="1280" width="640" alt="IMAGES"/>
 
-## Commonly Used Headers
+## En-têtes couramment utilisés
 
-| Common Headers      | Function                                                                                                                                                              |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| WWW-Authenticate    | The server may send this as an initial response if it needs some form of authentication before responding with the actual resource being requested.                   |
-| Authorization [^1]  | Contains the authentication credentials for HTTP authentication.                                                                                                      |
-| Proxy-Authorization | HTTP `Proxy-Authorization` request header contains the credentials to authenticate a user agent to a proxy server                                                     |
-| Age                 | Age directive states the maximum amount of time in seconds that fetched responses are allowed to be used again (from the time when a request is made)                 |
-| Cache-Control       | The cache policy defined by the server for this response, a cached response can be stored by the client and re-used till the time defined by the Cache-Control header |
+| En-têtes courants   | Fonction                                                                                                                                                                                 |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| WWW-Authenticate    | Le serveur peut envoyer cet en-tête comme réponse initiale s'il a besoin d'une certaine forme d'authentification avant de répondre avec la ressource demandée.                           |
+| Authorization [^1]  | Contient les informations d'identification pour l'authentification HTTP.                                                                                                                 |
+| Proxy-Authorization | L'en-tête de requête HTTP `Proxy-Authorization` contient les informations d'identification pour authentifier un agent utilisateur auprès d'un serveur proxy                              |
+| Age                 | La directive Age indique la durée maximale en secondes pendant laquelle les réponses récupérées peuvent être réutilisées (à partir du moment où la demande est faite)                    |
+| Cache-Control       | La politique de cache définie par le serveur pour cette réponse, une réponse en cache peut être stockée par le client et réutilisée jusqu'à la durée définie par l'en-tête Cache-Control |
 
-[^1]: Hoppscotch automatically manages this header, when you add Auth Credentials to the `Authorization` tab . But in-case the server takes custom type,you can manually your Credentials in this Header.
+[^1]: Hoppscotch gère automatiquement cet en-tête, lorsque vous ajoutez les Auth Credentials dans l'onglet `Autorisation`. Mais dans le cas où le serveur est de type personnalisé, vous pouvez ajouter manuellement vos informations d'identification dans cet en-tête.

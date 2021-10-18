@@ -1,29 +1,30 @@
 ---
-title: Internationalization and Localization
-description: Sample
-menuTitle: Translations
+title: Internationalisation et localisation
+description: Exemple
+menuTitle: Traductions
 position: 6
-category: Features
+category: Fonctionnalités
 ---
 
-Hopscotch has `i18n` support to make it truly accessible to developers across the globe.
-Hoppscotch currently supports 29+ languages.
+pscotch a le support `i18n` pour le rendre vraiment accessible aux développeurs du monde entier.
+Hoppscotch supporte actuellement plus de 29 langues.
 
-## Change Language
+## Changer de langue
 
-To set the app to your language follow these steps:
+Pour régler l'application dans votre langue, suivez ces étapes :
 
-- Navigate to **settings**
+- Naviguez vers **paramètres**
 
 <img src="/features/language-light.png" class="light-img" height="1280" width="640" alt=""/>
 <img src="/features/language-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 - Choose Your languge in the dropdown menu
+- Choisissez votre langue dans le menu déroulant
 
 <img src="/features/languageSelect-light.png" class="light-img" height="1280" width="640" alt=""/>
 <img src="/features/languageSelect-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
 <alert>
 
-Don't See your language in the dropdown? [Help us translate](/i18n)
+Vous ne voyez pas votre langue dans la liste déroulante ? [Aidez-nous à traduire](/i18n)
 </alert>

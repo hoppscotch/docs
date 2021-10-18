@@ -3,11 +3,11 @@ title: Hoppscotch
 menuTitle: Introduction
 description: "Hoppscotch est un ecosystème de développement d'API open source."
 position: 0
-category: "Getting started"
+category: Pour commencer
 badge: "v1.12"
 features:
   - "❤️ Léger : conçu avec un design d'interface utilisateur minimaliste"
-  - "⚡️ Rapide : envoyer des demandes et obtenir/copier des réponses en temps réel"
+  - "⚡️ Rapide : envoyer des requêtes et obtenir/copier des réponses en temps réel"
   - "🚀 API REST : travaillez avec les API en temps réel"
   - "🔮 GraphQL : GraphQL est un langage de requête pour les API et un runtime pour répondre à ces requêtes avec vos données existantes"
   - "🔌 WebSocket : établir des canaux de communication en duplex intégral sur une seule connexion TCP"
@@ -30,6 +30,8 @@ Cette documentation est en cours d'élaboration !
 
 ## Fonctionnalités
 
+<list :items="features"></list>
+
 ### Plateforme d'API Rest
 
 - Créer des requêtes, ajouter des scripts, tester les réponses avec prise en charge des collections et des environnements
@@ -38,7 +40,7 @@ Cette documentation est en cours d'élaboration !
 
 ### Plateforme GraphQl
 
-- Accédez dans votre endpoint graphql, construire vos requêtes, les organiser en 🗄️collections.
+- Accédez dans votre point de terminaison graphql, construire vos requêtes, les organiser en 🗄️collections.
 
 ### Plateforme en temps réel
 

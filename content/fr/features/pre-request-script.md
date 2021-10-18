@@ -1,58 +1,53 @@
 ---
-title: Pre-Request Scripts
-description: Sample
-menuTitle: Pre-Request Script
+title: Scripts de pré-requête
+description: Exemple
+menuTitle: Script de pré-requête
 position: 9
-category: Features
+category: Fonctionnalités
 ---
-
 
 <img src="/Features/preSnippet-dark.png" class="dark-img" alt=""/>
 <img src="/Features/preSnippet-light.png" class="light-img"  alt=""/>
 
-## Hoppscotch  JavaScript Reference
+## Référence JavaScript de Hoppscotch
 
-Hoppscotch provides JavaScript APIs that can be used in building tests. \
-You can enter your JavaScript manually or use the Snippets you'll see to the right of the code editor.
-
+Hoppscotch fournit des API JavaScript qui peuvent être utilisées dans la création de tests. \
+Vous pouvez saisir votre JavaScript manuellement ou utiliser les Snippets que vous verrez à droite de l'éditeur de code.
 
 #
-## The `pw` object
 
-`pw.*` provides access to request and response data and variables in the your Hoppscotch instance.
+## L'objet `pw`
 
+`pw.*` donne accès aux données et aux variables des requêtes et des réponses de votre instance Hoppscotch.
 
 ### `env`
 
-Access variables available in the current environment
+Accéder aux variables disponibles dans l'environnement actuel
 
-#### Set an Environment Variable
+#### Définir une variable d'environnement
 
 ```javascript
-
 pw.env.set("variable", "value");
-
 ```
 
-#### Save current TimeStamp to a variable
+#### Enregistrer l'horodatage actuel dans une variable
 
 ```javascript
-// Set timestamp variable
-const cuttentTime = Date.now();
+// Définir la variable d'horodatage
+const currentTime = Date.now();
 pw.env.set("timestamp", cuttentTime.toString());
-
 ```
 
-#### Random Variable
+#### Variable aléatoire
 
 ```javascript
-// Set random number variable
-const min = 1
-const max = 1000
-const randomArbitrary = Math.random() * (max - min) + min
+// Définir une variable de nombre aléatoire
+const min = 1;
+const max = 1000;
+const randomArbitrary = Math.random() * (max - min) + min;
 pw.env.set("randomNumber", randomArbitrary.toString());
 ```
 
-## Next Steps
+## Prochaines étapes
 
-For more details on how to use pre-request scripts, checkout <nuxt-link to= "/quickstart/scripts">Pre-Request Scripts (Guide)</nuxt-link>, <nuxt-link to= "/features/tests">Writing Tests</nuxt-link> 
+Pour plus de détails sur l'utilisation des scripts de pré-demande, consultez <nuxt-link to= "/quickstart/scripts">Scripts de pré-requête (Guide)</nuxt-link>, <nuxt-link to= "/features/tests">Écrire des tests</nuxt-link>

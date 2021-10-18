@@ -1,44 +1,43 @@
 ---
-title: Interceptor and add-ons
-description: Sample
-menuTitle: Interceptor
+title: Interception et add-ons
+description: Exemple
+menuTitle: Interception
 position: 6
-category: Features
+category: Fonctionnalités
 ---
 
-**Access APIs blocked by CORS restriction by using either proxyscotch/custom middleware or Hoppscotch web extension.**
+**Accéder aux APIs bloquées par la restriction de CORS en utilisant soit le middleware proxyscotch/personnalisé soit l'extension web Hoppscotch.**
 
-## Using Proxy
+## Utilisation du Proxy
 
-Enable proxy in settings.
+Activez le proxy dans les paramètres.
 
 <img src="/api/Interceptor-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 <img src="/api/Interceptor-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
-You can replace this with your own proxy middleware if you wish.
+Vous pouvez remplacer cela par votre propre middleware de proxy si vous le souhaitez.
 
-#### How ProxyScotch works
+#### Comment fonctionne ProxyScotch
 
 <img src="/api/ProxyScotch-light.png" class="light-img"  alt=""/>
 
 <img src="/api/ProxyScotch-dark.png" class="dark-img"  alt=""/>
 
-#### Using custom Middle ware
+#### Utilisation d'un Middleware personnalisé
 
-Since `CORS` is as simple as adding some HTTP headers, and it’s the only browser blocked, you can build some proxy-like component that will basically make a call for you, get the response from the desired API, add those headers on top, and then send it back to Hoppscotch.
+Puisque un `CORS` est aussi simple que l'ajout de quelques en-têtes HTTP, et que c'est le seul navigateur bloqué, vous pouvez créer un composant de type proxy qui va essentiellement faire un appel pour vous, obtenir la réponse de l'API désirée, ajouter ces en-têtes par-dessus, et ensuite la renvoyer à Hoppscotch.
 
-_See Also :_ [ProxyScotch GitHub Wiki](https://github.com/hoppscotch/hoppscotch/wiki/Proxy)
+_Voir aussi :_ [ProxyScotch Wiki GitHub](https://github.com/hoppscotch/hoppscotch/wiki/Proxy)
 
-### Using Hoppscotch Web Extension
+### Utilisation de l'extension Web Hoppscotch
 
-1. Download the Hoppscotch browser extension [here.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
+1.  Téléchargez l'extension de navigateur Hoppscotch [here.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
 
-2. Enable it in settings.
+2.  Activez-la dans les paramètres.
 
-3. Open the extension and add new origins
-   <img src="/api/Extension.png"  height="400" width="300" halt=""/>
+3.  Ouvrez l'extension et ajoutez de nouvelles origines
+    <img src="/api/Extension.png"  height="400" width="300" halt=""/>
 
-Hoppscotch extension routes all added origins to Proxy.
-
-**What is CORS restriction :** [Learn how to bypass CORS restriction using proxy in Hoppscotch](/rest#cors-restrictions)
+L'extension Hoppscotch route toutes les origines ajoutées vers le Proxy.
+**Qu'est-ce que la restriction de CORS:** [Apprenez comment contourner la restriction de CORS en utilisant le proxy dans Hoppscotch](/rest#cors-restrictions)

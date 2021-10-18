@@ -2,7 +2,7 @@
 title: Privacy Policy
 description: Cette page est utilisée pour informer les visiteurs de nos politiques en matière de collecte, d'utilisation et de divulgation des informations personnelles si quelqu'un décide d'utiliser notre service.
 menuTitle: Privacy Policy
-category: Community
+category: Communauté
 position: 6
 ---
 

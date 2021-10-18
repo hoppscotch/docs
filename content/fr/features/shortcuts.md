@@ -1,48 +1,48 @@
 ---
-title: Keyboard Shortcuts
-description: Sample
-menuTitle: Shortcuts
+title: Raccourcis clavier
+description: Exemple
+menuTitle: Raccourcis
 position: 7
-category: Features
+category: Fonctionnalités
 ---
 
-Improve your workflow by efficiently performing tasks straight from your keyboard.
+Améliorez votre flux de travail en exécutant efficacement des tâches directement depuis votre clavier.
 
 <alert type = "success">
-Bring up the shortcuts sidebar with <kbd>Ctrl</kbd> + <kbd>K</kbd>
+Faites apparaître la barre latérale des raccourcis avec <kbd>Ctrl</kbd> + <kbd>K</kbd>
 </alert>
 
-## General Shortcuts
+## Raccourcis généraux
 
-| Shortcut         | Action             |
-| ---------------- | ------------------ |
-| `Ctrl`&nbsp; `K` | KeyBoard Shortcuts |
-| `Esc`            | Close current menu |
+| Raccourci        | Action                |
+| ---------------- | --------------------- |
+| `Ctrl`&nbsp; `K` | Raccourcis clavier    |
+| `Esc`            | Fermer le menu actuel |
 
-## Navigation Shortcuts
+## Raccourcis de navigation
 
-| Shortcut         | Action                   |
-| ---------------- | ------------------------ |
-| `Ctrl`&nbsp; `←` | Go Back to previous page |
-| `Ctrl`&nbsp; `→` | Go forward to next page  |
-| `Alt`&nbsp; `R`  | Go to REST page          |
-| `Alt`&nbsp; `Q`  | Go to GraphQL page       |
-| `Alt`&nbsp; `W`  | Go to Realtime page      |
-| `Alt`&nbsp; `D`  | Go to Documentation Page |
-| `Alt`&nbsp; `S`  | Go to Settings page      |
+| Raccourci        | Action                           |
+| ---------------- | -------------------------------- |
+| `Ctrl`&nbsp; `←` | Revenir à la page précédente     |
+| `Ctrl`&nbsp; `→` | Aller à la page suivante         |
+| `Alt`&nbsp; `R`  | Aller à la page REST             |
+| `Alt`&nbsp; `Q`  | Aller à la page GraphQL          |
+| `Alt`&nbsp; `W`  | Aller à la page Realtime         |
+| `Alt`&nbsp; `D`  | Aller à la page de documentation |
+| `Alt`&nbsp; `S`  | Aller à la page Paramètres       |
 
-## Rest Platform Shortcuts
+## Raccourcis de la plateforme
 
-| Shortcut         | Action                 |
-| ---------------- | ---------------------- |
-| `Ctrl`&nbsp; `G` | Send Request           |
-| `Ctrl`&nbsp; `S` | Save to Collections    |
-| `Ctrl`&nbsp; `U` | Copy Request Link      |
-| `Ctrl`&nbsp; `I` | Reset Request          |
-| `Alt`&nbsp; `↑`  | Select Next method     |
-| `Alt`&nbsp; `↓`  | Select Previous method |
-| `Alt`&nbsp; `G`  | Select `GET` method    |
-| `Alt`&nbsp; `H`  | Select `HEAD` method   |
-| `Alt`&nbsp; `P`  | Select `POST` method   |
-| `Alt`&nbsp; `U`  | Select `PUT` method    |
-| `Alt`&nbsp; `X`  | Select `DELETE` method |
+| Raccourci        | Action                             |
+| ---------------- | ---------------------------------- |
+| `Ctrl`&nbsp; `G` | Envoyer une requête                |
+| `Ctrl`&nbsp; `S` | Sauvegarder dans les Collections   |
+| `Ctrl`&nbsp; `U` | Copier le lien de la requête       |
+| `Ctrl`&nbsp; `I` | Réinitialiser la requête           |
+| `Alt`&nbsp; `↑`  | Sélectionner la méthode suivante   |
+| `Alt`&nbsp; `↓`  | Sélectionner la méthode précédente |
+| `Alt`&nbsp; `G`  | Sélectionner la méthode `GET`      |
+| `Alt`&nbsp; `H`  | Sélectionner la méthode `HEAD`     |
+| `Alt`&nbsp; `P`  | Sélectionner la méthode `POST`     |
+| `Alt`&nbsp; `U`  | Sélectionner la méthode `PUT`      |
+| `Alt`&nbsp; `X`  | Sélectionner la méthode `DELETE`   |

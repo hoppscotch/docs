@@ -22,7 +22,7 @@ In the **Authorization Tab**, select Basic Auth and add your credentials .
 ### Bearer Tokens
 
 Bearer tokens allow for request authentication using an access key, such as an opaque string or JWT[^1].
-In the **Authorization Tab**, select Basic Auth and add your token or for added security store it in a variable and reference it by name.
+In the **Authorization Tab**, select Bearer Token and add your token or for added security store it in a variable and reference it by name.
 
 Hoppscotch will append the API key value to the text 'Bearer' and add it to the request authorization header.
 

@@ -1,7 +1,7 @@
 ---
 title: Contributors
 menuTitle: Contributors
-category: Community
+category: Communauté
 position: 2
 ---
 

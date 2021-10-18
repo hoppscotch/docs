@@ -1,129 +1,133 @@
 ---
-title: Send a GraphQL request
+title: Envoyer une requête GraphQL
 menuTitle: GraphQL
-
-description: "Hoppscotch Guide for graphql newbies"
+description: "Guide de Hoppscotch pour les débutants en graphql"
 position: 8
-category: quickstart
+category: Démarrage rapide
 ---
 
-<alert type="success">This documentation is a work in progress!</alert>
+<alert type="success">Cette documentation est un travail en progression!</alert>
 
-## Introduction to GraphQL
+## Introduction à GraphQL
 
 GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.[^1]
 
-## Resources to learn more about GraphQL
+GraphQL est un langage d'interrogation pour les API et un runtime pour remplir ces requêtes avec vos données existantes. GraphQL fournit une description complète et compréhensible des données de votre API, donne aux clients le pouvoir de demander exactement ce dont ils ont besoin et rien de plus, facilite l'évolution des API au fil du temps et permet de disposer de puissants outils de développementc'[^1].
 
-There are tons of guides and resources on GraphQL all over the internet, We wont be going over the basics here. _This Guide is to demo Hoppscotch's GraphQL editor_ .However if you want to know more about GraphQL here is a list of resources and tutorials that most people found useful:
+## Ressources pour en savoir plus sur GraphQL
 
-#### Level : Beginner
+Il existe des tonnes de guides et de ressources sur GraphQL sur Internet, nous n'allons pas aborder les bases ici. Cependant, si vous voulez en savoir plus sur GraphQL, voici une liste de ressources et de tutoriels que la plupart des gens ont trouvé utiles:
 
-- [Howtographql basics](https://www.howtographql.com/basics/0-introduction/)
-- [FreeCodeCamp Beginners Guide](https://www.freecodecamp.org/news/a-beginners-guide-to-graphql-86f849ce1bec/)
-- [Hasura.io graphql introduction](https://hasura.io/learn/graphql/intro-graphql/introduction/)
+#### Niveau : Débutant
 
-#### Level : Intermediate
+- [Les bases de GraphQL](https://www.howtographql.com/basics/0-introduction/)
+- [Guide pour les débutants de FreeCodeCamp](https://www.freecodecamp.org/news/a-beginners-guide-to-graphql-86f849ce1bec/)
+- [Hasura.io introduction à graphql](https://hasura.io/learn/graphql/intro-graphql/introduction/)
+
+#### Niveau : Intermédiaire
 
 - [Graphql + nodejs](https://www.howtographql.com/graphql-js/0-introduction/)
 - [React + Apollo graphql](https://www.howtographql.com/react-apollo/0-introduction/)
 
-## Demo
+## Démonstration
 
 Let's try some interesting examples to get a feel of Hoppscotch's Grapql Interface.
 To know more about the components check [GraphQL section](/graphql).
 
-### Making a Query
+Essayons quelques exemples intéressants pour avoir une idée de l'interface Grapql de Hoppscotch.
+Pour en savoir plus sur les composants, consultez [La section GraphQL](/graphql).
 
-We'll be using the Unofficial but well maintained SpaceX graphql endpoint `https://api.spacex.land/graphql`.
+### Faire une requête
 
-#### Step 1 :
+Nous allons utiliser le point de terminaison non officiel mais bien maintenu de SpaceX `https://api.spacex.land/graphql`.
 
-Navigate to the [GraphQL editor](https://hoppscotch.io/graphql) and connect to the URL mentioned above.
+#### Etape 1 :
+
+Naviguez vers [l'éditeur GraphQL](https://hoppscotch.io/graphql) et connectez-vous à l'URL mentionnée ci-dessus.
 
 <img src="/graphql/GraphqlURL-dark.png" class="dark-img" height="1280" width="640" alt="graphqlURL"/>
 <img src="/graphql/GraphqlURL-light.png" class="light-img" height="1280" width="640" alt="graphqlURL"/>
 
-#### Step 2:
+#### Etape 2:
 
-Once Connected, Hoppscotch will automatically show you the
-_full schema_ of the Endpoint.
+Une fois connecté, Hoppscotch vous montrera automatiquement le
+_schéma complet_ du point de terminaison.
 
-It is important to explore the schema to understand the different `queries`, `mutations`, `types` and `subscriptions` that are offered by the Endpoint.
+Il est important d'explorer le schéma pour comprendre les différentes `requêtes`, `mutations`, `types` et `souscriptions` qui sont offertes par le point de terminaison.
 
-The Docs Section assists you to understand these .
+La section Docs vous aide à les comprendre.
 
 <img src="/graphql/schemadocs-dark.png" class="dark-img" height="1000" width="640" alt="Schema Docs"/>
 <img src="/graphql/schemadocs-light.png" class="light-img" height="1280" width="640" alt="Schema Docs"/>
 
-#### Step 3 :
+#### Etape 3 :
 
-Lets us know write a query _GetCapsuleInfo_, to get data associated with Crew Dragon Capsule that was used to launch Astronauts.
+Nous allons savoir écrire une requête _GetCapsuleInfo_, pour obtenir les données associées à la capsule Crew Dragon qui a été utilisée pour lancer les astronautes.
 
-Go to the Queries Sections and write your Query
+Allez dans la section des requêtes et écrivez votre requête.
 
-- The Capsule ID for Dragon 2 is `C205`.
-- Click on the Run button to execute the Query
-- Check the Response Body section for the response
+- L'ID de la capsule pour Dragon 2 est `C205`.
+- Cliquez sur le bouton Lancer pour exécuter la requête.
+- Consultez la section Corps de la réponse pour la réponse
 
 <code-group>
-<code-block label ="Query" active>
-
-```javascript
-
-query GetCapsuleInfo{
-     capsule(id: "C205") {
-    dragon {
-      description
-      active
-      first_flight
-      id
-      orbit_duration_yr
-    }
-  }
-}
-```
-
-</code-block>
-<code-block label = "Response" >
-
-```javascript
-{
-  "data": {
-    "capsule": {
-      "dragon": {
-        "description": "Dragon 2 (also Crew Dragon, Dragon V2, or formerly DragonRider)  is the second version of the SpaceX Dragon spacecraft, which will be a human-rated vehicle...",
-        "active": true,
-        "first_flight": "2019-03-02",
-        "id": "dragon2",
-        "orbit_duration_yr": 2
+  <code-block label ="Query" active>
+  
+  ```javascript
+  
+  query GetCapsuleInfo{
+       capsule(id: "C205") {
+      dragon {
+        description
+        active
+        first_flight
+        id
+        orbit_duration_yr
       }
     }
   }
-}
-
-```
-
-</code-block>
+  ```
+  
+  </code-block>
+  <code-block label = "Response" >
+  
+  ```javascript
+  {
+    "data": {
+      "capsule": {
+        "dragon": {
+          "description": "Dragon 2 (aussi appelé Crew Dragon, Dragon V2, ou anciennement DragonRider)  est la deuxième version du vaisseau spatial Dragon de SpaceX, qui sera un véhicule à usage humain..",
+          "active": true,
+          "first_flight": "2019-03-02",
+          "id": "dragon2",
+          "orbit_duration_yr": 2
+        }
+      }
+    }
+  }
+  
+  ```
+  
+  </code-block>
 </code-group>
 
-Now go to the docs section, search for capsule and look at all supported queries and customizethe current query. \
-**Challenge:** Get the mission name for capusle `c205`
+Maintenant, allez dans la section docs, cherchez capsule et regardez toutes les requêtes supportées et personnalisez la requête actuelle. \
+**Challenge:** Obtenir le nom de la mission pour la capsule `c205`
 
-## Using Variables
+## Utilisation des variables
 
-Hoppscotch allows you to pass variables in the query in the same way as graphQL playground.
+Hoppscotch vous permet de passer des variables dans la requête de la même manière que le terrain de jeu graphQL.
 
-To demonstrate the use of vaiables lets write a query to find mission details for Iridium Satellite launches
+Pour démontrer l'utilisation des variables, écrivons une requête pour trouver les détails des missions de lancement du satellite Iridium.
 ( Mission id = `F3364BF1`)
 
-- In the variables section add the variables (**variables need to be in json format**)
+- Dans la section variables, ajoutez les variables (**les variables doivent être au format json**)
 
-  ```javascript
-  {"var" : "xyz"}
-  ```
+```javascript
+{"var" : "xyz"}
+```
 
-- Declare Variable name and variable type along with the query name
+- Déclarez le nom de la variable et le type de variable ainsi que le nom de la requête
 
   ```javascript
   query QueryName($var: type!){
@@ -131,7 +135,7 @@ To demonstrate the use of vaiables lets write a query to find mission details fo
   }
   ```
 
-- Inside the Query access declared variables this way:
+- À l'intérieur de la requête, accédez aux variables déclarées de cette façon :
 
   ```javascript
      query QueryName($var: type!){
@@ -141,42 +145,42 @@ To demonstrate the use of vaiables lets write a query to find mission details fo
      }
   ```
 
-  In our example.
+  Dans notre exemple.
 
 <code-group>
 
-<code-block label = "Query" active>
-
-```javascript
-query MissionData($id:ID!){
-  mission(id:$id) {
-    manufacturers
-    name
-    payloads{
-    customers
-    payload_type
+  <code-block label = "Query" active>
+  
+  ```javascript
+  query MissionData($id:ID!){
+    mission(id:$id) {
+      manufacturers
+      name
+      payloads{
+      customers
+      payload_type
+      }
     }
+    missionsResult(find: {id:$id}) {
+      data {
+  
+        description
+      }
+  
   }
-  missionsResult(find: {id:$id}) {
-    data {
-
-      description
-    }
-
-}
-}
-```
-
-</code-block>
-
-<code-block label = "variables">
-
-```javascript
-{"id" : "F3364BF"}
-```
-
-</code-block >
+  }
+  ```
+  
+  </code-block>
+  
+  <code-block label = "variables">
+  
+  ```javascript
+  {"id" : "F3364BF"}
+  ```
+  
+  </code-block >
 
 </code-group>
 
-[^1]: Defination from graphql's official website
+[^1]: Définition à partir du site officiel de graphql

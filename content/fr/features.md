@@ -1,7 +1,7 @@
 ---
-title: Features
-description: Sample
+title: Fonctionnalités
+description: Exemple
 menuTitle: Introduction
-category: Features
+category: Fonctionnalités
 position: 1
 ---

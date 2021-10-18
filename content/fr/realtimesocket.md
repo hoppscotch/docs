@@ -1,8 +1,8 @@
 ---
-title: Realtime platform
-description: "using Realtime Paltform"
+title: Plateforme en temps réel
+description: "Utilisation de la plateforme en temps réel"
 position: 4
-category: Getting started
+category: Pour commencer
 features:
   - "WebSocket"
 
@@ -17,11 +17,11 @@ features:
 <img src="/realtime/Realtime-light.png" class="light-img"  width="1280" height="640" alt=""/>
 <alert type="success">
 
-This documentation is a work in progress!
+Cette documentation est un travail en cours !
 
 </alert>
-Hoppscotch helps you develop Real-time web apps that require persistent connection between the server and client.
-Hoppscotch currently allows the testing of the following Real-time Communication protocols:
+Hoppscotch vous aide à développer des applications web en temps réel qui nécessitent une connexion persistante entre le serveur et le client.
+Hoppscotch permet actuellement de tester les protocoles de communication en temps réel suivants:
 
 <list :items="features"></list>
 
@@ -30,9 +30,9 @@ Hoppscotch currently allows the testing of the following Real-time Communication
 <img src="/realtime/Websocket-dark.png"   class="dark-img" width="1280" height="640" alt=""/>
 <img src="/realtime/Websocket-light.png" class="light-img"  width="1280" height="640" alt=""/>
 
-Enter Your `Websocket URL`, valid protocols and click on connect . Once successfully connected you can send messages and see the realtime response on the log pane.
+Entrez votre `Websocket URL`, les protocoles valides et cliquez sur connecter. Une fois la connexion réussie, vous pouvez envoyer des messages et voir la réponse en temps réel dans le volet du journal.
 
-_See Also :_ [WebSockets](/quickstart/websocket)
+_Voir aussi :_ [WebSockets](/quickstart/websocket)
 
 ## MQTT
 
@@ -41,8 +41,8 @@ _See Also :_ [WebSockets](/quickstart/websocket)
  <source src="/realtime/mqtt.mp4" type="video/mp4" />
 </video>
 
-`MQTT` (Message Queuing Telemetry Transport) protocol.
+Protocole `MQTT` (Message Queuing Telemetry Transport).
 
-Once connected to the MQTT server, You can either publish a message under a topic or subscribe to a topic to get messages pertaining to that topic being sent across the server in real-time.
+Une fois connecté au serveur MQTT, vous pouvez soit publier un message sous un sujet, soit vous abonner à un sujet pour obtenir les messages relatifs à ce sujet envoyés à travers le serveur en temps réel.
 
-_See Also :_ [MQTT](/quickstart/mqtt)
+_Voir aussi :_ [MQTT](/quickstart/mqtt)
