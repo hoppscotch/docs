@@ -1,6 +1,6 @@
 ---
-title: Contributors
-menuTitle: Contributors
+title: Contributeurs
+menuTitle: Contributeurs
 category: Communauté
 position: 2
 ---

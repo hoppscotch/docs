@@ -1,6 +1,6 @@
 ---
-title: Changelog
-menuTitle: Changelog
+title: Journal des modifications
+menuTitle: Journal des modifications
 category: Communauté
 position: 5
 ---

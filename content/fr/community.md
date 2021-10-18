@@ -1,6 +1,6 @@
 ---
 title: Communauté
-description: Sample
+description: Exemple
 menuTitle: Communauté
 category: Communauté
 position: 1

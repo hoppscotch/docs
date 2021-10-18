@@ -5,11 +5,8 @@ position: 4
 category: Pour commencer
 features:
   - "WebSocket"
-
   - "SSE (server-sent Events)"
-
   - "Socket.IO"
-
   - "MQTT"
 ---
 

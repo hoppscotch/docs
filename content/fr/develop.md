@@ -1,7 +1,7 @@
 ---
-title: Contribute to Hoppscotch
-menuTitle: Contribute
-description: "Contribute to Hoppscotch"
+title: Contribuer à Hoppscotch
+menuTitle: Contribuer
+description: "Contribuer à Hoppscotch"
 position: 3
 category: Communauté
 features:
@@ -28,7 +28,7 @@ Un pull request est le meilleur moyen de proposer des changements au codebase (n
 3. Si vous avez changé d'API, mettez à jour la documentation.
 4. Assurez-vous que la suite de tests passe.
 5. Assurez-vous que votre code est correct.
-7. Créez un pull request avec vos changements!
+6. Créez un pull request avec vos changements!
 
 ## **Développer**
 

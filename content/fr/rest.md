@@ -1,9 +1,9 @@
 ---
-title: Plateforme RestAPI
+title: Plateforme API Rest
 description: "Éditeur Rest"
 position: 2
 
-category: Getting started # Pour commencer
+category: Pour commencer
 ---
 
 <alert type="success">
