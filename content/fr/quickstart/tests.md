@@ -1,22 +1,22 @@
 ---
 title: Tests
-menuTitle: Post-request Tests
-description: "Hoppscotch Guide to write pre-request scripts and tests for REST API"
+menuTitle: Tests de post requêtes
+description: "Guide Hoppscotch pour écrire des scripts de pré-requête et des tests pour l'API REST"
 position: 7
-category: quickstart
+category: Démarrage rapide
 ---
 
-You can write test scripts for your API requests in `javaScript`.
+Vous pouvez écrire des scripts de test pour vos demandes d'API dans `javaScript`.
 
-_As you introduce new code, tests ensure that your API is working as intended. The higher your test coverage, the more flexible and bug-resistant your code will be, the less time you'll spend wondering why_[_deleting a picture of a coconut breaks your code._](https://www.thegamer.com/this-coconut-jpg-in-team-fortress-2s-game-files-if-deleted-breaks-the-game-and-no-one-knows-why/)
+_Lorsque vous introduisez un nouveau code, les tests garantissent que votre API fonctionne comme prévu. Plus la couverture de vos tests est élevée, plus votre code sera flexible et résistant aux bogues, et moins vous passerez de temps à vous demander pourquoi..._[_la suppression de l'image d'une noix de coco casse votre code._](https://www.thegamer.com/this-coconut-jpg-in-team-fortress-2s-game-files-if-deleted-breaks-the-game-and-no-one-knows-why/)
 
-# Writing Tests
+# Tests d'écriture
 
-In the last section ([pre-request scripting](/quickstart/scripts)) we worked with dynamically modifying requests. In this we'll work with the response received .
+Dans la dernière section ([scripting de pré-requête](/quickstart/scripts)) nous avons travaillé sur la modification dynamique des requêtes. Dans cette section, nous allons travailler avec la réponse reçue.
 
-## `pw` API
+## API `pw` 
 
-Hoppscotch has a powerful API called `pw` which handles pre-requests and tests.
+Hoppscotch possède une puissante API appelée `pw` qui gère les pré-requêtes et les tests.
 
 - <nuxt-link to="/quickstart/tests#pwexpectvalue"> `.expect(value)`</nuxt-link>
 - <nuxt-link to="/quickstart/tests#not">`.not`</nuxt-link>
@@ -28,32 +28,32 @@ Hoppscotch has a powerful API called `pw` which handles pre-requests and tests.
 - <nuxt-link to="/quickstart/tests#toBeTypetype">`.toBeType(type)`</nuxt-link>
 - <nuxt-link to="/quickstart/tests#toHaveLengthnumber">`.toHaveLength(number)`</nuxt-link>
 - <nuxt-link to="/quickstart/tests#testnamefn">`.test(name, fn)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#repsonse">`.repsonse.`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#response">`.response.`</nuxt-link>
 
-Lets look at how to use `pw.expect()` and `pw.test()` to write our tests.
+Voyons comment utiliser `pw.expect()` et `pw.test()` pour écrire nos tests.
 
 ### pw.expect(`value`)
 
-`expect` returns an expectation object, on which you can call matcher functions. The example below calls the matcher function `toBe` on the expectation object that is returned by calling `pw.expect` with the response id (`pw.response.body.id`) as an argument.
+`expect` renvoie un objet de type "expectation", sur lequel vous pouvez appeler des fonctions de correspondance. L'exemple ci-dessous appelle la fonction matcher `toBe` sur l'objet expectation qui est retourné par l'appel de `pw.expect` avec l'id de la réponse (`pw.response.body.id`) comme argument.
 
-Use `pw.expect` directly for quick and convenient testing. Every `pw.expect` statement will generate a line on the test report.
+Utilisez directement `pw.expect` pour des tests rapides et pratiques. Chaque instruction `pw.expect` générera une ligne sur le rapport de test.
 
 ```javascript
-// This test will pass
+// Ce test passera
 pw.expect(1).toBe(1);
 
-// This test will fail
+// Ce test échouera
 pw.expect(2).not.toBe(2);
 ```
 
 ### .test(`name`,`fn`)
 
-Create a group of tests, with the `name` as a string and `fn` as a callback function to write tests associated with the group. The test results will include the given `name` for better organization.
+Créez un groupe de tests, avec le `name` comme chaîne de caractères et `fn` comme fonction de rappel pour écrire les tests associés au groupe. Les résultats des tests incluront le `name` donné pour une meilleure organisation.
 
-Wrap `expect` statements with `pw.test` to group and describe related statements.
+Enveloppez les déclarations `expect` avec `pw.test` pour regrouper et décrire les déclarations liées.
 
 ```javascript
-// This will return 4 lines on the test report, grouped under "Arithmetic operations"
+// Cela renverra 4 lignes sur le rapport de test, regroupées sous "Opérations arithmétiques".
 pw.test("Arithmetic operations", () => {
   const size = 500 + 500;
   pw.expect(size).toBe(1000);
@@ -63,34 +63,34 @@ pw.test("Arithmetic operations", () => {
 });
 ```
 
-If neither a `pw.expect` nor `pw.test` statement is present, no test reports will be generated.
+Si aucune déclaration `pw.expect` ou `pw.test` n'est présente, aucun rapport de test ne sera généré.
 
 ```javascript
-// This will not generate any test reports
+// Cela ne générera aucun rapport de test
 (99 + 1).toBe(100);
 ```
 
-However you cannot nest `.test` within a `.test` callback function.
+Cependant, vous ne pouvez pas imbriquer `.test` dans une fonction de rappel `.test`.
 
 ```javascript
 pw.test("a group of tests", () => {
   pw.expect(10).toBe(10);
-  // more tests here
+  // plus de tests ici
 });
 ```
 
 ### .toBe(`value`)
 
-Test for exact equality using `toBe`.
+Tester l'égalité exacte en utilisant `toBe`.
 
 ```javascript
 pw.expect(pw.response.body.category).toBe("Sneakers");
 ```
 
-`toBe` uses strict equality and is recommended for primitive data types.
+`toBe` utilise une égalité stricte et est recommandé pour les types de données primitifs.
 
 ```javascript
-// These tests will fail
+// Ces tests échoueront
 pw.expect("hello").toBe("Hello");
 pw.expect(5).toBe("5");
 pw.expect([]).toBe([]);
@@ -98,46 +98,46 @@ pw.expect([]).toBe([]);
 
 ### `.not`
 
-Test for the inverse by adding `.not` before calling the matcher function.
+Testez l'inverse en ajoutant `.not` avant d'appeler la fonction matcher.
 
 ```javascript
-// These tests will pass
+// Ces tests seront réussis
 pw.expect(true).not.toBe(false);
 pw.expect(200).not.toBeLevel3xx();
 ```
 
 ### .toBeLevelxxx()
 
-There are four different matcher functions for quick and convenient testing of the http status code that is returned:
+Il existe quatre fonctions de correspondance différentes permettant de tester rapidement et facilement le code d'état http renvoyé :
 
 - `toBeLevel2xx()`
 - `toBeLevel3xx()`
 - `toBeLevel4xx()`
 - `toBeLevel5xx()`
 
-For example, an argument passed to `expect` must be within `200` and `299` inclusive to pass `toBeLevel2xx()`.
+Par exemple, un argument passé à `expect` doit être compris entre `200` et `299` inclus pour passer `toBeLevel2xx()`.
 
 ```javascript
-// These tests will pass
+// Ces tests seront réussis
 pw.expect(204).toBeLevel2xx();
 pw.expect(308).toBeLevel3xx();
 pw.expect(404).toBeLevel4xx();
 pw.expect(503).toBeLevel5xx();
 ```
 
-If the argument passed to `expect` is a non-numeric value, it is first parsed with `parseInt()`.
+Si l'argument passé à `expect` est une valeur non-numérique, il est d'abord analysé avec `parseInt()`.
 
 ```javascript
-// This test will pass
+// Ce test passera
 pw.expect("404").toBeLevel4xx();
 ```
 
 ### .toBeType(`type`)
 
-Use `.toBeType(type)` for type checking. The argument for this method should be `"string"`, `"boolean"`, `"number"`, `"object"`, `"undefined"`, `"bigint"`, `"symbol"` or `"function"`.
+Utilisez `.toBeType(type)` pour la vérification du type. L'argument de cette méthode doit être `"string"`, `"boolean"`, `"number"`, `"object"`, `"undefined"`, `"bigint"`, `"symbol"` ou `"function"`.
 
 ```javascript
-// These tests will pass
+// Ces tests seront réussis
 pw.expect(5).toBeType("number");
 pw.expect("Hello, world!").toBeType("string");
 
@@ -147,10 +147,10 @@ pw.expect("Hello, world!").not.toBeType("number");
 
 ### .toHaveLength(`number`)
 
-Use `.toHaveLength(number)` to check that an object has a `.length` property and it is set to a certain numeric value.
+Utilisez `.toHaveLength(number)` pour vérifier qu'un objet possède une propriété `.length` et qu'elle est définie sur une certaine valeur numérique.
 
 ```javascript
-// These expectations will pass
+// Ces attentes passeront
 pw.expect("hoppscotch").toHaveLength(10);
 pw.expect("hoppscotch").not.toHaveLength(9);
 
@@ -160,37 +160,37 @@ pw.expect(["apple", "banana", "coconut"]).not.toHaveLength(4);
 
 ### `.response`
 
-Assert response data by accessing the `pw.response` object.
+Assurer les données de réponse en accédant à l'objet `pw.response`.
 
 ```javascript
-// This test will pass
+// Ce test passera
 pw.test("Response is ok", () => {
   pw.expect(pw.response.status).toBe(200);
   pw.expect(pw.response.body).not.toHaveProperty("errors");
 });
 ```
 
-#### Currently supported response values
+#### Valeurs de réponse actuellement prises en charge
 
-- `status`: -number- The status code as an integer.
-- `headers`: -object- The response headers.
-- `body`: -object- the data in the response. In many requests, this is the JSON sent by the server.
+- `status` : -number- Le code d'état sous forme de nombre entier.
+- `headers` : -object- Les en-têtes de la réponse.
+- `body` : -object- Les données de la réponse. Dans de nombreuses requêtes, il s'agit du JSON envoyé par le serveur.
 
-## Examples
+## Exemples
 
-Lets now look at examples of basic API tests.
+Voyons maintenant des exemples de tests API de base.
 
-### Testing `HTTP` status code
+### Tester le code d'état `HTTP`.
 
-Let us write a test to check whether the response to our request has a status code of `200` and that there are no errors in the response body.
-We'll use the URL `https://www.httpbin.org/status/200` and Method `GET`
-In this case we'll need to write two `expect` statements one for checking the status and another for checking the response body.
-However we can wrap `expect` statements with `pw.test` to group and describe related statements.
+Écrivons un test pour vérifier que la réponse à notre requête a un code d'état de `200` et qu'il n'y a pas d'erreurs dans le corps de la réponse.
+Nous allons utiliser l'URL `https://www.httpbin.org/status/200` et la méthode `GET`.
+Dans ce cas, nous devrons écrire deux instructions `expect`, une pour vérifier le statut et une autre pour vérifier le corps de la réponse.
+Cependant, nous pouvons envelopper les instructions `expect` avec `pw.test` pour regrouper et décrire les instructions liées.
 
-There are two ways to test the status code
+Il y a deux façons de tester le code d'état
 
-- check if it is exactly `200` : `pw.expect(pw.response.status)toBe(200)`
-- use the matcher functions for quick and convenient testing of the http status code, in this case `toBeLevel2xx()` : `pw.expect(pw.response.status)toBeLevel2xx()`
+- vérifier si c'est exactement `200` : `pw.expect(pw.response.status)toBe(200)`
+- utiliser les fonctions matcher pour un test rapide et pratique du code d'état http, dans ce cas `toBeLevel2xx()` : `pw.expect(pw.response.status)toBeLevel2xx()`
 
 <code-group>
 
@@ -218,18 +218,18 @@ pw.test("Response is ok", () => {
 
 </code-group>
 
-These tests will sccuessfully pass once you send the request.
+Ces tests passeront sans problème une fois que vous aurez envoyé la demande.
 
 <img src="/tests/response-dark.png" class="dark-img"  alt=""/>
 
 <img src="/tests/response-light.png" class="light-img"  alt=""/>
 
-### Assert Response payload
+### Assurer le chargement de la réponse
 
-Parse the data as JSON and assert properties from the response body.
-In this example we test whether a user id points to a particular user
-Let us use the following GET API endpoint `https://reqres.in/api/users/10`.
-We will use `.toBe` to assert specific values and `.toBeType` to assert specific data type as shown in the code snippet below.
+Analysez les données en JSON et vérifiez les propriétés du corps de la réponse.
+Dans cet exemple, nous testons si un identifiant d'utilisateur correspond à un utilisateur particulier.
+Utilisons le point de terminaison API GET suivant `https://reqres.in/api/users/10`.
+Nous utiliserons `.toBe` pour vérifier des valeurs spécifiques et `.toBeType` pour vérifier un type de données spécifique, comme le montre l'extrait de code ci-dessous.
 
 <code-block label = "Test Script" active>
 
@@ -244,5 +244,5 @@ pw.test("", () => {
 </code-block>
 
 
-### Verify response headers
+### Vérifier les en-têtes de réponse
 
