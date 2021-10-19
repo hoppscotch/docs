@@ -31,6 +31,8 @@ It is free-to-use and as an added perk completely Open Source!
 
 ## Features
 
+<list :items="features"></list>
+
 ### Rest API platform
 
 - Build requests, add scripts, test responses with support for collections and environments
