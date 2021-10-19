@@ -34,7 +34,7 @@ Un aperçu de la documentation peut être vu dans la section documentation.
 <img src="/documentation/local-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
 <img src="/documentation/local-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
 
-<alert> Cette fonctionnalité nécessite que vous vous connectiez avec votre compte github</alert>
+<alert> Cette fonctionnalité nécessite que vous vous connectiez avec votre compte GitHub</alert>
 
 Cliquez sur `créer un gist secret` [^1] dans la section supérieure de la documentation.
 Cela créera un gist secret bien structuré pour votre documentation API.
