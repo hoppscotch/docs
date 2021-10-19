@@ -71,7 +71,7 @@ Allez dans la section des requêtes et écrivez votre requête.
 - Consultez la section Corps de la réponse pour la réponse
 
 <code-group>
-  <code-block label ="Query" active>
+  <code-block label ="Requête" active>
   
   ```javascript
   
@@ -89,14 +89,14 @@ Allez dans la section des requêtes et écrivez votre requête.
   ```
   
   </code-block>
-  <code-block label = "Response" >
+  <code-block label = "Réponse" >
   
   ```javascript
   {
     "data": {
       "capsule": {
         "dragon": {
-          "description": "Dragon 2 (aussi appelé Crew Dragon, Dragon V2, ou anciennement DragonRider)  est la deuxième version du vaisseau spatial Dragon de SpaceX, qui sera un véhicule à usage humain..",
+          "description": "Dragon 2 (also Crew Dragon, Dragon V2, or formerly DragonRider)  is the second version of the SpaceX Dragon spacecraft, which will be a human-rated vehicle...",
           "active": true,
           "first_flight": "2019-03-02",
           "id": "dragon2",
@@ -149,7 +149,7 @@ Pour démontrer l'utilisation des variables, écrivons une requête pour trouver
 
 <code-group>
 
-  <code-block label = "Query" active>
+  <code-block label = "Requête" active>
   
   ```javascript
   query MissionData($id:ID!){

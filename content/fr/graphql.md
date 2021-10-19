@@ -14,7 +14,7 @@ Si vous commencez à vous familiariser avec GraphQl, voici quelques liens utiles
 
 1. [Démarrez rapidement GraphQL](/quickstart/graphql)
 2. <a href="https://www.howtographql.com/">howtographql.com</a>
-3. <a href="https://graphql.org/learn/">howtographql.com</a>
+3. <a href="https://graphql.org/learn/">Introduction à GraphQL</a>
 
 Passons en revue les fonctionnalités fournies par l'éditeur Hoppscotch GraphQl et comment les utiliser.
 

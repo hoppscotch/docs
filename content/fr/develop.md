@@ -21,14 +21,14 @@ Nous utilisons github pour héberger le code, pour suivre les problèmes et les 
 
 #### Nous utilisons [Github Flow](https://guides.github.com/introduction/flow/index.html), Donc tous les changements de code se font par le biais des Pull Requests.
 
-Un pull request est le meilleur moyen de proposer des changements au codebase (nous utilisons [Github Flow](https://guides.github.com/introduction/flow/index.html)). Nous accueillons avec plaisir vos pull requests:
+Un pull request est le meilleur moyen de proposer des modifications au code existant (nous utilisons [Github Flow](https://guides.github.com/introduction/flow/index.html)). Nous accueillons avec plaisir vos pull requests:
 
 1. Embranchez le répertoire (aussi appelé un Fork) et créer votre branche à partir de `main`.
 2. Si vous avez ajouté du code qui doit être testé, ajoutez des tests.
 3. Si vous avez changé d'API, mettez à jour la documentation.
 4. Assurez-vous que la suite de tests passe.
 5. Assurez-vous que votre code est correct.
-6. Créez un pull request avec vos changements!
+6. Créez une pull request!
 
 ## **Développer**
 

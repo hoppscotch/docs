@@ -14,7 +14,7 @@ features:
 <img src="/realtime/Realtime-light.png" class="light-img"  width="1280" height="640" alt=""/>
 <alert type="success">
 
-Cette documentation est un travail en cours !
+Cette documentation est un travail en progression!
 
 </alert>
 Hoppscotch vous aide à développer des applications web en temps réel qui nécessitent une connexion persistante entre le serveur et le client.

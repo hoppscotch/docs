@@ -39,6 +39,6 @@ Un aperçu de la documentation peut être vu dans la section documentation.
 Cliquez sur `créer un gist secret` [^1] dans la section supérieure de la documentation.
 Cela créera un gist secret bien structuré pour votre documentation API.
 
-[^1] : Les gists secrètes ne sont pas privées, vous pouvez envoyer l'URL d'une gist secrète à vos collaborateurs.
+[^1]: Les gists secrètes ne sont pas privées, vous pouvez envoyer l'URL d'une gist secrète à vos collaborateurs.
 
 Les listes secrètes n'apparaissent simplement pas dans la section Discover de GitHub et ne sont pas consultables.

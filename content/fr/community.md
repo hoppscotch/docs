@@ -18,7 +18,7 @@ Chez Hoppscotch, nous pensons que la communauté est la partie la plus important
 Rejoignez nos communautés ouvertes et nos forums pour rester au courant des derniers développements du produit.
 
 <div class="grid gap-8 grid-cols-2 md:grid-cols-3">
-    <community-card logo="/community/discord.svg" title="Join our Discord server" link="https://hoppscotch.io/discord"></community-card>
-    <community-card logo="/community/twitter.svg" title="Follow us on Twitter" link="https://hoppscotch.io/twitter"></community-card>
-    <community-card logo="/community/github.svg" title="Follow us on GitHub" link="https://github.com/hoppscotch/hoppscotch"></community-card>
+    <community-card logo="/community/discord.svg" title="Rejoignez notre serveur Discord" link="https://hoppscotch.io/discord"></community-card>
+    <community-card logo="/community/twitter.svg" title="Suivez-nous sur Twitter" link="https://hoppscotch.io/twitter"></community-card>
+    <community-card logo="/community/github.svg" title="Suivez-nous sur GitHub" link="https://github.com/hoppscotch/hoppscotch"></community-card>
 </div>

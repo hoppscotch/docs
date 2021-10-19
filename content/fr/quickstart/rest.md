@@ -33,7 +33,7 @@ Faites défiler jusqu'au panneau de réponse et vous voyez la réponse suivante.
   
   </code-block>
   
-  <code-block label="Response" active>
+  <code-block label="Réponse" active>
   
   ```bash
   {
@@ -56,7 +56,7 @@ la réponse devrait être comme ceci :
 
 <code-group>
 
-  <code-block label = "Response" active>
+  <code-block label = "Réponse" active>
   
   ```bash
   {
@@ -82,7 +82,7 @@ la réponse devrait être comme ceci :
   
   </code-block>
   
-  <code-block label="API Endpoint">
+  <code-block label="Point de terminaison de l'API">
   
   ```bash
   https://rickandmortyapi.com/api/character

@@ -16,7 +16,7 @@ category: Fonctionnalités
 Comme ceci:
 
 <code-group>
-<code-block label= "URL parameters" active >
+<code-block label= "Paramètres d'URL" active >
 
 ```bash
 https://rickandmortyapi.com/api/character/?name=morty&status=alive

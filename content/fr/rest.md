@@ -8,7 +8,7 @@ category: Pour commencer
 
 <alert type="success">
 
-Cette documentation est un travail en cours !
+Cette documentation est un travail en progression!
 
 </alert>
 
@@ -33,7 +33,7 @@ Passons en revue les fonctionnalités offertes par la plateforme API Hoppscotch 
 
 ---
 
-### Choisir la méthode:
+### Choisir la méthode
 
 <img src="/api/method-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/api/method-light.png" class="light-img" height="1280" width="640" alt=""/>
@@ -63,7 +63,7 @@ _Voir aussi :_
 
 - [Écrire des Tests](/quickstart/tests)
 
-### Corps de la réponse :
+### Corps de la réponse
 
 <img src="/api/response-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/api/response-light.png" class="light-img" height="1280" width="640" alt=""/>
@@ -77,7 +77,7 @@ Les variables d'environnement vous permettent de stocker et de réutiliser des v
 <img src="/api/editEnv-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/api/editEnv-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-**Voir aussi :** [How to use environment variables](/quickstart/rest#environment-variables)
+**Voir aussi :** [Comment utiliser les variables d'environnement](/quickstart/rest#environment-variables)
 
 ## Raccourcis clavier
 
@@ -105,13 +105,6 @@ Les variables d'environnement vous permettent de stocker et de réutiliser des v
 
 Il existe de nombreuses raisons possibles pour lesquelles vos requêtes d'API ne se comportent pas comme prévu.
 
-This is Due to the API not sending the proper API headers( `Access-Control-Allow`). This issue can be solved in two ways.
-
-1.  Ask whoever manages the API to add CORS support.
-2.  Use Middleware like ProxyScotch or the [Hoppscotch Web Extension.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en) and enable it in the **Interceptor** section of settings
-
-▶️**[Know more about Interceptor](/features/interceptor)**
-
 ### Connectivité
 
 Si Hoppscotch ne parvient pas à envoyer votre requête, il se peut que vous rencontriez des problèmes de connectivité. Vérifiez votre connexion en essayant d'ouvrir une page dans votre navigateur Web.
@@ -130,9 +123,9 @@ Il est possible que Hoppscotch fasse des requêtes invalides à votre serveur AP
 
 ### Les restrictions du CORS
 
-#### Qu'est-ce qu'un CORS ?
+#### Qu'est-ce que le CORS ?
 
-Un `CORS` ou Cross-Origin Resource Sharing est un mécanisme de sécurité intégré dans les navigateurs modernes.
+Le `CORS` ou Cross-Origin Resource Sharing est un mécanisme de sécurité intégré dans les navigateurs modernes.
 Il peut provoquer l'erreur suivante lors du test des `points de terminaison de l'API` locaux ou de certains autres points de terminaison de l'API avec Hoppscotch.
 
 <img src="/api/CORS error example.png"   alt=""/>

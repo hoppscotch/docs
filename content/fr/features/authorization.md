@@ -51,4 +51,4 @@ Dans ce modèle d'authentification, vous récupérez d'abord un jeton d'accès �
 
 **Voir aussi:** [Autorisation d'un API](/quickstart/rest#using-auth-tokens)
 
-[^1] : JSON Web Token : JSON Web Token (JWT) est un moyen compact et autonome de transmettre en toute sécurité des informations entre parties sous forme d'objet JSON. Ces informations sont signées numériquement. Les JWT peuvent être signés à l'aide d'un secret ou d'une paire de clés publiques/privées.
+[^1]: JSON Web Token : JSON Web Token (JWT) est un moyen compact et autonome de transmettre en toute sécurité des informations entre parties sous forme d'objet JSON. Ces informations sont signées numériquement. Les JWT peuvent être signés à l'aide d'un secret ou d'une paire de clés publiques/privées.
