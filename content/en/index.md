@@ -26,8 +26,8 @@ This documentation is a work in progress!
 
 </alert>
 
-[Hoppscotch](https://www.hoppscotch.io) is light-weight, web based API development suite. It was built from ground up with ease of use and accessibility in mind providing all the functionality needed for API developers with minimalist, unobtrusive UI.
-It is free-to-use and as an added perk completely Open Source!
+[Hoppscotch](https://www.hoppscotch.io) is light-weight, web based API development suite. It was built from the ground up with ease of use and accessibility in mind, providing all the functionality needed for API developers, with minimalist, unobtrusive UI.
+It is free-to-use, and as an added perk, completely Open Source!
 
 ## Features
 
