@@ -16,7 +16,7 @@ You can add `javaScript` code that executes at 2 events in the flow :
 
 - Before a request is sent to the server, a <a href ="#pre-request-script">Pre-request script </a>can be added
 
-- After a response is received, a <a href ="./tests">test script </a> can be run.
+- After a response is received, a <a href ="../content/en/features/tests.md">test script </a> can be run.
 
 <alert type="success">You can add pre-request and test scripts to saved in collections OR a request not saved to a collection. </alert>
 
