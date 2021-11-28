@@ -32,7 +32,7 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 
 ## **Developing**
 
-Update [`.env.example`](https://github.com/hoppscotch/hoppscotch/blob/main/.env.example) file found in repository's root directory with your own keys and rename it to `.env`.
+Update [`.env.example`](https://github.com/hoppscotch/hoppscotch/blob/main/packages/hoppscotch-app/.env.example) file found in repository's root directory with your own keys and rename it to `.env`.
 
 _Sample keys only works with the [production build](https://hoppscotch.io)._
 
