@@ -56,8 +56,8 @@ It is free-to-use and as an added perk completely Open Source!
 ## Quick Links
 
 - [Github](https://github.com/hoppscotch)
-- [Contribute to Hoppscotch](/community/contribution-guide)
-- [Setup Hoppscotch in local environment](/community/local-setup)
+- [Contribute to Hoppscotch](/develop)
+- [Setup Hoppscotch in local environment](/develop#local-development-environment)
 
 ## Other Links
 
