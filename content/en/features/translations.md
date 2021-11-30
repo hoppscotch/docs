@@ -18,7 +18,7 @@ To set the app to your language follow these steps:
 <img src="/features/language-light.png" class="light-img" height="1280" width="640" alt=""/>
 <img src="/features/language-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 
-- Choose Your languge in the dropdown menu
+- Choose Your language in the dropdown menu
 
 <img src="/features/languageSelect-light.png" class="light-img" height="1280" width="640" alt=""/>
 <img src="/features/languageSelect-dark.png" class="dark-img" height="1280" width="640" alt=""/>
