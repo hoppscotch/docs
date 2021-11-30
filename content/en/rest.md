@@ -134,4 +134,4 @@ This is Due to the API not sending the proper API headers( `Access-Control-Allow
 1.  Ask whoever manages the API to add CORS support.
 2.  Use Middleware like ProxyScotch or the [Hoppscotch Web Extension.](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en) and enable it in the **Interceptor** section of settings
 
-▶️**[Know more about Interceptor](/features/interceptor)**
+▶️ **[Know more about Interceptor](/features/interceptor)**
