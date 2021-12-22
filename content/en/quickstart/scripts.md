@@ -82,7 +82,7 @@ Now in the pre -request script tab add the following logic.
 
 ```javascript
 var random = Math.floor(Math.random() * 10);
-pw.env.set("randomVal", random);
+pw.env.set("randomValue", random);
 ```
 
 </code-block>

@@ -6,7 +6,7 @@ position: 2
 category: Features
 ---
 
-Fast-track your API development by creating `Enviroments` to store variables and reuse their values in your requests and scripts
+Fast-track your API development by creating `Environments` to store variables and reuse their values in your requests and scripts
 
 <img src="/navigation/EnvironmentSC.png"  height="300" width="265" alt="Environments Sidepanel"/>
 
