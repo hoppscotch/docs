@@ -138,6 +138,10 @@ I'm again borrowing these from [Facebook's Guidelines](https://github.com/facebo
 
   [Install](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) • [Repository](https://github.com/editorconfig/editorconfig-vscode)
 
+- npm
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script) • [Repository](https://github.com/Microsoft/vscode-npm-scripts)
+
 ## License
 
 By contributing, you agree that your contributions will be licensed under MIT License.
