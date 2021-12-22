@@ -17,24 +17,17 @@ We love your input! We want to make contributing to this project as easy and tra
 
 ## We Develop with Github
 
-We use github to host code, to track issues and feature requests, as well as accept pull requests.
+We use GitHub to host code, track issues and feature requests, as well as accept pull requests.
 
 #### We Use [Github Flow](https://guides.github.com/introduction/flow/index.html), So All Code Changes Happen Through Pull Requests
 
-Pull requests are the best way to propose changes to the codebase (we use [Github Flow](https://guides.github.com/introduction/flow/index.html)). We actively welcome your pull requests:
-
-1. Fork the repo and create your branch from `main`.
-2. If you've added code that should be tested, add tests.
-3. If you've changed APIs, update the documentation.
-4. Ensure the test suite passes.
-5. Make sure your code lints.
-6. Issue that pull request!
+Pull requests are the best way to propose changes to the codebase (we use [Github Flow](https://guides.github.com/introduction/flow/index.html)). We actively welcome your pull requests.
 
 ## **Developing**
 
 Update [`.env.example`](https://github.com/hoppscotch/hoppscotch/blob/main/packages/hoppscotch-app/.env.example) file found in repository's root directory with your own keys and rename it to `.env`.
 
-_Sample keys only works with the [production build](https://hoppscotch.io)._
+_Sample keys only work with the [production build](https://hoppscotch.io)._
 
 ### Browser based development environment
 
@@ -98,6 +91,52 @@ I'm again borrowing these from [Facebook's Guidelines](https://github.com/facebo
 
 - 2 spaces for indentation rather than tabs
 - You can try using Eslint code extensions in vs code or something similar.
+
+## Recommended VS Code extensions
+
+- WindiCSS IntelliSense
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=voorjaar.windicss-intellisense) • [Repository](https://github.com/windicss/windicss-intellisense)
+
+- Vue Language Features (Volar)
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) • [Repository](https://github.com/johnsoncodehk/volar)
+
+- Stylelint
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) • [Repository](https://github.com/stylelint/vscode-stylelint)
+
+- SCSS IntelliSense
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-scss) • [Repository](https://github.com/mrmlnc/vscode-scss)
+
+- SCSS Formatter
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=sibiraj-s.vscode-scss-formatter) • [Repository](https://github.com/sibiraj-s/vscode-scss-formatter)
+
+- PostCSS Language Support
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=csstools.postcss) • [Repository](https://github.com/csstools/postcss-language)
+
+- npm Intellisense
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense) • [Repository](https://github.com/ChristianKohler/NpmIntellisense)
+
+- JavaScript and TypeScript Nightly
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next) • [Repository](https://github.com/microsoft/vscode-typescript-next)
+
+- GraphQL
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) • [Repository](https://github.com/graphql/vscode-graphql)
+
+- ESLint
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) • [Repository](https://github.com/Microsoft/vscode-eslint)
+
+- EditorConfig for VS Code
+
+  [Install](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) • [Repository](https://github.com/editorconfig/editorconfig-vscode)
 
 ## License
 
