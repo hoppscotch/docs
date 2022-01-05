@@ -249,9 +249,9 @@ In this section, we'll look at passing Authorization and Authentication Informat
 
 #### generating access token
 
-To get access to the Github API, you first need to generate a personal access token. For our demonstration we will generate one granting access to public repositories:
+To get access to the GitHub API, you first need to generate a personal access token. For our demonstration we will generate one granting access to public repositories:
 
-- Go to your [Github account settings](https://github.com/settings/profile) by clicking on your profile icon and clicking on Settings (at the bottom)
+- Go to your [GitHub account settings](https://github.com/settings/profile) by clicking on your profile icon and clicking on Settings (at the bottom)
 - Scroll down and click on Developer setting in the left menu
 
   <img src="/guides/github-developer-settings.png"/>
