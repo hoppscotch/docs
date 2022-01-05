@@ -247,7 +247,7 @@ In this section, we'll look at passing Authorization and Authentication Informat
   }
   ```
 
-#### generating access token
+#### Generating access token
 
 To get access to the GitHub API, you first need to generate a personal access token. For our demonstration we will generate one granting access to public repositories:
 
@@ -329,7 +329,7 @@ The data you send in a `POST` request must be of the following content types:
 
 #### Steps :
 
-1. select `POST` http method and set your API Endpoint URL
+1. Select `POST` http method and set your API Endpoint URL
 2. Add necessary Headers
 3. To add your image file click in the **body** tab and select `mulitpart/form-data` in the content-type dropdown.
 4. Give your file a name and click on the 📎 icon to select your file.
