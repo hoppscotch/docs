@@ -6,7 +6,7 @@ position: 15
 category: Features
 ---
 
-REST APIs use authorizatiom to ensure that a client has secure access only to the resources permitted by their roles.
+REST APIs use authorization to ensure that a client has secure access only to the resources permitted by their roles.
 If you are building or integrating with a 3rd party API, you can choose between **Basic Auth**, **Bearer Tokens** and **OAuth2.0**.
 
 Auth details can be added to a header, body or as parameters to a request.However if you enter your auth details in the **Authorization Tab**, Hoppscotch will automatically modify the relevant parts of the request based on your chosen `Auth` type.
@@ -42,8 +42,8 @@ In this Authentication Model, you first retrieve an access token for the API, th
 
 1. In the Authorization tab for a request, select **OAuth 2.0** from the _Authorization Type_ drop-down.
 
-    <img src="/features/Oauth-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-    <img src="/features/Oauth-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="/features/Oauth-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="/features/Oauth-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 2. Fill out the fields in the section below and click on **Grenerate Token** to generate a new _access token_.
 
