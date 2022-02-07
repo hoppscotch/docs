@@ -60,7 +60,7 @@ pw.env.set("method", "get");
 to access these newly set variables use:
 
 ```bash
-<<<variable_name>>>
+<<variable_name>>
 ```
 
 <img src="/scripting/envscript-dark.png" class="dark-img" height="1280" width="640" alt=""/>
@@ -72,7 +72,7 @@ Lets us take a case where we need to test an randomly test user data available a
 
 Let us use the following GET API endpoint `https://reqres.in/api/users/`.
 
-Add `<<<randomValue>>>` to the endpoint URL.
+Add `<<randomValue>>` to the endpoint URL.
 
 Now in the pre -request script tab add the following logic.
 
@@ -90,7 +90,7 @@ pw.env.set("randomValue", random);
 <code-block label="API url">
 
 ```bash
- https://reqres.in/api/users/<<<randomValue>>>
+ https://reqres.in/api/users/<<randomValue>>
 ```
 
 </code-block>
