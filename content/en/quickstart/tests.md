@@ -18,21 +18,7 @@ In the last section ([pre-request scripting](/quickstart/scripts)) we worked wit
 
 Hoppscotch has a powerful API called `pw` which handles pre-requests and tests.
 
-- <nuxt-link to="/quickstart/tests#pwexpectvalue"> `.expect(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#not">`.not`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBevalue">`.toBe(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBeLevel2xxvalue">`.toBeLevel2xx(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBeLevel3xxvalue">`.toBeLevel3xx(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBeLevel4xxvalue">`.toBeLevel4xx(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBeLevel5xxvalue">`.toBeLevel5xx(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBeTypetype">`.toBeType(type)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toHaveLengthnumber">`.toHaveLength(number)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#testnamefn">`.test(name, fn)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#repsonse">`.repsonse.`</nuxt-link>
-
-Lets look at how to use `pw.expect()` and `pw.test()` to write our tests.
-
-### pw.expect(`value`)
+### .expect(`value`)
 
 `expect` returns an expectation object, on which you can call matcher functions. The example below calls the matcher function `toBe` on the expectation object that is returned by calling `pw.expect` with the response id (`pw.response.body.id`) as an argument.
 
@@ -176,6 +162,44 @@ pw.test("Response is ok", () => {
 - `headers`: -object- The response headers.
 - `body`: -object- the data in the response. In many requests, this is the JSON sent by the server.
 
+### .env.set("variable","value")
+
+Assign a value to the selected environment's variable. If no environment variable is set, an alert will be shown in Test results to add variable to Global environment or to create a new environment.
+
+NOTE: If variable is already set, it will be overwritten.
+
+```javascript
+pw.env.set("variable", "value");
+pw.env.set("body", pw.response.body);
+```
+
+### .env.get("variable")
+
+Retrives the value of the selected environment's variable. Excepts a environment variable as an argument.
+
+```javascript
+pw.env.get("variable");
+pw.env.get("baseURL");
+```
+
+### .env.getResolve("variable")
+
+Retrives the value of the selected environment's variable recurssively. Excepts a environment variable as an argument.
+
+```javascript
+pw.env.getResolve("variable");
+pw.env.getResolve("baseURL");
+```
+
+### .env.resolve("variable")
+
+Retrives the value of the selected environment's variable recurssively. Excepts a environment variable string as an argument.
+
+```javascript
+pw.env.resolve("<<variable_1>><<variable_2>>");
+pw.env.resolve("<<baseURL>><<basePath>>");
+```
+
 ## Examples
 
 Lets now look at examples of basic API tests.
@@ -235,14 +259,10 @@ We will use `.toBe` to assert specific values and `.toBeType` to assert specific
 
 ```javascript
 pw.test("", () => {
-  const user = pw.response.body.json();
+  const user = pw.response.body;
   pw.expect(user.first_name).toBe("Byron");
   pw.expect(user.first_name).toBeType("string");
 });
 ```
 
 </code-block>
-
-
-### Verify response headers
-
