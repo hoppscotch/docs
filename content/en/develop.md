@@ -19,7 +19,7 @@ We love your input! We want to make contributing to this project as easy and tra
 
 We use GitHub to host code, track issues and feature requests, as well as accept pull requests.
 
-#### We Use [GitHub Flow](https://guides.github.com/introduction/flow/index.html), So All Code Changes Happen Through Pull Requests
+#### We Use [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow), So All Code Changes Happen Through Pull Requests
 
 Pull requests are the best way to propose changes to the codebase (we use [GitHub Flow](https://guides.github.com/introduction/flow/index.html)). We actively welcome your pull requests.
 
