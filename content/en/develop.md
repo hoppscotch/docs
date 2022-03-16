@@ -36,8 +36,8 @@ _Sample keys only work with the [production build](https://hoppscotch.io)._
 ### Local development environment
 
 1. [Clone this repo](https://github.com/hoppscotch/hoppscotch.git) with git.
-2. Install dependencies by running `npm install` within the directory that you cloned (probably `hoppscotch`).
-3. Start the development server with `npm run dev`.
+2. Install dependencies by running `pnpm install` within the directory that you cloned (probably `hoppscotch`).
+3. Start the development server with `pnpm run dev`.
 4. Open development site by going to [`http://localhost:3000`](http://localhost:3000) in your browser.
 
 ### Docker compose
@@ -57,8 +57,8 @@ docker run --rm --name hoppscotch -p 3000:3000 hoppscotch/hoppscotch:latest
 ## **Releasing**
 
 1. [Clone this repo](https://github.com/hoppscotch/hoppscotch.git) with git.
-2. Install dependencies by running `npm install` within the directory that you cloned (probably `hoppscotch`).
-3. Build the release files with `npm run generate`.
+2. Install dependencies by running `pnpm install` within the directory that you cloned (probably `hoppscotch`).
+3. Build the release files with `pnpm run generate`.
 4. Find the built project in `./dist`.
 
 #### Any contributions you make will be under the MIT Software License
