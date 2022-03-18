@@ -6,7 +6,7 @@ position: 8
 category: quickstart
 ---
 
-Documenting your API allows collaborators get a better understanding of the functionality of your APIs and helps support deveoper adoptation of your public APIs.
+Documenting your API allows collaborators get a better understanding of the functionality of your APIs and helps support developer adoptation of your public APIs.
 
 You can automatically generate documentations for your API collections.
 And share them through [gists.](https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists)
