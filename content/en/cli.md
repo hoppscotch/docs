@@ -26,7 +26,6 @@ npm i -g @hoppscotch/cli
 | Command     | Description                                                            |
 | ----------- | ---------------------------------------------------------------------- |
 | `hopp test` | Execute all available test scripts in the given Hoppscotch collection. |
-| `hopp help` | List of all available Hoppscotch CLI commands and options.             |
 
 ## `hopp test`
 
