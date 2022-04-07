@@ -144,6 +144,19 @@ pw.expect(["apple", "banana", "coconut"]).toHaveLength(3);
 pw.expect(["apple", "banana", "coconut"]).not.toHaveLength(4);
 ```
 
+### .toInclude(`value`)
+
+Use `.toInclude(value)` to check that an string/array has a `value` entry.
+
+```javascript
+// These expectations will pass
+pw.expect("hoppscotch").toInclude("hopp");
+pw.expect("hoppscotch").not.toInclude("scotch");
+
+pw.expect(["apple", "banana", "coconut"]).toInclude("banana");
+pw.expect(["apple", "banana", "coconut"]).not.toInclude("grape");
+```
+
 ### `.response`
 
 Assert response data by accessing the `pw.response` object.
