@@ -152,7 +152,7 @@ Assert response data by accessing the `pw.response` object.
 // This test will pass
 pw.test("Response is ok", () => {
   pw.expect(pw.response.status).toBe(200);
-  pw.expect(pw.response.body).not.toHaveProperty("errors");
+  pw.expect(pw.response.body).not.toInclude("errors");
 });
 ```
 
@@ -223,7 +223,7 @@ There are two ways to test the status code
 ```javascript
 pw.test("Response is ok", () => {
   pw.expect(pw.response.status).toBe(200);
-  pw.expect(pw.response.body).not.toHaveProperty("errors");
+  pw.expect(pw.response.body).not.toInclude("errors");
 });
 ```
 
@@ -234,7 +234,7 @@ pw.test("Response is ok", () => {
 ```javascript
 pw.test("Response is ok", () => {
   pw.expect(pw.response.status).toBeLevel2xx();
-  pw.expect(pw.response.body).not.toHaveProperty("errors");
+  pw.expect(pw.response.body).not.toInclude("errors");
 });
 ```
 
