@@ -45,7 +45,7 @@ In this Authentication Model, you first retrieve an access token for the API, th
 <img src="/features/Oauth-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/features/Oauth-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-2. Fill out the fields in the section below and click on **Grenerate Token** to generate a new _access token_.
+2. Fill out the fields in the section below and click on **Generate Token** to generate a new _access token_.
 
 3. You can save the token to be re-used later
 
