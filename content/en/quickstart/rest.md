@@ -268,7 +268,7 @@ To get access to the GitHub API, you first need to generate a personal access to
 
 #### Storing Auth Token in Variable
 
-<alert type = "success">It is a recommended safe-practice to have your Auth Details in Enivronment variables rather than inputting it directly to the Authorization tab </alert>
+<alert type = "success">It is a recommended safe-practice to have your Auth Details in Environment variables rather than inputting it directly to the Authorization tab </alert>
 
 - Add the copied string to a new variable named 'token' in an existing or new environment.
   <img src="/guides/addingToEnv-dark.png" class="dark-img" height="300" width="400" alt=""/>
