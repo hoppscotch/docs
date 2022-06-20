@@ -197,7 +197,7 @@ pw.env.get("baseURL");
 
 ### .env.getResolve("variable")
 
-Retrives the value of the selected environment's variable recurssively. Excepts a environment variable as an argument.
+Retrives the value of the selected environment's variable recursively. Excepts a environment variable as an argument.
 
 ```javascript
 pw.env.getResolve("variable");
@@ -206,7 +206,7 @@ pw.env.getResolve("baseURL");
 
 ### .env.resolve("variable")
 
-Retrives the value of the selected environment's variable recurssively. Excepts a environment variable string as an argument.
+Retrives the value of the selected environment's variable recursively. Excepts a environment variable string as an argument.
 
 ```javascript
 pw.env.resolve("<<variable_1>><<variable_2>>");
@@ -255,7 +255,7 @@ pw.test("Response is ok", () => {
 
 </code-group>
 
-These tests will sccuessfully pass once you send the request.
+These tests will successfully pass once you send the request.
 
 <img src="/tests/response-dark.png" class="dark-img"  alt=""/>
 

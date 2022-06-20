@@ -21,12 +21,12 @@ Once connected to the MQTT server, You can either publish a message under a topi
 
 1. Connect to the mqtt server (e.g `wss://test.mosquitto.org:8081`)
 
-2. Check Log to see if conncetionnwas successful or not
+2. Check Log to see if connection was successful or not
 
 3. To test your server add messages under a topic and publish it.
 
 4. Any other device in the server that has subscribed to that topic will get your communication
 
-5. You can recieve messages by subscribing to a topic that some other device in the server is transmitting in.
+5. You can receive messages by subscribing to a topic that some other device in the server is transmitting in.
 
 6. All results will be available in the Log section.

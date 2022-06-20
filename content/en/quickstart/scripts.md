@@ -20,7 +20,7 @@ You can add `javaScript` code that executes at 2 events in the flow :
 
 <alert type="success">You can add pre-request and test scripts to saved in collections OR a request not saved to a collection. </alert>
 
-Hoppscotch wil then execute the scripts along with the requests in the specified order.
+Hoppscotch will then execute the scripts along with the requests in the specified order.
 
 ## Pre request Script
 

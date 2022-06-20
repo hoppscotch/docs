@@ -6,7 +6,7 @@ position: 6
 category: Features
 ---
 
-Hopscotch has `i18n` support to make it truly accessible to developers across the globe.
+Hoppscotch has `i18n` support to make it truly accessible to developers across the globe.
 Hoppscotch currently supports 29+ languages.
 
 ## Change Language

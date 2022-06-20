@@ -41,7 +41,7 @@ You can compose test scripts for your Hoppscotch API demands in JavaScript. Test
 
 2. Use the built-in methods provided by `pw API ` to interact with your end point and to assert outcomes.
 
-3. Click on `SEND` , the test scripts will run on the response recieved from your API.
+3. Click on `SEND` , the test scripts will run on the response received from your API.
 
 4. View The Status of the Tests in the **Test Result** Tab in the response Section.
 
