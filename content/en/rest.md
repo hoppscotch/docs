@@ -124,7 +124,7 @@ It is possible that Hoppscotch might be making invalid requests to your API serv
 
 #### What is CORS?
 
-`CORS` or Cross-Origin Resource Sharing is a security mechanism built into modern web-browers.
+`CORS` or Cross-Origin Resource Sharing is a security mechanism built into modern web-browsers.
 It may cause the following error when testing local `API endpoints` or some other API endpoints with Hoppscotch.
 
 <img src="/api/CORS error example.png"   alt=""/>

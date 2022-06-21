@@ -268,13 +268,13 @@ To get access to the GitHub API, you first need to generate a personal access to
 
 #### Storing Auth Token in Variable
 
-<alert type = "success">It is a recommended safe-practice to have your Auth Details in Enivronment variables rather than inputting it directly to the Authorization tab </alert>
+<alert type = "success">It is a recommended safe-practice to have your Auth Details in Environment variables rather than inputting it directly to the Authorization tab </alert>
 
 - Add the copied string to a new variable named 'token' in an existing or new environment.
   <img src="/guides/addingToEnv-dark.png" class="dark-img" height="300" width="400" alt=""/>
   <img src="/guides/addingToEnv-light.png" class="light-img" height="300" width="400" alt=""/>
 
-- Now open the Authorisation tab and select Bearer Token in the dropdown list.
+- Now open the Authorization tab and select Bearer Token in the dropdown list.
 
 - call the variable token.
 
@@ -283,7 +283,7 @@ To get access to the GitHub API, you first need to generate a personal access to
 <img src="/guides/usingVar-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/guides/usingVar-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-Hoppscotch will automatically add the contents into the authorisation header
+Hoppscotch will automatically add the contents into the authorization header
 
 **Result**
 

@@ -39,7 +39,7 @@ It is free-to-use and as an added perk completely Open Source!
 
 ### GraphQL platform
 
-- Peak into your graphql endpoint, build your queries, organise them into 🗄️collections
+- Peak into your graphql endpoint, build your queries, organize them into 🗄️collections
 
 ### Realtime platform
 

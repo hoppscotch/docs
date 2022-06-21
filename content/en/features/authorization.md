@@ -10,7 +10,7 @@ REST APIs use authorization to ensure that a client has secure access only to th
 If you are building or integrating with a 3rd party API, you can choose between **Basic Auth**, **Bearer Tokens** and **OAuth2.0**.
 
 Auth details can be added to a header, body or as parameters to a request.However if you enter your auth details in the **Authorization Tab**, Hoppscotch will automatically modify the relevant parts of the request based on your chosen `Auth` type.
-Storing _Auth Credentials_ or _Bearer Tokens_ as enironment variables, lets you re-use these more safely and efficiently.
+Storing _Auth Credentials_ or _Bearer Tokens_ as environment variables, lets you re-use these more safely and efficiently.
 
 ## Supported Auth Models
 
@@ -45,7 +45,7 @@ In this Authentication Model, you first retrieve an access token for the API, th
 <img src="/features/Oauth-dark.png" class="dark-img" height="1280" width="640" alt=""/>
 <img src="/features/Oauth-light.png" class="light-img" height="1280" width="640" alt=""/>
 
-2. Fill out the fields in the section below and click on **Grenerate Token** to generate a new _access token_.
+2. Fill out the fields in the section below and click on **Generate Token** to generate a new _access token_.
 
 3. You can save the token to be re-used later
 
