@@ -188,7 +188,7 @@ pw.env.set("body", pw.response.body);
 
 ### .env.get("variable")
 
-Retrives the value of the selected environment's variable. Excepts a environment variable as an argument.
+Retrives the value of the selected environment's variable. Accepts a environment variable as an argument.
 
 ```javascript
 pw.env.get("variable");
@@ -197,7 +197,7 @@ pw.env.get("baseURL");
 
 ### .env.getResolve("variable")
 
-Retrives the value of the selected environment's variable recursively. Excepts a environment variable as an argument.
+Retrives the value of the selected environment's variable recursively. Accepts a environment variable as an argument.
 
 ```javascript
 pw.env.getResolve("variable");
@@ -206,7 +206,7 @@ pw.env.getResolve("baseURL");
 
 ### .env.resolve("variable")
 
-Retrives the value of the selected environment's variable recursively. Excepts a environment variable string as an argument.
+Retrives the value of the selected environment's variable recursively. Accepts a environment variable string as an argument.
 
 ```javascript
 pw.env.resolve("<<variable_1>><<variable_2>>");
