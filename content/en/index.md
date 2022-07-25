@@ -26,12 +26,12 @@ This documentation is a work in progress!
 
 </alert>
 
-[Hoppscotch](https://www.hoppscotch.io) is light-weight, web based API development suite. It was built from ground up with ease of use and accessibility in mind providing all the functionality needed for API developers with minimalist, unobtrusive UI.
+[Hoppscotch](https://www.hoppscotch.io) is light-weight, web based API development suite. It was built from the ground up with ease of use and accessibility in mind providing all the functionality needed for API developers with minimalist, unobtrusive UI.
 It is free-to-use and as an added perk completely Open Source!
 
 ## Features
 
-### Rest API platform
+### REST API platform
 
 - Build requests, add scripts, test responses with support for collections and environments
 - Access browser blocked APIS with [proxy](https://github.com/hoppscotch/proxyscotch)
@@ -39,25 +39,25 @@ It is free-to-use and as an added perk completely Open Source!
 
 ### GraphQL platform
 
-- Peak into your graphql endpoint, build your queries, organize them into 🗄️collections
+- Peek into your GraphQL endpoint, build your queries, organize them into 🗄️collections
 
 ### Realtime platform
 
 - Test
 - Websocket
 - Socket.io
-- MQtt
+- MQTT
 - SSE connections
 
 ### API Documentation
 
-- Make your APIs accessible to others by creating documentation and publishing them as gists.
+- Make your APIs accessible to others by creating documentation and publishing them as Gists.
 
 ## Quick Links
 
 - [GitHub](https://github.com/hoppscotch)
 - [Contribute to Hoppscotch](/develop)
-- [Setup Hoppscotch in local environment](/develop#local-development-environment)
+- [Setup Hoppscotch in a local environment](/develop#local-development-environment)
 
 ## Other Links
 
