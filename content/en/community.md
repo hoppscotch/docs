@@ -5,10 +5,10 @@ menuTitle: Community
 category: Community
 position: 1
 features:
-  - 34,500+ GitHub Stars
-  - 2,500+ Forks
-  - 170+ Contributors
-  - 3,800+ commits
+  - 45,000+ GitHub Stars
+  - 3,000+ Forks
+  - 180+ Contributors
+  - 4,000+ commits
 ---
 
 At Hoppscotch, we believe that the community is the most important part of our product. We want to make sure that our users have a great experience using our products and that they are able to contribute to the development of our products with their ideas, feedback, and suggestions.
