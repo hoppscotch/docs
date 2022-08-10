@@ -30,6 +30,7 @@ Bring up the shortcuts sidebar with <kbd>Ctrl</kbd> + <kbd>K</kbd>
 | `Alt`&nbsp; `W`  | Go to Realtime page      |
 | `Alt`&nbsp; `D`  | Go to Documentation Page |
 | `Alt`&nbsp; `S`  | Go to Settings page      |
+| `Alt`&nbsp; `M`  | Go to Profile page      |
 
 ## Rest Platform Shortcuts
 
