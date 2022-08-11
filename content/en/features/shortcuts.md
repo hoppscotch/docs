@@ -28,7 +28,7 @@ Bring up the shortcuts sidebar with <kbd>Ctrl</kbd> + <kbd>K</kbd>
 | `Alt`&nbsp; `R`  | Go to REST page          |
 | `Alt`&nbsp; `Q`  | Go to GraphQL page       |
 | `Alt`&nbsp; `W`  | Go to Realtime page      |
-| `Alt`&nbsp; `D`  | Go to Documentation Page |
+| `Alt`&nbsp; `D`  | Go to Documentation page |
 | `Alt`&nbsp; `S`  | Go to Settings page      |
 | `Alt`&nbsp; `M`  | Go to Profile page      |
 
