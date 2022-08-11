@@ -29,4 +29,4 @@ The user interface is pretty self explanatory
 1. enter SSE url (e.g https://express-eventsource.herokuapp.com/events)
 2. Choose the event type that you want to subscribe to and connect.
 3. Message from the SSE server will automatically and continuously updated in the log area,
-   until either the server or client (you) termintate the connection.
+   until either the server or client (you) terminate the connection.

@@ -20,7 +20,7 @@ The body section is typically used when you choose the following methods:
 - `PATCH`
 
 The Body tab in Hoppscotch allows you to specify the data you need to send with a request.
-You can choosefrom the dropdown menu various different content-types of body data to suit your API.
+You can choose from the dropdown menu various different content-types of body data to suit your API.
 
 
 
@@ -33,7 +33,7 @@ By default, Hoppscotch will select None—leave it selected if you do not need t
 
 | Content Type                      |  Function      |
 |-----------------------------------|----------------|
-| applcation/json                   | Indicates that the request body format is JSON.                |
+| application/json                   | Indicates that the request body format is JSON.                |
 | application/Id + json             |  For JSON-LD           |
 | application/hal+json              | To Respond to APIs requiring mediatype for HyperText Application Language | 
 | application/ vnd.api + json       | The application/vnd.api+json MIME type is reserved for communication using the  `JSON API` protocol.|

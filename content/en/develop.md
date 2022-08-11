@@ -15,13 +15,13 @@ We love your input! We want to make contributing to this project as easy and tra
 
 <list :items="features"></list>
 
-## We Develop with Github
+## We Develop with GitHub
 
 We use GitHub to host code, track issues and feature requests, as well as accept pull requests.
 
-#### We Use [Github Flow](https://guides.github.com/introduction/flow/index.html), So All Code Changes Happen Through Pull Requests
+#### We Use [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow), So All Code Changes Happen Through Pull Requests
 
-Pull requests are the best way to propose changes to the codebase (we use [Github Flow](https://guides.github.com/introduction/flow/index.html)). We actively welcome your pull requests.
+Pull requests are the best way to propose changes to the codebase (we use [GitHub Flow](https://guides.github.com/introduction/flow/index.html)). We actively welcome your pull requests.
 
 ## **Developing**
 
@@ -36,8 +36,8 @@ _Sample keys only work with the [production build](https://hoppscotch.io)._
 ### Local development environment
 
 1. [Clone this repo](https://github.com/hoppscotch/hoppscotch.git) with git.
-2. Install dependencies by running `npm install` within the directory that you cloned (probably `hoppscotch`).
-3. Start the development server with `npm run dev`.
+2. Install dependencies by running `pnpm install` within the directory that you cloned (probably `hoppscotch`).
+3. Start the development server with `pnpm run dev`.
 4. Open development site by going to [`http://localhost:3000`](http://localhost:3000) in your browser.
 
 ### Docker compose
@@ -57,15 +57,15 @@ docker run --rm --name hoppscotch -p 3000:3000 hoppscotch/hoppscotch:latest
 ## **Releasing**
 
 1. [Clone this repo](https://github.com/hoppscotch/hoppscotch.git) with git.
-2. Install dependencies by running `npm install` within the directory that you cloned (probably `hoppscotch`).
-3. Build the release files with `npm run generate`.
+2. Install dependencies by running `pnpm install` within the directory that you cloned (probably `hoppscotch`).
+3. Build the release files with `pnpm run generate`.
 4. Find the built project in `./dist`.
 
 #### Any contributions you make will be under the MIT Software License
 
 In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
 
-#### Report bugs using Github's [issues](https://github.com/hoppscotch/hoppscotch/issues)
+#### Report bugs using GitHub's [issues](https://github.com/hoppscotch/hoppscotch/issues)
 
 We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/hoppscotch/hoppscotch/issues); it's that easy!
 

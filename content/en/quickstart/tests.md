@@ -18,21 +18,7 @@ In the last section ([pre-request scripting](/quickstart/scripts)) we worked wit
 
 Hoppscotch has a powerful API called `pw` which handles pre-requests and tests.
 
-- <nuxt-link to="/quickstart/tests#pwexpectvalue"> `.expect(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#not">`.not`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBevalue">`.toBe(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBeLevel2xxvalue">`.toBeLevel2xx(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBeLevel3xxvalue">`.toBeLevel3xx(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBeLevel4xxvalue">`.toBeLevel4xx(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBeLevel5xxvalue">`.toBeLevel5xx(value)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toBeTypetype">`.toBeType(type)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#toHaveLengthnumber">`.toHaveLength(number)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#testnamefn">`.test(name, fn)`</nuxt-link>
-- <nuxt-link to="/quickstart/tests#repsonse">`.repsonse.`</nuxt-link>
-
-Lets look at how to use `pw.expect()` and `pw.test()` to write our tests.
-
-### pw.expect(`value`)
+### .expect(`value`)
 
 `expect` returns an expectation object, on which you can call matcher functions. The example below calls the matcher function `toBe` on the expectation object that is returned by calling `pw.expect` with the response id (`pw.response.body.id`) as an argument.
 
@@ -158,6 +144,19 @@ pw.expect(["apple", "banana", "coconut"]).toHaveLength(3);
 pw.expect(["apple", "banana", "coconut"]).not.toHaveLength(4);
 ```
 
+### .toInclude(`value`)
+
+Use `.toInclude(value)` to check that an string/array has a `value` entry.
+
+```javascript
+// These expectations will pass
+pw.expect("hoppscotch").toInclude("hopp");
+pw.expect("hoppscotch").not.toInclude("scotch");
+
+pw.expect(["apple", "banana", "coconut"]).toInclude("banana");
+pw.expect(["apple", "banana", "coconut"]).not.toInclude("grape");
+```
+
 ### `.response`
 
 Assert response data by accessing the `pw.response` object.
@@ -166,7 +165,7 @@ Assert response data by accessing the `pw.response` object.
 // This test will pass
 pw.test("Response is ok", () => {
   pw.expect(pw.response.status).toBe(200);
-  pw.expect(pw.response.body).not.toHaveProperty("errors");
+  pw.expect(pw.response.body).not.toInclude("errors");
 });
 ```
 
@@ -175,6 +174,44 @@ pw.test("Response is ok", () => {
 - `status`: -number- The status code as an integer.
 - `headers`: -object- The response headers.
 - `body`: -object- the data in the response. In many requests, this is the JSON sent by the server.
+
+### .env.set("variable","value")
+
+Assign a value to the selected environment's variable. If no environment variable is set, an alert will be shown in Test results to add variable to Global environment or to create a new environment.
+
+NOTE: If variable is already set, it will be overwritten.
+
+```javascript
+pw.env.set("variable", "value");
+pw.env.set("body", pw.response.body);
+```
+
+### .env.get("variable")
+
+Retrives the value of the selected environment's variable. Accepts a environment variable as an argument.
+
+```javascript
+pw.env.get("variable");
+pw.env.get("baseURL");
+```
+
+### .env.getResolve("variable")
+
+Retrives the value of the selected environment's variable recursively. Accepts a environment variable as an argument.
+
+```javascript
+pw.env.getResolve("variable");
+pw.env.getResolve("baseURL");
+```
+
+### .env.resolve("variable")
+
+Retrives the value of the selected environment's variable recursively. Accepts a environment variable string as an argument.
+
+```javascript
+pw.env.resolve("<<variable_1>><<variable_2>>");
+pw.env.resolve("<<baseURL>><<basePath>>");
+```
 
 ## Examples
 
@@ -199,7 +236,7 @@ There are two ways to test the status code
 ```javascript
 pw.test("Response is ok", () => {
   pw.expect(pw.response.status).toBe(200);
-  pw.expect(pw.response.body).not.toHaveProperty("errors");
+  pw.expect(pw.response.body).not.toInclude("errors");
 });
 ```
 
@@ -210,7 +247,7 @@ pw.test("Response is ok", () => {
 ```javascript
 pw.test("Response is ok", () => {
   pw.expect(pw.response.status).toBeLevel2xx();
-  pw.expect(pw.response.body).not.toHaveProperty("errors");
+  pw.expect(pw.response.body).not.toInclude("errors");
 });
 ```
 
@@ -218,7 +255,7 @@ pw.test("Response is ok", () => {
 
 </code-group>
 
-These tests will sccuessfully pass once you send the request.
+These tests will successfully pass once you send the request.
 
 <img src="/tests/response-dark.png" class="dark-img"  alt=""/>
 
@@ -235,14 +272,10 @@ We will use `.toBe` to assert specific values and `.toBeType` to assert specific
 
 ```javascript
 pw.test("", () => {
-  const user = pw.response.body.json();
+  const user = pw.response.body;
   pw.expect(user.first_name).toBe("Byron");
   pw.expect(user.first_name).toBeType("string");
 });
 ```
 
 </code-block>
-
-
-### Verify response headers
-

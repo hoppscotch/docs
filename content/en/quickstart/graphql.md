@@ -107,14 +107,14 @@ query GetCapsuleInfo{
 </code-block>
 </code-group>
 
-Now go to the docs section, search for capsule and look at all supported queries and customizethe current query. \
-**Challenge:** Get the mission name for capusle `c205`
+Now go to the docs section, search for capsule and look at all supported queries and customize the current query. \
+**Challenge:** Get the mission name for capsule `c205`
 
 ## Using Variables
 
 Hoppscotch allows you to pass variables in the query in the same way as graphQL playground.
 
-To demonstrate the use of vaiables lets write a query to find mission details for Iridium Satellite launches
+To demonstrate the use of variables lets write a query to find mission details for Iridium Satellite launches
 ( Mission id = `F3364BF1`)
 
 - In the variables section add the variables (**variables need to be in json format**)
@@ -179,4 +179,4 @@ query MissionData($id:ID!){
 
 </code-group>
 
-[^1]: Defination from graphql's official website
+[^1]: Definition from graphql's official website

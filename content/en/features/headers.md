@@ -10,7 +10,7 @@ category: Features
 
 This can be used in an HTTP request to provide context to a request being made, so that the server can tailor the response.
 E.g `Accept-*`vheaders indicate the allowed and preferred formats of the response.
-Other Headers can be used to supply Authentication credentials, to control caching, or to get infrmation about the user agent etc..,
+Other Headers can be used to supply Authentication credentials, to control caching, or to get information about the user agent etc..,
 
 ## Modifying Request Header
 
