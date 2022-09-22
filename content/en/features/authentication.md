@@ -1,9 +1,9 @@
 ---
 title: Sign in with ease
-description: Sample
-menuTitle: Authentication
-position: 5
-category: Features
+Description: Sample
+MenuTitle: Authentication
+Position: 5
+Category: Features
 ---
 
 **Sign in to Hoppscotch with these providers**
