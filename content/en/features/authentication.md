@@ -1,5 +1,5 @@
 ---
-title: Sign in with ease
+Title: Sign in with ease
 Description: Sample
 MenuTitle: Authentication
 Position: 5
