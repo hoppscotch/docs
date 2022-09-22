@@ -1,9 +1,9 @@
 ---
-title: Realtime platform
-description: "using Realtime Paltform"
-position: 4
-category: Getting started
-features:
+Title: Realtime platform
+Description: "using Realtime Paltform"
+Position: 4
+Category: Getting started
+Features:
   - "WebSocket"
 
   - "SSE (server-sent Events)"
