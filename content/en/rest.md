@@ -1,9 +1,9 @@
 ---
-title: RestAPI platform
-description: "Rest Editor "
-position: 2
+Title: RestAPI platform
+Description: "Rest Editor "
+Position: 2
 
-category: Getting started
+Category: Getting started
 ---
 
 <alert type="success">
