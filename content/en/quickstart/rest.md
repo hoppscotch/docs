@@ -1,10 +1,10 @@
 ---
 
-title: Send a REST request
-menuTitle: REST
-description: "Hoppscotch Guide for REST requests"
-position: 5
-category: quickstart
+Title: Send a REST request
+MenuTitle: REST
+Description: "Hoppscotch Guide for REST requests"
+Position: 5
+Category: quickstart
 ---If you are new to API development and want to know more about the basics of APIs, follow along this guide!
 
    <img src="/guides/Illustration-dark.png" class="dark-img" height="600" width="640" alt=""/>
