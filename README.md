@@ -33,7 +33,7 @@ To preview the static generated app, run `npm run start`
 ## Contributors Guide
 
 We are looking for translators to help us with translations of Docs. [docs.hoppscotch](https://docs.hoppscotch.io) is built with nuxt-content.
-For detailed explanation on how things work, checkout [nuxt/content](https://content.nuxtjs.org) and [@nuxt/content theme docs](https://content.nuxtjs.org/themes-docs).
+For detailed explanation on how things work, checkout [nuxt/content](https://content.nuxtjs.org) and [@nuxt/content theme docs](https://content.nuxtjs.org/v1/examples/docs-theme).
 
 ### Steps
 
