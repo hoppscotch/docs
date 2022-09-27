@@ -36,14 +36,14 @@ In this Authentication Model, you first retrieve an access token for the API, th
 
 **An example OAuth 2.0 flow could run as follows:**
 
-<img src="/features/OAuth2.0.png"  height="1280" width="640" alt=""/>
+<img src="static/features/OAuth2.0.png"  height="1280" width="640" alt=""/>
 
 #### Steps:
 
 1. In the Authorization tab for a request, select **OAuth 2.0** from the _Authorization Type_ drop-down.
 
-<img src="/features/Oauth-dark.png" class="dark-img" height="1280" width="640" alt=""/>
-<img src="/features/Oauth-light.png" class="light-img" height="1280" width="640" alt=""/>
+<img src="static/features/Oauth-dark.png" class="dark-img" height="1280" width="640" alt=""/>
+<img src="static/features/Oauth-light.png" class="light-img" height="1280" width="640" alt=""/>
 
 2. Fill out the fields in the section below and click on **Generate Token** to generate a new _access token_.
 
