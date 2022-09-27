@@ -6,8 +6,8 @@ position: 12
 category: Features
 ---
 
-<img src="/features/body-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
-<img src="/features/body-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
+<img src="static/Features/body-dark.png" class="dark-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
+<img src="static/Features/body-light.png" class="light-img" height="1280" width="640" alt="API DOCUMENTATION IMAGES"/>
 
 ### Sending Data in Request Body
 
