@@ -157,6 +157,15 @@ pw.expect(["apple", "banana", "coconut"]).toInclude("banana");
 pw.expect(["apple", "banana", "coconut"]).not.toInclude("grape");
 ```
 
+### .toHaveProperty(`attribute`)
+
+Use `.toHaveProperty(attribute)` to check that an object/JSON has an `attribute` entry.
+
+```javascript
+pw.expect(pw.response.body).toHaveProperty("data");
+pw.expect(pw.response.body).not.toHaveProperty("errors");
+```
+
 ### `.response`
 
 Assert response data by accessing the `pw.response` object.
@@ -165,7 +174,7 @@ Assert response data by accessing the `pw.response` object.
 // This test will pass
 pw.test("Response is ok", () => {
   pw.expect(pw.response.status).toBe(200);
-  pw.expect(pw.response.body).not.toInclude("errors");
+  pw.expect(pw.response.body).not.toHaveProperty("errors");
 });
 ```
 
@@ -236,7 +245,7 @@ There are two ways to test the status code
 ```javascript
 pw.test("Response is ok", () => {
   pw.expect(pw.response.status).toBe(200);
-  pw.expect(pw.response.body).not.toInclude("errors");
+  pw.expect(pw.response.body).not.toHaveProperty("errors");
 });
 ```
 
@@ -247,7 +256,7 @@ pw.test("Response is ok", () => {
 ```javascript
 pw.test("Response is ok", () => {
   pw.expect(pw.response.status).toBeLevel2xx();
-  pw.expect(pw.response.body).not.toInclude("errors");
+  pw.expect(pw.response.body).not.toHaveProperty("errors");
 });
 ```
 

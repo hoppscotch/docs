@@ -23,6 +23,7 @@ You can compose test scripts for your Hoppscotch API demands in JavaScript. Test
 - <nuxt-link to="/quickstart/tests#tobetypetype">`.toBeType(type)`</nuxt-link>
 - <nuxt-link to="/quickstart/tests#tohavelengthnumber">`.toHaveLength(number)`</nuxt-link>
 - <nuxt-link to="/quickstart/tests#toincludevalue">`.toInclude(value)`</nuxt-link>
+- <nuxt-link to="/quickstart/tests#tohavepropertyattribute">`.toHaveProperty(attribute)`</nuxt-link>
 - <nuxt-link to="/quickstart/tests#response">`.response`</nuxt-link>
 - <nuxt-link to="/quickstart/tests#envsetvariablevalue">`.env.set("variable", "value")`</nuxt-link>
 - <nuxt-link to="/quickstart/tests#envgetvariable">`.env.get("variable")`</nuxt-link>

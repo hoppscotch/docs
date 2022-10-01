@@ -5,9 +5,9 @@ menuTitle: Collaborate
 position: 1
 category: Features
 features:
-  - 34,500+ GitHub Stars
-  - 2,500+ Forks
-  - 170+ Contributors
+  - 46,500+ GitHub Stars
+  - 3,500+ Forks
+  - 190+ Contributors
   - 3,800+ commits
 ---
 
@@ -15,14 +15,11 @@ features:
 
 ## **Create a Team**
 
-Teams feature will be available in your [Profile page](https://hoppscotch.io/profile) (under Teams tab).
+Teams section will be available in your [Profile page](https://hoppscotch.io/profile) (under Teams tab).
 
 1. Proceed to the [Profile page](https://hoppscotch.io/profile)
-2. Click "**+ New**" under the Teams section to create a new team
+2. Click "**Create new team**" under the Teams section to create a new team
 3. Provide a team name and click "**Save**"
-
-![sample screenshot](https://i.imgur.com/L3d1gc2.png)
-![sample screenshot](https://i.imgur.com/YXLIbU8.png)
 
 ---
 

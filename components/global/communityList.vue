@@ -1,18 +1,12 @@
 <template>
   <a
     :href="link"
-    class="cursor-pointer flex
-     py-4
-     px-8
-     transition
-      no-underline
-     items-center
-     dark:bg-gray-800  hover:bg-gray-100  "
+    class="flex items-center px-8 py-4 no-underline transition cursor-pointer dark:bg-gray-800 hover:bg-gray-100"
     target="_blank"
   >
-    <img class=" w-6" layout="responsive" :src="logo" :alt="title" />
+    <img class="w-6" layout="responsive" :src="logo" :alt="title" />
     <span
-      class="font-semibold mt-0 text-center text-normal ml-4 text-gray-700"
+      class="mt-0 ml-4 font-semibold text-center text-gray-700 text-normal"
       >{{ title }}</span
     >
   </a>
