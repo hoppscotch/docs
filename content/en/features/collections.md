@@ -14,6 +14,6 @@ Collections can be
 
 Access the collections tab in the Right side-panel.
 
-<img src="/navigation/collectionsSC.png"  height="300" width="265" alt="Collections Sidepanel"/>
+<img src="static/Navigation/collectionsSC.png"  height="300" width="265" alt="Collections Sidepanel"/>
 
 _See Also :_ [Collections](/quickstart/rest#using-collections)
