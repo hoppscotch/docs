@@ -78,7 +78,7 @@ Switch Between WebSocket, SSE, Socket.IO, MQTT in the top bar
 
 _See Also :_
 
-- [Realtime Editor](/realtimesocket)
+- [Realtime Editor](/realtime)
 
 ## API documentation generator
 
