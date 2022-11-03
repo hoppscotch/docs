@@ -100,7 +100,7 @@ I'm again borrowing these from [Facebook's Guidelines](https://github.com/facebo
 
 - Vue Language Features (Volar)
 
-  [Install](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) • [Repository](https://github.com/johnsoncodehk/volar)
+  [Install](https://marketplace.visualstudio.com/items?itemName=vue.volar) • [Repository](https://github.com/johnsoncodehk/volar)
 
 - Stylelint
 
