@@ -12,7 +12,7 @@ category: quickstart
 <img src="/scripting/Script -order-light.png" class="light-img" height="1280" width="640" alt="History Sidepanel"/>
 
 Hoppscotch lets you to add **dynamic behaviour** to REST requests . This allows you to write test suites and build requests that can contain dynamic parameters.
-You can add `javaScript` code that executes at 2 events in the flow :
+You can add `JavaScript` code that executes at 2 events in the flow :
 
 - Before a request is sent to the server, a <a href ="#pre-request-script">Pre-request script </a>can be added
 

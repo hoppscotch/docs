@@ -6,7 +6,7 @@ position: 7
 category: quickstart
 ---
 
-You can write test scripts for your API requests in `javaScript`.
+You can write test scripts for your API requests in `JavaScript`.
 
 _As you introduce new code, tests ensure that your API is working as intended. The higher your test coverage, the more flexible and bug-resistant your code will be, the less time you'll spend wondering why_[_deleting a picture of a coconut breaks your code._](https://www.thegamer.com/this-coconut-jpg-in-team-fortress-2s-game-files-if-deleted-breaks-the-game-and-no-one-knows-why/)
 
