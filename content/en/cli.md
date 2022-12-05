@@ -34,13 +34,26 @@ The `hopp test` command allows you to run tests against a Hoppscotch collection 
 ## Usage
 
 ```bash
-hopp test <hoppscotch collection file>
+hopp test [-e <environment file>] <hoppscotch collection file>
 ```
 
 ## Example
 
 ```bash
 hopp test kitchen-sink-hoppscotch-collection.json
+hopp test -e environment.json kitchen-sink-hoppscotch-collection.json
+```
+
+### Environment
+Hoppscotch allows templates in several places. For example you could specify your endpoint url as `"<<baseurl>>/post"` and specify `baseurl` as `"http://postman-echo.com"` in the env file.
+
+The expected format of the environment file is 
+```
+{
+  "baseurl": "http://postman-echo.com",
+  "key2": "value2",
+  "key3": "value3"
+}
 ```
 
 ## Behavior
