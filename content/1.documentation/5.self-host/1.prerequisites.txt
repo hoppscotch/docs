@@ -1,0 +1,133 @@
+---
+title: Prerequisites
+---
+
+# Prerequisites
+
+Hoppscotch is a self-hosted API development platform, packaged as a set of Docker containers. You can install and run Hoppscotch on any operating system that can run a [Docker Engine](https://docs.docker.com/engine). You can use Hoppscotch on your local machine or a cloud provider of your choice.
+
+## System Requirements
+
+Hoppscotch is designed to run well on both small and large deployments. The minimum requirements to run Hoppscotch are as little as 1 CPU core and 2GB of RAM, and an operating system that supports Docker.
+
+## Install Node.js, npm, pnpm
+
+### Node.js + npm
+
+Install [`Node.js`](https://nodejs.org/en) (v18+) and [`npm`](https://www.npmjs.com) (v9+).
+
+::alert{type="info"}
+::list{type="info"}
+
+- [Node.js + npm installation guide :icon{name=lucide:arrow-right}](https://nodejs.org/en/download)
+
+::
+::
+
+Verify Node.js and npm installation by running the following commands in your terminal:
+
+```bash
+node -v
+```
+
+```bash
+npm -v
+```
+
+### pnpm
+
+Install [`pnpm`](https://pnpm.io) (v6+).
+
+::alert{type="info"}
+::list{type="info"}
+
+- [pnpm installation guide :icon{name=lucide:arrow-right}](https://pnpm.io/installation)
+
+::
+::
+
+Verify pnpm installation by running the following command in your terminal:
+
+```bash
+pnpm -v
+```
+
+## Docker
+
+Install [`Docker`](https://www.docker.com) (v20+).
+
+::alert{type="info"}
+::list{type="info"}
+
+- [Docker installation guide :icon{name=lucide:arrow-right}](https://docs.docker.com/engine/install)
+
+::
+::
+
+Verify Docker installation by running the following command in your terminal:
+
+```bash
+docker -v
+```
+
+## Git
+
+Install [`Git`](https://git-scm.com) (v2+).
+
+::alert{type="info"}
+::list{type="info"}
+
+- [Git installation guide :icon{name=lucide:arrow-right}](https://git-scm.com/download)
+
+::
+::
+
+Verify Git installation by running the following command in your terminal:
+
+```bash
+git --version
+```
+
+## Email delivery
+
+Hoppscotch come with support for easy integrations with 3rd party SMTP providers. You will need emails so that you can invite your team to use Hoppscotch and order for emails to work, you will need to setup proper SMTP configuration as described below.
+
+To enable email delivey, you will need to generate a valid SMTP URL in the below format:
+
+```text
+smtps://user@domain.com:pass@smtp.domain.com
+```
+
+For example, if you are using Gmail as your SMTP server your SMTP URL will look like something shown below:
+
+```text
+smtps://user@gmail.com:pass@smtp.gmail.com
+```
+
+## Postgres database
+
+Hoppscotch uses a Postgres database to store all the data. You can use any Postgres database provider of your choice - hosted locally or on a cloud provider. Make sure you have a valid Postgres database URL in the below format:
+
+```text
+postgresql://username:password@url:5432/dbname
+```
+
+## OAuth
+
+You also need to configure an OAuth provider to enable third party authentication. Hoppscotch supports the following OAuth providers:
+
+1. Email
+2. GitHub
+3. Google
+4. Microsoft
+
+To configure the mandatory third party authentication, you will need to generate a valid OAuth client ID and client secret for the OAuth provider of your choice. You will also need to provide a valid callback URL for the OAuth provider.
+
+For example, if you are using GitHub as your OAuth provider, you will need to generate a valid OAuth client ID and client secret for GitHub. You will also need to provide a valid callback URL for GitHub. The environment variables for GitHub OAuth provider will look like something shown below:
+
+```text
+GITHUB_CLIENT_ID="*****"
+GITHUB_CLIENT_SECRET="*****"
+GITHUB_CALLBACK_URL="http://localhost:3170/auth/github/callback"
+GITHUB_SCOPE="user:email"
+```

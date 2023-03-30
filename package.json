@@ -1,17 +1,19 @@
 {
-  "name": "docs",
-  "version": "1.0.0",
+  "name": "docus-starter",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview",
+    "lint": "eslint ."
   },
-  "dependencies": {
-    "@nuxt/content-theme-docs": "^0.11.1",
-    "@nuxtjs/tailwindcss": "^4.2.1",
-    "@tailwindcss/typography": "0.2.0",
-    "nuxt": "^2.13.3"
+  "devDependencies": {
+    "@docsearch/js": "^3.3.3",
+    "@nuxt-themes/docus": "^1.10.1",
+    "@nuxt/eslint-config": "^0.1.1",
+    "eslint": "^8.37.0",
+    "nuxt": "^3.3.2"
   }
 }

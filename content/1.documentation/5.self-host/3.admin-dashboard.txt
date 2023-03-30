@@ -1,0 +1,42 @@
+---
+title: Admin dashboard
+---
+
+# Admin dashboard
+
+The admin dashboard is where you can manage your team and invite users to work with you.
+
+::list{type="success"}
+
+- Insights
+- Manage users
+- Manage teams
+
+::
+
+## Dashboard
+
+The dashboard is where you can see the number of users and teams that you have created. You can also see the number of requests that have been made by your team.
+
+Get insights into your team's usage of Hoppscotch.
+
+::list{type="success"}
+
+- Number of users
+- Number of teams
+- Number of requests
+- Number of collections
+
+::
+
+![Admin Dashboard Home](/self-host/dashboard-home.png)
+
+## Manage users
+
+The manage users page is where you can see all the users in your platform. You can also invite new users, edit their details, assign roles, and delete users.
+
+![Admin Dashboard Invite a User](/self-host/admin-invite-user.png)
+
+## Manage teams
+
+Create, edit, and delete teams. You can also see the details of the teams and the users in the team.

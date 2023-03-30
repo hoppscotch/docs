@@ -1,73 +1,57 @@
-![Banner](/static/banner.png)
+# Docus Starter
 
-# Docs
+Starter template for [Docus](https://docus.dev).
 
-[Hoppscotch](https://www.hoppscotch.io)
+## Clone
 
-[Documentation](https://docs.hoppscotch.io)
+Clone the repository (using `nuxi`):
+
+```bash
+npx nuxi init -t themes/docus
+```
 
 ## Setup
 
 Install dependencies:
 
 ```bash
-npm run install
+yarn install
 ```
 
 ## Development
 
 ```bash
-npm run dev
+yarn dev
+```
+
+## Edge Side Rendering
+
+Can be deployed to Vercel Functions, Netlify Functions, AWS, and most Node-compatible environments.
+
+Look at all the available presets [here](https://v3.nuxtjs.org/guide/deploy/presets).
+
+```bash
+yarn build
 ```
 
 ## Static Generation
 
-This will create the `dist/` directory for publishing to static hosting:
+Use the `generate` command to build your application.
+
+The HTML files will be generated in the .output/public directory and ready to be deployed to any static compatible hosting.
 
 ```bash
-npm run generate
+yarn generate
 ```
 
-To preview the static generated app, run `npm run start`
+## Preview build
 
-## Contributors Guide
+You might want to preview the result of your build locally, to do so, run the following command:
 
-We are looking for translators to help us with translations of Docs. [docs.hoppscotch](https://docs.hoppscotch.io) is built with nuxt-content.
-For detailed explanation on how things work, checkout [nuxt/content](https://content.nuxtjs.org) and [@nuxt/content theme docs](https://content.nuxtjs.org/v1/examples/docs-theme).
+```bash
+yarn preview
+```
 
-### Steps
+---
 
-1. Follow the Setup Guide
-2. To add your language to the dropdown menu, go to `nuxt.config.js`, add code,iso,file and name of the language.
-
-   ```bash
-       {
-           code: 'fr',
-           iso: 'fr-FR',
-           file: 'fr-FR.js',
-           name: 'Français'
-           }
-   ```
-
-3. To add translated content, navigate to `\content`, add a folder with language code as the name and add `.md` files.
-   ```bash
-      content
-      |
-      |- en
-      |  |- article.md
-      |- fr
-          |-article.md <----translated
-   ```
-4. Make sure that the file names for translated content are the same as that of the english document.
-5. Add screenshots to `\static\Resources\<your lang>\` or re-use screenshots of the english version.
-
-[nuxt-shield]: https://img.shields.io/badge/nuxt.js-00C58E?style=flat-sqaure&logo=nuxtdotjs&logoColor=white
-[tailwind-shield]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white
-[forks-shield]: https://img.shields.io/github/forks/hoppscotch/docs?style=flat-square
-[forks-url]: https://github.com/hoppscotch/docs/network/members
-[stars-shield]: https://img.shields.io/github/stars/hoppscotch/docs?style=flat-square
-[stars-url]: https://github.com/hoppscotch/docs/stargazers
-[issues-shield]: https://img.shields.io/github/issues/hoppscotch/docs?style=flat-square
-[issues-url]: https://github.com/hoppscotch/docs/issues
-[license-shield]: https://img.shields.io/github/license/hoppscotch/docs?style=flat-square
-[license-url]: https://github.com/hoppscotch/docs/blob/main/LICENSE
+For a detailed explanation of how things work, check out [Docus](https://docus.dev).
