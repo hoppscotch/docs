@@ -21,7 +21,7 @@ export default defineAppConfig({
     },
     aside: {
       level: 1,
-      exclude: ["/documentation/self-host", "/guides/videos"], // exclude self-host page from sidebar. TODO: remove this when we launch self-host.
+      exclude: ["/guides/videos"], // exclude self-host page from sidebar. TODO: remove this when we launch self-host.
     },
     github: {
       repo: "docs",
