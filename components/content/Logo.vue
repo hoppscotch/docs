@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <img src="/logo.svg" class="logo" alt="Hoppscotch" />
+    <img src="/logo.svg" class="logo" alt="Hoppscotch">
   </div>
 </template>
 
