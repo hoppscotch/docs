@@ -13,7 +13,8 @@
     "@docsearch/js": "^3.3.4",
     "@nuxt-themes/docus": "^1.11.1",
     "@nuxt/eslint-config": "^0.1.1",
-    "eslint": "^8.39.0",
+    "@nuxthq/studio": "^0.12.1",
+    "eslint": "^8.40.0",
     "nuxt": "^3.4.3"
   }
 }

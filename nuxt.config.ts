@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
   extends: "@nuxt-themes/docus",
+   modules: [
+    '@nuxthq/studio'
+  ],
   runtimeConfig: {
     public: {
       algolia: {
