@@ -12,9 +12,9 @@ defineProps({
     type: String,
     required: true,
   },
-});
+})
 
-const colorMode = useColorMode();
+const colorMode = useColorMode()
 </script>
 
 <template>
@@ -27,6 +27,6 @@ const colorMode = useColorMode();
         border: 1px solid var(--elements-border-primary-static);
         border-radius: var(--radii-md);
       "
-    />
+    >
   </p>
 </template>
