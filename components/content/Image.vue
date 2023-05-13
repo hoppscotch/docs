@@ -12,21 +12,21 @@ defineProps({
     type: String,
     required: true,
   },
-})
+});
 
-const colorMode = useColorMode()
+const colorMode = useColorMode();
 </script>
 
 <template>
-  <p style="margin: var(--prose-li-margin);">
+  <p style="margin: var(--prose-li-margin)">
     <img
       v-if="!colorMode.unknown"
-      :src="`${src}-${colorMode.value}.${extension}`"
+      :src="`/images/${src}-${colorMode.value}.${extension}`"
       :alt="alt"
       style="
-      border: 1px solid var(--elements-border-primary-static);
-      border-radius: var(--radii-md);
-    "
-    >
+        border: 1px solid var(--elements-border-primary-static);
+        border-radius: var(--radii-md);
+      "
+    />
   </p>
 </template>
