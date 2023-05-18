@@ -23,10 +23,24 @@ const colorMode = useColorMode()
       v-if="!colorMode.unknown"
       :src="`/images/${src}-${colorMode.value}.${extension}`"
       :alt="alt"
-      style="
-        border: 1px solid var(--elements-border-primary-static);
-        border-radius: var(--radii-md);
-      "
+      class="image-zoomable"
     >
   </p>
 </template>
+
+<style>
+.image-zoomable {
+  border: 1px solid var(--elements-border-primary-static);
+  border-radius: var(--radii-md);
+}
+
+.medium-zoom-overlay {
+  background-color: var(--docus-body-backgroundColor) !important;
+  z-index: 999;
+}
+
+.medium-zoom-image--opened {
+  border-radius: var(--radii-xs) !important;
+  z-index: 1000;
+}
+</style>

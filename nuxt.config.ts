@@ -1,8 +1,7 @@
 export default defineNuxtConfig({
   extends: "@nuxt-themes/docus",
-   modules: [
-    '@nuxthq/studio'
-  ],
+  modules: ["@nuxthq/studio"],
+  plugins: [{ src: "~/plugins/medium-zoom", mode: "client" }],
   runtimeConfig: {
     public: {
       algolia: {
