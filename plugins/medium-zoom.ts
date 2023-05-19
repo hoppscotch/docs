@@ -5,7 +5,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const selector = ".image-zoomable"
 
   const zoom: Zoom = mediumZoom(selector, {
-    margin: 32,
+    margin: 8,
     scrollOffset: 0,
   })
 
