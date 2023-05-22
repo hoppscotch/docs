@@ -6,8 +6,8 @@
 css({
   '.logo': {
     borderRadius: '0.25rem',
-    width: '2rem',
-    height: '2rem',
+    width: '2rem !important',
+    height: '2rem !important',
   }
 })
 </style>

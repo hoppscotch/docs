@@ -15,7 +15,17 @@ defineProps({
   styles: {
     type: String,
     required: false,
-    default: '',
+    default: "",
+  },
+  zoomable: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  mode: {
+    type: Boolean,
+    required: false,
+    default: true,
   },
 })
 
@@ -26,9 +36,11 @@ const colorMode = useColorMode()
   <p style="margin: var(--prose-li-margin)">
     <img
       v-if="!colorMode.unknown"
-      :src="`/images/${src}-${colorMode.value}.${extension}`"
+      :src="`/images/${
+        mode ? `${src}-${colorMode.value}.${extension}` : `${src}.${extension}`
+      }`"
       :alt="alt"
-      class="image-zoomable"
+      :class="{ 'image-zoomable': zoomable }"
       :style="styles"
     >
   </p>
@@ -36,7 +48,7 @@ const colorMode = useColorMode()
 
 <style>
 .image-zoomable {
-  border: 1px solid var(--elements-border-primary-static) !important;
+  border: 1px solid var(--elements-border-secondary-static) !important;
   border-radius: var(--radii-md) !important;
 }
 
@@ -48,5 +60,11 @@ const colorMode = useColorMode()
 .medium-zoom-image--opened {
   border-radius: var(--radii-xs) !important;
   z-index: 1000 !important;
+}
+
+.callout.alert {
+  background-color: var(--docus-body-backgroundColor) !important;
+  border: 1px solid var(--elements-border-secondary-static) !important;
+  border-radius: var(--radii-md) !important;
 }
 </style>
