@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   extends: "@nuxt-themes/docus",
-  modules: ["@nuxthq/studio"],
+  modules: ["@nuxthq/studio", "@nuxtjs/tailwindcss"],
   plugins: [{ src: "~/plugins/medium-zoom", mode: "client" }],
   runtimeConfig: {
     public: {

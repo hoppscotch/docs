@@ -12,9 +12,9 @@ defineProps({
 </script>
 
 <template>
-  <NuxtLink :to="to" class="link">
-    <Icon name="lucide:megaphone" class="icon" />
-    <span>{{ label }}</span>
+  <NuxtLink :to="to" class="inline-flex items-center justify-center px-4 py-2 mb-4 rounded-full link">
+    <Icon name="lucide:megaphone" class="w-4 h-4 mr-3" />
+    <span class="text-sm font-medium">{{ label }}</span>
   </NuxtLink>
 </template>
 
@@ -24,15 +24,8 @@ css({
     color: '{color.primary.900}',
     backgroundColor: '{color.primary.100}',
     borderColor: '{color.primary.400}',
-    borderRadius: '{radii.md}',
     borderWidth: '{borderWidth.sm}',
     borderStyle: 'solid',
-    display: 'inline-flex',
-    padding: '{space.2} {space.4}',
-    marginBottom: '{space.4}',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '{space.1}',
 
     '@dark': {
       color: '{color.primary.100}',
@@ -46,16 +39,6 @@ css({
         backgroundColor: '{color.primary.900}'
       },
     }
-  },
-  '.link span': {
-    // font-medium text-sm
-    fontWeight: '{fontWeight.medium}',
-    fontSize: '{fontSize.sm}'
-  },
-  '.link .icon': {
-    width: '{space.4}',
-    height: '{space.4}',
-    marginRight: '{space.2}'
   }
 })
 </style>
