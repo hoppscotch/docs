@@ -1,7 +1,0 @@
----
-title: Work with GraphQL in the browser using Hoppscotch
----
-
-# Work with GraphQL in the browser using Hoppscotch
-
-:video-player{src="https://www.youtube.com/watch?v=HoBXQng3aK4"}
