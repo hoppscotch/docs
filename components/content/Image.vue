@@ -49,7 +49,7 @@ const colorMode = useColorMode()
 <style>
 .image-zoomable {
   border: 1px solid var(--elements-border-secondary-static) !important;
-  border-radius: var(--radii-md) !important;
+  border-radius: var(--radii-xs) !important;
 }
 
 .medium-zoom-overlay {
@@ -58,13 +58,6 @@ const colorMode = useColorMode()
 }
 
 .medium-zoom-image--opened {
-  border-radius: var(--radii-xs) !important;
   z-index: 1000 !important;
-}
-
-.callout.alert {
-  background-color: var(--docus-body-backgroundColor) !important;
-  border: 1px solid var(--elements-border-secondary-static) !important;
-  border-radius: var(--radii-md) !important;
 }
 </style>
