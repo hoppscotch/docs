@@ -17,6 +17,6 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "eslint": "^8.45.0",
     "medium-zoom": "^1.0.8",
-    "nuxt": "^3.6.2"
+    "nuxt": "^3.6.3"
   }
 }
