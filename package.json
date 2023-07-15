@@ -10,13 +10,13 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@docsearch/js": "^3.3.4",
-    "@nuxt-themes/docus": "^1.12.0",
+    "@docsearch/js": "^3.5.1",
+    "@nuxt-themes/docus": "^1.14.3",
     "@nuxt/eslint-config": "^0.1.1",
-    "@nuxthq/studio": "^0.13.2",
-    "@nuxtjs/tailwindcss": "^6.7.0",
-    "eslint": "^8.40.0",
+    "@nuxthq/studio": "^0.13.4",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "eslint": "^8.45.0",
     "medium-zoom": "^1.0.8",
-    "nuxt": "^3.4.3"
+    "nuxt": "^3.6.2"
   }
 }
