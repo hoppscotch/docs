@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@docsearch/js": "^3.5.1",
-    "@nuxt-themes/docus": "^1.14.4",
+    "@nuxt-themes/docus": "^1.14.6",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxthq/studio": "^0.13.4",
     "@nuxtjs/tailwindcss": "^6.8.0",

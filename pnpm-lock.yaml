@@ -9,8 +9,8 @@ devDependencies:
     specifier: ^3.5.1
     version: 3.5.1(@algolia/client-search@4.19.1)(search-insights@2.7.0)
   '@nuxt-themes/docus':
-    specifier: ^1.14.4
-    version: 1.14.4(nuxt@3.6.5)(postcss@8.4.27)(rollup@3.27.0)(vue@3.3.4)
+    specifier: ^1.14.6
+    version: 1.14.6(nuxt@3.6.5)(postcss@8.4.27)(rollup@3.27.0)(vue@3.3.4)
   '@nuxt/eslint-config':
     specifier: ^0.1.1
     version: 0.1.1(eslint@8.46.0)
@@ -1586,8 +1586,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@nuxt-themes/docus@1.14.4(nuxt@3.6.5)(postcss@8.4.27)(rollup@3.27.0)(vue@3.3.4):
-    resolution: {integrity: sha512-weZrPh7EBvjZZ3KY/83sB+ps64Fc6T35mqJtrf2XF8sWf0pgwLOMs+0OLdG6vcSKy1bcc8ov4Jr2qMFbK5MLFA==}
+  /@nuxt-themes/docus@1.14.6(nuxt@3.6.5)(postcss@8.4.27)(rollup@3.27.0)(vue@3.3.4):
+    resolution: {integrity: sha512-tkSG7j0jhVo53wEpK9V48hIvaK0XEzVU64hXhFfnIMv6LJu99cKOC//boebPbN9qLbJmkBdo4IAIJ0tN5MD0qw==}
     dependencies:
       '@nuxt-themes/elements': 0.9.4(postcss@8.4.27)(rollup@3.27.0)(vue@3.3.4)
       '@nuxt-themes/tokens': 1.9.1(postcss@8.4.27)(rollup@3.27.0)(vue@3.3.4)
@@ -3388,7 +3388,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001518
-      electron-to-chromium: 1.4.479
+      electron-to-chromium: 1.4.481
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.10)
     dev: true
@@ -4211,8 +4211,8 @@ packages:
     resolution: {integrity: sha512-++DB+9VK8SBJwC+X1zlMfJ1tMA3F0ipi39GdEp+x3cV2TyBihqAgad8cNMWtLDEkbH39nlDQP7PfGrDr3Dr7HA==}
     dev: true
 
-  /electron-to-chromium@1.4.479:
-    resolution: {integrity: sha512-ABv1nHMIR8I5n3O3Een0gr6i0mfM+YcTZqjHy3pAYaOjgFG+BMquuKrSyfYf5CbEkLr9uM05RA3pOk4udNB/aQ==}
+  /electron-to-chromium@1.4.481:
+    resolution: {integrity: sha512-25DitMKGaWUPjv3kCt2H3UqgMhmdN+ufG+PoSjnQtheR64Dvo75RbojLPzUmnwrEuLEzR5YrbTzOUq9DtnTUUw==}
     dev: true
 
   /emoji-regex@8.0.0:

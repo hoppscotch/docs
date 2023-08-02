@@ -14,8 +14,8 @@ export default defineAppConfig({
     },
     footer: {
       credits: {
-        text: "© Hoppscotch",
-        icon: "",
+        text: "Hoppscotch",
+        icon: "lucide:copyright",
         href: "https://hoppscotch.io",
       },
     },
