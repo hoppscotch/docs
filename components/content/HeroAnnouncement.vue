@@ -12,7 +12,10 @@ defineProps({
 </script>
 
 <template>
-  <NuxtLink :to="to" class="inline-flex items-center justify-center px-4 py-2 mb-4 rounded-full link">
+  <NuxtLink
+    :to="to"
+    class="inline-flex items-center justify-center px-4 py-2 mb-4 rounded-full link"
+  >
     <Icon name="lucide:megaphone" class="w-4 h-4 mr-3" />
     <span class="text-sm font-medium">{{ label }}</span>
   </NuxtLink>

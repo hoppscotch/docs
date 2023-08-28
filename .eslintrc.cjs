@@ -6,4 +6,4 @@ module.exports = {
     "vue/multi-word-component-names": "off",
     semi: ["error", "never"],
   },
-}
+};
