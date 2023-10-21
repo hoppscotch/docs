@@ -31,4 +31,4 @@ export default defineAppConfig({
       dir: "content",
     },
   },
-})
+});
