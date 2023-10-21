@@ -27,9 +27,9 @@ defineProps({
     required: false,
     default: true,
   },
-})
+});
 
-const colorMode = useColorMode()
+const colorMode = useColorMode();
 </script>
 
 <template>
