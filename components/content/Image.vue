@@ -42,14 +42,14 @@ const colorMode = useColorMode();
       :alt="alt"
       :class="{ 'image-zoomable': zoomable }"
       :style="styles"
-    >
+    />
   </p>
 </template>
 
 <style>
 .image-zoomable {
   border: 1px solid var(--elements-border-secondary-static) !important;
-  border-radius: var(--radii-xs) !important;
+  border-radius: var(--radii-sm) !important;
 }
 
 .medium-zoom-overlay {
