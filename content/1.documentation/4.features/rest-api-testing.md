@@ -1,0 +1,52 @@
+---
+title: REST API Testing
+---
+
+# REST API Testing
+
+::image
+---
+src: features/rest-api-mode
+extension: png
+alt: Hoppscotch REST API Platform
+---
+::
+
+Hoppscotch's REST API platform provides you with a fast and seamless experience to test and debug your API endpoints.
+
+It's primarily divided into two sections along with other features to help you build better APIs.
+
+## Request
+
+The request section provides you the capability to define your API endpoint and initiate the communication.
+
+You can select from a range of HTTP methods such as `GET`, `POST`, `PUT` etc. You can read more about HTTP methods [here](/documentation/protocols/rest).
+
+You can also add dynamic behaviors to your requests by specifying `Headers`, `Request Body`, `Authorization Headers`, `Parameters`, and `Pre-request scripts`.
+
+Hoppscotch also provides the capability to run `Tests` on the responses you receive.
+
+## Response
+
+This is where you see the responses to your API endpoints. You can download and copy the returned responses for further use.
+
+## Other features
+
+The REST API platform also houses other features like:
+
+::list{type="success"}
+
+- [Environments](/documentation/features/environments)
+- [Collections](/documentation/features/collections)
+- [History](/documentation/features/history)
+
+::
+
+:br
+
+::card
+#title
+[Getting started with REST APIs](/documentation/getting-started/rest/creating-a-request)
+#description
+Read out step by step tutorial on working with REST APIs.
+::
