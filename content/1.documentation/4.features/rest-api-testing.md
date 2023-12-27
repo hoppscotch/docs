@@ -4,13 +4,7 @@ title: REST API Testing
 
 # REST API Testing
 
-::image
----
-src: features/rest-api-mode
-extension: png
-alt: Hoppscotch REST API Platform
----
-::
+<ZoomableImage src="features/rest-api-mode" extension="png" alt="Hoppscotch REST API Platform" />
 
 Hoppscotch's REST API platform provides you with a fast and seamless experience to test and debug your API endpoints.
 

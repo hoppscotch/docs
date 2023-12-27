@@ -37,13 +37,7 @@ An example OAuth 2.0 flow could run as follows:
 
 1. In the "**Authorization Tab**" for a request, select OAuth 2.0 from the Authorization Type drop-down.
 
-    ::image
-    ---
-    src: features/oauth-section
-    extension: png
-    alt: Hoppscotch OAuth 2.0 Authorization
-    ---
-    ::
+    <ZoomableImage src="features/oauth-section" extension="png" alt="Hoppscotch OAuth 2.0 Authorization" />
 
 2. Fill out the fields in the section below and click on "**Generate Token**" to generate a new access token.
 3. You can save the token to be re-used later.

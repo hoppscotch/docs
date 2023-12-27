@@ -4,13 +4,7 @@ title: Realtime API Testing
 
 # Realtime API Testing
 
-::image
----
-src: features/realtime-mode
-extension: png
-alt: Hoppscotch Realtime API Platform
----
-::
+<ZoomableImage src="features/realtime-mode" extension="png" alt="Hoppscotch Realtime API Platform" />
 
 Hoppscotch's Realtime API platform helps you test your real-time APIs easily.
 

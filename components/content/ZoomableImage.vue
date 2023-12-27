@@ -42,7 +42,7 @@ const colorMode = useColorMode();
       :alt="alt"
       :class="{ 'image-zoomable': zoomable }"
       :style="styles"
-    >
+    />
   </p>
 </template>
 

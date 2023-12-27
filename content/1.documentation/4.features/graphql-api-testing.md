@@ -4,13 +4,7 @@ title: GraphQL API Testing
 
 # GraphQL API Testing
 
-::image
----
-src: features/graphql-mode
-extension: png
-alt: Hoppscotch GraphQL API Platform
----
-::
+<ZoomableImage src="features/graphql-mode" extension="png" alt="Hoppscotch GraphQL API Platform" />
 
 Hoppscotch's GraphQL API platform provides you with the best experience to test and play around with GraphQL
 
