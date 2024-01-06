@@ -1,0 +1,70 @@
+---
+sidebarTitle: Running a simple query
+title: Running a simple query
+description: Learn how to run a simple query using Hoppscotch.
+---
+
+## Connecting to a GraphQL server
+
+Switch to the GraphQL platform on Hoppscotch and connect to the below GraphQL server.
+
+```
+https://echo.hoppscotch.io/graphql
+```
+
+Once a successful connection has been made, you can view both documentation and the schema using Hoppscotch.
+
+It is important to explore the schema to understand the different queries, mutations, types, and subscriptions that are offered by the endpoint.
+
+## Running the query
+
+Furthermore, you can run the query to fetch the data from the GraphQL server.
+
+## Naruto GraphQL endpoint
+
+Let's explore the Naruto GraphQL endpoint.
+
+1. Open Hoppscotch and connect to the endpoint below:
+
+    ```
+    https://narutoql.up.railway.app/graphql
+    ```
+
+2. Explore the schema and documentation to understand more about the endpoint.
+3. Write a query to get the character details whose name contains `hatake`.
+
+    ```graphql
+    {
+      characters(filter: {name: "hatake"}) {
+        results {
+        _id
+          name
+          village
+        }
+      }
+    }
+    ```
+
+4. Click on the run button to execute the query.
+5. The query will return the following response.
+
+    ```json
+    {
+      "data": {
+        "characters": {
+          "results": [
+            {
+              "_id": "61bd1dbc918f12c17b9c64b5",
+              "name": "Hatake Kakashi",
+              "village": "leaf village"
+            },
+            {
+              "_id": "61bd1dbc918f12c17b9c64b6",
+              "name": "Hatake Sakumo",
+              "village": "leaf village"
+            }
+          ]
+        }
+      }
+    }
+    ```

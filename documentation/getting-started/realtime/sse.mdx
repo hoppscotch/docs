@@ -1,0 +1,22 @@
+---
+sidebarTitle: SSE
+title: Server-Sent Events
+description: Server-Sent Events (SSE) is a server push technology enabling a client to receive automatic updates from a server via HTTP connection.
+---
+
+The Hoppscotch SSE testing tool lets you test out your SSE services.
+
+## Connect to a SSE server
+
+1. Add the SSE "**URL**" and "**path**" and click on "**Connect**".
+2. Choose the event type that you want to subscribe to and connect.
+3. Message from the SSE server will continuously updated in the log until either the server or client (you) terminate the connection.
+
+## Listening to events
+
+The events sent by the server will be displayed in the log pane.
+
+## Troubleshooting
+
+1. Make sure you enter valid SSE URLs, they always start with the protocol format `http://` or `https://`.
+2. Make sure the server is sending the correct event type.

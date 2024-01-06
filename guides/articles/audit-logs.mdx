@@ -1,0 +1,161 @@
+---
+sidebarTitle: Audit Logs
+title: Audit Logs
+description: Learn about the audit logs in Hoppscotch Enterprise.
+---
+
+In Enterprise Hoppscotch, a record of all actions taken on the platform is saved which can be used to know what events happened, who performed them, and when they occurred. With the information present users may be able to draw insights related to the platform.
+
+### Log Format
+
+Every event that occurred on the platform is saved in the following format.
+
+```json
+{
+  "event": "",
+  "timestamp": "",
+  "user": {
+    "id": "",
+    "email": "",
+    "name": ""
+  },
+  "group": {
+    "type": "TEAM | USER | ADMIN",
+    "id": "",
+    "name": ""
+  },
+  "resource": {
+    "id": "",
+    "type": "",
+    "name": "",
+    "metadata": ""
+  },
+  "statusCode": "",
+  "errorMessage": "",
+  "result": "",
+  "server_version": ""
+}
+```
+
+| Data           | Description                                           | Details                          |
+| -------------- | ----------------------------------------------------- | -------------------------------- |
+| event          | Action performed                                      |                                  |
+| timestamp      | The date and time of a logged event                   |                                  |
+| user           | The user who made performed an event                  | `id`, `email`, `name`            |
+| group          | Where the user belongs to in the context of the event | `type`, `id`                     |
+| resource       | Upon what the action is being carried out             | `id`, `type`, `name`, `metadata` |
+| statusCode     | Status code for the action response                   |                                  |
+| errorMessage   | Error description if action failed                    |                                  |
+| result         | Status of the action                                  |                                  |
+| server_version | Server version being run currently                    |                                  |
+
+An example of an audit log:
+
+```json
+{
+  "event": "admin.team.create",
+  "timestamp": "2023-08-30 07:03:05",
+  "user": {
+    "id": "cllxa1zqt000gp91zaq6tj93d",
+    "email": "John@hoppscotch.io",
+    "name": "John Doe"
+  },
+  "group": {
+    "type": "ADMIN",
+    "id": "cllxa1zqt000gp91zaq6tj93d"
+  },
+  "resource": {
+    "type": "TEAM",
+    "metadata": "{\"id\":\"cllxe4ji4000op91zucsbwazj\",\"name\":\"Fellowship of the Hopp\"}"
+  },
+  "statusCode": 200,
+  "errorMessage": "",
+  "result": "SUCCESS",
+  "server_version": "2023.4.8"
+}
+```
+
+### Tracked Events
+
+The following table contains all the events that are logged currently.
+| EVENT                             | EVENT DESCRIPTION                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------------------ |
+| admin.users.invite                | Event for inviting multiple users to join the platform                               |
+| admin.user.invite                 | Event for inviting a single user to join the platform                                |
+| admin.user.remove                 | Event for removing a user from the platform                                          |
+| admin.user.makeAdmin              | Event for elevating a user to admin status                                           |
+| admin.user.makeNormal             | Event for demoting an admin user to normal user status                               |
+| admin.team.create                 | Event for creating a new team                                                        |
+| admin.team.user.changeRole        | Event for changing the role of a user in a team                                      |
+| admin.team.user.remove            | Event for removing a user from a team                                                |
+| admin.team.user.add               | Event for adding a user to a team                                                    |
+| admin.team.rename                 | Event for renaming a team                                                            |
+| admin.team.delete                 | Event for deleting a team                                                            |
+| admin.user.revoke                 | Event for revoking a user's team invitation                                          |
+| user.auth.magicLinkSent           | Event for when a magic link is sent to a user                                        |
+| user.auth.loggedIn                | Event for when a user logs in                                                        |
+| user.auth.tokenRefresh            | Event for when a user's auth token is refreshed                                      |
+| user.auth.loggedOut               | Event for when a user logs out                                                       |
+| user.auth.adminVerify             | Event for when we verify if a user is an admin                                       |
+| user.session.update               | Event for updating a user's app session                                              |
+| user.account.delete               | Event for deleting a user's account                                                  |
+| user.shortcode.create             | Event for creating a shortcode                                                       |
+| user.shortcode.revoked            | Event for deleting a shortcode                                                       |
+| team.create                       | Event for creating a new team                                                        |
+| team.user.leave                   | Event for when a user leaves a team                                                  |
+| team.user.remove                  | Event for removing a user from a team                                                |
+| team.rename                       | Event for renaming a team                                                            |
+| team.delete                       | Event for deleting a team                                                            |
+| team.member.roleUpdate            | Event for changing a user's role in a team                                           |
+| team.check                        | Event for checking if a team exists                                                  |
+| team.member.check                 | Event for checking if a user is a member of a team                                   |
+| team.collection.createRoot        | Event for creating a root team collection                                            |
+| team.collection.import            | Event for importing a collection from a JSON string                                  |
+| team.collection.replace           | Event for replacing an existing collection with new data                             |
+| team.collection.createChild       | Event for creating a child collection                                                |
+| team.collection.rename            | Event for renaming a collection                                                      |
+| team.collection.delete            | Event for deleting a collection                                                      |
+| team.collection.move              | Event for moving a collection                                                        |
+| team.collection.updateOrder       | Event for updating the order of collections                                          |
+| team.collection.collectionCheck   | Event for checking if a collection exists in a team                                  |
+| team.environment.environmentCheck | Event for checking if an environment exists in a team                                |
+| team.environment.create           | Event for creating an environment                                                    |
+| team.environment.delete           | Event for deleting an environment                                                    |
+| team.environment.update           | Event for updating an environment                                                    |
+| team.environment.clear            | Event for clearing the contents of an environment                                    |
+| team.environment.duplicate        | Event for duplicating an environment                                                 |
+| team.invitation.create            | Event for creating a team invitation                                                 |
+| team.invitation.revoke            | Event for revoking a team invitation                                                 |
+| team.invitation.accept            | Event for accepting a team invitation                                                |
+| team.invitation.inviteCheck       | Event for checking if an invitation exists                                           |
+| team.request.create               | Event for creating a team request                                                    |
+| team.request.update               | Event for updating a team request                                                    |
+| team.request.delete               | Event for deleting a team request                                                    |
+| team.request.updateOrder          | Event for updating the order of team requests                                        |
+| team.request.move                 | Event for moving a team request                                                      |
+| team.request.requestCheck         | Event for checking if a request exists in a team                                     |
+| team.request.roleCheck            | Event for checking if a user has the relevant role to perform an action in a request |
+| user.session.update               | Event for updating a user's app session                                              |
+| user.delete                       | Event for deleting a user                                                            |
+| user.collection.createRoot        | Event for creating a root user collection                                            |
+| user.collection.createChild       | Event for creating a child user collection                                           |
+| user.collection.rename            | Event for renaming a user collection                                                 |
+| user.collection.delete            | Event for deleting a user collection                                                 |
+| user.collection.move              | Event for moving a user collection                                                   |
+| user.collection.updateOrder       | Event for updating the order of user collections                                     |
+| user.collection.import            | Event for importing a collection                                                     |
+| user.environment.create           | Event for creating a user environment                                                |
+| user.environment.update           | Event for updating a user environment                                                |
+| user.environment.delete           | Event for deleting a user environment                                                |
+| user.environment.deleteAll        | Event for deleting all personal environments of a user                               |
+| user.environment.clearGlobal      | Event for clearing the global environments for a user                                |
+| user.history.create               | Event for creating a user history                                                    |
+| user.history.toggleStar           | Event for toggling the star on a user history                                        |
+| user.history.delete               | Event for deleting a user history                                                    |
+| user.history.deleteAll            | Event for deleting all user histories                                                |
+| user.request.create               | Event for creating a user request                                                    |
+| user.request.update               | Event for updating a user request                                                    |
+| user.request.deleted              | Event for deleting a user request                                                    |
+| user.request.move                 | Event for moving a user request                                                      |
+| user.settings.create              | Event for creating user settings                                                     |
+| user.settings.update              | Event for updating user settings                                                     |

@@ -1,0 +1,139 @@
+---
+sidebarTitle: Prerequisites
+title: Prerequisites
+description: Prerequisites for installing Hoppscotch on your own infrastructure.
+---
+
+Hoppscotch is a self-hosted API development platform, packaged as a set of Docker containers. You can install and run Hoppscotch on any operating system that can run a [Docker Engine](https://docs.docker.com/engine). You can use Hoppscotch on your local machine or a cloud provider of your choice.
+
+## System Requirements
+
+Hoppscotch is designed to run well on both small and large deployments. The minimum requirements to run Hoppscotch are an operating system that supports Docker and 4 CPU cores + 4GB of RAM to generate the build image and as little as 1 CPU core + 2GB of RAM to host the generated output files.
+
+## Install Node.js, npm, pnpm
+
+### Node.js + npm
+
+Install [`Node.js`](https://nodejs.org/en) (v18+) and [`npm`](https://www.npmjs.com) (v9+).
+
+- [Node.js + npm installation guide](https://nodejs.org/en/download)
+
+Verify Node.js and npm installation by running the following commands in your terminal:
+
+```bash
+node -v
+```
+
+```bash
+npm -v
+```
+
+### pnpm
+
+Install [`pnpm`](https://pnpm.io) (v6+).
+
+- [pnpm installation guide](https://pnpm.io/installation)
+
+Verify pnpm installation by running the following command in your terminal:
+
+```bash
+pnpm -v
+```
+
+## Docker
+
+Install [`Docker`](https://www.docker.com) (v20+).
+
+- [Docker installation guide](https://docs.docker.com/engine/install)
+
+Verify Docker installation by running the following command in your terminal:
+
+```bash
+docker -v
+```
+
+It is recommended to use Compose V2. To switch to Compose V2, use the `docker compose` CLI plugin or activate the **Use Docker Compose V2** setting in Docker Desktop. For more information, see the [Evolution of Compose](https://docs.docker.com/compose/compose-v2).
+
+## Git
+
+Install [`Git`](https://git-scm.com) (v2+).
+
+- [Git installation guide](https://git-scm.com/download)
+
+Verify Git installation by running the following command in your terminal:
+
+```bash
+git --version
+```
+
+## Email delivery
+
+Hoppscotch comes with support for easy integrations with 3rd party SMTP providers. You will need emails so that you can invite your team to use Hoppscotch and for emails to work, you will need to set up proper SMTP configuration as described below.
+
+To enable email delivery, you will need to generate a valid SMTP URL in the below format:
+
+```
+smtps://user@domain.com:pass@smtp.domain.com
+```
+
+For example, if you are using Gmail as your SMTP server your SMTP URL will look like something shown below:
+
+```
+smtps://user@gmail.com:pass@smtp.gmail.com
+```
+
+You can also use [mailcatcher](https://mailcatcher.me/) as a simple SMTP server
+
+## Postgres database
+
+Hoppscotch uses a Postgres database to store all the data. You can use any Postgres database provider of your choice - hosted locally or on a cloud provider. Make sure you have a valid Postgres database URL in the below format:
+
+```
+postgresql://username:password@url:5432/dbname
+```
+
+## OAuth
+
+You also need to configure an OAuth provider to enable third-party authentication. Hoppscotch supports the following OAuth providers:
+
+1. Email
+2. GitHub
+3. Google
+4. Microsoft
+
+### Choosing OAuth Providers
+
+Hoppscotch provides you with the ability to choose which authentication providers you want to use in the app. You can do this by specifying the required providers in the environment variable
+
+```yaml
+VITE_ALLOWED_AUTH_PROVIDERS=GOOGLE,GITHUB,MICROSOFT,EMAIL
+```
+
+### Configuring third-party providers
+
+To configure the third-party authentication, you will need to generate a valid OAuth client ID and client secret for the OAuth provider of your choice. You will also need to provide a valid callback URL for the OAuth provider.
+
+For example, if you are using GitHub as your OAuth provider, you will need to generate a valid OAuth client ID and client secret for GitHub. You will also need to provide a valid callback URL for GitHub. The environment variables for the GitHub OAuth provider will look like something shown below:
+
+```yaml
+GITHUB_CLIENT_ID=*****
+GITHUB_CLIENT_SECRET=*****
+GITHUB_CALLBACK_URL=http://localhost:3170/v1/auth/github/callback
+GITHUB_SCOPE=user:email
+```
+
+The `CALLBACK_URL` variable is the URL that is invoked after the authorization is done and it follows the pattern `http://localhost:3170/v1/auth/[auth_provider_name]/callback`.
+
+The `SCOPE` variable defines the scope of the data that the OAuth provider passes on to Hoppscotch.
+
+The links to configure OAuth for various providers are given below:
+
+1. [**GitHub**](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) (scope: email)
+2. [**Google**](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid#get_your_google_api_client_id) (scope: email, profile)
+3. [**Microsoft**](https://learn.microsoft.com/en-us/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=nodejs#register-an-app-by-using-the-azure-portal) (scope: user with read permission)
+
+- It is recommended that you secure your deployments by issuing TLS certificates and using **HTTPS** since we use **secure HTTP cookies** for authenticating users.
+
+## Support for standard `HTTP/s` ports
+
+From the December 2023 release onwards containers now support ingress via standard HTTP/S ports on port `80` and `443` by default, moving forward it is recommended users switch to using these ports. We currently do still support the services being exposed from ports `3000`, `3100` and `3170` respectively but support for this will be dropped in the future and all containers will work over standard HTTP/s ports.

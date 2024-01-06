@@ -1,0 +1,51 @@
+---
+sidebarTitle: Using variables
+title: Using variables in a GraphQL query
+description: Learn how to use variables in a GraphQL query.
+---
+
+Hoppscotch allows you to pass variables in the query to fetch data dynamically.
+
+To demonstrate the use of variables let's write a query to get the Ninja whose id is `61bd1dbc918f12c17b9c6483`.
+
+## Variables
+
+Go to the variables section and define the variable.
+
+```json
+{
+  "id": "61bd1dbc918f12c17b9c6483"
+}
+```
+
+## Using the variable in the query
+
+Now create a query `getCharacter` with variables as shown below:
+
+```graphql
+ query getCharacter($id:String!){
+  character(id:$id) {
+    name
+    avatarSrc
+    rank
+    description
+    village
+  }
+}
+```
+
+Hoppscotch will retrieve the value of the variable and execute the query to get the below response.
+
+```json
+{
+  "data": {
+    "character": {
+      "name": "Aburame Shibi",
+      "avatarSrc": "https://narutoql.s3.amazonaws.com/Aburame2.jpg",
+      "rank": "Jounin",
+      "description": "Aburame Shibi is the father of Aburame Shino. Like his son, his body is also inhabited by the destruction bugs.",
+      "village": "leaf village"
+    }
+  }
+}
+```

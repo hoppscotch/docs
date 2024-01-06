@@ -1,0 +1,55 @@
+---
+sidebarTitle: Request parameters
+title: Request parameters
+description: Request parameters help you to filter and request specific data from an API endpoint.
+---
+
+Query parameters help you to filter and request specific data from an API endpoint.
+
+<Tip>
+  You can add query parameters in two ways:
+  1. Add them in the URL.
+  2. Add them in the parameters tab.
+</Tip>
+
+## Adding parameters in the URL
+
+To add a parameter in the URL, append `?` at the end of the URL and add a parameter in `key=value` format.
+
+You can add multiple parameters by separating them using `&`.
+
+For example, the below URL is filtered to get the data of the first three Pokemon.
+
+```
+https://pokeapi.co/api/v2/pokemon/?offset=6&limit=3
+```
+
+For which you will get a similar response:
+
+```json
+{
+  "count": 1281,
+  "next": "https://pokeapi.co/api/v2/pokemon?offset=9&limit=3",
+  "previous": "https://pokeapi.co/api/v2/pokemon?offset=3&limit=3",
+  "results": [
+    {
+      "name": "squirtle",
+      "url": "https://pokeapi.co/api/v2/pokemon/7/"
+    },
+    {
+      "name": "wartortle",
+      "url": "https://pokeapi.co/api/v2/pokemon/8/"
+    },
+    {
+      "name": "blastoise",
+      "url": "https://pokeapi.co/api/v2/pokemon/9/"
+    }
+  ]
+}
+```
+
+## Using the parameters tab
+
+Additionally, you can add the parameters as a key-value pair in the parameters tab, and these will be appended to the URL automatically when you send the request.
+
+Try using the parameters tab to see if you get the same response as adding parameters in the URL.

@@ -1,0 +1,70 @@
+---
+sidebarTitle: Creating a request
+title: Creating a request
+description: Learn how to create a request in Hoppscotch.
+---
+
+The RESTful protocol is the default protocol that is active when you open Hoppscotch. Hoppscotch allows you to make API requests and examine the responses.
+
+You can enter the API endpoint and choose the HTTP method according to your needs from the dropdown menu.
+Once it is configured, click on the "**Send**" button and you will see the response returned by the server. It's that simple.
+
+Now try it yourself, copy the below API endpoint, and create a request.
+
+```
+https://echo.hoppscotch.io
+```
+
+Let's try another API.
+
+We'll be using the [Pokemon API](https://github.com/PokeAPI/pokeapi). Go ahead and create a `GET` request to the endpoint below:
+
+```
+https://pokeapi.co/api/v2
+```
+
+If your request was successful, then you should get a JSON response as shown below:
+
+```json
+{
+  "ability": "https://pokeapi.co/api/v2/ability/",
+  "berry": "https://pokeapi.co/api/v2/berry/",
+  "pokedex": "https://pokeapi.co/api/v2/pokedex/",
+  "pokemon": "https://pokeapi.co/api/v2/pokemon/",
+  "version-group": "https://pokeapi.co/api/v2/version-group/"
+}
+```
+
+The Pokemon API has returned several new API endpoints or URLs, let's pick the character's URL and explore it.
+
+To explore the characters create a `GET` request to the URL `https://pokeapi.co/api/v2/pokemon` by copy-pasting the URL below:
+
+```
+https://pokeapi.co/api/v2/pokemon
+```
+
+The API should have returned a huge amount of data, something similar to the one below:
+
+```json
+{
+  "count": 1279,
+  "next": "https://pokeapi.co/api/v2/pokemon?offset=20&limit=20",
+  "previous": null,
+  "results": [
+    {
+      "name": "bulbasaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/1/"
+    },
+    {
+      "name": "ivysaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/2/"
+    },
+  ]
+}
+```
+
+Try experimenting with the `/pokedex`, `/berry`, and the other endpoints as well.
+
+<Card title="RESTful protocol" iconType="light" icon="circle-arrow-right" href="/documentation/protocols/rest">
+  <sub>Learn more about RESTful protocol.</sub>
+</Card>

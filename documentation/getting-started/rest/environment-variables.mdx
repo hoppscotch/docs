@@ -1,0 +1,27 @@
+---
+sidebarTitle: Environment variables
+title: Environment variables
+description: Learn how to use environment variables in your requests and scripts.
+---
+
+Environment variables allow you to store and reuse values in your requests and scripts.
+
+By storing a value in a variable:
+
+- You can reference it throughout your request section.
+- You can change its value by updating it in a single place.
+- You increase your ability to work efficiently and minimize the likelihood of errors.
+
+## Adding environment variables
+
+You can create a new environment by clicking the environments icon on the sidebar and clicking the `new` button. Let's label the environment as `Pokemon Envs`.
+
+Now, let's create an environment variable called `baseURL` pointing to `https://pokeapi.co/api/v2`.
+
+Similarly, you can create multiple environments and environment variables.
+
+## Accessing environment variable
+
+If you have more than one environment, select the environment whose variables you want to access. You can access the variables in the request section by referencing the variable in the following format `<<variable_name>>`, in our case the variable will be `<<baseURL>>` and the complete URL will be `<<baseURL>>pokemon/ditto`.
+
+<Tip>You can add your variables to the `Global` environment, which can be accessed globally, ie. in every other environments.</Tip>

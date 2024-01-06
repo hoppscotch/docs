@@ -1,0 +1,43 @@
+---
+sidebarTitle: Troubleshooting
+title: Troubleshooting
+description: Facing issues with Hoppscotch? Check out this page to resolve them.
+---
+
+If you're facing issues with Hoppscotch, you can try the following steps to resolve them.
+
+## Connectivity
+
+If Hoppscotch fails to send your request, it could be because you may be experiencing connectivity issues. Check your connection by attempting to open a page in your web browser.
+
+## Firewalls
+
+Sometimes firewalls may be configured to block non-browser connections. You might need to contact your network administrator so that Hoppscotch can work seamlessly.
+
+## Incorrect protocol
+
+You might have specified the wrong protocol, check if you're using `https://` or `http://` in your URL or vice-versa.
+
+## Hoppscotch errors
+
+It could also be possible that Hoppscotch might be making invalid requests to your API server. You can confirm this by checking your server logs (if available). If you believe this is happening, do get in touch with the Hoppscotch team.
+
+## CORS restrictions
+
+CORS or Cross-Origin Resource Sharing is a security mechanism built into modern web browsers. It may cause the following error when testing API endpoints or some other API endpoints with Hoppscotch.
+
+This is because the API not sending the proper API headers (`Access-Control-Allow-Origin`) and can be solved in two ways.
+
+1. Ask whoever manages the API to add CORS support.
+2. Use Middleware like [ProxyScotch](https://github.com/hoppscotch/proxyscotch) for hosted APIs & the [Hoppscotch Browser Extension](https://github.com/hoppscotch/hoppscotch-extension) for locally served APIs, and enable it in the "**Interceptor**" section of "**Settings**".
+
+## Something went wrong
+
+If you're still facing issues, with an error message that says "Something went wrong", help us to better understand the issue by:
+
+1. Opening the developer tools in your browser (usually by pressing `F12` or `Ctrl/Cmd`+`Shift`+`I`).
+2. Switch to the "**Console**" tab.
+3. Reproduce the issue.
+4. Take a screenshot of the console and send it to us.
+
+<Info>Report a bug by [opening a new issue](https://github.com/hoppscotch/hoppscotch/issues/new/choose).</Info>

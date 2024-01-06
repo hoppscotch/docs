@@ -1,0 +1,50 @@
+---
+sidebarTitle: Understanding the GraphQL Schema on Hoppscotch
+title: Understanding the GraphQL Schema on Hoppscotch
+description: Learn how to use the GraphQL schema on Hoppscotch.
+---
+
+The GraphQL schema is at the core of any GraphQL server. It defines the capabilities of the API and specifies how clients can access that data. A schema includes types and fields, queries and mutations, interfaces, and unions. Hoppscotch provides you the functionality to connect to a GraphQL server and explore the GraphQL schema.
+
+A GraphQL schema defines types and the fields on those types. This allows clients to ask for exactly what they need and get exactly that - nothing more and nothing less. The schema also defines queries and mutations, which are entry points into the API to read and write data.
+
+The schema is written using the Schema Definition Language (SDL). The SDL provides a way to describe types and fields, as well as queries and mutations. Here is a very simple example of a schema in SDL:
+
+```graphql
+type Query {
+  hello: String
+}
+```
+
+This schema has one type, Query, and one field on that type, hello. A client could call the hello query to get the String value returned by that field.
+
+The schema sits at the core of any GraphQL server and defines the capabilities of the API. Understanding the structure and components of a GraphQL schema is fundamental to building and using GraphQL APIs.
+
+Hoppscotch's GraphQL API platform provides you with the best experience to test and play around with GraphQL. Once connected to a GraphQL server, you can view the schema by clicking the schema icon on the sidebar.
+
+For example, try connecting to the following server
+
+```
+https://echo.hoppscotch.io/graphql
+```
+
+You'll see a schema like the one below:
+
+```graphql
+schema {
+  query: Request
+}
+
+type Request {
+  method: String
+  url: String
+  headers: [Header]
+}
+
+type Header {
+  key: String
+  value: String
+}
+```
+
+The schema has the following types `Request` with queries method, URL, and headers. where the header points to another type `Header`.

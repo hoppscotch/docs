@@ -1,0 +1,92 @@
+---
+sidebarTitle: Pre-request scripts
+title: Pre-request scripts
+description: Learn how to use pre-request scripts in Hoppscotch.
+---
+
+## Scripts
+
+Hoppscotch lets you add dynamic behavior to REST API requests. This allows you to write test suites and build requests that can contain dynamic parameters. You can add JavaScript code that executes based on events in the flow:
+
+- Pre-request scripts are executed before a request is sent to the server.
+- You can add multiple pre-request scripts to a request.
+- You can add pre-request scripts to both requests saved and not saved in a collection.
+
+<Tip>Hoppscotch will then execute the scripts along with the requests in the specified order.</Tip>
+
+## Pre-request script
+
+Pre-request script is a piece of code that will run before the execution of the request.
+
+You can use the pre-request script for a pre-processing task such as:
+
+- Setting parameters, headers.
+- Adding body data.
+- Adding variable values.
+- Including timestamps in request headers.
+
+## Writing pre-request scripts
+
+Hoppscotch provides a special `pw` object containing various methods to create scripts and tests. The `pw` object is global and can be referenced by name to access methods.
+
+For example, to set an environment variable, you can use the `pw.env.set()` method.
+
+```javascript
+pw.env.set("variable", "value");
+```
+
+## Examples
+
+Let us look at some examples of how you can use Hoppscotch to write pre-request scripts.
+
+### Setting environment variables
+
+`pw.env.set()` can be used directly for quick and convenient environment variable definition. It can be used to better organize request codes.
+
+```javascript
+pw.env.set("baseURL", "https://httpbin.org");
+pw.env.set("method", "get");
+```
+
+Goto the pre-request script tab and copy-paste the above JavaScript code as shown below:
+
+These variables can be accessed in the request section by referencing them in double angle brackets `<<variable_name>>`. So the URL will be `<<baseURL>>/<<method>>`.
+
+### Generating random Values to test API
+
+Let us take a case where we need to test random test-user data available at an endpoint.
+
+Let us use the following GET API endpoint `https://reqres.in/api/users/`.
+
+Add `<<randomValue>>` to the endpoint URL.
+
+```
+https://reqres.in/api/users/<<randomValue>>
+```
+
+Now in the pre-request script tab add the following logic.
+
+```javascript
+var random = Math.floor(Math.random() * 10);
+pw.env.set("randomValue", random.toString());
+```
+
+The JavaScript code will assign a random number to the environment variable `randomValue` and the API will return a random user associated with the random value.
+
+You will get a similar response as shown below:
+
+```json
+{
+  "data": {
+    "id": 4,
+    "email": "eve.holt@reqres.in",
+    "first_name": "Eve",
+    "last_name": "Holt",
+    "avatar": "https://reqres.in/img/faces/4-image.jpg"
+  },
+  "support": {
+    "url": "https://reqres.in/#support-heading",
+    "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
+  }
+}
+```

@@ -1,0 +1,32 @@
+---
+sidebarTitle: MQTT
+title: MQTT
+description: MQTT is a lightweight publish-subscribe messaging protocol.
+---
+
+## Connect to a MQTT server
+
+1. Enter the MQTT server "**URL**" and click on "**Connect**".
+
+    ```
+    wss://test.mosquitto.org:8081
+    ```
+
+2. Check the log to see if the connection was successful or not.
+3. To test your server add messages under a topic and publish it.
+4. Other devices in the server that have subscribed to the topic will get your messages.
+5. You can receive messages by subscribing to a topic that another device in the server transmits.
+6. Monitor the log for results.
+
+## Sending messages
+
+Write your message in the "**Message**" input field under the "**Communication**" tab and click on the "**Publish**" button. Type in the "**Topic**" input field to send a message with a topic. The message you send will be displayed on the "**Logs**" pane.
+
+## Subscriptions
+
+Click on the "**New Subscription**" button to add a new subscription. Enter the topic name and click on the "**Subscribe**" button to subscribe to the topic. The messages you receive will be displayed on the "**Logs**" pane.
+
+## Troubleshooting
+
+1. Make sure you enter a valid MQTT URL, they always start with the protocol format `ws://`.
+2. Do not add invalid/incorrect authorization tokens before you connect to a MQTT server.

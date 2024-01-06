@@ -1,0 +1,31 @@
+---
+sidebarTitle: Environments
+title: Environments
+description: Environments help you create variables that you can reuse in requests and scripts.
+---
+
+Environments are also useful when you need to manage shared data with a team. You can create environments and share them with your team members.
+
+Click on the "**Environments**" icon on the sidebar to create environments.
+
+<Tip>You can add your variables to the `Global` environment, which can be accessed globally, ie. in every other environment.</Tip>
+
+## Using scripts
+
+You can also create environment variables using scripts by using the `pw` object.
+
+```javascript
+pw.env.set("variable", "value");
+```
+
+<CardGroup cols={1}>
+  <Card title="Creating environment variables from client" iconType="light" icon="circle-arrow-right" href="/documentation/getting-started/rest/environment-variables">
+    <sub>Learn how you can create environment variables from the client.</sub>
+  </Card>
+  <Card title="Creating environment variables using scripts" iconType="light" icon="circle-arrow-right" href="/documentation/getting-started/rest/pre-request-scripts#setting-environment-variables">
+    <sub>Learn how you can create environment variables using pre-request scripts.</sub>
+  </Card>
+  <Card title="Read more pre-request script examples" iconType="light" icon="circle-arrow-right" href="/documentation/getting-started/rest/pre-request-scripts#examples">
+    <sub>Learn more pre-request script examples.</sub>
+  </Card>
+</CardGroup>

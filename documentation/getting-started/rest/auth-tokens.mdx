@@ -1,0 +1,44 @@
+---
+sidebarTitle: Using auth tokens
+title: Using auth tokens
+description: Learn how to use authentication tokens in Hoppscotch.
+---
+
+In this section, we'll look at passing Authorization and Authentication information in our requests, by accessing the [GitHub REST API](https://docs.github.com/en/rest).
+
+Let's try making a `GET` request to the URL `https://api.github.com/user`.
+
+You'll get the following response:
+
+```json
+{
+  "message": "Requires authentication",
+  "documentation_url": "https://docs.github.com/rest/reference/users#get-the-authenticated-user"
+}
+```
+
+This is because you are not authorized to access the API and to gain access you would need to authenticate yourself. We use tokens to authenticate a user and to do so we first need to generate an access token from GitHub.
+
+## Generating access token
+
+To get access to the GitHub API, you first need to generate a personal access token. For our demonstration, we will generate one granting access to public repositories.
+
+1. Login to the GitHub account.
+2. Goto your [personal access tokens page](https://github.com/settings/tokens) and click on "**Generate new token**".
+3. Select tokens (classic).
+4. Specify the note as "**Hoppscotch API**" so that you can remember why you created it.
+5. Under the "Select scopes" section only check `public_repo`.
+6. Scroll down and click on "**Generate token**".
+7. You just generated your access token, now copy the token to your clipboard.
+
+## Storing auth token in a variable
+
+<Tip>It is a recommended safe practice to have your auth details in environment variables rather than inputting them directly to the authorization tab.</Tip>
+
+1. Click on the "**Global**" environment to add a variable.
+2. Create a variable called `token` and paste the token from GitHub as its value.
+3. Now open the Authorization tab and select `Bearer` from the dropdown list.
+4. Input the token as shown below, make sure that you reference the token in variable format, i.e. `<<token>>`.
+5. Click on "**Send**".
+
+You should now see the response including details about your GitHub account.

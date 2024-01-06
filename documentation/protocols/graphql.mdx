@@ -1,0 +1,90 @@
+---
+sidebarTitle: GraphQL
+title: GraphQL
+description: GraphQL is a query language for APIs that queries the server and provides the client only the data that is requested by the client. GraphQL enables you to fetch data from multiple APIs in a single query thus helping you build better-performing applications.
+---
+
+## Platform
+
+Hoppscotch has a built-in GraphQL platform that can be used to execute GraphQL queries. The GraphQL platform can be accessed by clicking on the `GraphQL` tab in the left sidebar.
+
+The GraphQL platform has the following features:
+
+- **GraphQL editor** - The GraphQL editor can be used to write GraphQL queries. The editor has syntax highlighting and auto-completion support for GraphQL queries.
+- **Collections** - The GraphQL platform supports collections. You can save your GraphQL queries in a collection and execute them later.
+- **Variables** - The GraphQL platform supports variables. You can define variables in the GraphQL query and pass the values of the variables in the variables section.
+- **Headers** - The GraphQL platform supports headers. You can add custom headers to the GraphQL query.
+- **Authentication** - The GraphQL platform supports authentication. You can add authentication to the GraphQL query.
+- **Schema Explorer** - The GraphQL platform has a schema explorer. You can use the schema explorer to explore the GraphQL schema.
+- **Documentation Explorer** - The GraphQL platform has a documentation explorer. You can use the documentation explorer to explore the documentation of the GraphQL schema.
+
+## API Testing
+
+Hoppscotch's GraphQL API platform provides you with the best experience to test and play around with GraphQL.
+
+It's primarily divided into two sections along with other features to help you build and test queries.
+
+## Request
+
+The request section houses the feature to enter your server endpoint and initiate a connection.
+
+Once the connection is made, the `query` builder assists you in designing queries to fetch the data that you require and run it.
+
+You can also add dynamic behavior to your queries by defining `variables`, `headers`, and `authorization`.
+
+## Response
+
+This is where you see the responses to your API endpoints. You can download and copy the returned responses for further use.
+
+## Schema
+
+GraphQL is a query language for APIs that queries the server and provides the client only the data that is requested by the client. GraphQL enables you to fetch data from multiple APIs in a single query thus helping you build better-performing applications.
+
+GraphQL server uses a GraphQL Schema to describe the structure of your data. Given below is an example of a GraphQL Schema.
+
+```graphql
+type Laptop {
+  model: String
+  maker: Maker
+}
+
+type Maker {
+  name: String
+  laptops: [Laptop]
+}
+```
+
+The above schema defines two types `Laptop` and `Maker`. The `Laptop` type has two fields `model` and `maker`. The `Maker` type has two fields `name` and `laptops`. The `laptops` field in the `Maker` type is an array of the `Laptop` type.
+
+GraphQL queries are written in the GraphQL query language. Given below is an example of a GraphQL query.
+
+```graphql
+query {
+  maker(name: "Apple") {
+    name
+    laptops {
+      model
+    }
+  }
+}
+```
+
+The above query fetches the `name` and `laptops` of the `Maker` with the name `Apple`.
+
+GraphQL queries can be executed using a GraphQL client. Hoppscotch has a built-in GraphQL client that can be used to execute GraphQL queries.
+
+## Other features
+
+### Documentation
+
+GraphQL documentation is where you can view the documentation provided by the developer.
+
+### Explorer
+
+GraphQL uses a schema to define the structure of the data, the schema explorer helps you to understand how your data is structured.
+
+The GraphQL platform also houses other features like:
+
+- [Environments](/documentation/features/environments)
+- [Collections](/documentation/features/collections)
+- [History](/documentation/features/history)

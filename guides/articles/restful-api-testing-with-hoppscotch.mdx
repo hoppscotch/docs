@@ -1,0 +1,73 @@
+---
+sidebarTitle: RESTful API testing with Hoppscotch
+title: RESTful API testing with Hoppscotch
+description: Learn how to use Hoppscotch to test your RESTful APIs.
+---
+
+Representational State Transfer (REST) APIs are a core part of communication between a web/mobile client and a server. The majority of web-based applications depend on REST APIs to fetch and modify data thus separating the data processing part from the front-end. Hoppscotch provides a fast and intuitive platform to develop and test REST APIs making it easier for developers worldwide to work efficiently.
+
+## Understanding REST
+
+REST usually uses the Hypertext Transfer Protocol (HTTP) to set up communication between the client and the server. REST APIs ensure that the server transfers information in a standard format. A REST API call generally contains the following steps -
+
+1. The client sends a request to the server.
+2. The server authenticates the client and ensures that the client is authorized to request the information.
+3. The server accepts the requests and processes them.
+4. The server responds with a code to tell the client if the request was successful or not and sends the requested information if the request was successful.
+
+Whenever a client requests information, the server always sends back a status code to indicate the status of the request. These are called HTTP status codes and are grouped into five types.
+
+| Status Code   | Response Type |
+| ------------- | ------------- |
+| 1xx (100-199) | Informational |
+| 2xx (200-299) | Success       |
+| 3xx (300-399) | Redirection   |
+| 4xx (400-499) | Client error  |
+| 5xx (500-599) | Server error  |
+
+REST APIs also support HTTP methods to do operations on data. Hoppscotch supports the following methods out of the box.
+
+| HTTP Method | Usage                                                              |
+| ----------- | ------------------------------------------------------------------ |
+| GET         | Retrieve resource from a server                                    |
+| POST        | Create or send new resource                                        |
+| PUT         | Updating resource, can also be used for creating resource          |
+| PATCH       | Similar to PUT, can be used to modify resources                    |
+| DELETE      | Delete resource from the server                                    |
+| HEAD        | Read HTTP header information                                       |
+| CONNECT     | To start a two-way communication with resource                     |
+| OPTIONS     | Requests permitted communication options for a given URL or server |
+| TRACE       | Used to debug the path to the target resource                      |
+| CUSTOM      | Create custom methods as per your need                             |
+
+## Using Hoppscotch to test your REST APIs
+
+Hoppscotch provides you with a minimal yet robust platform to test your REST APIs. The REST platform is the default platform you see when you open Hoppscotch.
+
+You can enter the API endpoint and choose the HTTP method according to your needs from the dropdown menu. Once it is configured, click on the "**Send**" button and you will see the response returned by the server. It's that simple.
+
+Now try it yourself, copy the below API endpoint, and create a request.
+
+```
+https://echo.hoppscotch.io
+```
+
+### Locally served APIs
+
+If you are planning to use Hoppscotch to test your locally served APIs, it is recommended that you install the Hoppscotch Browser Extension. Once installed, switch the interceptor on Hoppscotch to Browser Extension from the settings page or bottom bar to add support for [localhost](http://localhost) protocols.
+
+### Adding parameters to your request
+
+You can also parameterize your URLs by specifying parameters in the URL itself or adding parameters manually in the parameters tab. To add a parameter in the URL, append `?` at the end of the URL and add a parameter in `key=value` format.
+
+### Working with environment variables
+
+Environment variables allow you to store and reuse values in your requests and scripts. You can create a new environment by clicking the environments icon on the sidebar and clicking the `new` button.
+
+If you have more than one environment, select the environment whose variables you want to access. You can access the variables in the request section by referencing the variable in the following format`<<variable_name>>`.
+
+### Authentication tokens
+
+Hoppscotch has support for various types of authentication mechanisms such as Basic Auth, Bearer Token, OAuth 2.0, and API Key. You can configure this using the Authorization tab on the request section of Hoppscotch.
+
+These are just a few of the amazing set of features that Hoppscotch provides you to make your life easier as a developer. In addition to this, Hoppscotch supports features such as collections to save your requests, pre-requests to add dynamic behavior to your requests and so much more.

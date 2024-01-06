@@ -1,0 +1,73 @@
+---
+sidebarTitle: Realtime
+title: Realtime
+description: Hoppscotch's Realtime API platform helps you test your real-time APIs easily.
+---
+
+## Platform
+
+Hoppscotch has a built-in real-time platform that can be used to execute real-time requests. The real-time client platform can be accessed by clicking on the `Realtime` tab in the left sidebar.
+
+Realtime protocols are used in communication, entertainment, and even in the Internet of Things (IoT) to deliver and handle real-time messages, audio, etc.
+
+With Hoppscotch you can work with the following real-time protocols:
+
+- WebSocket
+- Socket.IO
+- SSE
+- MQTT
+
+## API Testing
+
+Hoppscotch's Realtime API platform helps you test your real-time APIs easily.
+
+It's primarily divided into two sections the request section and the response section.
+
+## Request
+
+The request section houses the feature to enter your server endpoint and initiate a connection. You also get the option to choose from four different protocols `WebSocket`, `SSE`, `Socket.IO`, and `MQTT`.
+
+## Response
+
+Once the connection is established, you can view the responses and logs in the response section.
+
+## WebSocket
+
+WebSockets are an alternative to HTTP communication in Web Applications. They offer a long-lived, bidirectional communication channel between client and server. Once established, the channel is kept open, offering a very fast connection with low latency and overhead. This makes them ideal for real-time applications.
+
+WebSockets are perfect for scenarios such as:
+
+- When you need to support real-time communication between the client and the server.
+- When you need to support a protocol that is more efficient than HTTP.
+- When you need to support a protocol that is more efficient than long polling.
+
+## Socket.IO
+
+Socket.io is a real-time event-based communication library built on webSocket. It enables real-time, bi-directional communication between web clients and servers.
+
+Socket.io is perfect for scenarios such as:
+
+- When you need to support older browsers that don't support WebSockets.
+- When you need to support polling transports for mobile devices.
+- When you need to support multiple transports for a single connection.
+
+## SSE
+
+SSE is a standard describing how servers can initiate data transmission towards clients once an initial client connection has been established. An SSE connection can discard processed messages without accumulating all of them in memory making it a memory-efficient implementation of XHR streaming.
+
+SSE is perfect for scenarios such as:
+
+- When an efficient unidirectional communication protocol is needed that won't add unnecessary server load (which is what happens with long polling).
+- When you need a protocol with a predefined standard for handling errors.
+- When you want to use HTTP-based methods for real-time data streaming.
+
+## MQTT
+
+Message Queuing Telemetry Transport (MQTT) protocol is a publish/subscribe protocol that is lightweight and requires minimal memory, CPU, and bandwidth to connect IoT devices. Unlike HTTP's request/response paradigm, MQTT is event-driven and enables messages to be pushed to clients.
+
+Once connected to the MQTT server, you can either publish a message under a topic or subscribe to a topic to get messages about that topic being sent across the server in real time.
+
+MQTT is perfect for scenarios such as:
+
+- When you need to support real-time communication between the client and the server.
+- When you need to support a protocol that is more efficient than HTTP.

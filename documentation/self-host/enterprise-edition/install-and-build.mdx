@@ -1,0 +1,284 @@
+---
+sidebarTitle: Install and build
+title: Install and build
+description: Learn how to install and build Hoppscotch Enterprise Edition.
+---
+
+## Configuring the environment
+
+Before you get started with the installation, you need to configure the environment variables.
+
+Copy the contents of the `.env.example` file found in the root directory of the cloned repository to `.env` and add your values for the environment variables.
+
+- Ensure that the environment values are not enclosed within quotes.
+
+```yaml
+#-----------------------Backend Config------------------------------#
+# Prisma Config
+DATABASE_URL=postgresql://username:password@url:5432/dbname # or replace with your database URL
+
+# Auth Tokens Config
+JWT_SECRET=secretcode123
+TOKEN_SALT_COMPLEXITY=10
+MAGIC_LINK_TOKEN_VALIDITY=3
+REFRESH_TOKEN_VALIDITY=604800000
+ACCESS_TOKEN_VALIDITY=86400000
+SESSION_SECRET=anothersecretcode123
+
+# Hoppscotch App Domain Config
+REDIRECT_URL=http://localhost:3000
+WHITELISTED_ORIGINS=http://localhost:3170,http://localhost:3000,http://localhost:3100
+VITE_ALLOWED_AUTH_PROVIDERS=GOOGLE,GITHUB,MICROSOFT,EMAIL,SAML
+
+# Google Auth Config
+GOOGLE_CLIENT_ID=*****
+GOOGLE_CLIENT_SECRET=*****
+GOOGLE_CALLBACK_URL=http://localhost:3170/v1/auth/google/callback
+GOOGLE_SCOPE=email,profile
+
+# Github Auth Config
+GITHUB_CLIENT_ID=*****
+GITHUB_CLIENT_SECRET=****
+GITHUB_CALLBACK_URL=http://localhost:3170/v1/auth/github/callback
+GITHUB_SCOPE=user:email
+
+# Microsoft Auth Config
+MICROSOFT_CLIENT_ID=*****
+MICROSOFT_CLIENT_SECRET=*****
+MICROSOFT_CALLBACK_URL=http://localhost:3170/v1/auth/microsoft/callback
+MICROSOFT_SCOPE=user.read
+MICROSOFT_TENANT=common
+
+# Mailer config
+MAILER_SMTP_URL=smtps://user@domain.com:pass@smtp.domain.com
+MAILER_ADDRESS_FROM=From Name Here" <from@example.com>
+
+# Rate Limit Config
+RATE_LIMIT_TTL=60
+RATE_LIMIT_MAX=100
+
+#-----------------------Frontend Config------------------------------#
+
+# Base URLs
+VITE_BASE_URL=http://localhost:3000
+VITE_SHORTCODE_BASE_URL=http://localhost:3000
+VITE_ADMIN_URL=http://localhost:3100
+
+# Backend URLs
+VITE_BACKEND_GQL_URL=http://localhost:3170/graphql
+VITE_BACKEND_WS_URL=wss://localhost:3170/graphql
+VITE_BACKEND_API_URL=http://localhost:3170/v1
+
+# Terms Of Service And Privacy Policy Links (Optional)
+VITE_APP_TOS_LINK=https://docs.hoppscotch.io/support/terms
+VITE_APP_PRIVACY_POLICY_LINK=https://docs.hoppscotch.io/support/privacy
+
+ENTERPRISE_LICENSE_KEY=***************************************
+```
+
+Let's understand the major environment variables:
+
+1. `DATABASE_URL`: This is where you add your Postgres database URL.
+2. `TOKEN_SALT_COMPLEXITY`: Defines the complexity of the SALT that is used for hashing - a higher number implies a more complex salt
+3. `MAGIC_LINK_TOKEN_VALIDITY`:Duration of the validity of the magic link being sent to sign in to Hoppscotch (in days)
+4. `REFRESH_TOKEN_VALIDITY`: Validity of the refresh token for auth (in ms)
+5. `ACCESS_TOKEN_VALIDITY`: Validity of the access token for auth (in ms)
+6. `JWT_SECRET`, `SESSION_SECRET`: Secret Keys for security purposes
+7. `REDIRECT_URL`: This is a fallback URL to debug when the actual redirects fail
+8. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, and the frontend app
+9. `VITE_ALLOWED_AUTH_PROVIDERS`: Allows you to specify which auth providers you want to enable
+10. `MAILER_SMTP_URL`: The SMTP URL for email delivery
+11. `MAILER_ADDRESS_FROM`: The email address that you would be using
+12. `RATE_LIMIT_TTL`: The time it takes to refresh the maximum number of requests being received
+13. `RATE_LIMIT_MAX`: The maximum number of requests that Hoppscotch can handle under `RATE_LIMIT_TTL`
+14. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from
+15. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`
+16. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance
+17. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance
+18. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance
+19. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy
+20. `ENTERPRISE_LICENSE_KEY`: The license key required to use Hoppscotch Enterprise
+
+Third-party auth configs have to be obtained from the respective providers. You can choose and configure the auth providers by following the [configuring OAuth guide](/documentation/self-host/enterprise-edition/prerequisites#oauth).
+
+## Docker
+
+Once the environment variables are configured, you may proceed to the next step of setting up the Hoppscotch instance. Currently, there are two ways to set up Hoppscotch:
+
+- Using individual containers for the services
+- Using the AIO container
+
+- Before proceeding further, ensure that you have a running instance of Postgres.
+
+### Using individual containers for the services
+
+To self-host Hoppscotch Enterprise Edition, you will need the following services running via Docker:
+
+- Hoppscotch enterprise frontend
+- Hoppscotch enterprise backend
+- Hoppscotch enterprise admin dashboard
+
+Pull the containers from DockerHub with the following command:
+
+```bash
+docker pull hoppscotch/hoppscotch-enterprise-frontend
+docker pull hoppscotch/hoppscotch-enterprise-backend
+docker pull hoppscotch/hoppscotch-enterprise-admin
+```
+
+After pulling the containers, start Hoppscotch by running all three services:
+
+```bash
+docker run -p 3000:3000 --env-file .env --restart unless-stopped hoppscotch-enterprise-frontend
+docker run -p 3170:3170 --env-file .env --restart unless-stopped hoppscotch-enterprise-backend
+docker run -p 3100:3100 --env-file .env --restart unless-stopped hoppscotch-enterprise-admin
+```
+
+- Ensure that the environment variables are configured in the `.env` file and the restart policy is mentioned.
+
+Open [admin dashboard](http://localhost:3100) or [`PORT 3100`](http://localhost:3100) in the browser to [setup and access](/documentation/self-host/enterprise-edition/setup-and-access) the Hoppscotch instance.
+
+### Using the AIO container
+
+The All-In-One (AIO) container is a single container that provides all the services required to run Hoppscotch.
+
+Pull the container from DockerHub with the following command:
+
+```bash
+docker pull hoppscotch/hoppscotch-enterprise
+```
+
+After pulling the container, start Hoppscotch by running the container:
+
+```bash
+docker run -p 3000:3000 -p 3100:3100 -p 3170:3170 --env-file .env --restart unless-stopped hoppscotch/hoppscotch-enterprise
+```
+
+- Ensure that the environment variables are configured in the `.env` file and the restart policy is mentioned.
+
+Open [admin dashboard](http://localhost:3100) or [`PORT 3100`](http://localhost:3100) in the browser to [setup and access](/documentation/self-host/community-edition/setup-and-access) the Hoppscotch instance.
+
+## Subpath Based Access
+
+To enable subpath based access the following `.env` variable must be set to true, it is set to false by default.
+
+```
+ENABLE_SUBPATH_BASED_ACCESS=false
+```
+
+When set to true the following is the expected behavior:
+
+### In the individual container
+
+When using the individual containers it is up to the users to configure a reverse proxy to allow requests made to a specific route to be rerouted to the relevant containers.
+
+### In AIO
+
+When using AIO, when subpath access is set to true the services can be accessed from the following routes
+
+| Service              | Route      |
+| -------------------- | ---------- |
+| Hoppscotch App       | `/`        |
+| Hoppscotch Admin App | `/admin`   |
+| Hoppscotch Backend   | `/backend` |
+
+## Migrations
+
+Once the instance of Hoppscotch is up, you need to run migrations on the database to ensure that it has the relevant tables. Depending on how Hoppscotch was set up, the method to run the migrations changes.
+
+### Using individual containers for the services
+
+Run the following command to copy the ID of the **backend container**:
+
+```bash
+docker ps
+```
+
+### Using the AIO container
+
+Run the following command to copy the ID of the **AIO container**:
+
+```bash
+docker ps
+```
+
+### Running migrations
+
+Once the respective container ID is copied, execute the following command to open an interactive shell within the AIO container to execute the migration command:
+
+```bash
+docker exec -it <container_id> /bin/sh
+```
+
+Once inside the container, run the migration using:
+
+```bash
+pnpx prisma migrate deploy
+```
+
+Should the user ever encounter the following error:
+
+```bash
+Database migration not found. Please check the documentation for assistance: https://docs.hoppscotch.io/documentation/self-host/community-edition/install-and-build#running-migrations
+```
+
+It means the user is trying to start the backend (or AIO) service before the database has all the relevant tables in it. In order to run the migration to populate the database run the following command.
+
+```bash
+docker run -it --entrypoint sh --env-file .env <container_name>
+```
+
+Making sure to pass in the `.env` file containing the right `.env` variables for the instance. On executing the aforementioned command will result in a shell being opened inside a instance of the container following which user can execute a database migration normally with
+
+```bash
+	pnpx prisma migrate deploy
+```
+
+Once the database has been successfully run and the database populated with tables the backend containers ( or AIO container) can be started normally.
+
+Note: If user is using `docker compose` to run the services the following command can be used to open a shell inside the backend (or AIO) service.
+
+```bash
+docker compose run --entrypoint sh <Service_name>
+```
+
+## ClickHouse setup
+
+To start saving the [audit logs](/guides/articles/audit-logs) into ClickHouse, first you need to create the relevant databases with the relevant tables in them. Follow the following instructions to set up ClickHouse to start saving logs:
+
+1. Ensure that all the relevant containers are running.
+
+2. Run the following command to get the ID of the ClickHouse container:
+
+   ```bash
+   docker ps
+   ```
+
+3. Once the ClickHouse container is also running, open an interactive bash into it using the `clickhouse-client`:
+
+   ```bash
+   docker exec -it <clickhouse_container_id> clickhouse-client
+   ```
+
+4. Once inside the container, execute the following SQL commands:
+
+   ```sql
+   # Create a database called logs
+   CREATE DATABASE logs
+
+   # Create a table called audit_logs in the logs database
+   CREATE TABLE IF NOT EXISTS logs.audit_logs
+   (
+       `event` String,
+       `timestamp` DateTime,
+       `user` Tuple(id String, email String, name String),
+       `group` Tuple(type LowCardinality(String), id String),
+       `resource` Tuple(type LowCardinality(String), metadata String),
+       `statusCode` Int16,
+       `errorMessage` String,
+       `result` LowCardinality(String),
+       `server_version` String
+   )
+   ENGINE = MergeTree
+   ORDER BY timestamp
+   ```
