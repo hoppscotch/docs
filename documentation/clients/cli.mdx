@@ -28,10 +28,10 @@ The `hopp test` command allows you to run tests against a Hoppscotch collection 
 
 - The hopp test command recursively goes through each request in the collection and runs them. Hence, the order of execution is the same as the order specified in the collection structure.
 - If upon executing the command, a failed assertion (a failing test case) has occurred, the command will give a non-zero exit code and 0 exit code if all tests have passed.
-- Unless there was a network error (for example, DNS resolution errors or network Connectivity Issues), the test script will be running and it is up to the test script to define what happens to error status codes. Non-200 status codes are still considered valid responses for test script execution.
+- Unless there was a network error (for example, DNS resolution errors or network Connectivity Issues), the test script will be running and it is up to the test script to define what happens to error status codes. Non-200 status codes are still considered valid responses for test script execution.- The execution of requests within a collection can be deferred using the `-d, --delay` flag. One practical application involves executing requests against APIs with enforced rate limits.
 
 ```bash
-hopp test [-e <environment file>] <hoppscotch collection file>
+hopp test [-e <environment file>] [-d <delay_in_ms> ] <hoppscotch collection file>
 ```
 
 ### Example
@@ -39,6 +39,7 @@ hopp test [-e <environment file>] <hoppscotch collection file>
 ```bash
 hopp test kitchen-sink-hoppscotch-collection.json
 hopp test -e environment.json kitchen-sink-hoppscotch-collection.json
+hopp test -e environment.json -d 1000 kitchen-sink-hoppscotch-collection.json
 ```
 
 ## Environment
