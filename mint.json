@@ -133,7 +133,6 @@
         "documentation/features/snippets",
         "documentation/features/interceptor",
         "documentation/features/widgets",
-        "documentation/features/runner",
         "documentation/features/authorization",
         "documentation/features/rest-api-testing",
         "documentation/features/graphql-api-testing",
