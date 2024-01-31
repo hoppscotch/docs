@@ -12,10 +12,11 @@ Click on the "**Environments**" icon on the sidebar to create environments.
 
 ## Using scripts
 
-You can also create environment variables using scripts by using the `pw` object.
+You can also create and delete environment variables using scripts by using the `pw` object..
 
 ```javascript
-pw.env.set("variable", "value");
+pw.env.set("variable", "value"); // Creates an environment variable 
+pw.env.unset("variable"); // Deletes the environment variable
 ```
 
 <CardGroup cols={1}>

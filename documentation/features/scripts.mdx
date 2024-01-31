@@ -20,6 +20,15 @@ The `pw` object houses the following methods:
 pw.env.set("baseURL", "https://httpbin.org");
 ```
 
+## `pw.env.unset("variable)`
+
+`pw.env.unset()` can be used to remove the value of the variable present in the current active environment
+
+```javascript
+pw.env.unset("baseURL");
+```
+
+
 ## `pw.env.get("variable")`
 
 Retrieves the value of the selected environment's variable. Accepts an environment variable as an argument.
