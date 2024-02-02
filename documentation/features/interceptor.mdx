@@ -22,7 +22,7 @@ Since `CORS` is as simple as adding some HTTP headers, it's only blocked by the 
     - [Chrome](https://chrome.google.com/webstore/detail/hoppscotch-browser-extens/amknoiejhlmhancpahfcfcfhllgkpbld?hl=en)
     - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/hoppscotch)
 
-2. Click on the Hoppscotch Browser Extension icon from the browser toolbar and add a new origin as `http://localhost` or `http://localhost:8000` as per your local server configuration.
+2. Click on the Hoppscotch Browser Extension icon from the browser toolbar and ensure that `hoppscotch.io` is in your active origins. If you are using Hoppscotch Self-Host, add your own domain as a new origin
 
     <Frame>
       <img className="block border border-black/5 rounded-md dark:border-white/5 dark:hidden" src="/images/browser-extension-light.png" />
@@ -45,3 +45,6 @@ Since `CORS` is as simple as adding some HTTP headers, it's only blocked by the 
       <img className="block border border-black/5 rounded-md dark:border-white/5 dark:hidden" src="/images/browser-extension-enable-2-light.png" />
       <img className="hidden border border-black/5 rounded-md dark:border-white/5 dark:block" src="/images/browser-extension-enable-2-dark.png" />
     </Frame>
+
+    ### Origins
+    The origin list defines the URLs that the extension can connect to. If you're using hoppscotch.io, then you do not need to add any other origins. However, if you are using a self-hosted instance, you should add the domain of your self-hosted instance as an active origin.
