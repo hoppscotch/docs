@@ -80,6 +80,13 @@ Hoppscotch CLI continues to support the legacy format which was previously the o
 
 <Info>Please note that the Hoppscotch CLI exclusively supports the above two formats for importing environment variables. It **does not** offer compatibility with **Bulk Environment** exports or **any other export** format.</Info>
 
+## Secrets
+
+If requests in a collection consists of secret variables we recommend either of the two approaches.
+
+1. Inject the secret values as variables into the OS environment
+2. Edit the environment export file and add the secret values manually
+
 ## Options
 
 | Option | Description                                                |

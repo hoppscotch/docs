@@ -4,11 +4,39 @@ title: Environments
 description: Environments help you create variables that you can reuse in requests and scripts.
 ---
 
-Environments are also useful when you need to manage shared data with a team. You can create environments and share them with your team members.
+An environment allows you to group together a set of variable data. You can reference the variable data you define in an environment throughout Hoppscotch when sending requests or using scripts.
 
-Click on the "**Environments**" icon on the sidebar to create environments.
+Environments are also useful when you need to manage shared variables with a team. You can create environments and share them with your workspace members.
 
-<Tip>You can add your variables to the `Global` environment, which can be accessed globally, ie. in every other environment.</Tip>
+## Types of Environments
+
+1. Global Environment - Variables defined in a global environment can be accessed from any workspace anytime. However the variables defined in a personal or shared workspace environment if used will have higher precedence over a global variables
+2. Personal Environment - Are personal to the user and is not associated with a shared workspace, however a user can use a personal environment in a shared workspace without sharing it with the workspace members
+3. Shared Environments -  Are unique to each shared workspace, all the shared environments created in a shared workspace are accessible to every member of the shared workspace
+
+## Types of Variables in an Environment
+
+Hoppscotch environment provides support for two types of variables 
+
+1. A Regular environment variable allows users to reference the variable throughout Hoppscotch, and anyone can see the value associated with the variable. In a shared workspace, regular environment variable-value pairs will be synced to the server, making them available to all workspace members. However, you have the option to choose whether to sync a personal or global environment.
+
+2. A secret environment variable enables users to specify secrets and reference the values as variables. The values of secret variables in any workspace will never be synced to the server or shared with any workspace members. It is expected that the user will populate the value of the variable at runtime. All secret variable values in Hoppscotch will be masked using asterisks (***).
+    
+<Tip>Secret variables values will not be exported when an environment is exported.</Tip>
+
+## Shared Environment Access
+
+|  | Environment Variable | Secret Variable |
+| --- | --- | --- |
+| Workspace Owner | create / delete variable, edit value and use | create / delete secret variable, add values and use |
+| Workspace Editor | create / delete variable, edit value and use | create / delete secret variable, add value and use |
+| Workspace Viewer | use | add value and use |
+
+## Creating an environment
+
+Click on the ”Environments” icon on the sidebar to create environments.
+
+A variable created in an environment can be used by typing the variable name enclosed in double angle brackets `<<variable>>`
 
 ## Using scripts
 
