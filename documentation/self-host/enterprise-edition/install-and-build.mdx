@@ -10,7 +10,7 @@ Before you get started with the installation, you need to configure the environm
 
 Copy the contents of the `.env.example` file found in the root directory of the cloned repository to `.env` and add your values for the environment variables.
 
-- Ensure that the environment values are not enclosed within quotes.
+<Warning>**Ensure that the environment values are not enclosed within quotes ("").**</Warning>
 
 ```yaml
 #-----------------------Backend Config------------------------------#
@@ -233,7 +233,7 @@ docker run -it --entrypoint sh --env-file .env <container_name>
 Making sure to pass in the `.env` file containing the right `.env` variables for the instance. On executing the aforementioned command will result in a shell being opened inside a instance of the container following which user can execute a database migration normally with
 
 ```bash
-	pnpx prisma migrate deploy
+pnpx prisma migrate deploy
 ```
 
 Once the database has been successfully run and the database populated with tables the backend containers ( or AIO container) can be started normally.
