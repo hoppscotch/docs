@@ -1,0 +1,47 @@
+---
+title: 'Telemetry'
+description: 'Telemetry and data sharing in Hoppscotch community edition'
+---
+
+Telemetry in Hoppscotch Self-Host refers to anonymous data shared with Hoppscotch. This helps identify the usage patterns of Hoppscotch.
+
+# Data Collected by Hoppscotch
+
+Hoppscotch does not capture any data from your APIs. All captured data is anonymous and pertains to instance usage.
+
+## Instance Usage
+
+The instance usage ping is sent once a week to indicate that the instance is operational. You can disable this event by navigating to the settings page and turning off data sharing settings.
+
+```json
+{
+  "uuid": "976fcae1-4079-4e83-881a-48723f694475",
+  "event": "sh_instance",
+  "properties": {
+    "type": "COMMUNITY",
+    "total_user_count": 10,
+    "total_workspace_count": 2,
+    "version": "2024.3.0",
+    "$lib": "posthog-node",
+    "$lib_version": "3.6.3",
+    "$geoip_disable": true,
+    "$ip": "127.0.0.1",
+    "$sent_at": "2024-02-20T06:14:20.041000+00:00",
+    "$plugins_succeeded": [
+      "GeoIP (8000)"
+    ],
+    "$plugins_failed": [],
+    "$plugins_deferred": []
+  },
+  "timestamp": "2024-02-20T06:14:20.591000Z",
+  "team_id": 15871,
+  "distinct_id": "9bdec3aae9330af51ba91313d3de99b46ae928da",
+  "elements_chain": "",
+  "created_at": "2024-02-20T06:14:20.835000Z"
+}
+
+```
+
+# Turning off data sharing
+
+You can turn off your data sharing preferences from your Hoppscotch admin dashboard and heading over to the Data Sharing section in the settings page
