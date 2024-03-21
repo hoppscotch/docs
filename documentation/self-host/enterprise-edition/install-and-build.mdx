@@ -17,6 +17,12 @@ Copy the contents of the `.env.example` file found in the root directory of the 
 # Prisma Config
 DATABASE_URL=postgresql://username:password@url:5432/dbname # or replace with your database URL
 
+# ClickHouse Config
+ALLOW_AUDIT_LOGS=true
+CLICKHOUSE_HOST=http://clickhouse:8123
+CLICKHOUSE_USER=default
+CLICKHOUSE_PASSWORD=''
+
 # Auth Tokens Config
 JWT_SECRET=secretcode123
 TOKEN_SALT_COMPLEXITY=10
@@ -28,7 +34,7 @@ SESSION_SECRET=anothersecretcode123
 # Hoppscotch App Domain Config
 REDIRECT_URL=http://localhost:3000
 WHITELISTED_ORIGINS=http://localhost:3170,http://localhost:3000,http://localhost:3100
-VITE_ALLOWED_AUTH_PROVIDERS=GOOGLE,GITHUB,MICROSOFT,EMAIL,SAML
+VITE_ALLOWED_AUTH_PROVIDERS=GOOGLE,GITHUB,MICROSOFT,EMAIL,SAML,OIDC
 
 # Google Auth Config
 GOOGLE_CLIENT_ID=*****
@@ -42,12 +48,43 @@ GITHUB_CLIENT_SECRET=****
 GITHUB_CALLBACK_URL=http://localhost:3170/v1/auth/github/callback
 GITHUB_SCOPE=user:email
 
+# Set to 'true' if you are using github enterprise
+IS_GITHUB_ENTERPRISE_ENABLED=false
+
+# Change domain to respective org domain, if using Github Enterprise Cloud use github.com as domain
+GITHUB_AUTHORIZATION_URL=https://{domain}/login/oauth/authorize
+GITHUB_TOKEN_URL=https://{domain}/login/oauth/access_token
+
+# If using Github Enterprise Cloud use api.github.com as domain for 2 fields below
+GITHUB_USER_PROFILE_URL=https://{domain}/users
+GITHUB_USER_EMAIL_URL=https://{domain}/user/emails
+
 # Microsoft Auth Config
 MICROSOFT_CLIENT_ID=*****
 MICROSOFT_CLIENT_SECRET=*****
 MICROSOFT_CALLBACK_URL=http://localhost:3170/v1/auth/microsoft/callback
 MICROSOFT_SCOPE=user.read
 MICROSOFT_TENANT=common
+
+# SAML Auth Config
+SAML_ISSUER=**********
+SAML_AUDIENCE=nestjs-saml
+SAML_CALLBACK_URL=http://localhost:3170/v1/auth/saml/callback
+SAML_CERT=**********
+SAML_ENTRY_POINT=**********
+SAML_WANT_ASSERTIONS_SIGNED=true
+SAML_WANT_RESPONSE_SIGNED=false
+
+# OIDC Auth Config
+OIDC_PROVIDER_NAME=************************************************
+OIDC_ISSUER=************************************************
+OIDC_AUTH_URL=************************************************
+OIDC_TOKEN_URL=************************************************
+OIDC_USER_INFO_URL=************************************************
+OIDC_CLIENT_ID=************************************************
+OIDC_CLIENT_SECRET=************************************************
+OIDC_CALLBACK_URL=http://localhost:3170/v1/auth/oidc/callback
+OIDC_SCOPE=openid profile email
 
 # Mailer config
 MAILER_SMTP_URL=smtps://user@domain.com:pass@smtp.domain.com

@@ -1,0 +1,32 @@
+---
+sidebarTitle: Variables
+title: Variables
+description: Dynamic placeholders for your API interactions.
+---
+
+Hoppscotch provides you the ability to create and use variable throughout the app. This helps you reuse values throughout Hoppscotch just by invoking the variable name. 
+
+Hoppscotch considers an objects within an angular brackets as a variable `<<variable>>`
+
+## Variable Scopes
+
+Hoppscotch provides you different variables scopes, allowing you to use different scopes for different contexts.
+
+1. Global Variables: can be accessed throughout Hoppscotch and has the broadest scope of all variables. 
+2. Environment Variables: allow your variables to be scoped to an environment. Environment variables are useful when you have the same set of variables for two environments such as production and staging
+3. Request Variables: are scoped to just an individual request, request variables are useful when you want to use variables in your URL path or when you want to embed a variable URL.
+
+The scope of each variable can be identified from the color of the variable name 
+
+| Variable Scope | Color |
+| --- | --- |
+| Global | Blue |
+| Environment | Green |
+| Request | Orange |
+| Non resolvable | Red |
+
+<CardGroup cols={1}>
+  <Card title="Environments" iconType="light" icon="circle-arrow-right" href="/documentation/features/environments">
+    <sub>Choose the environment that aligns best with your development workflow.</sub>
+  </Card>
+</CardGroup>
