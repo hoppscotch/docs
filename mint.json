@@ -121,6 +121,7 @@
       "pages": [
         "documentation/features/workspaces",
         "documentation/features/collections",
+        "documentation/features/variables",
         "documentation/features/environments",
         "documentation/features/history",
         "documentation/features/spotlight",
@@ -134,6 +135,7 @@
         "documentation/features/interceptor",
         "documentation/features/widgets",
         "documentation/features/authorization",
+        "documentation/features/oauth2",
         "documentation/features/rest-api-testing",
         "documentation/features/graphql-api-testing",
         "documentation/features/realtime-api-testing"
