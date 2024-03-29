@@ -1,0 +1,34 @@
+---
+sidebarTitle: OAuth 2.0
+title: OAuth 2.0 Grant Types
+description: OAuth grant types are methods for getting tokens to make requests to a resource server. 
+---
+
+When using OAuth 2.0 authentication with Hoppscotch, you can utilize the following grant types:
+
+
+### 1. Authorization Code
+
+The Authorization Code grant type mandates user authentication with the provider, leading to the issuance of an authorization code back to the client application. This code is then extracted and swapped with the provider for an access token, which is later used to authenticate subsequent requests.
+
+To use the Authorization Code grant type, specify a **Callback URL** for your client application, along with other pertinent details such as **Auth URL**, **Access Token URL**, **Client ID**, and **Client Secret** provided by the API service.
+
+> ### Using PKCE
+> 
+> Opting for OAuth 2.0 with PKCE (Proof Key for Code Exchange), you gain the option to enhance security. Upon selecting PKCE, You can choose between SHA-256 or Plain algorithms.
+
+### 2. Client Credentials
+
+The client credentials grant type is commonly employed for accessing data tied to the client application. Provide the **Access Token URL** of the provider along with the **Client ID** and **Client Secret** for your registered application.
+
+### 3. Password Credentials
+
+The OAuth 2.0 Password grant type sends the username and password directly from the client, which is not advised when handling third-party data.
+
+To utilize the password grant type, input your API provider's **Access Token URL**, along with the Username and Password. Occasionally, you may also be required to supply a client ID and secret.
+
+### 4. Implicit
+
+The Implicit grant type furnishes the client with an access token directly, eliminating the additional authentication code step and is less secure.
+
+For utilizing the implicit grant type in your requests via Hoppscotch, provide a Callback URL registered with the API provider, the provider's Auth URL, and a Client ID for the registered application.
