@@ -4,19 +4,19 @@ title: Variables
 description: Dynamic placeholders for your API interactions.
 ---
 
-Hoppscotch gives you the ability to create and use variables throughout the app. This helps you reuse values throughout Hoppscotch just by invoking the variable name. 
+Hoppscotch provides you the ability to create and use variable throughout the app. This helps you reuse values throughout Hoppscotch just by invoking the variable name. 
 
-Hoppscotch considers an object within an angular bracket as a variable `<<variable>>`.
+Hoppscotch considers an objects within an angular brackets as a variable `<<variable>>`
 
 ## Variable Scopes
 
-Hoppscotch provides you with different variable scopes, allowing you to use the right scope for the situation.
+Hoppscotch provides you different variables scopes, allowing you to use different scopes for different contexts.
 
 1. Global Variables: can be accessed throughout Hoppscotch and has the broadest scope of all variables. 
-2. Environment Variables: allow your variables to be scoped to an environment. Environment variables are useful when you have the same set of variables for two environments such as production and staging.
-3. Request Variables: are scoped to just an individual request, request variables are useful when you want to use variables in your URL path or when you want to embed a variable URL.
+2. Environment Variables: allow your variables to be scoped to an environment. Environment variables are useful when you have the same set of variables for two environments such as production and staging
+3. Request Variables: are scoped to just an individual request, request variables are useful when you want to use variables in your URL path or when you want to embed a variable URL
 
-The scope of each variable can be identified from the color of the variable name :
+The scope of each variable can be identified from the color of the variable name 
 
 | Variable Scope | Color |
 | --- | --- |
@@ -24,6 +24,17 @@ The scope of each variable can be identified from the color of the variable name
 | Environment | Green |
 | Request | Orange |
 | Non resolvable | Red |
+
+## Types of Variables
+
+1. **A regular variable**: allows users to reference the variable throughout Hoppscotch, and anyone can see the value associated with the variable. 
+In a  workspace, regular environment variable-value pairs will be synced to the server, making them available to all workspace members. 
+However, you have the option to choose whether to sync a regular variable value present in your personal workspace
+2. **A secret variable:** enables users to specify secrets and reference the values as variables. The values of secret variables in any workspace will never be synced to the server or shared with any workspace members. 
+It is expected that in a collaborative workspace the user will populate the value of the variable at runtime.
+All secret variable values in Hoppscotch will be masked using asterisks (***). Secret Variables cannot be scoped to a request and can only be scoped in an environment or globally
+
+`Secret variables values will not be exported when an environment is exported.`
 
 <CardGroup cols={1}>
   <Card title="Environments" iconType="light" icon="circle-arrow-right" href="/documentation/features/environments">

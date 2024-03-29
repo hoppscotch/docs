@@ -135,7 +135,6 @@
         "documentation/features/interceptor",
         "documentation/features/widgets",
         "documentation/features/authorization",
-        "documentation/features/oauth2",
         "documentation/features/rest-api-testing",
         "documentation/features/graphql-api-testing",
         "documentation/features/realtime-api-testing"
@@ -153,7 +152,8 @@
             "documentation/self-host/community-edition/install-and-build",
             "documentation/self-host/community-edition/setup-and-access",
             "documentation/self-host/community-edition/admin-dashboard",
-            "documentation/self-host/community-edition/deploy-and-upgrade"
+            "documentation/self-host/community-edition/deploy-and-upgrade",
+            "documentation/self-host/community-edition/telemetry"
           ]
         },
         {
@@ -164,7 +164,8 @@
             "documentation/self-host/enterprise-edition/install-and-build",
             "documentation/self-host/enterprise-edition/setup-and-access",
             "documentation/self-host/enterprise-edition/admin-dashboard",
-            "documentation/self-host/enterprise-edition/deploy-and-upgrade"
+            "documentation/self-host/enterprise-edition/deploy-and-upgrade",
+            "documentation/self-host/enterprise-edition/telemetry"
           ]
         }
       ]
