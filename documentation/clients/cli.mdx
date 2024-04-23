@@ -13,39 +13,46 @@ This section contains a complete list of all Hoppscotch CLI commands available, 
 ## Pre-requisites
 Before installing the Hoppscotch CLI, ensure your system meets the following requirements.
 
-### - Windows + macOS:
+<AccordionGroup>
+  <Accordion title="Windows & macOS">
+    You will need `node-gyp` installed. Thus, follow the instructions from [node-gyp](https://github.com/nodejs/node-gyp).
+  </Accordion>
 
-You will need `node-gyp` installed. Thus, follow the instructions from [node-gyp](https://github.com/nodejs/node-gyp).
+  <Accordion title="Debian / Ubuntu derivatives">
+    Execute the following command:
+    ```
+    sudo apt-get install python g++ build-essential
+    ```
+  </Accordion>
 
-### - Debian / Ubuntu derivatives:
+  <Accordion title="Alpine Linux">
+    Execute the following command:
+  ```
+  sudo apk add python3 make g++
+  ```
+  </Accordion>
 
-```
-sudo apt-get install python g++ build-essential
-```
+  <Accordion title="Amazon Linux (AMI)">
+    Execute the following command:
+  ```
+  sudo yum install gcc72 gcc72-c++
+  ```
+  </Accordion>
 
-### - Alpine Linux: 
+  <Accordion title="Arch Linux">
+    Execute the following command:
+  ```
+  sudo pacman -S make gcc python
+  ```
+  </Accordion>
 
-```
-sudo apk add python3 make g++
-```
-
-### - Amazon Linux (AMI):
-
-```
-sudo yum install gcc72 gcc72-c++
-```
-
-### - Arch Linux:
-
-```
-sudo pacman -S make gcc python
-```
-
-### - RHEL / Fedora derivatives:
-
-```
-sudo dnf install python3 make gcc gcc-c++ zlib-devel brotli-devel openssl-devel libuv-devel
-```
+  <Accordion title="RHEL / Fedora derivatives">
+    Execute the following command:
+  ```
+  sudo dnf install python3 make gcc gcc-c++ zlib-devel brotli-devel openssl-devel libuv-devel
+  ```
+  </Accordion>
+</AccordionGroup>
 
 ## Installing Hoppscotch CLI
 
