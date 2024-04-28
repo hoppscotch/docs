@@ -168,9 +168,9 @@ docker pull hoppscotch/hoppscotch-enterprise-admin
 After pulling the containers, start Hoppscotch by running all three services:
 
 ```bash
-docker run -p 3000:3000 --env-file .env --restart unless-stopped hoppscotch-enterprise-frontend
-docker run -p 3170:3170 --env-file .env --restart unless-stopped hoppscotch-enterprise-backend
-docker run -p 3100:3100 --env-file .env --restart unless-stopped hoppscotch-enterprise-admin
+docker run -p 3000:3000 --env-file .env --restart unless-stopped hoppscotch/hoppscotch-enterprise-frontend
+docker run -p 3170:3170 --env-file .env --restart unless-stopped hoppscotch/hoppscotch-enterprise-backend
+docker run -p 3100:3100 --env-file .env --restart unless-stopped hoppscotch/hoppscotch-enterprise-admin
 ```
 
 - Ensure that the environment variables are configured in the `.env` file and the restart policy is mentioned.
