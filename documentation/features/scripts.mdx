@@ -20,6 +20,21 @@ The `pw` object houses the following methods:
 pw.env.set("baseURL", "https://httpbin.org");
 ```
 
+Here are some practical examples that show how you can use pw.env.set() to encode and decode strings with Base64:
+### 1.  `pw.env.set("variable", atob("value"))`
+
+Use the `atob()` function to **decode a Base64 encoded string** and set it as an environment variable.
+```javascript
+pw.env.set("atob", atob("SG9wcHNjb3RjaA=="));
+```
+
+### 2.  `pw.env.set("variable", btoa("value"))`
+
+Use the `btoa()` function to **encode a regular string into Base64** and set it as an environment variable.
+```javascript
+pw.env.set("btoa", btoa("Hoppscotch"));
+```
+
 ## `pw.env.unset("variable)`
 
 `pw.env.unset()` can be used to remove the value of the variable present in the current active environment
