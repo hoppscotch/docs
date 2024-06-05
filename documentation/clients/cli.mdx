@@ -137,3 +137,12 @@ If requests in a collection consists of secret variables we recommend either of 
 | ------ | ---------------------------------------------------------- |
 | `-h`   | Gives a list of associated commands and their descriptions |
 | `-v`   | Displays the curremt version of the CLI                    |
+
+## Output Report
+
+After Hoppscotch CLI is run, it will return the following information.
+- Request name, method, url, return status code, duration
+- Within each request the test result is provided. Any errors are found after the requests. 
+- A summary and count of failed and passed tests is at the end with `Test Cases` being the number of `pw.expect` methods, `Test Suites` being the number of `pw.test` methods, and `Test Scripts` being the number of total pre and post scripts performed.
+- Total requests and total request duration
+- The count of failed and passed pre-request scripts
