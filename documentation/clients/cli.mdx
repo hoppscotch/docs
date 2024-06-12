@@ -137,3 +137,32 @@ If requests in a collection consists of secret variables we recommend either of 
 | ------ | ---------------------------------------------------------- |
 | `-h`   | Gives a list of associated commands and their descriptions |
 | `-v`   | Displays the curremt version of the CLI                    |
+
+## Test Report Components
+
+
+Upon executing the commands, a comprehensive test report is generated, offering detailed insights into the performance of each request. Below, you'll find a breakdown of the components outlined in the test summary for the exported API Collection:
+
+<CardGroup cols={2}>
+  <Card title="Test Cases" icon="square-1">
+    Each instance of `pw.expect()` within the testScript of a request is considered a test case.
+  </Card>
+  <Card title="Test Suites" icon="square-2">
+    Each invocation of `pw.test()` within the testScript of a request is regarded as a test suite.
+  </Card>
+  <Card title="Test Scripts" icon="square-3">
+    The total number of `testScript` fields across all requests in the provided collection export file, representing the overall number of test scripts executed.
+  </Card>
+  <Card title="Test Duration" icon="square-4">
+    The total time taken to execute all test cases within the collection.
+  </Card>
+  <Card title="Requests" icon="square-5">
+    The total number of requests executed within the collection.
+  </Card>
+  <Card title="Requests Duration" icon="square-6">
+    The cumulative time taken to execute all requests within the collection.
+  </Card>
+  <Card title="Pre-request Scripts" icon="square-7">
+    The scripts executed prior to each request. The count matches the number of requests in the provided collection export file.
+  </Card>
+</CardGroup>
