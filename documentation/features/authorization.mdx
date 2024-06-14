@@ -25,6 +25,9 @@ Hoppscotch will append the API key value to the text 'Bearer' and add it to the 
 Bearer <Your API key>
 ```
 
+## API Key
+The API Key serves as a unique identifier that authorizes requests to the API. To utilize the API Key authorization type, it is essential to specify both the key and its corresponding value. This information should be transmitted either as a header or a query parameter, in accordance with the specific requirements of the API being accessed.
+
 ## OAuth 2.0
 
 In this Authorization Model, you first retrieve an access token for the API and then use that token to authenticate future requests.
@@ -66,3 +69,14 @@ To utilize the password grant type, input your API provider's **Access Token URL
 The Implicit grant type furnishes the client with an access token directly, eliminating the additional authentication code step and is less secure.
 
 For utilizing the implicit grant type in your requests via Hoppscotch, provide a Callback URL registered with the API provider, the provider's Auth URL, and a Client ID for the registered application.
+
+---
+
+# Managing Authorization at the Collection Level
+When managing multiple requests within a collection, setting identical authorization configurations for each request individually can be tedious. It is now possible to set authorization at the collection level, ensuring it applies to all the requests stored within that collection.
+
+**To set collection-level authorization:**
+
+- Right-click on a collection or a subfolder within a collection to open its **properties**.
+- Specify the authorization that all nested requests or folders should adhere to.
+- If a subfolder should inherit the properties of a parent collection, specify the authorization as `inherit`.
