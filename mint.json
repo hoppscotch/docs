@@ -219,8 +219,9 @@
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/hoppscotch_io",
-    "discord": "https://hoppscotch.io/discord"
+    "discord": "https://hoppscotch.io/discord",
+    "x": "https://hoppscotch.io/twitter",
+    "linkedin": "https://www.linkedin.com/company/hoppscotch/"
   },
   "feedback": {
     "raiseIssue": true,
