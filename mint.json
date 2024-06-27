@@ -105,7 +105,13 @@
       "pages": [
         "documentation/clients/web",
         "documentation/clients/desktop",
-        "documentation/clients/cli"
+        {
+          "group": "CLI",
+          "pages": [
+            "documentation/clients/cli/overview",
+            "documentation/clients/cli/error-codes"
+          ]
+        }
       ]
     },
     {
