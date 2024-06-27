@@ -73,11 +73,37 @@ The `hopp test` command allows you to run tests against a Hoppscotch collection 
 - The hopp test command recursively goes through each request in the collection and runs them, validating the responses with the test script provided in each request. Hence, the order of execution is the same as the order specified in the collection structure.
 - If upon executing the command, a failed assertion (a failing test case) has occurred, the command will give a non-zero exit code and 0 exit code if all tests have passed.
 - Unless there was a network error (for example, DNS resolution errors or network Connectivity Issues), the test script will be running and it is up to the test script to define what happens to error status codes. Non-200 status codes are still considered valid responses for test script execution.
-- The execution of requests within a collection can be deferred using the `-d, --delay` flag. One practical application involves executing requests against APIs with enforced rate limits.
 
 ```bash
 hopp test [-e <environment file>] [-d <delay_in_ms> ] <hoppscotch collection file>
 ```
+
+### Running Collections and Environments on Cloud
+
+You can now connect your Hoppscotch Cloud account with the CLI using Persoanl Access Token and execute collections and environments directly by specifying their respective **IDs** in the command. It's important to note that Hoppscotch Cloud functions as the default server in this scenario.
+
+```bash
+hopp test  [-e <environment id>] [-d <delay_i_ms>] <hoppscotch collection id> [--token <access_token>]
+```
+
+### Running Collections and Environments on Self Hosted instance
+
+To establish a connection with self-hosted Hoppscotch instances, you'll need to specify the server URL along with the access token and IDs to run collections and environments on CLI.
+
+```bash
+hopp test  [-e <environment id>] [-d <delay_i_ms>] <hoppscotch collection id> [--token <access_token>] [--server <server url>]
+```
+
+### Arguments
+
+- `hoppscotch collection id` : Each collection created in a Hoppscotch workspace is given a unique identifier known as the Collection ID. Collection IDs for each collection can be found under **“Details”** tab inside Collection **“Properties”**.
+
+<Tip> You can directly copy the command with the auto-populated **Collection ID** by navigating to the **“CLI"** tab within the **“Run Collection”** action found in the context menu. </Tip>
+    
+- `environment id` : Similar to Collection IDs, each environment created in a Hoppscotch workspace is assigned a unique identifier known as the Environment ID.
+- `delay_i_ms` : Represnts a time interval (in milliseconds) to pause execution of API requests before within a collection.
+- `access token` : It is a secure, unique identifier used to authenticate a user's access to their Hoppscotch account and its resources like collections, environements, requests and other entities. [Learn more about retrieving your PAT by checking our documentation](/documentation/features/pat)
+- `server url` : This is the address where your self-hosted Hoppscotch instance is running.
 
 ### Example
 
@@ -85,6 +111,8 @@ hopp test [-e <environment file>] [-d <delay_in_ms> ] <hoppscotch collection fil
 hopp test kitchen-sink-hoppscotch-collection.json
 hopp test -e environment.json kitchen-sink-hoppscotch-collection.json
 hopp test -e environment.json -d 1000 kitchen-sink-hoppscotch-collection.json
+hopp test clxsntdgh0000lcx9fnits2h8 --token <access token> 
+hopp test -e clxspay2r0006lcx99aqgjbay -d 1000 clxsntdgh0000lcx9fnits2h8 --token <access token> --server http://localhost:3170
 ```
 
 ## Environment
@@ -122,7 +150,11 @@ Hoppscotch CLI continues to support the legacy format which was previously the o
 }
 ```
 
-<Info>Please note that the Hoppscotch CLI exclusively supports the above two formats for importing environment variables. It **does not** offer compatibility with **Bulk Environment** exports or **any other export** format.</Info>
+### 3. Environment ID
+
+To run an environment using its ID, click on the `Properties` action located in the menu icon next to each environment. Within the Details section, you'll find the **Environment ID**. Copy this ID and use it in the Hoppscotch CLI for execution.
+
+<Note>Please note that the Hoppscotch CLI exclusively supports the above three formats for importing environment variables. It **does not** offer compatibility with **Bulk Environment** exports or **any other export** format.</Note>
 
 ## Secrets
 
@@ -133,10 +165,14 @@ If requests in a collection consists of secret variables we recommend either of 
 
 ## Options
 
-| Option | Description                                                |
-| ------ | ---------------------------------------------------------- |
-| `-h`   | Gives a list of associated commands and their descriptions |
-| `-v`   | Displays the curremt version of the CLI                    |
+| Option          | Description                                                                                                       |
+| ------          | ------------------------------------------------------------------------------------------------------------------|                    
+| `-h`            | Gives a list of associated commands and their descriptions                                                        |
+| `-v`            | Displays the curremt version of the CLI                                                                           |
+|`--env or -e`    | Accepts environments in all the formats present in [Environment section](/documentation/clients/cli#environment). |
+|`--delay` or `-d`| Used to defer the execution of requests in a collection.                                                          |
+|`--token`        | Expects a PAT value to be passed for establishing connection with Hoppscotch account.                             |
+|`--server`       | Demands a server URL where self-hosted instance is running.                                                       |
 
 ## Test Report Components
 

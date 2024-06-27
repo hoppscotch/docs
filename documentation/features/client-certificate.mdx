@@ -1,0 +1,37 @@
+---
+sidebarTitle: Client Certificate
+title: Client Certificate
+description: Add Client Certificate under teh scope of Native Settings to enhance security while accessing APIs.
+---
+
+In the [Hoppscotch Desktop App](https://hoppscotch.com/download), you can now add client certificates under `native` settings to authenticate your identity when connecting to secure APIs. This helps in strengthening security by enabling mutual SSL/TLS authentication.
+
+### Prerequisites
+
+Before you begin, ensure you have the following:
+
+- The Hoppscotch Desktop App installed on your system.
+- A valid Client Certificate in one of the following formats:
+    - **.pem Certificate**
+    - **.pfx/.pkcs12 Certificate**
+- The corresponding private key file, if the certificate is in .pem format.
+
+### Adding Client Certificate
+
+1. Open the application’s settings menu.
+2. Within Interceptors section, locate the `Client Certificates` action under **Native settings**.
+3. Click on the option to add a new client certificate and select the type of certificate you want to add: **.pem** or **.pfx/.pkcs12**.
+4. **Upload Certificate Files**
+    - **.pem Certificate**: Choose the **certificate file** (.crt/.cert/.pem) and upload the **private key file** (.key/.pem) in the designated field.
+    - **.pfx/.pkcs12 Certificate**: Choose the **.pfx/.pkcs12** file. You may need to enter the password associated with the certificate file.
+5. After uploading the certificate files, click on the save button to store the settings.
+
+<Warning> **You cannot edit a certificate after adding it.** </Warning>
+
+### Using Client Certificate
+
+Once you add the certificate, it will automatically be applied to the configured domain whenever you make an HTTP request. If you wish to disable the certificate for a domain, simply uncheck the corresponding checkbox.
+
+### Removing a certificate
+
+Remove a certificate when no longer needed for sending requests by selecting the **delete icon** located next to the certificate associated with a specific domain.
