@@ -78,31 +78,25 @@ The `hopp test` command allows you to run tests against a Hoppscotch collection 
 hopp test [-e <environment file>] [-d <delay_in_ms> ] <hoppscotch collection file>
 ```
 
-### Running Collections and Environments on Cloud
+### Running Collections from the API client
 
-You can now connect your Hoppscotch Cloud account with the CLI using Persoanl Access Token and execute collections and environments directly by specifying their respective **IDs** in the command. It's important to note that Hoppscotch Cloud functions as the default server in this scenario.
-
-```bash
-hopp test  [-e <environment id>] [-d <delay_i_ms>] <hoppscotch collection id> [--token <access_token>]
-```
-
-### Running Collections and Environments on Self Hosted instance
-
-To establish a connection with self-hosted Hoppscotch instances, you'll need to specify the server URL along with the access token and IDs to run collections and environments on CLI.
+The `hopp test` command can also be used to run collections present in your API client on Hoppscotch cloud or self-hosted platforms.
+Do note that you need to create a personal access token for your CLI to connect to your API client, and you can not run collections present in your personal workspace.
 
 ```bash
 hopp test  [-e <environment id>] [-d <delay_i_ms>] <hoppscotch collection id> [--token <access_token>] [--server <server url>]
 ```
 
+<Tip> You can directly copy the command with the auto-populated **Collection ID** and **Environment ID** by navigating to the **“CLI"** tab within the **“Run Collection”** action found in the context menu. </Tip>
+
+
 ### Arguments
 
 - `hoppscotch collection id` : Each collection created in a Hoppscotch workspace is given a unique identifier known as the Collection ID. Collection IDs for each collection can be found under **“Details”** tab inside Collection **“Properties”**.
-
-<Tip> You can directly copy the command with the auto-populated **Collection ID** by navigating to the **“CLI"** tab within the **“Run Collection”** action found in the context menu. </Tip>
     
 - `environment id` : Similar to Collection IDs, each environment created in a Hoppscotch workspace is assigned a unique identifier known as the Environment ID.
 - `delay_i_ms` : Represnts a time interval (in milliseconds) to pause execution of API requests before within a collection.
-- `access token` : It is a secure, unique identifier used to authenticate a user's access to their Hoppscotch account and its resources like collections, environements, requests and other entities. [Learn more about retrieving your PAT by checking our documentation](/documentation/features/pat)
+- `access token` : It is a secure, unique identifier used to authenticate a user's access to their Hoppscotch account and its resources like collections, environments data. [Learn more about personal access tokens](/documentation/features/pat)
 - `server url` : This is the address where your self-hosted Hoppscotch instance is running.
 
 ### Example
@@ -152,7 +146,7 @@ Hoppscotch CLI continues to support the legacy format which was previously the o
 
 ### 3. Environment ID
 
-To run an environment using its ID, click on the `Properties` action present in the **menu icon** next to each environment. Within the Details section, you'll find the **Environment ID**. Copy this ID and use it in the Hoppscotch CLI for execution.
+To use an environment on your API client using its ID, click on the `Properties` action present in the **menu icon** next to each environment. Within the Details section, you'll find the **Environment ID**. Copy this ID and use it in the Hoppscotch CLI for execution.
 
 <Note>Please note that the Hoppscotch CLI exclusively supports the above three formats for importing environment variables. It **does not** offer compatibility with **Bulk Environment** exports or **any other export** format.</Note>
 
