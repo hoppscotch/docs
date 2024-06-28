@@ -109,7 +109,7 @@
           "group": "CLI",
           "pages": [
             "documentation/clients/cli/overview",
-            "documentation/clients/cli/error-codes"
+            "documentation/clients/cli/troubleshooting"
           ]
         }
       ]

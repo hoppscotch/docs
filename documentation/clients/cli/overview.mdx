@@ -78,7 +78,7 @@ The `hopp test` command allows you to run tests against a Hoppscotch collection 
 hopp test [-e <environment file>] [-d <delay_in_ms> ] <hoppscotch collection file>
 ```
 
-### Running Collections from the API client
+### Running Collections present on the API client
 
 The `hopp test` command can also be used to run collections present in your API client on Hoppscotch cloud or self-hosted platforms.
 Do note that you need to create a personal access token for your CLI to connect to your API client, and you can not run collections present in your personal workspace.
@@ -95,9 +95,9 @@ hopp test  [-e <environment id>] [-d <delay_i_ms>] <hoppscotch collection id> [-
 - `hoppscotch collection id` : Each collection created in a Hoppscotch workspace is given a unique identifier known as the Collection ID. Collection IDs for each collection can be found under **“Details”** tab inside Collection **“Properties”**.
     
 - `environment id` : Similar to Collection IDs, each environment created in a Hoppscotch workspace is assigned a unique identifier known as the Environment ID.
-- `delay_i_ms` : Represnts a time interval (in milliseconds) to pause execution of API requests before within a collection.
+- `delay_i_ms` : Represents a time interval (in milliseconds) to pause execution of API requests before within a collection.
 - `access token` : It is a secure, unique identifier used to authenticate a user's access to their Hoppscotch account and its resources like collections, environments data. [Learn more about personal access tokens](/documentation/features/pat)
-- `server url` : This is the address where your self-hosted Hoppscotch instance is running.
+- `server url` : This optional and is the URL of your self-hosted instance when you're self-hosting your API client
 
 ### Example
 
@@ -162,11 +162,11 @@ If requests in a collection consists of secret variables we recommend either of 
 | Option          | Description                                                                                                       |
 | ------          | ------------------------------------------------------------------------------------------------------------------|                    
 | `-h`            | Gives a list of associated commands and their descriptions                                                        |
-| `-v`            | Displays the curremt version of the CLI                                                                           |
+| `-v`            | Displays the current version of the CLI                                                                           |
 |`--env or -e`    | Accepts environments in all the formats present in [Environment section](/documentation/clients/cli#environment). |
 |`--delay` or `-d`| Used to defer the execution of requests in a collection.                                                          |
-|`--token`        | Expects a PAT value to be passed for establishing connection with Hoppscotch account.                             |
-|`--server`       | Demands a server URL where self-hosted instance is running.                                                       |
+|`--token`        | Expects a personal access token to be passed for establishing connection with your Hoppscotch account.                             |
+|`--server`       | URL of your self-hosted instance, if your collections are on a self-hosted instance.                                                       |
 
 ## Test Report Components
 
