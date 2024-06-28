@@ -1,0 +1,71 @@
+---
+sidebarTitle: Troubleshooting
+title: Hoppscotch CLI Troubleshooting
+description:  Troubleshoot the CLI errors by understanding their meanings and possible causes.
+---
+
+Below is a set of error codes and the corresponding messages that will be displayed in the CLI under various scenarios associated with workspace access. Understanding the reasons behind these errors will help you troubleshoot them on your end.
+## `TOKEN_EXPIRED`
+
+> **The specified access token is expired. Please provide a valid token.**
+
+**Reason:** The supplied access token via the `--token` flag has been expired. 
+
+```bash
+hopp test  [-e <environment-id>] <collection-id> [--token <access_token>] [--server <server_url>]
+```
+
+## `TOKEN_INVALID`    
+
+> **The specified access token is invalid. Please provide a valid token.**
+
+**Reason:** The specified access token via the `--token` flag is invalid or might have been deleted. 
+
+```bash 
+hopp test  [-e <environment-id>] <collection-id> [--token <access_token>] [--server <server_url>]
+```
+
+## `INVALID_ID`
+
+> **The specified collection/environment (ID or file path) is invalid or inaccessible. Please ensure the supplied ID or file path is correct.**
+
+### Case I
+
+**Reason:** Either an invalid ID is supplied or the resource is inaccessible to the user because the user isn't part of the team to which the resource belongs.
+
+```bash 
+hopp test  [-e <invalid-env-id>] <invalid-collection-id> [--token <access_token>] [--server <server_url>]
+```
+
+### Case II 
+
+**Reason:** Supplied file path of the collection or environment doesn't exist.
+
+```bash 
+hopp test  [-e <non-existent-env-file-path>] <non-existent-collection-file-path> 
+```
+
+## `INVALID_SERVER_URL`
+
+> **Please provide a valid SH instance server URL.**
+
+**Reason:** There are multiple cases in which this error can occur:
+- If the supplied server URL doesn't have a valid path under `/v1/access-tokens/{collection/environment}/{path/id}`, resulting in a `404` network call error.
+- If the received content type from the response is not `application/json`, safeguarding against cases where the network call doesn't fail, such as when the route is invalid as above, and checking against the content type (e.g., supplying the FE instance URL).
+- The supplied server URL doesn't conform to URL semantics (received `ERR_INVALID_URL` as the error code from the network call). For instance, missing a protocol (e.g., `http://` or `https://`), having an invalid structure, or containing illegal characters.
+- Couldn't find the server because the domain name couldn't be resolved (received `ENOTFOUND` as the error code from the network call). For instance, a typo in the domain name.
+
+
+```bash 
+hopp test  [-e <environment-id>] <collection-id> [--token <access_token>] [--server <invalid-server-url>]
+```
+
+
+## `SERVER_CONNECTION_REFUSED`
+> **Unable to connect to the server. Please check your network connection or server instance URL and try again.**
+
+**Reason:** Found the server, but the server refused to connect (received `ECONNREFUSED` as the error code from the network call).
+
+```bash 
+hopp test  [-e <environment-id>] <collection-id> [--token <access_token>] [--server <invalid-server-url>]
+```
