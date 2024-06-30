@@ -1,0 +1,53 @@
+export const PrimaryButton = ({ label, href }) => {
+  return (
+    <a className="group" href={href}>
+      <button className="flex items-center space-x-1 font-bold px-4 py-2 bg-primary-dark rounded-md group-hover:opacity-[0.9] text-white group-hover:opacity-[0.9]">
+        <span>
+          {label}
+        </span>
+      </button>
+    </a>
+  );
+};
+
+export const HeroCard = ({ imgDark, imgLight, title, description, href }) => {
+  return (
+    <a className="border-b pb-8 cursor-pointer border-gray-500 dark:border-gray-800 hover:!border-primary dark:hover:!border-primary-light" href={href}>
+      <img src={imgLight} className="block dark:hidden w-full pointer-events-none" />
+      <img src={imgDark} className="hidden dark:block w-full pointer-events-none" />
+      <h1 className="mt-4 font-semibold text-gray-900 dark:text-white">{title}</h1>
+      <h2 className="mt-1 text-gray-600 dark:text-gray-400 text-sm leading-6">{description}</h2>
+    </a>
+  )
+}
+
+export const Banner = () => {
+  return (
+    <div className="flex not-prose bg-primary-dark" style={{ borderRadius: '1rem' }}>
+      <div className="flex-1" style={{ padding: '2rem 2rem', }}>
+        <h1 className="text-3xl text-white font-bold">Templates</h1>
+        <h2 className="mt-1 text-white">Here you'll find guides, resources, and references to build with Venus.</h2>
+        <button className="mt-5 flex items-center space-x-1 font-medium px-4 py-1 bg-white rounded-xl group-hover:opacity-[0.9]" style={{ color: '#09090B' }}>
+          <span>Get started</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={20}
+            height={20}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-3 h-3"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+      </div>
+      <div className="hidden sm:flex flex-1">
+        <img src="https://raw.githubusercontent.com/mintlify/themes/main/prism/images/cta.svg" />
+      </div>
+    </div>
+  )
+}

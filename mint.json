@@ -228,7 +228,7 @@
   ],
   "footerSocials": {
     "discord": "https://hoppscotch.io/discord",
-    "x": "https://hoppscotch.io/twitter",
+    "twitter": "https://hoppscotch.io/twitter",
     "linkedin": "https://www.linkedin.com/company/hoppscotch/"
   },
   "feedback": {
@@ -241,5 +241,6 @@
       "source": "/source/path",
       "destination": "/destination/path"
     }
-  ]
+  ],
+  "theme": "prism"
 }

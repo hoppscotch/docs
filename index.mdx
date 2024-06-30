@@ -4,11 +4,35 @@ title: Hoppscotch
 description: Open-source API development ecosystem.
 ---
 
-<img className="block dark:border-white/5 dark:hidden" src="/images/hero-light.png" />
-<img className="hidden dark:border-white/5 dark:block" src="/images/hero-dark.png" />
+import { PrimaryButton, HeroCard } from '/snippets/components.mdx';
+
+<img className="block dark:hidden" src="/images/hero-light.png" />
+<img className="hidden dark:block" src="/images/hero-dark.png" />
 
 **Hoppscotch is a lightweight, web-based API development suite.**
 
 It was built from the ground up with ease of use and accessibility in mind providing all the functionality needed for API developers with minimalist, unobtrusive UI.
 
-[Get started](/documentation/getting-started/introduction)
+<PrimaryButton label="Get started" href="/documentation/getting-started/introduction" />
+
+<br />
+<br />
+
+**Quick Start**
+
+<CardGroup>
+  <HeroCard
+    imgLight="/images/hoppscotch-cloud-light.svg"
+    imgDark="/images/hoppscotch-cloud-dark.svg"
+    title="Hoppscotch Cloud"
+    description="Everything you need to get started with Hoppscotch, hosted by us."
+    href="https://hoppscotch.io"
+  />
+  <HeroCard
+    imgLight="/images/hoppscotch-self-host-light.svg"
+    imgDark="/images/hoppscotch-self-host-dark.svg"
+    title="Hoppscotch Self-Host"
+    description="Deploy your own instance of Hoppscotch on your own infrastructure."
+    href="/documentation/self-host/getting-started"
+  />
+</CardGroup>
