@@ -71,6 +71,7 @@
         "documentation/getting-started/troubleshooting",
         {
           "group": "RESTful API",
+          "icon": "gear",
           "pages": [
             "documentation/getting-started/rest/creating-a-request",
             "documentation/getting-started/rest/request-parameters",
@@ -84,6 +85,7 @@
         },
         {
           "group": "GraphQL API",
+          "icon": "diagram-project",
           "pages": [
             "documentation/getting-started/graphql/creating-a-query",
             "documentation/getting-started/graphql/using-variables"
@@ -91,6 +93,7 @@
         },
         {
           "group": "Realtime API",
+          "icon": "clock",
           "pages": [
             "documentation/getting-started/realtime/websocket",
             "documentation/getting-started/realtime/socket-io",
@@ -107,6 +110,7 @@
         "documentation/clients/desktop",
         {
           "group": "CLI",
+          "icon": "terminal",
           "pages": [
             "documentation/clients/cli/overview",
             "documentation/clients/cli/troubleshooting"
@@ -150,10 +154,12 @@
     },
     {
       "group": "Self-Host",
+      "icon": "rocket",
       "pages": [
         "documentation/self-host/getting-started",
         {
           "group": "Community Edition",
+          "icon": "people-group",
           "pages": [
             "documentation/self-host/community-edition/getting-started",
             "documentation/self-host/community-edition/prerequisites",
@@ -166,6 +172,7 @@
         },
         {
           "group": "Enterprise Edition",
+          "icon": "building",
           "pages": [
             "documentation/self-host/enterprise-edition/getting-started",
             "documentation/self-host/enterprise-edition/prerequisites",
