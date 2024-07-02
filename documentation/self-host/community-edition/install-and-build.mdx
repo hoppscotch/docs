@@ -240,3 +240,9 @@ Note: If user is using `docker compose` to run the services the following comman
 ```bash
 docker compose run --entrypoint sh <Service_name>
 ```
+
+Migrations with Docker Compose can also be handled with a single command.
+
+```bash
+docker compose run --entrypoint "sh -c 'pnpx prisma migrate deploy'" <Service_name>
+```
