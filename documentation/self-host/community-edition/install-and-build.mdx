@@ -8,7 +8,7 @@ description: Learn how to install and build Hoppscotch Community Edition.
 
 Before you get started with the installation, you need to configure the environment variables.
 
-Copy the contents of the `.env.example` file found in the root directory of the [cloned repository](https://github.com/hoppscotch/hoppscotch) to `.env` and add your values for the environment variables.
+Copy the contents of the `.env.example` file found in the root directory of the [Hoppscotch repository](https://github.com/hoppscotch/hoppscotch) to `.env` and add your values for the environment variables.
 
 <Warning>**Ensure that the environment values are not enclosed within quotes ("").**</Warning>
 
@@ -21,8 +21,8 @@ DATABASE_URL=postgresql://username:password@url:5432/dbname # or replace with yo
 JWT_SECRET=secretcode123
 TOKEN_SALT_COMPLEXITY=10
 MAGIC_LINK_TOKEN_VALIDITY=3
-REFRESH_TOKEN_VALIDITY=604800000
-ACCESS_TOKEN_VALIDITY=86400000
+REFRESH_TOKEN_VALIDITY=604800000 # Default validity is 7 days (604800000 ms) in ms
+ACCESS_TOKEN_VALIDITY=86400000 # Default validity is 1 day (86400000 ms) in ms
 SESSION_SECRET=anothersecretcode123
 
 # Hoppscotch App Domain Config
@@ -50,12 +50,24 @@ MICROSOFT_SCOPE=user.read
 MICROSOFT_TENANT=common
 
 # Mailer config
-MAILER_SMTP_URL=smtps://user@domain.com:pass@smtp.domain.com
-MAILER_ADDRESS_FROM=from@example.com
+MAILER_SMTP_ENABLE=true
+MAILER_USE_CUSTOM_CONFIGS=false
+MAILER_ADDRESS_FROM=<from@example.com>
+
+MAILER_SMTP_URL=smtps://user@domain.com:pass@smtp.domain.com # used if custom mailer configs is false
+
+
+# The following are used if custom mailer configs is true
+MAILER_SMTP_HOST=smtp.domain.com
+MAILER_SMTP_PORT=587
+MAILER_SMTP_SECURE=true
+MAILER_SMTP_USER=user@domain.com
+MAILER_SMTP_PASSWORD=pass
+MAILER_TLS_REJECT_UNAUTHORIZED=true
 
 # Rate Limit Config
-RATE_LIMIT_TTL=60
-RATE_LIMIT_MAX=100
+RATE_LIMIT_TTL=60 # In seconds
+RATE_LIMIT_MAX=100 # Max requests per IP
 
 #-----------------------Frontend Config------------------------------#
 
@@ -73,6 +85,7 @@ VITE_BACKEND_API_URL=http://localhost:3170/v1
 VITE_APP_TOS_LINK=https://docs.hoppscotch.io/support/terms
 VITE_APP_PRIVACY_POLICY_LINK=https://docs.hoppscotch.io/support/privacy
 
+# Set to `true` for subpath based access
 ENABLE_SUBPATH_BASED_ACCESS=false
 ```
 
