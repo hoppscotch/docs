@@ -8,12 +8,16 @@ description: Learn how to install and build Hoppscotch Enterprise Edition.
 
 Before you get started with the installation, you need to configure the environment variables.
 
-Copy the contents of the `.env.example` file found in the root directory of the [cloned repository](https://github.com/hoppscotch/hoppscotch) to `.env` and add your values for the environment variables.
+Copy the contents of the `.env.example` file found in the root directory of the cloned repository to `.env` and add your values for the environment variables.
 
 <Warning>**Ensure that the environment values are not enclosed within quotes ("").**</Warning>
 
 ```yaml
 #-----------------------Backend Config------------------------------#
+# Enterprise License Key
+# Get your license key from https://enterprise.hoppscotch.com
+ENTERPRISE_LICENSE_KEY=***************************************
+
 # Prisma Config
 DATABASE_URL=postgresql://username:password@url:5432/dbname # or replace with your database URL
 
@@ -27,8 +31,8 @@ CLICKHOUSE_PASSWORD=''
 JWT_SECRET=secretcode123
 TOKEN_SALT_COMPLEXITY=10
 MAGIC_LINK_TOKEN_VALIDITY=3
-REFRESH_TOKEN_VALIDITY=604800000
-ACCESS_TOKEN_VALIDITY=86400000
+REFRESH_TOKEN_VALIDITY=604800000 # Default validity is 7 days (604800000 ms) in ms
+ACCESS_TOKEN_VALIDITY=86400000 # Default validity is 1 day (86400000 ms) in ms
 SESSION_SECRET=anothersecretcode123
 
 # Hoppscotch App Domain Config
@@ -87,12 +91,21 @@ OIDC_CALLBACK_URL=http://localhost:3170/v1/auth/oidc/callback
 OIDC_SCOPE=openid profile email
 
 # Mailer config
-MAILER_SMTP_URL=smtps://user@domain.com:pass@smtp.domain.com
-MAILER_ADDRESS_FROM=from@example.com
+MAILER_SMTP_ENABLE=true
+MAILER_USE_CUSTOM_CONFIGS=false
+MAILER_ADDRESS_FROM=<from@example.com>
+MAILER_SMTP_URL=smtps://user@domain.com:pass@smtp.domain.com # used if custom mailer configs is false
+# The following are used if custom mailer configs is true
+MAILER_SMTP_HOST=smtp.domain.com
+MAILER_SMTP_PORT=587
+MAILER_SMTP_SECURE=true
+MAILER_SMTP_USER=user@domain.com
+MAILER_SMTP_PASSWORD=pass
+MAILER_TLS_REJECT_UNAUTHORIZED=true
 
 # Rate Limit Config
-RATE_LIMIT_TTL=60
-RATE_LIMIT_MAX=100
+RATE_LIMIT_TTL=60 # In seconds
+RATE_LIMIT_MAX=100 # Max requests per IP
 
 #-----------------------Frontend Config------------------------------#
 
@@ -110,33 +123,38 @@ VITE_BACKEND_API_URL=http://localhost:3170/v1
 VITE_APP_TOS_LINK=https://docs.hoppscotch.io/support/terms
 VITE_APP_PRIVACY_POLICY_LINK=https://docs.hoppscotch.io/support/privacy
 
+# Set to `true` for subpath based access
 ENABLE_SUBPATH_BASED_ACCESS=false
-
-ENTERPRISE_LICENSE_KEY=***************************************
 ```
 
 Let's understand the major environment variables:
 
-1. `DATABASE_URL`: This is where you add your Postgres database URL.
-2. `TOKEN_SALT_COMPLEXITY`: Defines the complexity of the SALT that is used for hashing - a higher number implies a more complex salt
-3. `MAGIC_LINK_TOKEN_VALIDITY`: Duration of the validity of the magic link being sent to sign in to Hoppscotch (in days)
-4. `REFRESH_TOKEN_VALIDITY`: Validity of the refresh token for auth (in ms)
-5. `ACCESS_TOKEN_VALIDITY`: Validity of the access token for auth (in ms)
-6. `JWT_SECRET`, `SESSION_SECRET`: Secret Keys for security purposes
-7. `REDIRECT_URL`: This is a fallback URL to debug when the actual redirects fail
-8. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, and the frontend app
-9. `VITE_ALLOWED_AUTH_PROVIDERS`: Allows you to specify which auth providers you want to enable
-10. `MAILER_SMTP_URL`: The SMTP URL for email delivery
-11. `MAILER_ADDRESS_FROM`: The email address that you would be using
-12. `RATE_LIMIT_TTL`: The time it takes to refresh the maximum number of requests being received
-13. `RATE_LIMIT_MAX`: The maximum number of requests that Hoppscotch can handle under `RATE_LIMIT_TTL`
-14. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from
-15. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`
-16. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance
-17. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance
-18. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance
-19. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy
-20. `ENTERPRISE_LICENSE_KEY`: The license key required to use Hoppscotch Enterprise
+1. `ENTERPRISE_LICENSE_KEY`: The license key required to use Hoppscotch Enterprise.
+2. `DATABASE_URL`: This is where you add your Postgres database URL.
+3. `TOKEN_SALT_COMPLEXITY`: Defines the complexity of the SALT that is used for hashing - a higher number implies a more complex salt.
+4. `MAGIC_LINK_TOKEN_VALIDITY`: Duration of the validity of the magic link being sent to sign in to Hoppscotch (in days).
+5. `REFRESH_TOKEN_VALIDITY`: Validity of the refresh token for auth (in ms).
+6. `ACCESS_TOKEN_VALIDITY`: Validity of the access token for auth (in ms).
+7. `JWT_SECRET`, `SESSION_SECRET`: Secret Keys for security purposes.
+8. `REDIRECT_URL`: This is a fallback URL to debug when the actual redirects fail.
+9. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, and the frontend app.
+10. `VITE_ALLOWED_AUTH_PROVIDERS`: Allows you to specify which auth providers you want to enable.
+11. `MAILER_SMTP_ENABLE`: Enables the SMTP mailer configuration.
+12. `MAILER_USE_CUSTOM_CONFIGS`: When custom mailer configurations are used.
+13. `MAILER_SMTP_URL`: The SMTP URL for email delivery.
+14. `MAILER_ADDRESS_FROM`: The email address that you would be using.
+15. `MAILER_SMTP_HOST`: The SMTP host.
+16. `MAILER_SMTP_PORT`: The port to connect to the SMTP server.
+17. `MAILER_SMTP_USER`: The SMTP user or email for authentication.
+18. `MAILER_SMTP_PASSWORD`: Provide the password set for the SMTP user.
+19. `RATE_LIMIT_TTL`: The time it takes to refresh the maximum number of requests being received.
+20. `RATE_LIMIT_MAX`: The maximum number of requests that Hoppscotch can handle under `RATE_LIMIT_TTL`.
+21. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from.
+22. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`.
+23. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance.
+24. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance.
+25. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance.
+26. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy.
 
 Third-party auth configs have to be obtained from the respective providers. You can choose and configure the auth providers by following the [configuring OAuth guide](/documentation/self-host/enterprise-edition/prerequisites#oauth).
 
