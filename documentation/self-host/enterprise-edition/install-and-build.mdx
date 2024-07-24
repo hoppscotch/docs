@@ -35,6 +35,10 @@ REFRESH_TOKEN_VALIDITY=604800000 # Default validity is 7 days (604800000 ms) in 
 ACCESS_TOKEN_VALIDITY=86400000 # Default validity is 1 day (86400000 ms) in ms
 SESSION_SECRET=anothersecretcode123
 
+# Recommended to be true. Set to false if you are using http.
+# Note: Some auth providers may not support http requests and may stop working when set to false.
+ALLOW_SECURE_COOKIES=true
+
 # Hoppscotch App Domain Config
 REDIRECT_URL=http://localhost:3000
 WHITELISTED_ORIGINS=http://localhost:3170,http://localhost:3000,http://localhost:3100
@@ -136,25 +140,26 @@ Let's understand the major environment variables:
 5. `REFRESH_TOKEN_VALIDITY`: Validity of the refresh token for auth (in ms).
 6. `ACCESS_TOKEN_VALIDITY`: Validity of the access token for auth (in ms).
 7. `JWT_SECRET`, `SESSION_SECRET`: Secret Keys for security purposes.
-8. `REDIRECT_URL`: This is a fallback URL to debug when the actual redirects fail.
-9. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, and the frontend app.
-10. `VITE_ALLOWED_AUTH_PROVIDERS`: Allows you to specify which auth providers you want to enable.
-11. `MAILER_SMTP_ENABLE`: Enables the SMTP mailer configuration.
-12. `MAILER_USE_CUSTOM_CONFIGS`: When custom mailer configurations are used.
-13. `MAILER_SMTP_URL`: The SMTP URL for email delivery.
-14. `MAILER_ADDRESS_FROM`: The email address that you would be using.
-15. `MAILER_SMTP_HOST`: The SMTP host.
-16. `MAILER_SMTP_PORT`: The port to connect to the SMTP server.
-17. `MAILER_SMTP_USER`: The SMTP user or email for authentication.
-18. `MAILER_SMTP_PASSWORD`: Provide the password set for the SMTP user.
-19. `RATE_LIMIT_TTL`: The time it takes to refresh the maximum number of requests being received.
-20. `RATE_LIMIT_MAX`: The maximum number of requests that Hoppscotch can handle under `RATE_LIMIT_TTL`.
-21. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from.
-22. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`.
-23. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance.
-24. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance.
-25. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance.
-26. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy.
+8. `ALLOW_SECURE_COOKIES` : Ensures that cookies are transmitted only over secure (HTTPS) connections.
+9. `REDIRECT_URL`: This is a fallback URL to debug when the actual redirects fail.
+10. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, and the frontend app.
+11. `VITE_ALLOWED_AUTH_PROVIDERS`: Allows you to specify which auth providers you want to enable.
+12. `MAILER_SMTP_ENABLE`: Enables the SMTP mailer configuration.
+13. `MAILER_USE_CUSTOM_CONFIGS`: When custom mailer configurations are used.
+14. `MAILER_SMTP_URL`: The SMTP URL for email delivery.
+15. `MAILER_ADDRESS_FROM`: The email address that you would be using.
+16. `MAILER_SMTP_HOST`: The SMTP host.
+17. `MAILER_SMTP_PORT`: The port to connect to the SMTP server.
+18. `MAILER_SMTP_USER`: The SMTP user or email for authentication.
+19. `MAILER_SMTP_PASSWORD`: Provide the password set for the SMTP user.
+20. `RATE_LIMIT_TTL`: The time it takes to refresh the maximum number of requests being received.
+21. `RATE_LIMIT_MAX`: The maximum number of requests that Hoppscotch can handle under `RATE_LIMIT_TTL`.
+22. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from.
+23. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`.
+24. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance.
+25. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance.
+26. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance.
+27. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy.
 
 Third-party auth configs have to be obtained from the respective providers. You can choose and configure the auth providers by following the [configuring OAuth guide](/documentation/self-host/enterprise-edition/prerequisites#oauth).
 
