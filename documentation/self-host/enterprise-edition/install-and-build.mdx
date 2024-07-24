@@ -140,7 +140,7 @@ Let's understand the major environment variables:
 5. `REFRESH_TOKEN_VALIDITY`: Validity of the refresh token for auth (in ms).
 6. `ACCESS_TOKEN_VALIDITY`: Validity of the access token for auth (in ms).
 7. `JWT_SECRET`, `SESSION_SECRET`: Secret Keys for security purposes.
-8. `ALLOW_SECURE_COOKIES` : Ensures that cookies are transmitted only over secure (HTTPS) connections.
+8. `ALLOW_SECURE_COOKIES`: If disabled users will be able to use Hoppscotch over HTTP connections as well. It is recommended that this be left enabled as some auth providers may not work if this value is set to true.
 9. `REDIRECT_URL`: This is a fallback URL to debug when the actual redirects fail.
 10. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, and the frontend app.
 11. `VITE_ALLOWED_AUTH_PROVIDERS`: Allows you to specify which auth providers you want to enable.
