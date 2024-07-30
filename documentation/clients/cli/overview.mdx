@@ -89,6 +89,31 @@ hopp test  [-e <environment id>] [-d <delay_i_ms>] <hoppscotch collection id> [-
 
 <Tip> You can directly copy the command with the auto-populated **Collection ID** and **Environment ID** by navigating to the **“CLI"** tab within the **“Run Collection”** action found in the context menu. </Tip>
 
+### Generate JUnit Report for Collection Runs
+
+The `hopp test` command now has the ability to generate a JUnit Report for collection runs in the CLI. The report is generated as an XML file at the specified path provided in the command. If no path is specified, the report will be saved in the working directory with the default name `hopp-junit-report.xml`.
+
+```bash
+hopp test <file_path_or_id> --env <file_path_or_id> --reporter-junit [path]
+```
+
+#### JUnit Report Format Overview
+
+The JUnit report generated for collection runs provides a structured summary of the test results. The table below provides a detailed breakdown of the JUnit report format, explaining the significance of each XML element:
+
+| Element	                      | Description                                                                                                                                                                                                                                                                                                             |                   
+| ------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `<testsuites>`                | Root element representing the entire set of test suites.                                                                                                                                                                                                                                                                |
+| `<testsuite>`                 | Represents a collection of test cases for a specific request.                                                                                                                                                                                                                                                           |                                       
+| `<testcase>`                  | Represents an individual test case. It corresponds to `pw.expect()` assertions with the description prefixed by that of the test suite `pw.test()`.  It appears as a direct child of `<testsuite>`.                                                                                                                     |
+| `name`	                      | Attribute for `<testsuite>` and `<testcase>` elements. For `<testsuite>`, it indicates the hierarchy of collections up to the request. Organized at the request level using the naming convention: `<parent-collection-name>/<child-collection-name>/<request-name>`. While, for `<testcase>`, it'll be the description.|                                             
+| `classname`                   | Attribute of `<testcase>` that mirrors the `name` attribute of the parent `<testsuite>`.                                                                                                                                                                                                                                |
+| `<failure>`                   | Indicates an assertion failure within a `<testcase>`. Includes `type` and `message` attributes describing the failure.                                                                                                                                                                                                  |
+| `<error>`                     | Indicates an error during assertion within a `<testcase>`. Includes `message` attribute describing the error.                                                                                                                                                                                                           |
+| `<system-err>`                | Represents errors reported at the request level (e.g., invalid URL, reference error in the test script).  These errors are detailed within a `CDATA` section, with each error separated by newlines to ensure each issue is clearly identified.                                                                         |
+| `time`                        | Attribute of `<testsuite>` that shows the execution time for the test cases (excluding request execution time). The total time is at the root `<testsuites>`.                                                                                                                                                           |
+| `timestamp`                   | Attribute of `<testsuite>` that records the execution date and time in ISO string format.                                                                                                                                                                                                                               |
+| `tests`, `failures`, `errors` | Attributes of `<testsuite>` and `<testsuites>` that track the number of test cases, failed cases, and errors, at the request level and effective count at the root level test suite respectively. Set to `0` at a request level test suite, if errors halt further execution.                                           |
 
 ### Arguments
 
@@ -98,6 +123,7 @@ hopp test  [-e <environment id>] [-d <delay_i_ms>] <hoppscotch collection id> [-
 - `delay_i_ms` : Represents a time interval (in milliseconds) to pause execution of API requests before within a collection.
 - `access token` : It is a secure, unique identifier used to authenticate a user's access to their Hoppscotch account and its resources like collections, environments data. [Learn more about personal access tokens](/documentation/features/pat)
 - `server url` : This optional and is the URL of your self-hosted instance when you're self-hosting your API client
+- `path` : Accounts for a file path where the JUnit report will be saved as an XML file in your file system.
 
 ### Example
 
@@ -107,6 +133,7 @@ hopp test -e environment.json kitchen-sink-hoppscotch-collection.json
 hopp test -e environment.json -d 1000 kitchen-sink-hoppscotch-collection.json
 hopp test clxsntdgh0000lcx9fnits2h8 --token <access token> 
 hopp test -e clxspay2r0006lcx99aqgjbay -d 1000 clxsntdgh0000lcx9fnits2h8 --token <access token> --server http://localhost:3170
+hopp test -e environment.json kitchen-sink-hoppscotch-collection.json --reporter-junit kitchen-sink-junit.xml
 ```
 
 ## Environment
@@ -159,14 +186,15 @@ If requests in a collection consists of secret variables we recommend either of 
 
 ## Options
 
-| Option          | Description                                                                                                       |
-| ------          | ------------------------------------------------------------------------------------------------------------------|                    
-| `-h`            | Gives a list of associated commands and their descriptions                                                        |
-| `-v`            | Displays the current version of the CLI                                                                           |
-|`--env or -e`    | Accepts environments in all the formats present in [Environment section](/documentation/clients/cli#environment). |
-|`--delay` or `-d`| Used to defer the execution of requests in a collection.                                                          |
-|`--token`        | Expects a personal access token to be passed for establishing connection with your Hoppscotch account.                             |
-|`--server`       | URL of your self-hosted instance, if your collections are on a self-hosted instance.                                                       |
+| Option                      | Description                                                                                                       |
+| ----------------------------| ------------------------------------------------------------------------------------------------------------------|                    
+| `-h`                        | Gives a list of associated commands and their descriptions                                                        |
+| `-v`                        | Displays the current version of the CLI                                                                           |
+|`--env or -e`                | Accepts environments in all the formats present in [Environment section](/documentation/clients/cli#environment). |
+|`--delay` or `-d`            | Used to defer the execution of requests in a collection.                                                          |
+|`--token`                    | Expects a personal access token to be passed for establishing connection with your Hoppscotch account.            |
+|`--server`                   | URL of your self-hosted instance, if your collections are on a self-hosted instance.                              |
+|`--reporter-junit`           | Expects a file path to store the JUnit Report.                                                                    |    
 
 ## Test Report Components
 
