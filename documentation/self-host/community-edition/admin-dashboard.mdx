@@ -56,13 +56,20 @@ InfraTokens are special UUID tokens that provide a secure way for admins to inte
 
 Follow these steps to create a new InfraToken:
 
-1. After logging into your Self-Hosted instance using your admin credentials, you can access the **“Tokens”** under the “Settings” section from your admin dashboard.
+1. After logging into your Self-Hosted instance using your admin credentials, you can access the **“Tokens”** under the **“Settings”** section from your admin dashboard.
 2. Click on **"Generate New InfraToken."**
 3. Enter a title for the token and select an expiration date. Available options include 7 days, 30 days, 60 days, 90 days, or no expiry.
 4. After providing the necessary details, confirm the creation. **The new InfraToken will be displayed once, make sure to copy it securely** to your clipboard for immediate use.
 5. If you decide that you no longer need the token, you can delete it by navigating back to **“Tokens Section”.**
 
 <Note> The details of the admin who created the InfraToken are stored for audit purposes. All admins can view and manage these tokens. </Note>
+
+#### How to Use InfraTokens
+InfraTokens are to be used as **Bearer tokens**. When making requests to the User Management APIs, include the `InfraToken` in the `Authorization` header as follows:
+
+```bash
+Bearer <Your_InfraToken>
+```
 
 ## Manage Workspaces
 
