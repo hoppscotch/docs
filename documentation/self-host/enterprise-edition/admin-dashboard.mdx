@@ -34,19 +34,20 @@ The Users section empowers you to effectively control user-related actions. It s
 
 ### APIs for User Management
 
-The RESTful APIs designed for User Management enable **admins** to perform a wide range of user-related actions, such as inviting new users, deleting existing ones, and updating user details. These APIs provide **admins** with the ability to efficiently manage user accounts and permissions. The table below introduces **seven** key APIs that empower **admins** with greater control over user management.
+The RESTful APIs designed for User Management enable **admins** to perform a wide range of user-related actions, such as inviting new users, deleting existing ones, and updating user details. These APIs provide **admins** with the ability to efficiently manage user accounts and permissions. The table below introduces **eight** key APIs that empower **admins** with greater control over user management.
 
 | User Activity | Description | Method | Endpoint | 
 | --- | --- | --- | --- | 
-| Invite a New User | Allows admins to invite a new user to the self-hosted instance. | POST | `<base-url>/v1/infra/user-invitations` | 
+| Invite a New User | Allows admins to invite a new user to the instance. | POST | `<base-url>/v1/infra/user-invitations` | 
 | View Pending Invites | Retrieves a list of all pending invites sent to new users. | GET | `<base-url>/v1/infra/user-invitations` | 
-| Delete Pending Invites | Enables admins to delete specific pending invites using their User ID. | DELETE | `<base-url>/v1/infra/user-invitations` | 
-| View All Users | Provides a list of all users in the self-hosted instance. | GET | `<base-url>/v1/infra/users` | 
-| View a Particular User | Fetches details of a specific user in the self-hosted instance by their User ID. | GET | `<base-url>/v1/infra/users/{uid}` | 
+| Delete Pending Invites | Enables admins to delete specific pending invites using their Email ID. | DELETE | `<base-url>/v1/infra/user-invitations` | 
+| View All Users | Provides a list of all users in the instance. | GET | `<base-url>/v1/infra/users` | 
+| View a Particular User | Fetches details of a specific user in the instance by their User ID. | GET | `<base-url>/v1/infra/users/{uid}` | 
+| Delete an existing User | Enables admins to delete an existing user from the instance by their User ID. | DELETE | `<base-url>/v1/infra/users/{uid}` |
 | Update User Details | Allows admins to update the details of an existing user. | PATCH | `<base-url>/v1/infra/users/{uid}` |
-| Manage Admin Status | Enables admins to add or remove admin status for an existing user. | PATCH | `<base-url>/v1/infra/users/:id/admin-status` | 
+| Manage Admin Status | Enables admins to add or remove admin status for an existing user. | PATCH | `<base-url>/v1/infra/users/{uid}/admin-status` | 
 
-To interact with User Management APIs, please ensure the Backend service runs on your server or local machine. Open your browser, navigate to our **[Swagger Documentation](https://stage-shc.hoppscotch.io/backend/api-docs)** to view API specifications, and test the APIs directly.
+<Info> To view the User Management API specifications, please visit our **[Swagger Documentation](https://stage-shc.hoppscotch.io/backend/api-docs)**. </Info>
 
 ### Infra-tokens
 
@@ -60,7 +61,7 @@ Follow these steps to create a new InfraToken:
 2. Click on **"Generate New InfraToken."**
 3. Enter a title for the token and select an expiration date. Available options include 7 days, 30 days, 60 days, 90 days, or no expiry.
 4. After providing the necessary details, confirm the creation. **The new InfraToken will be displayed once, make sure to copy it securely** to your clipboard for immediate use.
-5. If you decide that you no longer need the token, you can delete it by navigating back to **“Tokens Section”.**
+5. If you decide that you no longer need the token, you can delete it by navigating back to **“Tokens"** section.
 
 <Note> The details of the admin who created the InfraToken are stored for audit purposes. All admins can view and manage these tokens. </Note>
 
