@@ -65,6 +65,13 @@ Follow these steps to create a new InfraToken:
 
 <Note> The details of the admin who created the InfraToken are stored for audit purposes. All admins can view and manage these tokens. </Note>
 
+#### How to Use InfraTokens
+InfraTokens are to be used as **Bearer tokens**. When making requests to the User Management APIs, include the `InfraToken` in the `Authorization` header as follows:
+
+```bash
+Bearer <Your_InfraToken>
+```
+
 ## Manage Workspaces
 
 In the Manage Workspace section, you can efficiently handle workspace-related operations, ensuring that collaborations and projects run smoothly.
