@@ -82,7 +82,23 @@ For example, if you are using Gmail as your SMTP server your SMTP URL will look 
 smtps://user@gmail.com:pass@smtp.gmail.com
 ```
 
-You can also use [mailcatcher](https://mailcatcher.me/) as a simple SMTP server
+You can also use [mailcatcher](https://mailcatcher.me/) as a simple SMTP server.
+
+### Custom SMTP configuration
+
+For more advanced needs, such as production-level email delivery or gaining more control over your email configurations, you can set up a custom SMTP server.
+
+To enable the custom mailer configuration, in addition to setting the `MAILER_USE_CUSTOM_CONFIGS` to `true`, you'll also need the following details in the specified format:
+
+| Requirement | Description | Format |
+|-----------|-----------------------------|-------------------------|
+| SMTP Host | Address of your SMTP server | `smtp.customdomain.com` |
+| SMTP Port | Communication port used by your SMTP server | `587` for **TLS** or `465` for **SSL** |
+| SMTP User | Username for your SMTP account | `user@customdomain.com` |
+| SMTP Password | Corresponding password for your SMTP account | `custompass` |
+
+You can use services like [SendGrid](https://sendgrid.com/), [Amazon SES](https://awss.amazon.com/ses/), or your own SMTP server to set up custom email delivery with Hoppscotch.
+
 
 ## Postgres database
 
