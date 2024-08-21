@@ -8,7 +8,7 @@ Self-hosting Hoppscotch gives you complete control over your API development wor
 
 Self-hosted Hoppscotch comes in two variants - [Community](https://docs.hoppscotch.io/documentation/self-host/community-edition/getting-started) and [Enterprise Edition](https://docs.hoppscotch.io/documentation/self-host/enterprise-edition/getting-started), both of which can be deployed on systems that support Docker. You can host Hoppscotch on your servers, providing a private workspace for the individuals or teams using it.
 
-This guide covers the basics of self-hosting Hoppscotch, including the configurations and settings needed to get started
+This guide covers the basics of self-hosting Hoppscotch, including the configurations and settings needed to get started.
 
 ## Pre-requisites
 
@@ -108,7 +108,7 @@ ENABLE_SUBPATH_BASED_ACCESS=false
 
 ### 1. Database Configuration
 
-By default, Hoppscotch ships with a Docker container that has a pre-configured Postgres database. If you prefer to use your own Postgres database, either on the cloud or locally, you’ll need to set up a valid database URL with the correct credentials.
+Hoppscotch uses a Postgres database to store all the data. You can use any Postgres database provider of your choice, hosted locally or on a cloud.
 
 Update the `DATABASE_URL` variable in your `.env` file with your custom database connection string, which should include the username, password, and database name.
 
@@ -201,15 +201,7 @@ Similarly, you can follow the specific setup instructions for other OAuth provid
 
 Subpath access allows you to host multiple services under a single domain by assigning each service a specific subpath.
 
-To enable subpath-based access, set `ENABLE_SUBPATH_BASED_ACCESS=true` (the **default** setting is **false**).
-
-When enabled, here's how it affects your setup:
-
-- **Individual Containers**: You must configure a reverse proxy to route requests to the appropriate containers based on their subpaths.
-- **AIO Container**: The services can be accessed through specific routes:
-    - Hoppscotch App: `/`
-    - Hoppscotch Admin App: `/admin`
-    - Hoppscotch Backend: `/backend`
+When `ENABLE_SUBPATH_BASED_ACCESS=true`, you can access all three services (Hoppscotch App, Admin Dashboard, Hoppscotch Backend) on the same domain using different routes. If subpath access is disabled **(`ENABLE_SUBPATH_BASED_ACCESS=false`)**,  you will need to access the services on different ports.
 
 ## Installing dependencies, running migrations & building the image
 
