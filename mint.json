@@ -141,6 +141,7 @@
         "documentation/features/client-certificate",
         "documentation/features/snippets",
         "documentation/features/interceptor",
+        "documentation/features/context-menu",
         "documentation/features/widgets",
         "documentation/features/authorization",
         "documentation/features/rest-api-testing",
