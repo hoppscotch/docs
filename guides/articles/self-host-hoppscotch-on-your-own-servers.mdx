@@ -1,0 +1,275 @@
+---
+sidebarTitle: Self-Host Hoppscotch on your own servers
+title: Self-Host Hoppscotch on your own servers
+description: Set up Hoppscotch on your servers for complete control and customization.
+---
+
+Self-hosting Hoppscotch gives you complete control over your API development workflow and allows you to deploy Hoppscotch in your own data center or cloud, giving you greater control over data and security.
+
+Self-hosted Hoppscotch comes in two variants - [Community](https://docs.hoppscotch.io/documentation/self-host/community-edition/getting-started) and [Enterprise Edition](https://docs.hoppscotch.io/documentation/self-host/enterprise-edition/getting-started), both of which can be deployed on systems that support Docker. You can host Hoppscotch on your servers, providing a private workspace for the individuals or teams using it.
+
+This guide covers the basics of self-hosting Hoppscotch, including the configurations and settings needed to get started.
+
+## Pre-requisites
+
+Before you start ensure that your system or environment meets the following requirements:
+
+- [Node.js (v18+) and npm (v9+)](https://nodejs.org/en/download/package-manager) - Ensure that both Node.js and npm are up-to-date to support the latest features and security patches.
+- [pnpm](https://pnpm.io/installation) (v6+) - Recommended for efficient package management and faster installations.
+- [Docker](https://docs.docker.com/engine/install) (v20+) - Docker should be properly installed and configured for containerization of your Hoppscotch instance.
+- [Git](https://git-scm.com/download) - Required for version control and managing Hoppscotch source code.
+
+Visit our [documentation](https://docs.hoppscotch.io/documentation/self-host/community-edition/prerequisites) for a detailed guide on installing the prerequisite softwares.
+
+## Configuring the Environment
+
+Create a `.env` file in your working directory, copy the example environment variable configurations provided below into it, and then replace the example values with your actual values.
+
+<Warning> Ensure that there are **NO QUOTES** encapsulating the values of the environment variables and **NO SPACES** around the equals sign (`=`). </Warning>
+
+```bash
+#-----------------------Backend Config------------------------------#
+# Prisma Config
+DATABASE_URL=postgresql://username:password@url:5432/dbname # or replace with your database URL
+
+# Auth Tokens Config
+JWT_SECRET=secretcode123
+TOKEN_SALT_COMPLEXITY=10
+MAGIC_LINK_TOKEN_VALIDITY=3
+REFRESH_TOKEN_VALIDITY=604800000 # Default validity is 7 days (604800000 ms) in ms
+ACCESS_TOKEN_VALIDITY=86400000 # Default validity is 1 day (86400000 ms) in ms
+SESSION_SECRET=anothersecretcode123
+
+# Recommended to be true. Set to false if you are using http.
+# Note: Some auth providers may not support http requests and may stop working when set to false.
+ALLOW_SECURE_COOKIES=true
+
+# Hoppscotch App Domain Config
+REDIRECT_URL=http://localhost:3000
+WHITELISTED_ORIGINS=http://localhost:3170,http://localhost:3000,http://localhost:3100
+VITE_ALLOWED_AUTH_PROVIDERS=GOOGLE,GITHUB,MICROSOFT,EMAIL
+
+# Google Auth Config
+GOOGLE_CLIENT_ID=*****
+GOOGLE_CLIENT_SECRET=*****
+GOOGLE_CALLBACK_URL=http://localhost:3170/v1/auth/google/callback
+GOOGLE_SCOPE=email,profile
+
+# Github Auth Config
+GITHUB_CLIENT_ID=*****
+GITHUB_CLIENT_SECRET=****
+GITHUB_CALLBACK_URL=http://localhost:3170/v1/auth/github/callback
+GITHUB_SCOPE=user:email
+
+# Microsoft Auth Config
+MICROSOFT_CLIENT_ID=*****
+MICROSOFT_CLIENT_SECRET=*****
+MICROSOFT_CALLBACK_URL=http://localhost:3170/v1/auth/microsoft/callback
+MICROSOFT_SCOPE=user.read
+MICROSOFT_TENANT=common
+
+# Mailer config
+MAILER_SMTP_ENABLE=true
+MAILER_USE_CUSTOM_CONFIGS=false
+MAILER_ADDRESS_FROM=<from@example.com>
+MAILER_SMTP_URL=smtps://user@domain.com:pass@smtp.domain.com # used if custom mailer configs is false
+# The following are used if custom mailer configs is true
+MAILER_SMTP_HOST=smtp.domain.com
+MAILER_SMTP_PORT=587
+MAILER_SMTP_SECURE=true
+MAILER_SMTP_USER=user@domain.com
+MAILER_SMTP_PASSWORD=pass
+MAILER_TLS_REJECT_UNAUTHORIZED=true
+
+# Rate Limit Config
+RATE_LIMIT_TTL=60 # In seconds
+RATE_LIMIT_MAX=100 # Max requests per IP
+
+#-----------------------Frontend Config------------------------------#
+
+# Base URLs
+VITE_BASE_URL=http://localhost:3000
+VITE_SHORTCODE_BASE_URL=http://localhost:3000
+VITE_ADMIN_URL=http://localhost:3100
+
+# Backend URLs
+VITE_BACKEND_GQL_URL=http://localhost:3170/graphql
+VITE_BACKEND_WS_URL=wss://localhost:3170/graphql
+VITE_BACKEND_API_URL=http://localhost:3170/v1
+
+# Terms Of Service And Privacy Policy Links (Optional)
+VITE_APP_TOS_LINK=https://docs.hoppscotch.io/support/terms
+VITE_APP_PRIVACY_POLICY_LINK=https://docs.hoppscotch.io/support/privacy
+
+# Set to `true` for subpath based access
+ENABLE_SUBPATH_BASED_ACCESS=false
+
+```
+
+### 1. Database Configuration
+
+Hoppscotch uses a Postgres database to store all the data. You can use any Postgres database provider of your choice, hosted locally or on a cloud.
+
+Update the `DATABASE_URL` variable in your `.env` file with your custom database connection string, which should include the username, password, and database name.
+
+```jsx
+DATABASE_URL=postgresql://username:password@url:5432/dbname
+```
+
+### 2. **SMTP Configuration**
+
+To invite your team to use Hoppscotch and enable email delivery, you'll need to configure SMTP settings properly. 
+
+#### **2.1 Basic SMTP Configuration**
+
+For basic SMTP configuration, you can use [mailcatcher](https://mailcatcher.me). It runs a super simple SMTP server which catches any message sent to it to display in a web interface. 
+
+You can set up mailcatcher using Docker with 2 below easy steps:
+
+1. Pull the [Mailcatcher Image](https://hub.docker.com/r/dockage/mailcatcher) from Docker Hub,
+    
+    ```jsx
+    docker pull dockage/mailcatcher:0.9.0
+    ```
+    
+2. With Mailcatcher set up on your machine, start the Mailcatcher container using `docker run` with the appropriate port mappings (`1080` for the web interface and `1025` for SMTP).
+    
+    > Docker containers are isolated from the host by default. When using localhost inside a Docker container, it refers to the container itself, and not the host machine. Since Hoppscotch runs inside a Docker container while Mailcatcher runs on the host machine, you'll need to use the **Docker bridge network IP** instead of `localhost` to ensure that the containerized application can communicate with the Mailcatcher service on the host. To find this IP address, run:
+    > 
+    > 
+    > ```jsx
+    > ip addr show docker0
+    > ```
+    > 
+    > Look for the inet address associated with the docker0 interface. It’s typically in the **172.17.0.0/16** range but may vary based on your Docker network configuration. And If you’re using **Docker Desktop**, you can use `host.docker.internal` instead of `localhost`.
+    > 
+    
+    ```bash
+    docker run --name='mailcatcher' -d \\
+      --publish=<Docker_bridge_IP or host.docker.internal>:1080:1080 \\
+      --publish=<Docker_bridge_IP or host.docker.internal>:1025:1025 \\
+      dockage/mailcatcher:0.9.0
+    ```
+    
+    Visit `http://<Docker_bridge_IP or host.docker.internal>:1080` to access the Mailcatcher web interface and view email communications.
+    
+    Further, configure the below environment variables in your `.env` file:
+    
+    ```jsx
+    MAILER_SMTP_ENABLE=true
+    MAILER_USE_CUSTOM_CONFIGS=false
+    MAILER_ADDRESS_FROM=from@example.com
+    MAILER_SMTP_URL=smtp://<Docker_bridge_IP or host.docker.internal>:1025
+    ```
+    
+
+#### **2.2 Custom Mailer Configuration**
+
+For advanced email delivery needs, such as for production environments, you can configure a custom email service by setting `MAILER_USE_CUSTOM_CONFIGS=true`. You can choose from services like [SendGrid](https://sendgrid.com/), [Amazon SES](https://aws.amazon.com/ses/), or your own SMTP server. Once you’ve set up your chosen service, update your `.env` file with the following details:
+
+```jsx
+MAILER_SMTP_HOST=smtp.domain.com
+MAILER_SMTP_PORT=587
+MAILER_SMTP_SECURE=true
+MAILER_SMTP_USER=user@domain.com
+MAILER_SMTP_PASSWORD=pass
+MAILER_TLS_REJECT_UNAUTHORIZED=true
+```
+
+### 3. OAuth Configuration
+
+To access the admin dashboard, you’ll need to configure an OAuth provider. In the Community Edition, Hoppscotch supports:
+
+1. Google
+2. GitHub
+3. Microsoft
+
+In the Enterprise Edition, support also includes **SAML SSO, OpenID Connect, and GitHub Enterprise**.
+
+Here’s a quick guide to registering an OAuth application with GitHub:
+
+1. Click your profile photo in the upper-right corner and select **Settings**.
+2. In the left sidebar, scroll down and click **Developer Settings**.
+3. Click **OAuth Apps** in the sidebar.
+4. Click **New OAuth App**.
+5. Enter the required information and specify the callback URL as indicated in your configuration.
+6. After registering the application, copy the Client ID and Client Secret, and add them to your environment file.
+
+Similarly, you can follow the specific setup instructions for other OAuth providers to complete your configuration.
+
+### 4. Subpath Access
+
+Subpath access allows you to host multiple services under a single domain by assigning each service a specific subpath.
+
+When `ENABLE_SUBPATH_BASED_ACCESS=true`, you can access all three services (Hoppscotch App, Admin Dashboard, Hoppscotch Backend) on the same domain using different routes. If subpath access is disabled **(`ENABLE_SUBPATH_BASED_ACCESS=false`)**,  you will need to access the services on different ports.
+
+## Installing dependencies, running migrations & building the image
+
+Once the environment variables are configured, you may now proceed to the next step of setting up the Hoppscotch instance. 
+<Steps>
+  <Step title="Check Database Connectivity">
+    Ensure that the database instance is active and running at the `DATABASE_URL` specified in your `.env` file. 
+    
+    ```jsx
+    docker ps
+    ```
+  </Step>
+  <Step title="Select the suitable Hoppscotch instance to self-host">
+    There are two ways to set up Hoppscotch:
+    1. **Using individual containers for the services** - Hoppscotch Backend, Hoppscotch Frontend and Hoppscotch Admin Dashboard.
+    2. **Using the AIO container** - a single container that provides all the services required to run Hoppscotch.
+    
+    For a streamlined setup, let's proceed with the AIO container. If you'd like to set up individual containers instead, [refer to the documentation](https://docs.hoppscotch.io/documentation/self-host/community-edition/install-and-build#using-individual-containers-for-the-services).
+  </Step>
+  <Step title="Pull the latest Hoppscotch container">
+    Pull the container from DockerHub with the following command. If a specific version isn't provided, it will automatically pull the latest version:
+    
+    ```jsx
+    docker pull hoppscotch/hoppscotch
+    ```
+  </Step>
+  <Step title="Run Database Migrations">
+    After pulling the Hoppscotch image from DockerHub, you need to run database migrations to set up the necessary tables. Use the following commands:
+    
+    ```jsx
+    docker run -it --entrypoint sh --env-file .env hoppscotch/hoppscotch
+    # pnpx prisma migrate deploy
+    ```
+  </Step>
+  <Step title="Start the Hoppscotch Instance">
+   To launch Hoppscotch, run the container with the following command:
+    
+    ```jsx
+    docker run -p 3000:3000 -p 3100:3100 -p 3170:3170 --env-file .env --restart unless-stopped hoppscotch/hoppscotch
+    ```
+  </Step>
+</Steps>
+    
+
+## Accessing Admin Dashboard and Application
+
+- **Accessing the Admin Dashboard**
+    - After successfully running the required containers, the next step is to create an **Admin** account.
+    - To access the Admin Dashboard, visit [**`http://localhost:3100`**](http://localhost:3100/) if `ENABLE_SUBPATH_BASED_ACCESS=false`.
+    - Log in with your credentials or create a new account to obtain admin privileges.
+    - Once logged in, you'll find the Dashboard as your central hub for managing workspaces, overseeing user activities, and configuring OAuth environment variables directly from the Settings page.
+- **Accessing the Hoppscotch Application**
+    - You can access the Hoppscotch application itself at `http://localhost:3000`.
+
+---
+
+In conclusion, this guide has covered how to self-host Hoppscotch, helping you set everything up in one go. If you prefer visual guidance, check out the video below for a detailed walkthrough that complements the instructions provided here. For additional details on each step of self-hosting Hoppscotch, refer to our [documentation](https://docs.hoppscotch.io/documentation/self-host/getting-started).
+
+
+<iframe
+  width="560"
+  height="315"
+  frameborder="4"
+  src="https://www.youtube.com/embed/5CiI4PLfuJ0"
+  title="Step-by-step guide to Self-Host Hoppscotch"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+
+
