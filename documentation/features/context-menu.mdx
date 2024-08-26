@@ -1,7 +1,8 @@
 ---
 sidebarTitle: Context Menu
 title: Context Menu
-description: Learn how to use the context menu.
+description:
+  Use context-aware menus to assist with your actions and improve your workflow.
 ---
 
 Context-aware menus enable quick actions like creating variables or adding query
@@ -14,33 +15,34 @@ parameters by selecting text or elements. The context menu offers three options:
 
 ## Set as Variable
 
-You can access the **Set as Variable** option from the context menu. Once
-selected, you can assign the selected value to an environment variable.
+> You can use the **Set as Variable** option from the context menu to assign a
+> selected value to an environment variable.
 
-Hoppscotch offers different variable scopes, including global, environment, and
-request variables. You can read more about variable scopes
-[here](/documentation/features/variables).
+> Hoppscotch supports various variable scopes, including global, environment,
+> and request-specific variables. For more details on these scopes
+> [click here](/documentation/features/variables).
 
-### How to Use "Set as Variable"
+### How to use "Set as Variable"
 
 After setting an [environment variable](/documentation/features/environments),
-you can use it with the format `<<variable name>>`. This allows you to store
-values like `<<baseURL>>` in a single variable.
+you can reference it using the format `<<variable name>>`. This allows you to
+store For example, `<<baseURL>>` can be used to dynamically insert the base URL
+across your requests.
 
 ## Add to Parameters
 
-The **Add to Parameters** option lets you easily add parameters and their
-values.
+The **Add to Parameters** option allows you to quickly add parameters along with
+their values.
 
 When you select **Add to Parameters**, it automatically captures the parameter
-and its value. For example, the `baseURL` is
-`https://jsonplaceholder.typicode.com/?user=1` now the user with ID "1" will be
-included in the parameter placeholder.
+and its value. For example, if the `baseURL` is
+`https://jsonplaceholder.typicode.com/?user=1`, now the **user** with ID **1**
+will be included in the parameter placeholder.
 
 ## Open Request in New Tab
 
-The **Open Request in New Tab** option allows you to open the current request in
-a new tab, enabling you to handle multiple requests simultaneously.
+The **Open Request in New Tab** option allows you to open any **selected URL or
+text** as a new request in a separate tab..
 
-This feature helps you shift the current request to a new tab while working on a
-new request in the original tab.
+By opening the selected URL in a new tab, you can continue working on your
+original request in its own tab without any interruptions.
