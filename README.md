@@ -2,8 +2,8 @@
 
 ## Local Development
 
-> **Warning:** To set up this repository, ensure you have Node.js version 19.x
-> or 20.x installed, as Mintlify requires this to function correctly.
+> [!IMPORTANT]
+> Please install Node.js (version 19 or higher) before proceeding.
 
 Install dependencies:
 
