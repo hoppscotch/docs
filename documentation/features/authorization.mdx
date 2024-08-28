@@ -62,13 +62,19 @@ The client credentials grant type is commonly employed for accessing data tied t
 
 The OAuth 2.0 Password grant type sends the username and password directly from the client, which is not advised when handling third-party data.
 
-To utilize the password grant type, input your API provider's **Access Token URL**, along with the Username and Password. Occasionally, you may also be required to supply a client ID and secret.
+To utilize the password grant type, input your API provider's **Access Token URL**, along with the **Username** and **Password**. Occasionally, you may also be required to supply a client ID and secret.
 
 #### 4. Implicit
 
 The Implicit grant type furnishes the client with an access token directly, eliminating the additional authentication code step and is less secure.
 
-For utilizing the implicit grant type in your requests via Hoppscotch, provide a Callback URL registered with the API provider, the provider's Auth URL, and a Client ID for the registered application.
+For utilizing the implicit grant type in your requests via Hoppscotch, provide a **Callback URL** registered with the API provider, the provider's **Auth URL**, and a **Client ID** for the registered application.
+
+## AWS Signature
+
+The AWS Signature authorization mechanism authenticates and authorizes requests to AWS services by employing HMAC (Hash-based Message Authentication Code). This ensures that your requests are secure, verifiable, and protected against tampering.
+
+To configure AWS Signature authorization in Hoppscotch, enter your AWS **Access Key** and **Secret Key** to sign your requests. For advanced configuration, you can also provide details like the **AWS Region** where your request will be processed, the **Service Name** of the AWS service you're accessing, and a **Service Token** if you're using temporary security credentials.
 
 ---
 
