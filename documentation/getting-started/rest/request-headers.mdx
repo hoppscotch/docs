@@ -20,4 +20,17 @@ Here are a few common headers you might set:
 | **Cache-Control** | Controls caching behavior in both requests and responses.                                 |
 | **User-Agent**    | Provides information about the client making the request.                                 |
 
+<Note> For **Authorization and Content-Type** headers, the description field will be disabled, and the value will be empty. In contrast, for **inherited headers**, the specified values will be automatically populated in the description field. </Note>
+
 Hoppscotch offers a variety of header options beyond these five examples, allowing you to customize how the server processes your requests to meet specific requirements.
+
+### Bulk edit request headers
+
+Using the  <Icon icon="pen-to-square" iconType="solid" />  **Bulk edit** feature in Hoppscotch's request headers tab, you can input and manage multiple headers simultaneously, with each header on a new line and the key and value separated by a **colon (:)**. For example,
+
+```yaml
+Authorization: Bearer token123
+Content-Type: application/json
+# User-Agent: CustomAgent/1.0
+```
+
