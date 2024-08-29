@@ -74,6 +74,7 @@
           "pages": [
             "documentation/getting-started/rest/creating-a-request",
             "documentation/getting-started/rest/request-parameters",
+            "documentation/getting-started/rest/request-headers",
             "documentation/getting-started/rest/organizing-requests",
             "documentation/getting-started/rest/environment-variables",
             "documentation/getting-started/rest/auth-tokens",

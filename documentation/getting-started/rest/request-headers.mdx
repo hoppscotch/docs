@@ -1,0 +1,36 @@
+---
+sidebarTitle: Request headers
+title: Request headers
+description: Request Headers allow you to pass additional information with requests, helping to control how the server responds.
+---
+
+Request Headers are key-value pairs that the client sends to the server with an HTTP request. These headers carry extra details about your request, helping the server understand its context and tailor the response to fit.
+
+## Headers Tab
+
+In Hoppscotch, you can easily set and manage request headers using the **Headers tab**. This tab allows you to define **`key-value`** pairs, and you can also add a **`description`** for each header to keep track of its purpose.
+
+Here are a few common headers you might set:
+
+| **Header**        | **Description**                                                                           |
+| ----------------- | ----------------------------------------------------------------------------------------- |
+| **Authorization** | Used for passing credentials, such as tokens, to authenticate the client with the server. |
+| **Content-Type**  | Indicates the format of the data being sent, like `application/json`.                     |
+| **Accept**        | Tells the server what media types the client can handle in the response.                  |
+| **Cache-Control** | Controls caching behavior in both requests and responses.                                 |
+| **User-Agent**    | Provides information about the client making the request.                                 |
+
+<Note> For **Authorization and Content-Type** headers, the description field will be disabled, and the value will be empty. In contrast, for **inherited headers**, the specified values will be automatically populated in the description field. </Note>
+
+Hoppscotch offers a variety of header options beyond these five examples, allowing you to customize how the server processes your requests to meet specific requirements.
+
+### Bulk edit request headers
+
+Using the  <Icon icon="pen-to-square" iconType="solid" />  **Bulk edit** feature in Hoppscotch's request headers tab, you can input and manage multiple headers simultaneously, with each header on a new line and the key and value separated by a **colon (:)**. For example,
+
+```yaml
+Authorization: Bearer token123
+Content-Type: application/json
+# User-Agent: CustomAgent/1.0
+```
+
