@@ -47,7 +47,7 @@ The RESTful APIs designed for User Management enable **admins** to perform a wid
 | Update User Details | Allows admins to update the details of an existing user. | PATCH | `<base-url>/v1/infra/users/{uid}` |
 | Manage Admin Status | Enables admins to add or remove admin status for an existing user. | PATCH | `<base-url>/v1/infra/users/{uid}/admin-status` | 
 
-<Info> To view the User Management API specifications, please visit our **[Swagger Documentation](https://stage-shc.hoppscotch.io/backend/api-docs)**. </Info>
+<Info> To view the User Management API specifications, please visit our **[Swagger Documentation](https://stage-she.hoppscotch.io/backend/api-docs)**. </Info>
 
 ### Infra-tokens
 
@@ -80,6 +80,29 @@ In the Manage Workspace section, you can efficiently handle workspace-related op
 - Workspace Editing: Modify workspace details and configurations as needed.
 - Workspace Deletion: Disband workspaces that are no longer relevant.
 - User Memberships: View and manage the users associated with each workspace.
+
+### APIs for Workspace Management
+
+We’ve introduced new **APIs** to make **workspace management** and **collaboration** easier for **admins**. These APIs enable quick actions like creating new workspaces, updating existing workspace details, and deleting workspaces as needed. Check out the table below for **fourteen** APIs that give admins a greater control over managing Hoppscotch workspaces.
+
+|  **Workspace Activity** | **Description** | **Method** | **Endpoint** |
+| ---------------------- | --------------- | ---------- | ------------ |
+| Create a Workspace | Create a new workspace within the instance. | POST | `<base-url>/v1/infra/workspaces` |
+| View All Workspaces | Retrieves a list of all workspaces available. | GET |  `<base-url>/v1/infra/workspaces`  |
+| View Workspace Details | List details about a specific workspace like name, members, roles, and pending invites.  | GET |`<base-url>/v1/infra/workspaces/{id}` |
+| Delete a workspace | Remove an existing workspace using its ID. | DELETE | `<base-url>/v1/infra/workspaces/{id}` |
+| Update details for an existing workspace. | Modify settings and preferences for an existing workspace. | PATCH | `<base-url>/v1/infra/workspaces/{id}` |
+| List Members of a Workspace | Retrieves a list of all members in a specific workspace. | GET | `<base-url>/v1/infra/workspaces/{id}/ members` |
+| Get Workspace Owners count |  Fetches number of Workspace members with "OWNER" permissions | GET | `<base-url>/v1/infra/workspaces/{id}/ owners-count` |
+| Get Workspace Editors count |  Fetches number of Workspace members with "EDITOR" permissions  | GET | `<base-url>/v1/infra/workspaces/{id}/ editors-count` |
+| Get Workspace Viewers count |  Fetches number of Workspace members with "VIEWER" permissions  | GET | `<base-url>/v1/infra/workspaces/{id}/ viewers-count` |
+| Add User to a workspace | Add a user and assign roles (Owner, Editor, and Viewer) in a workspace. | POST | `<base-url>/v1/infra/workspaces/{id}/ user` |
+| Change User roles in a workspace | Update the role (Owner, Editor, and Viewer) of a user within a workspace | PATCH | `<base-url>/v1/infra/workspaces/{id}/ user/{uid}/role` |
+| Remove User from a workspace | Remove a user from a workspace using their ID | DELETE | `<base-url>/v1/infra/workspaces/{id}/ user/{uid}` |
+| View all pending workspace invites. | List all pending invites for workspace access. | GET | `<base-url>/v1/infra/workspaces/{id}/ invitations` |
+| Delete pending workspace invites. | Revoke Workspace invitations using invitation IDs. | DELETE | `<base-url>/v1/infra/workspaces/{id}/ invitations/{invitation_id}` |
+
+<Info> To know more about the Workspace Management API specifications, please visit our **[Swagger Documentation](https://stage-she.hoppscotch.io/backend/api-docs)**. </Info>
 
 ## Server Settings
 
