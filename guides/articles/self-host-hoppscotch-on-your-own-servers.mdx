@@ -27,7 +27,7 @@ Create a `.env` file in your working directory, copy the example environment var
 
 <Warning> Ensure that there are **NO QUOTES** encapsulating the values of the environment variables and **NO SPACES** around the equals sign (`=`). </Warning>
 
-```bash
+```yaml
 #-----------------------Backend Config------------------------------#
 # Prisma Config
 DATABASE_URL=postgresql://username:password@url:5432/dbname # or replace with your database URL
@@ -43,6 +43,9 @@ SESSION_SECRET=anothersecretcode123
 # Recommended to be true. Set to false if you are using http.
 # Note: Some auth providers may not support http requests and may stop working when set to false.
 ALLOW_SECURE_COOKIES=true
+
+# Sensitive Data Encryption Key while storing in Database (32 character)
+DATA_ENCRYPTION_KEY=********************************
 
 # Hoppscotch App Domain Config
 REDIRECT_URL=http://localhost:3000
@@ -103,7 +106,6 @@ VITE_APP_PRIVACY_POLICY_LINK=https://docs.hoppscotch.io/support/privacy
 
 # Set to `true` for subpath based access
 ENABLE_SUBPATH_BASED_ACCESS=false
-
 ```
 
 ### 1. Database Configuration
