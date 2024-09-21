@@ -147,9 +147,9 @@ You can set up mailcatcher using Docker with 2 below easy steps:
     > 
     
     ```bash
-    docker run --name='mailcatcher' -d \\
-      --publish=<Docker_bridge_IP or host.docker.internal>:1080:1080 \\
-      --publish=<Docker_bridge_IP or host.docker.internal>:1025:1025 \\
+    docker run --name='mailcatcher' -d \
+      --publish=<Docker_bridge_IP or host.docker.internal>:1080:1080 \
+      --publish=<Docker_bridge_IP or host.docker.internal>:1025:1025 \
       dockage/mailcatcher:0.9.0
     ```
     
