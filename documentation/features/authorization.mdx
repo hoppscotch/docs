@@ -70,6 +70,12 @@ The Implicit grant type furnishes the client with an access token directly, elim
 
 For utilizing the implicit grant type in your requests via Hoppscotch, provide a **Callback URL** registered with the API provider, the provider's **Auth URL**, and a **Client ID** for the registered application.
 
+## Digest
+
+Digest Authentication is an HTTP method that secures credentials using a challenge-response mechanism, preventing passwords from being transmitted in plain text. When a request is made to access a restricted resource, the system responds with a `401 Unauthorized` status along with a `WWW-Authenticate` header that presents a challenge. This challenge includes parameters which are essential for generating a valid response.
+
+To set up Digest Authentication in Hoppscotch, start by entering your **Username** and **Password**. For more advanced configuration, provide the **Realm** and **Nonce** values, which can be found in the `WWW-Authenticate` header of the response. Select the appropriate **Algorithm** for hashing and define the **Quality of Protection (QoP)** level to enhance security. You can also specify parameters such as **Nonce Count**, **Client Nonce**, and **Opaque** to further bolster the authentication process.
+
 ## AWS Signature
 
 The AWS Signature authorization mechanism authenticates and authorizes requests to AWS services by employing HMAC (Hash-based Message Authentication Code). This ensures that your requests are secure, verifiable, and protected against tampering.

@@ -47,6 +47,17 @@ pw.env.set("variable", "value"); // Creates an environment variable
 pw.env.unset("variable"); // Deletes the environment variable
 ```
 
+## Duplicating an environment
+
+Create a copy of an existing environment to modify or test different configurations without affecting the original:
+
+1. Click the "Environments" icon in the sidebar to view all existing environments under Global Environments.
+2. Next to the environment you want to duplicate, click the **More** icon. 
+3. From the dropdown menu, select **Duplicate**. A new environment with the suffix `- Duplicate` will be created.
+
+<Note> Secret variable values will not be copied to the duplicated environment. </Note>
+
+
 <CardGroup cols={1}>
   <Card title="Creating environment variables from client" iconType="light" icon="circle-arrow-right" href="/documentation/getting-started/rest/environment-variables">
     Learn how you can create environment variables from the client.

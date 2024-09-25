@@ -80,7 +80,8 @@
             "documentation/getting-started/rest/auth-tokens",
             "documentation/getting-started/rest/uploading-data",
             "documentation/getting-started/rest/pre-request-scripts",
-            "documentation/getting-started/rest/tests"
+            "documentation/getting-started/rest/tests",
+            "documentation/getting-started/rest/response-handling"
           ]
         },
         {
