@@ -4,7 +4,19 @@ title: Interceptor
 description: Intercept and modify requests and responses.
 ---
 
-You can access APIs blocked by `CORS` restriction by using either Proxyscotch or custom middleware. You can also use the Hoppscotch web extension to intercept requests and responses.
+You can access APIs blocked by `Cross-Origin Resource Sharing (CORS)` restriction by using either Hoppscotch Agent, Proxyscotch or custom middleware. You can also use the Hoppscotch web extension to intercept requests and responses.
+
+## Hoppscotch Agent
+
+The Hoppscotch Agent is a standalone application designed to mitigate the challenges posed by `CORS` in modern web browsers. Acting as a local intermediary, it intercepts API requests made through the Hoppscotch web app and reroutes them through your local environment. This means that the Hoppscotch Agent handles requests using your local network configuration, allowing for proper authentication and session management. 
+
+1. **[Download the Hoppscotch Agent](https://hoppscotch.com/download)** and follow the installation instructions specific to your operating system.
+2. Launch the [Hoppscotch Application](https://hoppscotch.io) and navigate to the **Interceptors** section in the **"Settings"** page.
+3. Locate the **Agent** option within the Interceptors section to initiate a connection to your local agent.
+4. The application will prompt you for a **One-Time Password (OTP)**. This OTP is generated within the Hoppscotch Agent.
+5. Enter the OTP into the application to establish a secure connection.
+
+Once connected, all API requests made through the Hoppscotch web app will be routed through your local agent, effectively eliminating CORS-related issues. Responses from API calls will be sent back to the Hoppscotch web app, allowing you to view and manipulate the data as needed.
 
 ## Proxy
 
