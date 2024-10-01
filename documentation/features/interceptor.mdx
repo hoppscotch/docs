@@ -10,7 +10,33 @@ You can access APIs blocked by `Cross-Origin Resource Sharing (CORS)` restrictio
 
 The Hoppscotch Agent is a micro application designed to mitigate the challenges posed by `CORS` in modern web browsers. Acting as a local intermediary, it intercepts API requests made through the Hoppscotch web app and reroutes them through your local machine. This means that the Hoppscotch Agent handles requests using your local network configuration.
 
-1. **[Download the Hoppscotch Agent](https://hoppscotch.com/download)** and follow the installation instructions specific to your operating system.
+1. To get started, **download the Hoppscotch Agent** by selecting thw installer specific to your operating system.
+<AccordionGroup>
+  <Accordion title="Mac" icon="apple" defaultOpen="true">
+    <Card title="Apple-Silicon (.dmg)" icon="laptop" href="">
+      Download for Apple Silicon processors (M1, M2).
+    </Card>
+    <Card title="For Intel-based Macs (.dmg)" icon="microchip" href="">
+      Download for Intel-based Macs.
+    </Card>
+  </Accordion>
+
+  <Accordion title="Windows" icon="windows">
+    <Card title="Windows Installer (.exe)" icon="microsoft" href="">
+      Download for Windows (64-bit).
+    </Card>
+  </Accordion>
+
+  <Accordion title="Linux" icon="linux">
+    <Card title="Debian (.deb)" icon="debian" href="">
+      Download for Debian-based distributions like Ubuntu and Linux Mint.
+    </Card>
+    <Card title="App Image (.AppImage)" icon="gear" href="">
+      Download the universal AppImage for any Linux distribution.
+    </Card>
+  </Accordion>
+</AccordionGroup>
+
 2. Launch the [Hoppscotch Application](https://hoppscotch.io) and navigate to the **Interceptors** section in the **"Settings"** page.
 3. Locate the **Agent** option within the Interceptors section to initiate a connection to your local agent.
 4. The application will prompt you for a **One-Time Password (OTP)**. This OTP is generated within the Hoppscotch Agent.
