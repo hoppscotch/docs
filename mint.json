@@ -73,6 +73,7 @@
           "group": "RESTful API",
           "pages": [
             "documentation/getting-started/rest/creating-a-request",
+            "documentation/getting-started/rest/response-handling",
             "documentation/getting-started/rest/request-parameters",
             "documentation/getting-started/rest/request-headers",
             "documentation/getting-started/rest/organizing-requests",

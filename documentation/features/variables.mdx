@@ -12,9 +12,11 @@ Hoppscotch considers an objects within an angular brackets as a variable `<<vari
 
 Hoppscotch provides you different variables scopes, allowing you to use different scopes for different contexts.
 
-1. Global Variables: can be accessed throughout Hoppscotch and has the broadest scope of all variables. 
-2. Environment Variables: allow your variables to be scoped to an environment. Environment variables are useful when you have the same set of variables for two environments such as production and staging
-3. Request Variables: are scoped to just an individual request, request variables are useful when you want to use variables in your URL path or when you want to embed a variable URL
+1. **Global Variables:** can be accessed throughout Hoppscotch and has the broadest scope of all variables. 
+2. **Environment Variables:** allow your variables to be scoped to an environment. Environment variables are useful when you have the same set of variables for two environments such as production and staging.
+3. **Request Variables:** are scoped to just an individual request, request variables are useful when you want to use variables in your URL path or when you want to embed a variable URL.
+4. **Predefined Variables:** are automatically generated at runtime and can be accessed globally throughout Hoppscotch using the `$` symbol, such as `$guid` or `$timestamp`.
+
 
 The scope of each variable can be identified from the color of the variable name 
 
@@ -23,6 +25,7 @@ The scope of each variable can be identified from the color of the variable name
 | Global | Blue |
 | Environment | Green |
 | Request | Orange |
+| Predefined | Yellow |
 | Non resolvable | Red |
 
 ## Types of Variables
@@ -34,7 +37,62 @@ However, you have the option to choose whether to sync a regular variable value 
 It is expected that in a collaborative workspace the user will populate the value of the variable at runtime.
 All secret variable values in Hoppscotch will be masked using asterisks (***). Secret Variables cannot be scoped to a request and can only be scoped in an environment or globally
 
-`Secret variables values will not be exported when an environment is exported.`
+<Note> Secret variables values will not be exported when an environment is exported.</Note>
+
+3. **A predefined variable:** is automatically generated at runtime and provides dynamic, context-specific data. Predefined variables are available throughout your requests and responses and are useful for incorporating system-level information or dynamic values into your API interactions without manual configuration. 
+All predefined variables are accessible throughout Hoppscotch and can be retrieved using the `$` symbol. Below is the list of predefined variables whose values are dynamically generated during the request or collection run:
+
+>| **Variable Name** | **Description**                                                                               | **Example**                             |
+>| ----------------- | --------------------------------------------------------------------------------------------- | --------------------------------------- |
+>| `$guid`           | A v4 style unique (GUID) identifier for each request.                                         | `123e4567-e89b-12d3-a456-426614174000`  |
+>| `$timestamp`      | The current UNIX timestamp in seconds                                                         | `1693047645`                            |
+>| `$isoTimestamp`   | The current date and time in ISO-8601 format at zero UTC (also known as "Zulu time" or UTC-0) | `2024-09-25T00:00:00.000Z`              |
+>| `$randomUUID`     | A random 36-character UUID.                                                                   | `6929bb52-3ab2-448a-9796-d6480ecad36b`  |
+>
+> ### <ins>Numbers, Text, and Colors</ins>
+>
+>| **Variable Name**     | **Description**                                                          | **Example**             |
+>| --------------------- | ------------------------------------------------------------------------ | ----------------------- |
+>| `$randomAlphaNumeric` | A random alpha-numeric character.                                        | `A9X1Z3`                |
+>| `$randomBoolean`      | A random boolean value.                                                  | `true` , `false`        |
+>| `$randomInt`          | A random integer value between 0 and 1000.                               | `29` ,  `432` , `786`   |
+>| `$randomColor`        | A random color amongst **red, green, blue, yellow, purple, and orange.** | `yellow`                |
+>| `$randomHexColor`     | A random hex value.                                                      | `#f2a729`               |
+>| `$randomAbbreviation` | A random abbreviation.                                                   | `SQL` , `JSON` , `HTML` |
+>
+> ### <ins>Internet and IP addresses</ins>
+>
+>| **Variable Name**      | **Description**                                      | **Example**                              |
+>| ---------------------- | ---------------------------------------------------- | ---------------------------------------- |
+>| `$randomIP`            | A random IPv4 address                                | `192.168.0.101`                          |
+>| `$randomIPV6`          | A random IPv6 address                                | `2001:0db8:85a3:0000:0000:8a2e:0370:7334`|
+>| `$randomMACAddress`    | A random MAC address.                                | `00:1B:44:11:3A:B7`                      |
+>| `$randomPassword`      | A random 15-character alpha-numeric password.        | `H8w72Sx93KlqA1b`                        |
+>| `$randomLocale`        | A random two-letter language code (ISO 639-1).       | `en`, `fr`, `es`                         |
+>| `$randomUserAgent`     | A random user agent.                                 | `Mozilla/5.0 (Windows NT 10.0; Win64)`    |
+>| `$randomProtocol`      | A random internet protocol.                          | `https`, `ftp`                           |
+>| `$randomSemver`        | A random semantic version number.                    | `1.2.3`                                  |
+>
+> ### <ins>Names</ins>
+>
+>| **Variable Name**      | **Description**                                      | **Example**                              |
+>| ---------------------- | ---------------------------------------------------- | ---------------------------------------- |
+>| `$randomFirstName`     | A random first name.                                 | `Ethan` , `Chandler`, `John`             |
+>| `$randomLastName`      | A random last name.                                  | `Schaden` , `Schneider` , `Doe`          |
+>| `$randomFullName`      | A random Full name.                                  | `Ethan Schaden` , `Chandler Schneider` , `John Doe`  |
+>| `$randomNamePrefix`    | A random name prefix.                                | `Dr.` , `Miss.` , `Prof.`                |
+>| `$randomNameSuffix`    | A random name suffix.                                | `MD` , `PhD` , `Jr.`                     |
+>
+> ### <ins>Addresses and Profession</ins>
+>
+>| **Variable Name**      | **Description**                                      | **Example**                              |
+>| ---------------------- | ---------------------------------------------------- | ---------------------------------------- |
+>| `$randomCity`          | A random city name.                                  | `New York` , `Houston` , `Philadelphia`  |
+>| `$randomJobArea`       | A random job area.                                   | `Intranet` , `Development` , `Testing`   |
+>| `$randomJobDescriptor` | A random job descriptor.                             | `Corporate` , `Lead` , `Principal`       |
+>| `$randomJobTitle`      | A random job title.                                  | `Global Branding Officer` , `Productivity Analyst` |
+>| `$randomJobType`       | A random job type.                                   | `Manager` , `Coordinator` , `Director`   |
+
 
 <CardGroup cols={1}>
   <Card title="Environments" iconType="light" icon="circle-arrow-right" href="/documentation/features/environments">
