@@ -350,3 +350,11 @@ To start saving the [audit logs](/guides/articles/audit-logs) into ClickHouse, f
    ENGINE = MergeTree
    ORDER BY timestamp
    ```
+## SAML Configuration
+When you use SAML authentication, by default Hoppscotch only pulls the email of the user as the platform uses it as the unique identifier to verify the user.
+Starting from `v2024.9.2` onwards, Hoppscotch Enterprise Edition instances support pulling the following attributes from the SAML response to fill in additional user details:
+
+- `displayName`: The name of the user which is displayed within the Hoppscotch platform.
+- `photoURL`: The URL where to find the user's profile picture. **Do not** set this attribute if a profile picture doesn’t exist.
+
+You have to configure your **SAML IdP (Identity Provider)** to include these attributes _exactly_ in the response. For example, for Okta, you can follow [this guide](https://support.okta.com/help/s/article/How-to-define-and-configure-a-custom-SAML-attribute-statement?language=en_US) to configure the attributes.
