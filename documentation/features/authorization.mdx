@@ -9,32 +9,43 @@ REST APIs use authorization to ensure that a client has secure access only to th
 Auth details can be added to a header, body, or as parameters to a request. However, if you enter your auth details in the Authorization Tab, Hoppscotch will automatically modify the relevant parts of the request based on your chosen `Auth` type. Storing Auth Credentials or Bearer Tokens as environment variables, lets you re-use these more safely and efficiently.
 
 ## Inherit
-Inherit the authorization settings from the parent collection.
+
+Inherit Authorization allows requests to automatically adopt the authorization settings defined at the parent collection or subfolder level. This means you only need to configure the authorization once, and all nested requests will inherit these settings, ensuring consistency and saving time during setup.
 
 ## Basic Auth
 
-If the API supports basic Auth, you will have to add a verified username and password to your request. In the authorization tab, select basic auth and add your credentials.
+Basic Authentication is one of the simplest methods to secure your API requests in Hoppscotch. It works by requiring a username and password to be sent along with each request. To get started, head to the **Authorization** tab and select `Basic Auth` as your authentication type. You’ll then input your verified **username** and **password**. When you send the request, Hoppscotch will automatically encode your credentials in the format: 
+
+```
+Basic <Base64-encoded-credentials>
+```
+
+<Tip> Basic Auth transmits your credentials in a way that can be easily decoded, so it's best suited for secure channels like HTTPS to prevent exposure.</Tip>
 
 ## Bearer Tokens
 
-Bearer tokens allow for request authentication using an access key, such as an opaque string or JWT. In the Authorization Tab, select Basic Auth and add your token, or for added security store it in a variable and reference it by name.
-
-Hoppscotch will append the API key value to the text 'Bearer' and add it to the request authorization header.
+Bearer Tokens are used to authenticate requests using an access token, which can be a simple string or a JWT (JSON Web Token). To set it up, choose `Bearer` from the **Authorization** tab and enter your **access token**. Hoppscotch will include the token in the request header as:
 
 ```
-Bearer <Your API key>
+Bearer <your-access-token>
 ```
+
+<Info>Be aware that if your token expires, you'll need to refresh it manually and update it in Hoppscotch. For better security, consider storing your token as an environment variable so that you can easily reference it in your requests.</Info>
 
 ## API Key
-The API Key serves as a unique identifier that authorizes requests to the API. To utilize the API Key authorization type, it is essential to specify both the key and its corresponding value. This information should be transmitted either as a header or a query parameter, in accordance with the specific requirements of the API being accessed.
+API Keys are unique identifiers that help authenticate your requests to an API. In Hoppscotch, you can set up `API Key` authentication by selecting it from the **Authorization** tab. Here, you’ll need to fill in two fields: the **Key**, which is the name the API expects (like `api_key` or `Authorization`), and the **Value**, which is your actual API Key. You can also choose whether to pass this API Key as a **Header** or as a **Query Parameter**.
+
+<Tip>When using API Keys, keep an eye on the rate limits set by the API provider to avoid any issues. For improved security practices, store your API Key as an environment variable to facilitate easy management across different environments.</Tip>
 
 ## OAuth 2.0
 
-In this Authorization Model, you first retrieve an access token for the API and then use that token to authenticate future requests.
+OAuth 2.0 provides a secure way to let third-party applications access your resources without needing to share your passwords. Instead of directly passing credentials, you authenticate through a trusted service, which then issues an access token. This **token** allows your app to make API requests on your behalf.
 
-### Steps
+<Warning> OAuth 2.0 workflows are not fully supported in the Hoppscotch Desktop application and are currently a work in progress. We're actively working on it, and it will function as intended soon!</Warning>
 
-1. In the "**Authorization Tab**" for a request, select OAuth 2.0 from the Authorization Type drop-down.
+### Steps for OAuth 2.0 Setup
+
+1. In the "**Authorization Tab**" for a request, select `OAuth 2.0` from the Authorization Type drop-down.
 2. Select the [Grant Type](/documentation/features/authorization#grant-types) from Authorization Code (with or without PKCE), Client Credentials, Password Credentials, and Implicit.
 3. Fill out the fields in the section below and click on "**Generate Token**" to generate a new access token.
 4. You can save the token to be re-used later.
@@ -46,35 +57,44 @@ When using OAuth 2.0 authorization with Hoppscotch, you can utilize the followin
 
 #### 1. Authorization Code
 
-The Authorization Code grant type mandates user authentication with the provider, leading to the issuance of an authorization code back to the client application. This code is then extracted and swapped with the provider for an access token, which is later used to authenticate subsequent requests.
+The Authorization Code grant is used when your application needs to access a user's account. The user logs in to the OAuth provider and gives permission, allowing your app to receive a special code. You then use this code to request an access token that lets you access the user's data.
 
-To use the Authorization Code grant type, specify a **Callback URL** for your client application, along with other pertinent details such as **Auth URL**, **Access Token URL**, **Client ID**, and **Client Secret** provided by the API service.
+To use the `Authorization Code` grant type, ensure the [Callback URL](#oauth-callback-url-configuration) is correctly configured (either `https://hoppscotch.io/oauth` for Hoppscotch Cloud or `<your-domain>/oauth` for self-hosted editions). Next, provide the **Authorization Endpoint** and **Access Token Endpoint** from the API provider, along with the **Client ID** (and the Client Secret if you choose to use it). You can also specify the desired permissions in the **Scope** field and pass the token as a **Header** or as a **Query Parameter**. Once you've filled in these fields, click Generate Token to get your access token.
+
+<Tip> If your API provider supports token refreshing, you can use the **"Refresh Token"** button in Hoppscotch to obtain a new access token without requiring the user to log in again.</Tip>
 
 > #### Using PKCE
 > 
-> Opting for OAuth 2.0 with PKCE (Proof Key for Code Exchange), you gain the option to enhance security. Upon selecting PKCE, You can choose between SHA-256 or Plain algorithms.
+> Opting for OAuth 2.0 with PKCE (Proof Key for Code Exchange), you gain the option to enhance security. Upon selecting PKCE, you can choose between **SHA-256** or **Plain** algorithms.
 
 #### 2. Client Credentials
 
-The client credentials grant type is commonly employed for accessing data tied to the client application. Provide the **Access Token URL** of the provider along with the **Client ID** and **Client Secret** for your registered application.
+The Client Credentials grant is suitable for server-to-server interactions, where your application needs to access its own resources rather than user-specific data. This method relies on your app's credentials to obtain an access token directly.
+
+To obtain a token using `Client Credentials` grant type, input the **Authorization Endpoint** from the API provider, and fill in your **Client ID**. Including a Client Secret is optional.
 
 #### 3. Password Credentials
 
-The OAuth 2.0 Password grant type sends the username and password directly from the client, which is not advised when handling third-party data.
+The Password Credentials grant allows you to authenticate users by sending their username and password directly to the API. This method is less secure and is generally discouraged for third-party applications.
 
-To utilize the password grant type, input your API provider's **Access Token URL**, along with the **Username** and **Password**. Occasionally, you may also be required to supply a client ID and secret.
+To implement the `Password` credentials grant type in Hoppscotch, provide your API provider's **Authorization Endpoint**, along with the **Username** and **Password**. Occasionally, you may also be required to supply a Client ID and Secret.
 
 #### 4. Implicit
 
-The Implicit grant type furnishes the client with an access token directly, eliminating the additional authentication code step and is less secure.
+The Implicit grant is intended for client-side applications, where the access token is returned immediately without the need for an authorization code. While this method simplifies the process, it does come with security risks.
 
-For utilizing the implicit grant type in your requests via Hoppscotch, provide a **Callback URL** registered with the API provider, the provider's **Auth URL**, and a **Client ID** for the registered application.
+To configure the `Implicit` grant type in Hoppscotch, make sure the [Callback URL](#oauth-callback-url-configuration) is set as required (either `https://hoppscotch.io/oauth` or `<your-domain>/oauth`).  You will need to further provide the **Authorization Endpoint** and **Client ID** to generate the token.
+
+### <Icon icon="check" iconType="solid" /> OAuth Callback URL Configuration
+When using OAuth 2.0 with Hoppscotch Cloud, the **callback URL** is fixed to `https://hoppscotch.io/oauth` while for self-hosted editions of Hoppscotch, the callback URL should be set to `<your-domain>/oauth` . You must configure this URL as a valid **redirect URI** in your OAuth provider's settings. This is important because Hoppscotch handles all OAuth requests on the client side. When your OAuth provider redirects you to this URL, we process the response to obtain the token or authorization code. Any mismatch between the registered callback URL and what Hoppscotch uses will result in errors like `INVALID_REDIRECT_URI` during the authorization process.
+
+<Note> The Callback URL is required only for **Authorization Code** and **Implicit** grant types. Other grant types do not need this configuration. </Note>
 
 ## AWS Signature
 
-The AWS Signature authorization mechanism authenticates and authorizes requests to AWS services by employing HMAC (Hash-based Message Authentication Code). This ensures that your requests are secure, verifiable, and protected against tampering.
+AWS Signature is a method used to authenticate API requests made to AWS services. When you send a request, this configuration ensures that your request is genuine and has not been tampered with. It does this by using a process called HMAC (Hash-based Message Authentication Code), which creates a unique signature based on your request details.
 
-To configure AWS Signature authorization in Hoppscotch, enter your AWS **Access Key** and **Secret Key** to sign your requests. For advanced configuration, you can also provide details like the **AWS Region** where your request will be processed, the **Service Name** of the AWS service you're accessing, and a **Service Token** if you're using temporary security credentials.
+To set up `AWS Signature` in Hoppscotch, enter your AWS **Access Key** and **Secret Key** to sign your requests. For advanced configuration, you can also provide details like the **AWS Region** where your service is hosted (like _us-east-1_), the **Service Name** of the specific AWS service you're accessing (such as _s3 or dynamodb_), and a **Service Token** if you're using temporary security credentials.
 
 ---
 
