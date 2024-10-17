@@ -43,8 +43,10 @@ OAuth 2.0 provides a secure way to let third-party applications access your reso
 
 <Warning> OAuth 2.0 workflows are not fully supported in the Hoppscotch desktop application and are currently a work in progress. We're actively working on it, and it will function as intended soon!</Warning>
 
-### <Icon icon="check" iconType="solid" />  OAuth Callback URL Configuration
+### <Icon icon="check" iconType="solid" /> OAuth Callback URL Configuration
 When using OAuth 2.0 with Hoppscotch Cloud, the **callback URL** is fixed to `https://hoppscotch.io/oauth` while for self-hosted editions of Hoppscotch, the callback URL should be set to `<your-domain>/oauth` . You must configure this URL as a valid **redirect URI** in your OAuth provider's settings. This is important because Hoppscotch handles all OAuth requests on the client side. When your OAuth provider redirects you to this URL, we process the response to obtain the token or authorization code. Any mismatch between the registered callback URL and what Hoppscotch uses will result in errors like **"Invalid_redirect URI"** during the authorization process.
+
+<Note> The Callback URL is required only for **Authorization Code** and **Implicit** grant types. Other grant types do not need this configuration. </Note>
 
 ### Steps for OAuth 2.0 Setup
 
