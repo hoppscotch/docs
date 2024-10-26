@@ -129,6 +129,7 @@
       "pages": [
         "documentation/features/workspaces",
         "documentation/features/collections",
+        "documentation/features/runner",
         "documentation/features/variables",
         "documentation/features/environments",
         "documentation/features/pat",
