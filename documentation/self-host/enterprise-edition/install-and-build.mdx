@@ -150,7 +150,7 @@ Let's understand the major environment variables:
 
 1. `ENTERPRISE_LICENSE_KEY`: The license key required to use Hoppscotch Enterprise.
 2. `DATABASE_URL`: This is where you add your Postgres database URL.
-3. `ENABLE_HORIZONTALLY_SCALING`: Set to true to enable horizontal scaling, which uses Redis for managing sessions and state across instances.
+3. `ENABLE_HORIZONTALLY_SCALING`: Set to true to enable horizontal scaling, which uses Redis for managing pub-sub and state across instances.
 4. `TOKEN_SALT_COMPLEXITY`: Defines the complexity of the SALT that is used for hashing - a higher number implies a more complex salt.
 5. `MAGIC_LINK_TOKEN_VALIDITY`: Duration of the validity of the magic link being sent to sign in to Hoppscotch (in days).
 6. `REFRESH_TOKEN_VALIDITY`: Validity of the refresh token for auth (in ms).
