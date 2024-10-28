@@ -96,6 +96,8 @@ Digest Auth is a way to verify your identity without transmitting plain text pas
 
 To configure Digest Auth in Hoppscotch, start by entering your **Username** and **Password**. For added security, you can also provide optional parameters like Realm and Nonce from the `WWW-Authenticate` header. Choose the appropriate **Algorithm** for hashing and define the **Quality of Protection (QoP)** to further secure your requests. You can also specify parameters such as **Nonce Count**, **Client Nonce**, and **Opaque** to further bolster the authentication process.
 
+<Note> **Digest Auth** is supported exclusively when using the [Hoppscotch Agent interceptor](/documentation/features/interceptor#hoppscotch-agent). </Note>
+
 ## AWS Signature
 
 AWS Signature is a method used to authenticate API requests made to AWS services. When you send a request, this configuration ensures that your request is genuine and has not been tampered with. It does this by using a process called HMAC (Hash-based Message Authentication Code), which creates a unique signature based on your request details.
