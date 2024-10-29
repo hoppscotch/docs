@@ -90,6 +90,14 @@ When using OAuth 2.0 with Hoppscotch Cloud, the **callback URL** is fixed to `ht
 
 <Note> The Callback URL is required only for **Authorization Code** and **Implicit** grant types. Other grant types do not need this configuration. </Note>
 
+## Digest
+
+Digest Auth is a way to verify your identity without transmitting plain text passwords. Instead of sending your credentials directly as plain-text, it uses a challenge-response system to keep your information safe. When you attempt to access a restricted resource, the server responds with a `401 Unauthorized` status and a `WWW-Authenticate` header. This header contains essential information, including a unique challenge that you will use to generate a valid response.
+
+To configure Digest Auth in Hoppscotch, start by entering your **Username** and **Password**. For added security, you can also provide optional parameters like Realm and Nonce from the `WWW-Authenticate` header. Choose the appropriate **Algorithm** for hashing and define the **Quality of Protection (QoP)** to further secure your requests. You can also specify parameters such as **Nonce Count**, **Client Nonce**, and **Opaque** to further bolster the authentication process.
+
+<Note> **Digest Auth** is supported exclusively when using the [Hoppscotch Agent interceptor](/documentation/features/interceptor#hoppscotch-agent). </Note>
+
 ## AWS Signature
 
 AWS Signature is a method used to authenticate API requests made to AWS services. When you send a request, this configuration ensures that your request is genuine and has not been tampered with. It does this by using a process called HMAC (Hash-based Message Authentication Code), which creates a unique signature based on your request details.
