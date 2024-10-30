@@ -153,7 +153,7 @@ Let's understand the major environment variables:
 
 1. `ENTERPRISE_LICENSE_KEY`: The license key required to use Hoppscotch Enterprise.
 2. `DATABASE_URL`: This is where you add your Postgres database URL.
-3. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that allows you to change which port the AIO container, when in subpath access mode, exposes the endpoint to. By default, it exposes it to port 80.
+3. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that lets you specify an alternate port for the AIO container’s endpoint when operating in subpath access mode. By default, this endpoint is exposed on port 80.
 4. `HORIZONTAL_SCALING`: Set to true to enable horizontal scaling, which uses Redis for managing pub-sub and state across instances.
 5. `TOKEN_SALT_COMPLEXITY`: Defines the complexity of the SALT that is used for hashing - a higher number implies a more complex salt.
 6. `MAGIC_LINK_TOKEN_VALIDITY`: Duration of the validity of the magic link being sent to sign in to Hoppscotch (in days).
