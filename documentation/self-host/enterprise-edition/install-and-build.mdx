@@ -20,6 +20,9 @@ Copy the contents of the `.env.example` file found in the root directory of the 
 # Get your license key from https://enterprise.hoppscotch.com
 ENTERPRISE_LICENSE_KEY=***************************************
 
+# (Optional) By default, the AIO container (when in subpath access mode) exposes the endpoint on port 80. Use this setting to specify a different port if needed.
+HOPP_AIO_ALTERNATE_PORT=80
+
 # Prisma Config
 DATABASE_URL=postgresql://username:password@url:5432/dbname # or replace with your database URL
 
@@ -28,6 +31,16 @@ ALLOW_AUDIT_LOGS=true
 CLICKHOUSE_HOST=http://clickhouse:8123
 CLICKHOUSE_USER=default
 CLICKHOUSE_PASSWORD=''
+
+# Enable/Disable Horizontal Scaling
+HORIZONTAL_SCALING=false
+
+# Redis Config 
+# Note: Configure Redis only if HORIZONTAL_SCALING is set to true
+REDIS_HOST=host.docker.internal
+REDIS_PORT=6379
+REDIS_PASSWORD=password
+REDIS_DATABASE=0
 
 # Auth Tokens Config
 JWT_SECRET=secretcode123
@@ -140,32 +153,34 @@ Let's understand the major environment variables:
 
 1. `ENTERPRISE_LICENSE_KEY`: The license key required to use Hoppscotch Enterprise.
 2. `DATABASE_URL`: This is where you add your Postgres database URL.
-3. `TOKEN_SALT_COMPLEXITY`: Defines the complexity of the SALT that is used for hashing - a higher number implies a more complex salt.
-4. `MAGIC_LINK_TOKEN_VALIDITY`: Duration of the validity of the magic link being sent to sign in to Hoppscotch (in days).
-5. `REFRESH_TOKEN_VALIDITY`: Validity of the refresh token for auth (in ms).
-6. `ACCESS_TOKEN_VALIDITY`: Validity of the access token for auth (in ms).
-7. `JWT_SECRET`, `SESSION_SECRET`: Secret Keys for security purposes.
-8. `ALLOW_SECURE_COOKIES`: If disabled users will be able to use Hoppscotch over HTTP connections as well. It is recommended that this be left enabled as some auth providers may not work if this value is set to true.
-9. `DATA_ENCRYPTION_KEY`: A 32-character key used for encrypting sensitive data stored in the database.
-10. `REDIRECT_URL`: This is a fallback URL to debug when the actual redirects fail.
-11. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, and the frontend app.
-12. `VITE_ALLOWED_AUTH_PROVIDERS`: Allows you to specify which auth providers you want to enable.
-13. `MAILER_SMTP_ENABLE`: Enables the SMTP mailer configuration.
-14. `MAILER_USE_CUSTOM_CONFIGS`: When custom mailer configurations are used.
-15. `MAILER_SMTP_URL`: The SMTP URL for email delivery.
-16. `MAILER_ADDRESS_FROM`: The email address that you would be using.
-17. `MAILER_SMTP_HOST`: The SMTP host.
-18. `MAILER_SMTP_PORT`: The port to connect to the SMTP server.
-19. `MAILER_SMTP_USER`: The SMTP user or email for authentication.
-20. `MAILER_SMTP_PASSWORD`: Provide the password set for the SMTP user.
-21. `RATE_LIMIT_TTL`: The time it takes to refresh the maximum number of requests being received.
-22. `RATE_LIMIT_MAX`: The maximum number of requests that Hoppscotch can handle under `RATE_LIMIT_TTL`.
-23. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from.
-24. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`.
-25. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance.
-26. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance.
-27. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance.
-28. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy.
+3. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that lets you specify an alternate port for the AIO container’s endpoint when operating in subpath access mode. By default, this endpoint is exposed on port 80.
+4. `HORIZONTAL_SCALING`: Set to true to enable horizontal scaling, which uses Redis for managing pub-sub and state across instances.
+5. `TOKEN_SALT_COMPLEXITY`: Defines the complexity of the SALT that is used for hashing - a higher number implies a more complex salt.
+6. `MAGIC_LINK_TOKEN_VALIDITY`: Duration of the validity of the magic link being sent to sign in to Hoppscotch (in days).
+7. `REFRESH_TOKEN_VALIDITY`: Validity of the refresh token for auth (in ms).
+8. `ACCESS_TOKEN_VALIDITY`: Validity of the access token for auth (in ms).
+9. `JWT_SECRET`, `SESSION_SECRET`: Secret Keys for security purposes.
+10. `ALLOW_SECURE_COOKIES`: If disabled users will be able to use Hoppscotch over HTTP connections as well. It is recommended that this be left enabled as some auth providers may not work if this value is set to true.
+11. `DATA_ENCRYPTION_KEY`: A 32-character key used for encrypting sensitive data stored in the database.
+12. `REDIRECT_URL`: This is a fallback URL to debug when the actual redirects fail.
+13. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, and the frontend app.
+14. `VITE_ALLOWED_AUTH_PROVIDERS`: Allows you to specify which auth providers you want to enable.
+15. `MAILER_SMTP_ENABLE`: Enables the SMTP mailer configuration.
+16. `MAILER_USE_CUSTOM_CONFIGS`: When custom mailer configurations are used.
+17. `MAILER_SMTP_URL`: The SMTP URL for email delivery.
+18. `MAILER_ADDRESS_FROM`: The email address that you would be using.
+19. `MAILER_SMTP_HOST`: The SMTP host.
+20. `MAILER_SMTP_PORT`: The port to connect to the SMTP server.
+21. `MAILER_SMTP_USER`: The SMTP user or email for authentication.
+22. `MAILER_SMTP_PASSWORD`: Provide the password set for the SMTP user.
+23. `RATE_LIMIT_TTL`: The time it takes to refresh the maximum number of requests being received.
+24. `RATE_LIMIT_MAX`: The maximum number of requests that Hoppscotch can handle under `RATE_LIMIT_TTL`.
+25. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from.
+26. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`.
+27. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance.
+28. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance.
+29. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance.
+30. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy.
 
 Third-party auth configs have to be obtained from the respective providers. You can choose and configure the auth providers by following the [configuring OAuth guide](/documentation/self-host/enterprise-edition/prerequisites#oauth).
 
@@ -249,6 +264,12 @@ When using AIO, when subpath access is set to true the services can be accessed 
 | Hoppscotch App       | `/`        |
 | Hoppscotch Admin App | `/admin`   |
 | Hoppscotch Backend   | `/backend` |
+
+
+<Warning>
+By default, the AIO container exposes the app on port 80. This can cause conflicts if you're running on a host system where
+port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, try setting `HOPP_AIO_ALTERNATE_PORT` to bind the app to a non-privileged port.
+</Warning>
 
 ## Migrations
 
