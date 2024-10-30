@@ -267,7 +267,7 @@ When using AIO, when subpath access is set to true the services can be accessed 
 
 
 <Warning>
-The AIO container exposes the app to port 80 by default. This may cause issues if you are running on a host system where
+By default, the AIO container exposes the app on port 80. This can cause conflicts if you're running on a host system where
 port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, try setting `HOPP_AIO_ALTERNATE_PORT` to bind the app to a non-privileged port.
 </Warning>
 
