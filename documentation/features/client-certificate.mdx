@@ -1,16 +1,16 @@
 ---
 sidebarTitle: Client Certificate
 title: Client Certificate
-description: Configure client certificates for SSL authentication in the Hoppscotch Desktop App.
+description: Configure client certificates for SSL authentication in Hoppscotch.
 ---
 
-Add and manage client certificates in the [Hoppscotch Desktop App](https://hoppscotch.com/download) to authenticate your identity when connecting to secure APIs.
+Add and manage client certificates in [Hoppscotch Desktop App](https://hoppscotch.com/download) or in Hoppscotch Web App using the [Hoppscotch Agent](/documentation/features/interceptor#hoppscotch-agent) as an interceptor to authenticate your identity when connecting to secure APIs.
 
 ### Prerequisites
 
 Before you begin, ensure you have the following:
 
-- The Hoppscotch Desktop App installed on your system.
+- Either the **Hoppscotch Desktop App** installed on your system, or if you are using the Hoppscotch Web App, make sure the **Hoppscotch Agent** is installed and configured.
 - A valid Client Certificate in one of the following formats:
     - **.pem Certificate**
     - **.pfx/.pkcs12 Certificate**
@@ -18,11 +18,13 @@ Before you begin, ensure you have the following:
 
 ### Adding Client Certificate
 
-1. Open Hoppscotch's settings page from the side bar
-2. Within Interceptors section, locate the `Client Certificates` action under **Native settings**.
+1. Open Hoppscotch's settings page from the side bar.
+2. Within Interceptors section, locate the `Client Certificates` action:
+    - Under Native settings if using the Desktop App.
+    - Under Agent if using the Web App.
 3. Click on the option to add a new client certificate and select the type of certificate you want to add: **.pem** or **.pfx/.pkcs12**.
 4. **Upload Certificate Files**
-    - **.pem Certificate**: Choose the **certificate file** (.crt/.cert/.pem) and upload the **private key file** (.key/.pem) in the designated field.
+    - **.pem Certificate**: Choose the **certificate file** (.crt/.cer/.pem) and upload the **private key file** (.key/.pem) in the designated field.
     - **.pfx/.pkcs12 Certificate**: Choose the **.pfx/.pkcs12** file. You may need to enter the password associated with the certificate file.
 5. After uploading the certificate files, click on the save button to store the settings.
 
