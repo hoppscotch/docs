@@ -101,7 +101,7 @@ ENABLE_SUBPATH_BASED_ACCESS=false
 Let's understand the major environment variables:
 
 1. `DATABASE_URL`: This is where you add your Postgres database URL.
-2. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that allows you to change which port the AIO container, when in subpath access mode, exposes the endpoint to. By default, it exposes it to port 80.
+2. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that lets you specify an alternate port for the AIO container’s endpoint when operating in subpath access mode. By default, this endpoint is exposed on port 80.
 3. `TOKEN_SALT_COMPLEXITY`: Defines the complexity of the SALT that is used for hashing - a higher number implies a more complex salt.
 4. `MAGIC_LINK_TOKEN_VALIDITY`: Duration of the validity of the magic link being sent to sign in to Hoppscotch (in days).
 5. `REFRESH_TOKEN_VALIDITY`: Validity of the refresh token for auth (in ms).
