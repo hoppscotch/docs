@@ -10,41 +10,44 @@ You can access APIs blocked by `Cross-Origin Resource Sharing (CORS)` restrictio
 
 The Hoppscotch Agent is a micro application designed to mitigate the challenges posed by `CORS` in modern web browsers. Acting as a local intermediary, it intercepts API requests made through the Hoppscotch web app and reroutes them through your local machine. This means that the Hoppscotch Agent handles requests using your local network configuration.
 
-1. To get started, **download the Hoppscotch Agent** by selecting the installer specific to your operating system.
+1. Download the Hoppscotch Agent for your operating system:
 <AccordionGroup>
   <Accordion title="Mac" icon="apple">
-    <Card title="Apple-Silicon (.dmg)" href="https://github.com/hoppscotch/agent-releases/releases/latest/download/Hoppscotch_Agent_mac_aarch64.dmg">
-      Download for Apple Silicon processors (M1, M2).
+    <Card title="Apple Silicon (.dmg)" href="https://github.com/hoppscotch/agent-releases/releases/latest/download/Hoppscotch_Agent_mac_aarch64.dmg">
+      Download for Apple Silicon-based Mac.
     </Card>
-    <Card title="For Intel-based Macs (.dmg)" href="https://github.com/hoppscotch/agent-releases/releases/latest/download/Hoppscotch_Agent_mac_x64.dmg">
-      Download for Intel-based Macs.
+    <Card title="Intel (.dmg)" href="https://github.com/hoppscotch/agent-releases/releases/latest/download/Hoppscotch_Agent_mac_x64.dmg">
+      Download for Intel-based Mac.
     </Card>
   </Accordion>
   <Accordion title="Windows" icon="windows">
     <Card title="Windows Installer (.msi)" href="https://github.com/hoppscotch/agent-releases/releases/latest/download/Hoppscotch_Agent_win_x64.msi">
-      Download for Windows (64-bit).
+      Download the installer for Windows (64-bit).
+    </Card>
+    <Card title="Windows Portable (.exe)" href="https://github.com/hoppscotch/agent-releases/releases/latest/download/Hoppscotch_Agent_win_x64_portable.zip">
+      Download the portable version for Windows (64-bit).
     </Card>
   </Accordion>
   <Accordion title="Linux" icon="linux">
     <Card title="Debian (.deb)" href="https://github.com/hoppscotch/agent-releases/releases/latest/download/Hoppscotch_Agent_linux_x64.deb">
-      Download for Debian-based distributions like Ubuntu and Linux Mint.
+      Download the Debian package for Debian-based Linux distributions.
     </Card>
     <Card title="App Image (.AppImage)" href="https://github.com/hoppscotch/agent-releases/releases/latest/download/Hoppscotch_Agent_linux_x64.AppImage">
-      Download the universal AppImage for any Linux distribution.
+      Download the AppImage for Linux.
     </Card>
   </Accordion>
 </AccordionGroup>
 
-2. Launch the [Hoppscotch Application](https://hoppscotch.io) and navigate to the **Interceptors** section in the **"Settings"** page.
-3. Locate the **Agent** option within the Interceptors section to initiate a connection to your local agent.
-4. The application will prompt you for a **One-Time Verification Code**. This verification code will be generated within the Hoppscotch Agent.
+2. Launch the [Hoppscotch Application](https://hoppscotch.io) and navigate to the "**Interceptors**" section in the **"Settings"** page.
+3. Locate the "**Agent**" option within the Interceptors section to initiate a connection to your local agent.
+4. The application will prompt you for a "**One-Time Verification Code**". This verification code will be generated within the Hoppscotch Agent.
 5. Enter the verification code into the application to establish a secure connection.
 
 Once connected, all API requests made through the Hoppscotch web app will be routed through Hoppscotch agent, effectively eliminating CORS-related issues.
 
 ## Proxy
 
-- Enable proxy from "[**Settings**](https://hoppscotch.io/settings) page".
+- Enable proxy from "[**Settings page**](https://hoppscotch.io/settings)".
 - You can replace the Proxy URL with your proxy middleware if you wish.
 
 ## Middleware
