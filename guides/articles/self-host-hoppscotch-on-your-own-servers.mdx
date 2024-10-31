@@ -32,6 +32,9 @@ Create a `.env` file in your working directory, copy the example environment var
 # Prisma Config
 DATABASE_URL=postgresql://username:password@url:5432/dbname # or replace with your database URL
 
+# (Optional) By default, the AIO container (when in subpath access mode) exposes the endpoint on port 80. Use this setting to specify a different port if needed.
+HOPP_AIO_ALTERNATE_PORT=80
+
 # Auth Tokens Config
 JWT_SECRET=secretcode123
 TOKEN_SALT_COMPLEXITY=10
@@ -204,6 +207,10 @@ Similarly, you can follow the specific setup instructions for other OAuth provid
 Subpath access allows you to host multiple services under a single domain by assigning each service a specific subpath.
 
 When `ENABLE_SUBPATH_BASED_ACCESS=true`, you can access all three services (Hoppscotch App, Admin Dashboard, Hoppscotch Backend) on the same domain using different routes. If subpath access is disabled **(`ENABLE_SUBPATH_BASED_ACCESS=false`)**,  you will need to access the services on different ports.
+
+<Warning>
+By default, the AIO container exposes the app on port 80. This can cause conflicts if you're running on a host system where port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, try setting `HOPP_AIO_ALTERNATE_PORT` to bind the app to a non-privileged port.
+</Warning>
 
 ## Installing dependencies, running migrations & building the image
 
