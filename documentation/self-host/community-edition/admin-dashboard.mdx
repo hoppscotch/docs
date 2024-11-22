@@ -32,6 +32,34 @@ The Users section empowers you to effectively control user-related actions. It s
 - Admin Privileges: Elevate users to administrative roles for increased permissions.
 - User Deletion: Delete users when necessary.
 
+### Invite Users to your Hoppscotch Instance
+Admins can easily bring new users to their Hoppscotch instance by sending them invitations. Depending on whether SMTP is configured, the process differs slightly. Here's how you can invite users:
+
+#### - With SMTP Configured
+When SMTP is enabled (`MAILER_SMTP_ENABLE=true`) in your environment file and the required SMTP configurations for email login are correctly set, follow these steps to invite a new user:
+1. Go to the **Users** section within the Admin Dashboard.
+2. Select the **Invite User** button to open the invitation modal.
+3. Input the email address of the user you want to invite and click **Add User** to send an invitation.
+4. An email containing an invite link (`http://localhost:3000`) will be sent to the invitee. They can use this link to log in to Hoppscotch web app.
+5. Alternatively, you can copy the invite link and share it through other platforms with the new user, but make sure the user signs in using the email address specified during the invitation process.
+#### - Without SMTP Configured
+If SMTP is disabled (`MAILER_SMTP_ENABLE=false`) in your environment file, the invitation process is slightly different:
+1. Go to the **Users** section within the Admin Dashboard.
+2. Select the **Invite User** button to open the invitation modal.
+3. Input the email address of the user you want to invite and click **Add User**.
+4. An invite link (`http://localhost:3000`) will be generated and displayed before you. Copy this link and share it with the user via your preferred communication channel. Make sure that the user signs in to Hoppscotch using the same email address you provided during the invitation.
+
+### Pending Invites
+Within the **Users** section, admins can also view a list of all pending invites they've sent previously. To access this list, simply click on the **Pending Invites** button next to "Invite User". Here, you’ll see all the invitations you've sent, along with details such as:
+- **Invitee Email:** The email address to which the invite was sent.
+- **Invited By:** The email address of the user who sent the invitation
+- **Invited on:** The date and time when the invitation was sent.
+
+<Icon icon="right-to-bracket" iconType="solid" /> **You can also consider the following actions:**
+
+- **Copy Invite Link:** If you need to resend the invitation, you can easily `copy` the invite link and share it with the user via any communication platform.
+- **Revoke Invitation:** If you wish to cancel an invitation, simply click the `Revoke Invitation` button next to the specific user invite in the **Action** column. This will remove the pending invite from the list and prevent the user from accessing your Hoppscotch instance using that link.
+
 ### APIs for User Management
 
 The RESTful APIs designed for User Management enable **admins** to perform a wide range of user-related actions, such as inviting new users, deleting existing ones, and updating user details. These APIs provide **admins** with the ability to efficiently manage user accounts and permissions. The table below introduces **nine** key APIs that empower **admins** with greater control over user management.
