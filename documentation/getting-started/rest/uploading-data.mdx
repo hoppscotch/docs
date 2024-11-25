@@ -26,14 +26,6 @@ To upload a file, the data you send in a `POST` request must be of the content t
 4. Give your file a name and click on `choose files` to select your file.
 5. Click "**Send**" to upload your file.
 
-### Set Content Type for individual part in `multipart/form-data`
-
-When sending multiple types of data in a single request using `multipart/form-data`, you can assign a specific content type to each part of the data in Hoppscotch. Here's how:
-1. Go to the **Body** tab and select `multipart/form-data` from the **Content Type** dropdown.
-2. Add the required data for your request by uploading files or entering values.
-3. To specify content types for individual parts, enable the **"Show Content Type"** option. Then, choose the appropriate content type for each part (e.g., `text/plain` for plain text or `application/json` for JSON data).
-4. Click **Send** to submit the multipart data, with each part using its respective content type.
-
 ## Uploading Binary Data
 
 When uploading binary files, you may want to send raw binary data instead of files in a multipart form. This is typically done using the `application/octet-stream` content type. Follow these steps to upload binary data:
