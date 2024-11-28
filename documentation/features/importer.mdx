@@ -33,6 +33,12 @@ Import data from other tools into Hoppscotch. You can import data from the follo
 4. Choose the "**collection**" from the list.
 5. Click on the "**Import**" button.
 
+### <Icon icon="download" iconType="solid" />  What’s Imported in the above 2 cases
+- **Collections:** Complete set of request details, including parameters, request bodies, headers, authorization settings, pre-request scripts, test cases, request variables, response examples and collection-level properties are retained.
+- **Environments:** Regular environment variables are imported.
+
+<Info> **Secret variables' values** need to be manually entered as they aren't stored server-side for security reasons. </Info>
+
 ## Import from Postman
 
 1. Export your Postman collection/environment to a JSON file.
@@ -41,6 +47,10 @@ Import data from other tools into Hoppscotch. You can import data from the follo
 4. Click on the "**Choose file**" button and select the JSON file you exported in step 1.
 5. Click on the "**Import**" button.
 
+### <Icon icon="download" iconType="solid" />  What's Imported
+- **Collections:** Query parameters from Postman are imported as request parameters and path parameters are imported as request variables. Request bodies, headers, and basic authorization are also imported. Pre-request scripts, test cases, Advanced authorization setups, and collection-level settings aren’t imported.
+- **Environments:** Imports both regular and secret environment variables directly.
+
 ## Import from Insomnia
 
 1. Export your Insomnia collection/environment to a JSON file.
@@ -48,6 +58,10 @@ Import data from other tools into Hoppscotch. You can import data from the follo
 3. Click on the "**Import from Insomnia**" tab.
 4. Click on the "**Choose file**" button and select the JSON file you exported in step 1.
 5. Click on the "**Import**" button.
+
+### <Icon icon="download" iconType="solid" />  What's Imported
+- **Collections:** Request details like query parameters are imported as request parameters, and path parameters are imported as request variables. Request bodies, headers, and basic authorization settings are also imported. However, other sections like scripts, tests, and advanced authorization methods aren’t synced.
+- **Environments:** Regular environment variables are imported.
 
 ## Import from OpenAPI
 
@@ -69,6 +83,9 @@ There are two ways to import OpenAPI collections into Hoppscotch:
 5. Click on the "**Import from URL**" field and paste the URL that you copied in step 1.
 6. Click on the "**Import**" button.
 
+### <Icon icon="download" iconType="solid" />  What's Imported
+- **Collections:** Query parameters are imported as request parameters, and path parameters are imported as request variables. Authorization methods, headers, and response examples are also included. However, details like request bodies, scripts, and tests aren’t imported.
+
 ## Import from HAR
 
 1. Export the HTTP Archive (HAR) file from your browser or network monitoring tool.
@@ -76,6 +93,9 @@ There are two ways to import OpenAPI collections into Hoppscotch:
 3. Click on the "**Import from HAR**" tab.
 4. Click on the "**Choose file**" button and select the HAR file you exported in step 1.
 5. Click on the "**Import**" button.
+
+### <Icon icon="download" iconType="solid" />  What's Imported
+- **Collections:** Imports request headers and body content. Additional metadata or settings aren’t included in this format.
 
 ## Import from other services
 
