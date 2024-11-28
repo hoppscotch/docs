@@ -124,6 +124,24 @@ The JUnit report generated for collection runs provides a structured summary of 
 - `access token` : It is a secure, unique identifier used to authenticate a user's access to their Hoppscotch account and its resources like collections, environments data. [Learn more about personal access tokens](/documentation/features/pat)
 - `server url` : This optional and is the URL of your self-hosted instance when you're self-hosting your API client
 - `path` : Accounts for a file path where the JUnit report will be saved as an XML file in your file system.
+- `no_of_iterations`: Indicates the number of iterations to run the collection. Each iteration will run the entire collection once, replacing any iteration-specific data defined by the `--iteration-data` flag (if provided).
+  
+  ```bash
+  hopp test <hoppscotch_collection_file_or_id> [--iteration-count <no_of_iterations>] [--iteration-data <file_path>]
+  ```
+
+- `file_path`: The path to the CSV file for iteration data. This file should follow the format:
+    
+    ```
+    key1,key2,key3
+    value1,value2,value3
+    value4,value5,value6
+    ```
+    
+    Each row in the CSV corresponds to an iteration, and the values from that row will replace the respective environment variables during the iteration. For example:
+
+    - **Iteration 1:** The values value1, value2, and value3 will be used.
+    - **Iteration 2:** The values value4, value5, and value6 will be used.
 
 ### Example
 
@@ -134,6 +152,7 @@ hopp test -e environment.json -d 1000 kitchen-sink-hoppscotch-collection.json
 hopp test clxsntdgh0000lcx9fnits2h8 --token <access token> 
 hopp test -e clxspay2r0006lcx99aqgjbay -d 1000 clxsntdgh0000lcx9fnits2h8 --token <access token> --server http://localhost:3170
 hopp test -e environment.json kitchen-sink-hoppscotch-collection.json --reporter-junit kitchen-sink-junit.xml
+hopp test kitchen-sink-hoppscotch-collection.json --iteration-count 3 --iteration-data /path/to/iteration-data.csv
 ```
 
 ## Environment
@@ -195,6 +214,9 @@ If requests in a collection consists of secret variables we recommend either of 
 |`--token`                    | Expects a personal access token to be passed for establishing connection with your Hoppscotch account.            |
 |`--server`                   | URL of your self-hosted instance, if your collections are on a self-hosted instance.                              |
 |`--reporter-junit`           | Expects a file path to store the JUnit Report.                                                                    |    
+|`--iteration-count`          |	Defines the number of iterations to run the collection.                                                           |
+|`--iteration-data`	          | Accepts the path to a CSV file that contains iteration data.                                                      |             
+
 
 ## Test Report Components
 
