@@ -86,11 +86,11 @@ InfraTokens are special UUID tokens that provide a secure way for admins to inte
 
 Follow these steps to create a new InfraToken:
 
-1. After logging into your Self-Hosted instance using your admin credentials, you can access the **“Tokens”** under the **“Settings”** section from your admin dashboard.
-2. Click on **"Generate New InfraToken."**
+1. After logging into your Self-Hosted instance using your admin credentials, you can access the **“Infra Tokens”** under the **“Settings”** section from your admin dashboard.
+2. Click on **"Generate new token."**
 3. Enter a title for the token and select an expiration date. Available options include 7 days, 30 days, 60 days, 90 days, or no expiry.
 4. After providing the necessary details, confirm the creation. **The new InfraToken will be displayed once, make sure to copy it securely** to your clipboard for immediate use.
-5. If you decide that you no longer need the token, you can delete it by navigating back to **“Tokens"** section.
+5. If you decide that you no longer need the token, you can delete it by navigating back to **“Infra Tokens"** section.
 
 <Note> The details of the admin who created the InfraToken are stored for audit purposes. All admins can view and manage these tokens. </Note>
 
@@ -122,7 +122,19 @@ In the **Server Settings** section, you have the ability to both view and edit t
 2. **Configure SMTP Settings:**
    Set up your SMTP settings for seamless email integration.
 
-3. **Reset Configurations:**
+3. **History Configurations:**
+   Control the logging of request history for all users with a simple toggle option. 
+      
+      - **When enabled:** Request history is visible in the Hoppscotch app, and new entries are actively logged and stored in the database.
+      
+      - **When disabled:** Request history is hidden from the Hoppscotch app, and no new request logs are written to the database.
+      
+   You can also optionally choose to purge all existing history from the database, ensuring complete removal of previously logged request data.
+
+4. **Data sharing:**
+   Enable or disable anonymous data sharing to help improve Hoppscotch. [Learn more about the metrics collected](./telemetry).
+
+5. **Reset Configurations:**
    If needed, reset your configurations back to their original state.
 
 After making any configuration updates, be sure to save the changes. The server will automatically restart to apply the modifications.
