@@ -147,6 +147,7 @@
         "documentation/features/context-menu",
         "documentation/features/widgets",
         "documentation/features/authorization",
+        "documentation/features/ai-features",
         "documentation/features/rest-api-testing",
         "documentation/features/graphql-api-testing",
         "documentation/features/realtime-api-testing"
@@ -234,7 +235,7 @@
   ],
   "footerSocials": {
     "discord": "https://hoppscotch.io/discord",
-    "twitter": "https://hoppscotch.io/twitter",
+    "x": "https://hoppscotch.io/twitter",
     "linkedin": "https://www.linkedin.com/company/hoppscotch/"
   },
   "feedback": {

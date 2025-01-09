@@ -1,0 +1,59 @@
+---
+sidebarTitle: AI Features 
+title: AI Features
+description: Optimize API Development and Testing Workflows with Hoppscotch using AI.
+---
+
+<span style={{ 
+  display: 'inline-block', 
+  border: '1.5px solid #07C983', 
+  color: '#07C983', 
+  fontSize: '0.8rem', 
+  padding: '0.4em 0.5em', 
+  borderRadius: '0.4em', 
+  verticalAlign: 'middle', 
+  backgroundColor: 'transparent', 
+  fontWeight: 'bold' 
+}}>Experimental</span>
+
+Hoppscotch now offers a set of AI-powered features designed to simplify core stages of the API development lifecycle. These include renaming of API requests, generation of structured request payloads, and scripting capabilities for pre-request logic and test cases.
+
+<Warning> These AI features are currently in the `alpha` stage and are exclusively available on [Hoppscotch Cloud](https://hoppscotch.io) and our [Desktop app](https://hoppscotch.com/download). They are **NOT** supported in the Self-Hosted Edition at this time. </Warning>
+
+### Enable AI-powered features
+
+To activate AI-powered features, follow these steps:
+
+1. Open the **Settings** page within the Hoppscotch application.
+2. Scroll to the **Experiments** section.
+3. Toggle the **AI Experiments** option to enable the features.
+
+### Rename API Requests
+
+When saving an API request to a collection, click the **Modify with AI** icon **( .⟡⁺ )** next to the request name field to have the system automatically assign a name based on the request's context and properties. Alternatively, you can use this feature to rename the pre-saved requests.
+
+You can even customize the naming convention (e.g., CamelCase, PascalCase) through the **Request Naming Style** dropdown located in the **Experiments** section of the **Settings** page.
+
+### Generate Request Body
+
+Dynamically generate structured request payloads:
+
+1. Click the **Modify with AI** icon **( .⟡⁺ )** in the **Request Body** section.
+2. Define constraints or provide input for the desired structure.
+3. Validate the generated body and select **Accept Change** to populate the request body field.
+
+### Generate Pre-request Scripts
+
+Generate pre-request scripts to handle necessary setup operations before sending the request:
+
+1. Click the **Modify with AI** icon **( .⟡⁺ )** within the **Pre-request Script** section.
+2. Enter specific logic or conditions required for the pre-request phase.
+3. After reviewing the generated script, click **Accept Change** to apply it to the pre-request script section of your API request.
+
+### Generate Test Scripts
+
+Develop test cases for your API workflow:
+
+1. Click the **Modify with AI** icon **( .⟡⁺ )** in the **Tests** section.
+2. Specify the test parameters or expected outcomes.
+3. Select **Accept Change** to integrate it into the test script editor for execution.
