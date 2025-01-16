@@ -73,6 +73,14 @@ The Client Credentials grant is suitable for server-to-server interactions, wher
 
 To obtain a token using `Client Credentials` grant type, input the **Authorization Endpoint** from the API provider, and fill in your **Client ID**. Including a Client Secret is optional.
 
+<Note> 
+You can now choose how the **client credentials** (Client ID and Client Secret) are sent to the server. Hoppscotch supports both:
+- Sending them in the **body of the request** (default behavior).
+- Sending them via **Basic Authentication headers**.
+
+Just select your preferred method in the `Client Authentication` field to suit your security requirements.
+</Note>
+
 #### 3. Password Credentials
 
 The Password Credentials grant allows you to authenticate users by sending their username and password directly to the API. This method is less secure and is generally discouraged for third-party applications.
