@@ -4,7 +4,7 @@ title: Install and build
 description: Learn how to install and build Hoppscotch Enterprise Edition.
 ---
 
-<Warning> **[v2024.8.0](https://hoppscotch.com/blog/hoppscotch-v2024-8-0)** introduces new additions to the Hoppscotch Backend that require you to run a **new [migration](#migrations)**. We've also added a new environment variable, **`DATA_ENCRYPTION_KEY`**, which accepts a 32 character alphanumeric string. Please make sure to update your `.env` file with the latest changes while setting up Hoppscotch. </Warning>
+<Warning> Starting with Hoppscotch `v2024.12.2`, a new environment variable, `REDIS_URL`, has been introduced to simplify Redis configuration for horizontal scaling, replacing the previous Redis-related variables (`REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`, `REDIS_DATABASE`). While the old variables are still supported for backward compatibility, they will be **deprecated in the future**. It is recommended to update your `.env` file with the latest changes while setting up Hoppscotch. </Warning>
 
 ## Configuring the environment
 
@@ -37,10 +37,7 @@ HORIZONTAL_SCALING=false
 
 # Redis Config 
 # Note: Configure Redis only if HORIZONTAL_SCALING is set to true
-REDIS_HOST=host.docker.internal
-REDIS_PORT=6379
-REDIS_PASSWORD=password
-REDIS_DATABASE=0
+REDIS_URL=redis://username:password@hoppscotch-redis:6379/0
 
 # Auth Tokens Config
 JWT_SECRET=secretcode123
