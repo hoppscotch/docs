@@ -79,9 +79,9 @@ Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes clus
       pullPolicy: IfNotPresent  
     
     urls:
-      frontend: "<https://frontend.yourdomain.com>"
-      backend: "<https://backend.yourdomain.com>"
-      admin: "<https://admin.yourdomain.com>"  
+      frontend: "https://frontend.yourdomain.com"
+      backend: "https://backend.yourdomain.com"
+      admin: "https://admin.yourdomain.com"  
     
     service:
       type: LoadBalancer  
@@ -90,7 +90,7 @@ Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes clus
     ingress:
       enabled: true  
       hosts:
-        - host: <frontend.yourdomain.com>  
+        - host: frontend.yourdomain.com  
     
     # If using Hoppscotch Enterprise, configure your license key
     enterprise:
@@ -103,7 +103,7 @@ Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes clus
     
     ```bash
     # Clone the repository
-    git clone <https://github.com/hoppscotch/helm-charts.git>
+    git clone https://github.com/hoppscotch/helm-charts.git
     
     # Go to helm charts directory
     cd helm-charts
