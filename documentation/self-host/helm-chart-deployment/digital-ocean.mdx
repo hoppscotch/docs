@@ -1,0 +1,185 @@
+---
+sidebarTitle: Digital Ocean
+title: Digital Ocean
+description: Install and configure Hoppscotch on Digital Ocean using Helm Charts for cloud-based deployment.
+---
+
+[DigitalOcean](https://www.digitalocean.com/) is a cloud provider that offers scalable and easy-to-use infrastructure for developers. You can create and manage Kubernetes clusters, storage, and networking resources all through their platform.
+
+With DigitalOcean’s managed Kubernetes service and Helm charts, deploying Hoppscotch on your infrastructure becomes a plain sailing process.
+
+## Pre-requisites
+
+Before you begin, make sure you have the following tools and services set up:
+
+### Digital Ocean Account
+
+To deploy Hoppscotch on DigitalOcean, you will need a DigitalOcean account. If you don't have an account already, sign up for one [here](https://www.digitalocean.com/).
+
+#### - **Kubernetes Cluster Access**
+    You need an active Kubernetes cluster on DigitalOcean. If you don’t have one already, you can easily create a cluster through the DigitalOcean Dashboard.
+#### - **Administrative Permissions**
+    Ensure that your user account has administrative access to manage the Kubernetes cluster. This is important for performing actions like deploying applications, managing configurations, and troubleshooting issues.
+
+### **Command Line Tools**
+
+You’ll need a few essential command-line tools installed and configured on your local machine to interact with your Kubernetes cluster and deploy applications.
+
+#### - **`kubectl` CLI**
+    `kubectl` is the Kubernetes command-line tool that allows you to interact with your Kubernetes cluster. If you don’t have `kubectl` installed, follow the instructions in the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/) to get started.
+#### - **Helm `version 3.x`**
+    Helm is a package manager for Kubernetes, which simplifies the deployment and management of applications like Hoppscotch. Helm uses **charts**, which are pre-configured application definitions, to deploy applications to Kubernetes clusters. To install Helm, follow the [Helm installation guide](https://helm.sh/docs/intro/install/).
+
+## Installation and Deployment
+
+Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes cluster:
+
+<Steps>
+  <Step title="Digital Ocean Cluster Connection">
+        To authenticate your cluster, you’ll need the kubeconfig file from DigitalOcean.
+    
+    1. Go to your **DigitalOcean Dashboard**.
+    2. Navigate to **Kubernetes** > **Clusters**.
+    3. Select the Kubernetes cluster that you want to deploy Hoppscotch on.
+    4. Click **Download Config File**. The file will be named `[cluster-name]-kubeconfig.yaml` and will typically be saved in your `Downloads` folder.
+  </Step>
+  <Step title="Configure access to the Cluster">
+    Once you have the kubeconfig file, set it up to enable communication between `kubectl` and your DigitalOcean Kubernetes cluster:
+    
+    ```bash
+    # Set KUBECONFIG environment variable to use the downloaded config file
+    export KUBECONFIG=~/Downloads/[cluster-name]-kubeconfig.yaml
+    
+    # Verify the connection by listing the nodes in the cluster
+    kubectl get nodes
+    ```
+    
+    <Tip> To avoid reconfiguring the `KUBECONFIG` variable every time you interact with the cluster, move the kubeconfig file to a more permanent location (e.g., `~/.kube/config`) and add the `export` command to your shell's configuration file (`.bashrc`, `.zshrc`, etc.)  for persistent access. </Tip>
+  </Step>
+  <Step title="Install NGINX Ingress Controller (Optional)">
+    If you need to expose Hoppscotch to external traffic via an `HTTP/S` interface, you will need an Ingress Controller. [NGINX](https://nginx.org/) is a popular choice for this.
+    
+    To install the NGINX Ingress Controller on your Kubernetes cluster, execute:
+    
+    ```bash
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/do/deploy.yaml
+    ```
+    
+    This will create the necessary resources (e.g., deployments, services) to enable ingress routing for your cluster.
+  </Step>
+  <Step title="Configure and Prepare the `values.yaml` File">
+    Helm charts use a `values.yaml` file to customize the deployment. You'll need to modify the `values.yaml` file to suit your environment:
+    
+    ```yaml
+    replicaCount: 2  
+    
+    image:
+      repository: hoppscotch/hoppscotch  
+      tag: latest  
+      pullPolicy: IfNotPresent  
+    
+    urls:
+      frontend: "<https://frontend.yourdomain.com>"
+      backend: "<https://backend.yourdomain.com>"
+      admin: "<https://admin.yourdomain.com>"  
+    
+    service:
+      type: LoadBalancer  
+      port: 3000  
+    
+    ingress:
+      enabled: true  
+      hosts:
+        - host: <frontend.yourdomain.com>  
+    
+    # If using Hoppscotch Enterprise, configure your license key
+    enterprise:
+      licenseKey: "1e8xxxxx-fexx-49xx-8cxx-d57f54fxxxxx"
+    
+    ```
+  </Step>
+  <Step title="Deploy Hoppscotch on Kubernetes">
+    Now that you’ve configured the `values.yaml` file, you’re ready to deploy Hoppscotch using Helm.
+    
+    ```bash
+    # Clone the repository
+    git clone <https://github.com/hoppscotch/helm-charts.git>
+    
+    # Go to helm charts directory
+    cd helm-charts
+    
+    # Install the chart for community edition
+    helm install community-hoppscotch ./charts/shc
+    
+    # Install the chart for enterprise edition
+    helm install enterprise-hoppscotch ./charts/she
+    ```
+    
+    This will start the deployment of Hoppscotch with the configuration you set in the `values.yaml` file.
+  </Step>
+</Steps>
+
+## **Verification**
+
+After deploying the application, verify that everything is running smoothly by checking the status of your Hoppscotch pods and inspecting the service details, including the external IP or LoadBalancer that you'll use to access the application.
+
+```bash
+# List all the pods running in the cluster
+kubectl get pods
+
+# View services to ensure that Hoppscotch is exposed properly
+kubectl get services
+```
+
+## Setup and Access
+After successfully deploying Hoppscotch and verifying the installation, the next step is to set up the Admin Dashboard and then access the Hoppscotch application for API development and testing.
+
+### Create an Administrator account
+1. Open a new browser tab and visit `https://admin.yourdomain.com`.
+2. Login with your credentials or create a new account.
+3. Upon successful login, the Admin Dashboard will be accessible, letting you manage configurations and perform administrative tasks.
+
+<Info> The first user to log in will automatically be granted administrator privileges. </Info>
+
+### Access the Hoppscotch app
+With the administrator account set up, you can now start using the Hoppscotch app:
+1. Open a new browser tab and visit `https://frontend.yourdomain.com`.
+2. Begin developing and testing your APIs seamlessly with Hoppscotch.
+
+## Management
+
+Below are some commands to help you with ongoing management tasks for your deployment.
+
+### **Update Configuration**
+
+To apply changes to the configuration (for example, modifying the `values.yaml` file), use the following command to upgrade the deployment:
+
+```bash
+# Upgrade the chart for community edition
+helm upgrade community-hoppscotch ./charts/shc -f ./charts/values.yaml
+
+# Upgrade the chart for enterprise edition
+helm upgrade enterprise-hoppscotch ./charts/she -f ./charts/values.yaml
+```
+
+### **Remove Installation**
+
+To uninstall Hoppscotch and clean up the resources, you can remove both community and enterprise editions: 
+
+```bash
+# Uninstall the community edition
+helm uninstall community-hoppscotch
+
+# Uninstall the enterprise edition
+helm uninstall enterprise-hoppscotch
+```
+
+## Troubleshooting
+
+If you encounter issues during or after the installation, the following commands can help diagnose the problem:
+
+| Issue                     | Command to Check                                   |
+| ------------------------  | -------------------------------------------------- |
+| **Pod Issues**            | `kubectl logs [POD_NAME]`                          |
+| **Service Status**        | `kubectl describe service community-hoppscotch` <br />   `kubectl describe service enterprise-hoppscotch` |
+| **Configuration Issues**  | `kubectl describe configmap community-hoppscotch` <br /> `kubectl describe configmap enterprise-hoppscotch` |
