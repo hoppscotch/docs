@@ -17,7 +17,7 @@ Before you begin, make sure you have the following tools and services set up:
 To deploy Hoppscotch on DigitalOcean, you will need a DigitalOcean account. If you don't have an account already, sign up for one [here](https://www.digitalocean.com/).
 
 #### - **Kubernetes Cluster Access**
-    You need an active Kubernetes cluster on DigitalOcean. If you don’t have one already, you can easily create a cluster through the DigitalOcean Dashboard.
+    You need an active Kubernetes cluster on DigitalOcean. If you don’t have one already, you can easily create a cluster through the **DigitalOcean Dashboard**.
 #### - **Administrative Permissions**
     Ensure that your user account has administrative access to manage the Kubernetes cluster. This is important for performing actions like deploying applications, managing configurations, and troubleshooting issues.
 
@@ -67,7 +67,7 @@ Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes clus
     
     This will create the necessary resources (e.g., deployments, services) to enable ingress routing for your cluster.
   </Step>
-  <Step title="Configure and Prepare the `values.yaml` File">
+  <Step title="Configure and Prepare the 'values.yaml' File">
     Helm charts use a `values.yaml` file to customize the deployment. You'll need to modify the `values.yaml` file to suit your environment:
     
     ```yaml
@@ -97,6 +97,8 @@ Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes clus
       licenseKey: "1e8xxxxx-fexx-49xx-8cxx-d57f54fxxxxx"
     
     ```
+
+    <Note> If you are deploying Hoppscotch Enterprise edition, you'll need a valid license key. To obtain one, visit the [Hoppscotch Enterprise Store](https://enterprise.hoppscotch.com/) and make a purchase. After completing the purchase, you’ll receive an email with the license key. Alternatively, you can find the key in your Hoppscotch Enterprise Dashboard. For more details on managing your license key, refer to this [guide](/guides/articles/manage-an-enterprise-license-key). </Note>
   </Step>
   <Step title="Deploy Hoppscotch on Kubernetes">
     Now that you’ve configured the `values.yaml` file, you’re ready to deploy Hoppscotch using Helm.
@@ -114,8 +116,6 @@ Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes clus
     # Install the chart for enterprise edition
     helm install enterprise-hoppscotch ./charts/she
     ```
-    
-    This will start the deployment of Hoppscotch with the configuration you set in the `values.yaml` file.
   </Step>
 </Steps>
 
