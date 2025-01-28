@@ -71,26 +71,33 @@ Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes clus
     Helm charts use a `values.yaml` file to customize the deployment. You'll need to modify the `values.yaml` file to suit your environment:
     
     ```yaml
-    replicaCount: 2  
+    replicaCount: 1  
     
     image:
       repository: hoppscotch/hoppscotch  
       tag: latest  
-      pullPolicy: IfNotPresent  
+    pullPolicy: IfNotPresent  
     
     urls:
-      frontend: "https://frontend.yourdomain.com"
-      backend: "https://backend.yourdomain.com"
-      admin: "https://admin.yourdomain.com"  
+      base: "http://frontend.yourdomain.com"
+      shortcode: "http://frontend.yourdomain.com"
+      admin: "http://admin.yourdomain.com"
+      backend:
+        gql: "http://backend.yourdomain.com/graphql"
+        ws: "ws://backend.yourdomain.com/graphql"
+        api: "http://backend.yourdomain.com/v1"
+      redirect: "http://frontend.yourdomain.com"
+      whitelistedOrigins: "http://backend.yourdomain.com,http://frontend.yourdomain.com,http://admin.yourdomain.com"
     
     service:
       type: LoadBalancer  
       port: 3000  
     
     ingress:
-      enabled: true  
-      hosts:
-        - host: frontend.yourdomain.com  
+      enabled: true
+      mainHost: frontend.yourdomain.com
+      adminHost: admin.yourdomain.com
+      backendHost: backend.yourdomain.com  
     
     # If using Hoppscotch Enterprise, configure your license key
     enterprise:
