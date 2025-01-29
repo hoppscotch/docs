@@ -48,7 +48,151 @@ Once connected, all API requests made through the Hoppscotch web app will be rou
 ## Proxy
 
 - Enable proxy from "[**Settings page**](https://hoppscotch.io/settings)".
-- You can replace the Proxy URL with your proxy middleware if you wish.
+- You can replace the Proxy URL with your proxy middleware if you wish or use [Proxyscotch](#proxyscotch), which acts as a local proxy server for routing API requests.
+
+## Proxyscotch
+
+[Proxyscotch](https://github.com/hoppscotch/proxyscotch) is a lightweight proxy server designed for Hoppscotch. It bypasses Cross-Origin Resource Sharing (CORS) restrictions by routing API requests through a remotely hosted proxy, ensuring that requests originate from a trusted environment.
+
+### Quick Setup 
+
+For a fast and efficient setup, you can either [pull the Docker image](#using-docker) for a containerized proxy environment, or [download the native installers](#using-installers) for your platform to run Proxyscotch directly on your system.
+
+#### Using Docker
+
+To use Proxyscotch with a minimal setup, you can pull and run the pre-built [Docker image](https://hub.docker.com/r/hoppscotch/proxyscotch). This provides an instant proxy environment without requiring manual compilation or installation.
+
+```bash
+# Pull the latest Proxyscotch image from Docker Hub
+docker pull hoppscotch/proxyscotch
+
+# Run the container in detached mode, exposing port 9159
+docker run -d -p 9159:9159 --name proxyscotch hoppscotch/proxyscotch
+```
+
+#### Using Installers
+
+If you prefer a native installation, download and install both the Desktop and Server binaries for your operating system. 
+
+<AccordionGroup>
+  <Accordion title="Mac" icon="apple">
+    <Card title="Tray application (macOS)" href="https://github.com/hoppscotch/proxyscotch/releases/download/v0.1.1/Proxyscotch-Desktop-macOS-v0.1.1.zip">
+      Download proxyscotch for macOS desktops. This will install the tray application for seamless proxy management.
+    </Card>
+    <Card title="Proxy Server Binary (Intel-based macOS)" href="https://github.com/hoppscotch/proxyscotch/releases/download/v0.1.1/proxyscotch-server-darwin-amd64-v0.1.1">
+      Download the proxy server binary for Intel-based (x86-64) Macs.
+    </Card>
+    <Card title="Proxy Server Binary (Apple Silicon macOS)" href="https://github.com/hoppscotch/proxyscotch/releases/download/v0.1.1/proxyscotch-server-darwin-arm64-v0.1.1">
+      Download the proxy server binary for Apple Silicon-based (ARM64) Macs.
+    </Card>
+  </Accordion>
+  <Accordion title="Windows" icon="windows">
+    <Card title="Tray application (Windows - AMD)" href="https://github.com/hoppscotch/proxyscotch/releases/download/v0.1.1/Proxyscotch-Desktop-Windows-amd64-v0.1.1.exe">
+      Download proxyscotch for AMD-based Windows desktops. This will install the tray application for easy proxy management.
+    </Card>
+    <Card title="Proxy Server Binary (Windows - AMD)" href="https://github.com/hoppscotch/proxyscotch/releases/download/v0.1.1/proxyscotch-server-windows-amd64-v0.1.1.exe">
+      Download the proxy server binary for AMD-based Windows machines.
+    </Card>
+    <Card title="Tray application (Windows - ARM)" href="https://github.com/hoppscotch/proxyscotch/releases/download/v0.1.1/proxyscotch-arm64.exe">
+      Download proxyscotch for ARM-based Windows desktops. This will install the tray application for easy proxy management.
+    </Card>
+    <Card title="Proxy Server Binary (Windows - ARM)" href="https://github.com/hoppscotch/proxyscotch/releases/download/v0.1.1/proxyscotch-server-windows-arm64-v0.1.1.exe">
+      Download the proxy server binary for ARM-based Windows machines.
+    </Card>
+  </Accordion>
+  <Accordion title="Linux" icon="linux">
+    <Card title="Tray application (Linux - AMD)" href="https://github.com/hoppscotch/proxyscotch/releases/download/v0.1.1/Proxyscotch-Desktop-Linux-amd64-v0.1.1">
+      Download proxyscotch for AMD-based Linux desktops. This will install the tray application for seamless proxy management.
+    </Card>
+    <Card title="Proxy Server Binary (Linux - AMD)" href="https://github.com/hoppscotch/proxyscotch/releases/download/v0.1.1/proxyscotch-server-linux-amd64-v0.1.1">
+      Download the proxy server binary for AMD-based Linux machines.
+    </Card>
+  </Accordion>
+</AccordionGroup>
+
+<Note> 
+The proxy will add a **desktop application to your system tray**, providing quick access to various proxy settings such as setting the access token. After launching the application, a dialog will prompt you to complete the **certificate installation** process. For more details on how to install the certificate, [visit this wiki](https://github.com/hoppscotch/proxyscotch/wiki/Certificate-Installation).
+
+Upon activation, the **server** will run in the background and interact with the proxy to route and manage requests.
+</Note>
+
+### Building Proxyscotch from Source
+
+If you prefer to build and run Proxyscotch manually, start by cloning the Proxyscotch repository:
+
+```bash
+git clone https://github.com/hoppscotch/proxyscotch.git 
+```
+
+Follow the platform-specific instructions below to build the proxy and server from source for your operating system:
+
+<AccordionGroup>
+  <Accordion title="Building on macOS" icon="apple">
+    ```bash
+    # Build the desktop tray application
+    ./build.sh darwin
+
+    # Build the standalone server application
+    ./build.sh darwin server
+    ```
+  </Accordion>
+  <Accordion title="Building on Windows" icon="windows">
+
+  You can use Git Bash to run the following commands:
+  
+    ```bash
+    # Build the desktop tray application
+    ./build.sh windows
+
+    # Build the standalone server application
+    ./build.sh windows server
+    ```
+  </Accordion>
+  <Accordion title="Building on Linux" icon="linux">
+    ```bash
+    # Build the desktop tray application
+    ./build.sh linux
+
+    # Build the standalone server application
+    ./build.sh linux server
+    ```
+  </Accordion>
+</AccordionGroup>
+
+<Tip> After building, the compiled binaries will be available in the `out/` directory. </Tip>
+
+#### Running the Proxyscotch Server
+
+After building the server, use the following command to start the proxy server:
+```bash
+$ ./out/<platform>-server/server --host="<hostname>:<port>" --token="<token_or_blank>"
+
+# e.g. on Linux
+$ ./out/linux-server/server --host="localhost:9159" --token=""
+
+# or on Windows
+$ ./out/windows-server/server.exe --host="localhost:9159" --token=""
+```
+
+<Warning> When the **token is left blank**, it grants unrestricted access to your proxy server. While this might be convenient, please be aware of the potential security risks and consider whether this level of open access is appropriate for your use case. </Warning>
+
+#### Available Server Options
+
+After running the Proxyscotch server, you can customize its behavior using various command-line options.
+
+| **Option**                    | **Description**                                                            |
+| ----------------------------- | -------------------------------------------------------------------------- |
+| `--host="<hostname>:<port>"`  | Define the host and port (default: `localhost:9159`).                      |
+| `--token="<token>"`           | Set an access token to restrict proxy usage (leave blank for open access). |
+| `--allowed-origins="*"`       | Comma-separated list of allowed origins for CORS.                          |
+| `--banned-outputs="<values>"` | Comma-separated list of response values to redact.                         |
+| `--banned-dests="<hosts>"`    | Comma-separated list of blocked destination hosts.                         |
+
+### Configure Proxyscotch in Hoppscotch
+
+Once the container is running or the server is active, configure Hoppscotch to use `http://localhost:9159` as the `Proxy URL` in the **Settings** page.
+
+This setup will route all API requests through Proxyscotch, facilitating communication with APIs that enforce strict CORS policies.
 
 ## Middleware
 
