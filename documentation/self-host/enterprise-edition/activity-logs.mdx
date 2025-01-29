@@ -1,0 +1,70 @@
+---
+sidebarTitle: Activity Logs
+title: Activity Logs
+description: Track all changes made to collections and requests within a workspace, and monitor user interactions through Activity Logs.
+---
+
+**Activity Logs** provide a clear record of actions performed within a workspace, including changes to collections, requests, and user interactions. These logs help maintain visibility and traceability of modifications across the workspace.
+
+## Configuring Activity Logs
+
+Activity Logs are controlled via a unified toggle in the Admin Dashboard.
+1. Go to **Admin Dashboard → Logging Configurations.**
+2. **Enable the toggle** in this section to start recording Activity Logs.
+
+<Note> Activity Logs operate independently and do not require ClickHouse credentials. However, if Audit Logs are needed, [ClickHouse credentials must be configured](/documentation/self-host/enterprise-edition/prerequisites#clickhouse). </Note>
+
+## Accessing Activity Logs
+
+To access Activity Logs in a workspace:
+
+1. Navigate to the specific workspace from the workspace switcher present in the top right corner of the app.
+2. Locate and click on the **clock** icon in the right sidebar.
+3. In the `History` tab, you will find a chronological timeline of all changes made to collections and requests.
+4. Logs are ordered from the latest to the oldest for easier navigation, with entries grouped by date.
+
+## Permissions
+
+- **OWNER** and **EDITOR** roles: Actions performed by users with these roles are logged.
+- **VIEWER** role: Viewers cannot make changes, but they can view the activity logs of changes made by others.
+
+## **Logged Actions**
+
+Activity Logs track the following actions within the workspace:
+
+### **Workspace-Level Events**
+
+| **Action**                         | **Logged Activity Example**                             |
+| ---------------------------------- | ------------------------------------------------------- |
+| Creating a new workspace           | `Created` new workspace `Statging`                      |
+| Renaming a Workspace               | `Renamed` workspace from `Staging` to `Production`      |
+| Adding a user to the workspace     | John Doe was `added` to the workspace as `Viewer`       |
+| Updating a user’s role in workspace| John Doe's role was `updated` from `Viewer` to `Editor` |
+| Removing a user from the workspace | John Doe was `removed` from the workspace               |
+
+### **Collection-Level Events**
+
+| **Action**                | **Logged Activity Example**                                        |
+| ------------------------- | ------------------------------------------------------------------ |
+| Creating a new collection | `Created` new collection `Authentication APIs`                     |
+| Renaming a collection     | `Renamed` collection from `User Management` to `Role Management`   |
+| Importing a collection    | `Imported` collection `Payment Gateway APIs`                       |
+| Duplicating a collection  | `Duplicated` collection `Microservices APIs`                       |
+| Deleting a collection     | `Deleted` collection `Authentication APIs`                         |
+
+### **Request-Level Events**
+
+| **Action**             | **Logged Activity Example**             |
+| ---------------------- | --------------------------------------- |
+| Creating a new request | `Created` new request `Fetch User Data` |
+| Deleting a request     | `Deleted` request `Fetch User Data`     |
+
+<Note> Users with the **OWNER** role have the authority to `DELETE` activity logs. </Note> 
+
+## **Log Entry Details**
+
+Each log entry provides detailed information about the recorded action, including:
+
+- **Timestamp:** The exact time when the action occurred.
+- **Action Summary:** A summary of changes made in the operation.
+- **User Information:** The name of the user who performed the action.
