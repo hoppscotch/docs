@@ -4,7 +4,15 @@ title: Activity Logs
 description: Track all changes made to collections and requests within a workspace, and monitor user interactions through Activity Logs.
 ---
 
-The **Activity Logs** feature enables workspace members to track and review changes made to collections and requests within a workspace. Actions performed by workspace members are logged and categorized for better visibility.
+**Activity Logs** provide a clear record of actions performed within a workspace, including changes to collections, requests, and user interactions. These logs help maintain visibility and traceability of modifications across the workspace.
+
+## Configuring Activity Logs
+
+Activity Logs are controlled via a unified toggle in the Admin Dashboard.
+1. Go to **Admin Dashboard → Logging Configurations.**
+2. **Enable the toggle** in this section to start recording Activity Logs.
+
+<Note> Activity Logs operate independently and do not require ClickHouse credentials. However, if Audit Logs are needed, [ClickHouse credentials must be configured](/documentation/self-host/enterprise-edition/prerequisites#clickhouse). </Note>
 
 ## Accessing Activity Logs
 
