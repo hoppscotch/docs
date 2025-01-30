@@ -20,22 +20,24 @@ It is important to explore the schema to understand the different **queries, mut
 
 You can execute queries to retrieve data from the GraphQL server by following these steps:
 
-- Navigate to the **Queries** section in the Documentation panel to view all the available queries for the endpoint.
-- Select a query to automatically populate the Query editor with a structured template, pre-filled with required fields and arguments based on the API schema.
-- Customize the generated query as needed by adding or modifying fields, arguments, or variables directly in the Query editor.
+- Open the **Documentation** panel to explore the available queries for the endpoint.
+- Click on `query` under **Root Types** to view the listed query fields.
+- Click the **"+"** button next to a query field to add it to the Query editor with a structured template.
+- Expand the query by clicking on it, then use the **"+"** button to add specific fields, arguments, or filters.
+- Customize the query as needed by modifying fields, adding arguments, or setting variables directly in the Query editor.
 
-## Countries GraphQL endpoint
+## Fetching Countries Data
 
-Let's explore the Naruto GraphQL endpoint.
+Let's explore a sample query using the Countries GraphQL API.
 
-1. Open Hoppscotch, switch to the GraphQL client and connect to the endpoint below:
+1. Open Hoppscotch, switch to the [GraphQL client](https://hoppscotch.io/graphql) and connect to the endpoint below:
 
     ```
     https://countries.trevorblades.com/graphql
     ```
 
 2. Explore the schema and documentation to understand more about the endpoint.
-3. Write a query to filter the countries collection where the name field is equal to "Germany". Alternatively, you can populate the predefined query directly from the documentation and alter it to apply the filter.
+3. Select the `countries` query, cherry-pick the fields, and add a filter to return results where the `name` field is equal to **"Germany"**.
 
     ```graphql
     {
