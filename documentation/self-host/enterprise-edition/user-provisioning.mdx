@@ -1,0 +1,81 @@
+---
+sidebarTitle: User provisioning
+title: SCIM Integration for User Provisioning
+description: Manage users efficiently with SCIM provisioning in Hoppscotch.
+---
+
+User management can become overwhelming as your organization scales. **SCIM (System for Cross-domain Identity Management)** offers a standardized way to handle user provisioning, updates, and deprovisioning. With SCIM integration, Hoppscotch connects directly to your Identity Provider (IdP), helping you manage users in one place and reflect those changes across systems.
+
+## Setting Up SCIM Provisioning
+
+Follow the steps below to configure SCIM-based user provisioning in Hoppscotch and integrate it with your Identity Provider (IdP).
+
+### 1. Enable SCIM in Hoppscotch
+
+- Open the **Admin Dashboard** and navigate to the **Configurations** section.
+- Find the **SCIM Provisioning** option under **User Provisioning** block and enable it.
+- Copy the **SCIM Base URL (`http(s)://<backend-URL>/scim/v2`)** provided after activation, as it will be needed for the integration.
+<Frame>
+    <img src="/images/user-provisioning/user-provisioning.png" /> 
+</Frame>
+
+### 2. Generate an InfraToken
+
+- Go to the **[InfraTokens](/documentation/self-host/enterprise-edition/admin-dashboard#infra-tokens)** section of the dashboard.
+- Create a new token for SCIM-related operations.
+- Copy the InfraToken and store it securely, as it will be used to authenticate SCIM requests from your IdP.
+<Frame>
+    <img src="/images/user-provisioning/generate-infra-token.png" /> 
+</Frame>
+
+### 3. Configure SCIM in your Identity Provider `Example: Okta`
+
+- Log in to your [Okta](https://www.okta.com/) dashboard, select your application, and navigate to the application's settings.
+- Enable SCIM provisioning under the **General** tab.
+<Frame>
+    <img src="/images/user-provisioning/enable-scim-provisioning.png" /> 
+</Frame>
+- Go to the **Provisioning > Integration** section:
+    - Paste the **SCIM Base URL** you copied from Hoppscotch.
+    - Specify the unique identifier field for users (e.g., `email`) and configure provisioning actions (e.g., Import New Users, Profile Updates, Push New Users, Push Profile Updates) according to your requirements.
+    - Use the `InfraToken` generated in the Hoppscotch Admin Dashboard as the **Authorization Token** and save the configuration.
+<Frame>
+    <img src="/images/user-provisioning/scim-integration.png" /> 
+</Frame>
+- Under **Provisioning > To App**, enable the following actions:
+    - **Create Users**
+    - **Update User Attributes**
+    - **Deactivate Users**
+Save the settings once done.
+<Frame>
+    <img src="/images/user-provisioning/provisioning-to-app.png" /> 
+</Frame>
+
+## Add a custom attribute
+
+SCIM supports extending the user schema to include custom fields to meet your organization's specific requirements:
+
+- In Okta, head to **Directory > Profile Editor** and locate the SCIM application.
+- Click **Add Attribute** to create a custom attribute you wish to include in the provisioning process.
+<Frame>
+    <img src="/images/user-provisioning/profile-editor.png" /> 
+</Frame>
+- Fill in the required fields and assign a valid **External namespace**. For SCIM 2.0, the following namespaces are supported in Okta:
+
+```bash
+# Use this for basic user attributes
+urn:ietf:params:scim:schemas:core:2.0:User
+
+# Use this for enterprise-specific user extensions
+urn:ietf:params:scim:schemas:extension:enterprise:2.0:User
+```
+
+- Once finished, click **Save Attribute** to apply the changes.
+
+<Frame>
+    <img src="/images/user-provisioning/add-custom-attribute.png" /> 
+</Frame>
+
+The **custom attribute** will now be automatically synchronized during user creation or updates.
+
+<Tip> Once configured, assigning a user or group to the application will trigger user creation in Hoppscotch and grant them access to your instance. If a user is unassigned, they will be removed from Hoppscotch and their access permissions will be revoked. </Tip>
