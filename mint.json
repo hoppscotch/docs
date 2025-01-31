@@ -182,6 +182,13 @@
             "documentation/self-host/enterprise-edition/deploy-and-upgrade",
             "documentation/self-host/enterprise-edition/telemetry"
           ]
+        },
+        {
+          "group": "Helm Chart Deployment",
+          "pages": [
+            "documentation/self-host/helm-chart-deployment/getting-started",
+            "documentation/self-host/helm-chart-deployment/digital-ocean"
+          ]
         }
       ]
     },
