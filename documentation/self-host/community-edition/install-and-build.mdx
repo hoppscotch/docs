@@ -4,7 +4,9 @@ title: Install and build
 description: Learn how to install and build Hoppscotch Community Edition.
 ---
 
-<Warning> **[v2024.8.0](https://hoppscotch.com/blog/hoppscotch-v2024-8-0)** introduces new additions to the Hoppscotch Backend that require you to run a **new [migration](#migrations)**. We've also added a new environment variable, **`DATA_ENCRYPTION_KEY`**, which accepts a 32 character alphanumeric string. Please make sure to update your `.env` file with the latest changes while setting up Hoppscotch. </Warning>
+<Warning> Hoppscotch `v2024.8.0` introduces new additions to the backend that require you to run a new **[migration](#migrations)**. We've also added a new environment variable: **`DATA_ENCRYPTION_KEY`**, which accepts a 32 character alphanumeric string. Please make sure to update your `.env` file with the latest changes while setting up Hoppscotch. </Warning>
+
+<Tip>If you're interested in deploying <ins>Hoppscotch on Kubernetes</ins>, you can conveniently skip this guide and proceed directly to the [Helm chart deployment guide](/documentation/self-host/helm-chart-deployment/getting-started).</Tip>
 
 ## Configuring the environment
 
@@ -101,7 +103,7 @@ ENABLE_SUBPATH_BASED_ACCESS=false
 Let's understand the major environment variables:
 
 1. `DATABASE_URL`: This is where you add your Postgres database URL.
-2. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that lets you specify an alternate port for the AIO container’s endpoint when operating in subpath access mode. By default, this endpoint is exposed on port 80.
+2. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that lets you specify an alternate port for the AIO container's endpoint when operating in subpath access mode. By default, this endpoint is exposed on port 80.
 3. `TOKEN_SALT_COMPLEXITY`: Defines the complexity of the SALT that is used for hashing - a higher number implies a more complex salt.
 4. `MAGIC_LINK_TOKEN_VALIDITY`: Duration of the validity of the magic link being sent to sign in to Hoppscotch (in days).
 5. `REFRESH_TOKEN_VALIDITY`: Validity of the refresh token for auth (in ms).

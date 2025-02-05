@@ -6,7 +6,7 @@ description: Install and configure Hoppscotch on Digital Ocean using Helm Charts
 
 [DigitalOcean](https://www.digitalocean.com/) is a cloud provider that offers scalable and easy-to-use infrastructure for developers. You can create and manage Kubernetes clusters, storage, and networking resources all through their platform.
 
-With DigitalOcean’s managed Kubernetes service and Helm charts, deploying Hoppscotch on your infrastructure becomes a plain sailing process.
+With DigitalOcean's managed Kubernetes service and Helm charts, deploying Hoppscotch on your infrastructure becomes a plain sailing process.
 
 ## Pre-requisites
 
@@ -16,18 +16,18 @@ Before you begin, make sure you have the following tools and services set up:
 
 To deploy Hoppscotch on DigitalOcean, you will need a DigitalOcean account. If you don't have an account already, sign up for one [here](https://www.digitalocean.com/).
 
-#### - **Kubernetes Cluster Access**
-    You need an active Kubernetes cluster on DigitalOcean. If you don’t have one already, you can easily create a cluster through the **DigitalOcean Dashboard**.
-#### - **Administrative Permissions**
+#### **Kubernetes Cluster Access**
+    You need an active Kubernetes cluster on DigitalOcean. If you don't have one already, you can easily create a cluster through the **DigitalOcean Dashboard**.
+#### **Administrative Permissions**
     Ensure that your user account has administrative access to manage the Kubernetes cluster. This is important for performing actions like deploying applications, managing configurations, and troubleshooting issues.
 
 ### **Command Line Tools**
 
-You’ll need a few essential command-line tools installed and configured on your local machine to interact with your Kubernetes cluster and deploy applications.
+You'll need a few essential command-line tools installed and configured on your local machine to interact with your Kubernetes cluster and deploy applications.
 
-#### - **`kubectl` CLI**
-    `kubectl` is the Kubernetes command-line tool that allows you to interact with your Kubernetes cluster. If you don’t have `kubectl` installed, follow the instructions in the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/) to get started.
-#### - **Helm `version 3.x`**
+#### **`kubectl` CLI**
+    `kubectl` is the Kubernetes command-line tool that allows you to interact with your Kubernetes cluster. If you don't have `kubectl` installed, follow the instructions in the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/) to get started.
+#### **Helm `version 3.x`**
     Helm is a package manager for Kubernetes, which simplifies the deployment and management of applications like Hoppscotch. Helm uses **charts**, which are pre-configured application definitions, to deploy applications to Kubernetes clusters. To install Helm, follow the [Helm installation guide](https://helm.sh/docs/intro/install/).
 
 ## Installation and Deployment
@@ -36,7 +36,7 @@ Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes clus
 
 <Steps>
   <Step title="Digital Ocean Cluster Connection">
-        To authenticate your cluster, you’ll need the kubeconfig file from DigitalOcean.
+        To authenticate your cluster, you'll need the kubeconfig file from DigitalOcean.
     
     1. Go to your **DigitalOcean Dashboard**.
     2. Navigate to **Kubernetes** > **Clusters**.
@@ -105,10 +105,10 @@ Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes clus
     
     ```
 
-    <Note> If you are deploying Hoppscotch Enterprise edition, you'll need a valid license key. To obtain one, visit the [Hoppscotch Enterprise Store](https://enterprise.hoppscotch.com/) and make a purchase. After completing the purchase, you’ll receive an email with the license key. Alternatively, you can find the key in your Hoppscotch Enterprise Dashboard. For more details on managing your license key, refer to this [guide](/guides/articles/manage-an-enterprise-license-key). </Note>
+    <Note> If you are deploying Hoppscotch Enterprise edition, you'll need a valid license key. To obtain one, visit the [Hoppscotch Enterprise Store](https://enterprise.hoppscotch.com/) and make a purchase. After completing the purchase, you'll receive an email with the license key. Alternatively, you can find the key in your Hoppscotch Enterprise Dashboard. For more details on managing your license key, refer to this [guide](/guides/articles/manage-an-enterprise-license-key). </Note>
   </Step>
   <Step title="Deploy Hoppscotch on Kubernetes">
-    Now that you’ve configured the `values.yaml` file, you’re ready to deploy Hoppscotch using Helm.
+    Now that you've configured the `values.yaml` file, you're ready to deploy Hoppscotch using Helm.
     
     ```bash
     # Clone the repository

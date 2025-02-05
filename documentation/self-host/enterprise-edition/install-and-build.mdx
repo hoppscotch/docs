@@ -4,7 +4,9 @@ title: Install and build
 description: Learn how to install and build Hoppscotch Enterprise Edition.
 ---
 
-<Warning> Starting with Hoppscotch `v2024.12.2`, a new environment variable, `REDIS_URL`, has been introduced to simplify Redis configuration for horizontal scaling, replacing the previous Redis-related variables (`REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`, `REDIS_DATABASE`). While the old variables are still supported for backward compatibility, they will be **deprecated in the future**. It is recommended to update your `.env` file with the latest changes while setting up Hoppscotch. </Warning>
+<Warning> Starting with Hoppscotch `v2024.12.2`, a new environment variable: `REDIS_URL` has been introduced to simplify Redis configuration for horizontal scaling, replacing the previous Redis-related variables (`REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`, `REDIS_DATABASE`). While the old variables are still supported for backward compatibility, they will be **deprecated in the future**. It is recommended to update your `.env` file with the latest changes while setting up Hoppscotch. </Warning>
+
+<Tip>If you're interested in deploying <ins>Hoppscotch on Kubernetes</ins>, you can conveniently skip this guide and proceed directly to the [Helm chart deployment guide](/documentation/self-host/helm-chart-deployment/getting-started).</Tip>
 
 ## Configuring the environment
 
@@ -150,7 +152,7 @@ Let's understand the major environment variables:
 
 1. `ENTERPRISE_LICENSE_KEY`: The license key required to use Hoppscotch Enterprise.
 2. `DATABASE_URL`: This is where you add your Postgres database URL.
-3. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that lets you specify an alternate port for the AIO container’s endpoint when operating in subpath access mode. By default, this endpoint is exposed on port 80.
+3. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that lets you specify an alternate port for the AIO container's endpoint when operating in subpath access mode. By default, this endpoint is exposed on port 80.
 4. `HORIZONTAL_SCALING`: Set to true to enable horizontal scaling, which uses Redis for managing pub-sub and state across instances.
 5. `TOKEN_SALT_COMPLEXITY`: Defines the complexity of the SALT that is used for hashing - a higher number implies a more complex salt.
 6. `MAGIC_LINK_TOKEN_VALIDITY`: Duration of the validity of the magic link being sent to sign in to Hoppscotch (in days).
@@ -373,7 +375,7 @@ When you use SAML authentication, by default Hoppscotch only pulls the email of 
 Starting from `v2024.9.2` onwards, Hoppscotch Enterprise Edition instances support pulling the following attributes from the SAML response to fill in additional user details:
 
 - `displayName`: The name of the user which is displayed within the Hoppscotch platform.
-- `photoURL`: The URL where to find the user's profile picture. **Do not** set this attribute if a profile picture doesn’t exist.
+- `photoURL`: The URL where to find the user's profile picture. **Do not** set this attribute if a profile picture doesn't exist.
 - `isAdmin` (optional): A boolean attribute (true or false) that automatically assigns the Admin role to users who belong to a designated group in the configured Identity Provider (e.g., Okta).
 
 <Note> The `isAdmin` attribute is evaluated only during the user's first login or signup. Subsequent logins or signups will not re-evaluate this flag. </Note>

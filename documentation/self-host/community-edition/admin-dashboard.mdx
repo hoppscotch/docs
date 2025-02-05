@@ -50,7 +50,7 @@ If SMTP is disabled (`MAILER_SMTP_ENABLE=false`) in your environment file, the i
 4. An invite link (`http://localhost:3000`) will be generated and displayed before you. Copy this link and share it with the user via your preferred communication channel. Make sure that the user signs in to Hoppscotch using the same email address you provided during the invitation.
 
 ### Pending Invites
-Within the **Users** section, admins can view a list of all users who have been invited but have not yet joined the organization. To access this list, simply click on the **Pending Invites** button next to "Invite User". Here, you’ll see all the invitations you've sent, along with details such as:
+Within the **Users** section, admins can view a list of all users who have been invited but have not yet joined the organization. To access this list, simply click on the **Pending Invites** button next to "Invite User". Here, you'll see all the invitations you've sent, along with details such as:
 - **Invitee Email:** The email address to which the invite was sent.
 - **Invited By:** The email address of the user who sent the invitation
 - **Invited on:** The date and time when the invitation was sent.
@@ -74,7 +74,7 @@ The RESTful APIs designed for User Management enable **admins** to perform a wid
 | Delete an existing User | Enables admins to delete an existing user from the instance by their User ID. | DELETE | `<base-url>/v1/infra/users/{uid}` |
 | Update User Details | Allows admins to update the details of an existing user. | PATCH | `<base-url>/v1/infra/users/{uid}` |
 | Manage Admin Status | Enables admins to add or remove admin status for an existing user. | PATCH | `<base-url>/v1/infra/users/{uid}/admin-status` | 
-| Fetch User’s involvement in Workspaces | Retrieves workspace details that a user is part of, including their role. | GET | `<base-url>/v1/infra/users/{uid}/workspaces` |
+| Fetch User's involvement in Workspaces | Retrieves workspace details that a user is part of, including their role. | GET | `<base-url>/v1/infra/users/{uid}/workspaces` |
 
 <Info> To interact with the **User Management APIs**, ensure that your backend service is running, either on your local machine or on a server. The API documentation is accessible at the `/api-docs` endpoint relative to your backend service URL. For example, if your backend is running locally, you can access the API docs at [http://localhost:3170/api-docs](http://localhost:3170/api-docs). You can also retrieve the OpenAPI v3 JSON format at [http://localhost:3170/api-docs-json](http://localhost:3170/api-docs-json). </Info>
 

@@ -14,7 +14,7 @@ Inherit Authorization allows requests to automatically adopt the authorization s
 
 ## Basic Auth
 
-Basic Authentication is one of the simplest methods to secure your API requests in Hoppscotch. It works by requiring a username and password to be sent along with each request. To get started, head to the **Authorization** tab and select `Basic Auth` as your authentication type. You’ll then input your verified **username** and **password**. When you send the request, Hoppscotch will automatically encode your credentials in the format: 
+Basic Authentication is one of the simplest methods to secure your API requests in Hoppscotch. It works by requiring a username and password to be sent along with each request. To get started, head to the **Authorization** tab and select `Basic Auth` as your authentication type. You'll then input your verified **username** and **password**. When you send the request, Hoppscotch will automatically encode your credentials in the format: 
 
 ```
 Basic <Base64-encoded-credentials>
@@ -33,7 +33,7 @@ Bearer <your-access-token>
 <Info>Be aware that if your token expires, you'll need to refresh it manually and update it in Hoppscotch. For better security, consider storing your token as an environment variable so that you can easily reference it in your requests.</Info>
 
 ## API Key
-API Keys are unique identifiers that help authenticate your requests to an API. In Hoppscotch, you can set up `API Key` authentication by selecting it from the **Authorization** tab. Here, you’ll need to fill in two fields: the **Key**, which is the name the API expects (like `api_key` or `Authorization`), and the **Value**, which is your actual API Key. You can also choose whether to pass this API Key as a **Header** or as a **Query Parameter**.
+API Keys are unique identifiers that help authenticate your requests to an API. In Hoppscotch, you can set up `API Key` authentication by selecting it from the **Authorization** tab. Here, you'll need to fill in two fields: the **Key**, which is the name the API expects (like `api_key` or `Authorization`), and the **Value**, which is your actual API Key. You can also choose whether to pass this API Key as a **Header** or as a **Query Parameter**.
 
 <Tip>When using API Keys, keep an eye on the rate limits set by the API provider to avoid any issues. For improved security practices, store your API Key as an environment variable to facilitate easy management across different environments.</Tip>
 

@@ -146,7 +146,7 @@ You can set up mailcatcher using Docker with 2 below easy steps:
     > ip addr show docker0
     > ```
     > 
-    > Look for the inet address associated with the docker0 interface. It’s typically in the **172.17.0.0/16** range but may vary based on your Docker network configuration. And If you’re using **Docker Desktop**, you can use `host.docker.internal` instead of `localhost`.
+    > Look for the inet address associated with the docker0 interface. It's typically in the **172.17.0.0/16** range but may vary based on your Docker network configuration. And If you're using **Docker Desktop**, you can use `host.docker.internal` instead of `localhost`.
     > 
     
     ```bash
@@ -170,7 +170,7 @@ You can set up mailcatcher using Docker with 2 below easy steps:
 
 #### **2.2 Custom Mailer Configuration**
 
-For advanced email delivery needs, such as for production environments, you can configure a custom email service by setting `MAILER_USE_CUSTOM_CONFIGS=true`. You can choose from services like [SendGrid](https://sendgrid.com/), [Amazon SES](https://aws.amazon.com/ses/), or your own SMTP server. Once you’ve set up your chosen service, update your `.env` file with the following details:
+For advanced email delivery needs, such as for production environments, you can configure a custom email service by setting `MAILER_USE_CUSTOM_CONFIGS=true`. You can choose from services like [SendGrid](https://sendgrid.com/), [Amazon SES](https://aws.amazon.com/ses/), or your own SMTP server. Once you've set up your chosen service, update your `.env` file with the following details:
 
 ```jsx
 MAILER_SMTP_HOST=smtp.domain.com
@@ -183,7 +183,7 @@ MAILER_TLS_REJECT_UNAUTHORIZED=true
 
 ### 3. OAuth Configuration
 
-To access the admin dashboard, you’ll need to configure an OAuth provider. In the Community Edition, Hoppscotch supports:
+To access the admin dashboard, you'll need to configure an OAuth provider. In the Community Edition, Hoppscotch supports:
 
 1. Google
 2. GitHub
@@ -191,7 +191,7 @@ To access the admin dashboard, you’ll need to configure an OAuth provider. In 
 
 In the Enterprise Edition, support also includes **SAML SSO, OpenID Connect, and GitHub Enterprise**.
 
-Here’s a quick guide to registering an OAuth application with GitHub:
+Here's a quick guide to registering an OAuth application with GitHub:
 
 1. Click your profile photo in the upper-right corner and select **Settings**.
 2. In the left sidebar, scroll down and click **Developer Settings**.
