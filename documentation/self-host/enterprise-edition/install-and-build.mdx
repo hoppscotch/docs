@@ -4,17 +4,14 @@ title: Install and build
 description: Learn how to install and build Hoppscotch Enterprise Edition.
 ---
 
-<Warning> Starting with Hoppscotch `v2024.12.2`, a new environment variable: `REDIS_URL` has been introduced to simplify Redis configuration for horizontal scaling, replacing the previous Redis-related variables (`REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`, `REDIS_DATABASE`). While the old variables are still supported for backward compatibility, they will be **deprecated in the future**. It is recommended to update your `.env` file with the latest changes while setting up Hoppscotch. </Warning>
-
 <Tip>If you're interested in deploying <ins>Hoppscotch on Kubernetes</ins>, you can conveniently skip this guide and proceed directly to the [Helm chart deployment guide](/documentation/self-host/helm-chart-deployment/getting-started).</Tip>
 
 ## Configuring the environment
 
-Before you get started with the installation, you need to configure the environment variables.
+Before you get started with the installation, you need to configure the environment variables. Create a `.env` file in the root directory of the project and add the following environment variables:
 
-Copy the contents of the `.env.example` file found in the root directory of the cloned repository to `.env` and add your values for the environment variables.
-
-<Warning>**Ensure that the environment values are not enclosed within quotes ("").**</Warning>
+<Warning>**<u>Ensure that the environment values are not enclosed within quotes [""].</u>**</Warning>
+<Note>To enable desktop app support for self-hosted instances, make sure you've enabled [subpath based access](#subpath-based-access).</Note>
 
 ```yaml
 #-----------------------Backend Config------------------------------#
@@ -173,7 +170,7 @@ Let's understand the major environment variables:
 10. `ALLOW_SECURE_COOKIES`: If disabled users will be able to use Hoppscotch over HTTP connections as well. It is recommended that this be left enabled as some auth providers may not work if this value is set to true.
 11. `DATA_ENCRYPTION_KEY`: A 32-character key used for encrypting sensitive data stored in the database.
 12. `REDIRECT_URL`: This is a fallback URL to debug when the actual redirects fail.
-13. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, and the frontend app.
+11. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, frontend app and the bundle server that are allowed to interact with the desktop app.
 14. `VITE_ALLOWED_AUTH_PROVIDERS`: Allows you to specify which auth providers you want to enable.
 15. `MAILER_SMTP_ENABLE`: Enables the SMTP mailer configuration.
 16. `MAILER_USE_CUSTOM_CONFIGS`: When custom mailer configurations are used.
@@ -256,7 +253,7 @@ Open [admin dashboard](http://localhost:3100) or [`PORT 3100`](http://localhost:
 To enable subpath based access the following `.env` variable must be set to true, it is set to false by default.
 
 ```
-ENABLE_SUBPATH_BASED_ACCESS=false
+ENABLE_SUBPATH_BASED_ACCESS=true
 ```
 
 When set to true the following is the expected behavior:
