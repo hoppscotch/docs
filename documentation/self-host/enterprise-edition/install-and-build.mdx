@@ -224,7 +224,14 @@ docker run -p 3170:3170 --env-file .env --restart unless-stopped hoppscotch/hopp
 docker run -p 3100:3100 --env-file .env --restart unless-stopped hoppscotch/hoppscotch-enterprise-admin
 ```
 
-- Ensure that the environment variables are configured in the `.env` file and the restart policy is mentioned.
+<Tip>Ensure that the environment variables are configured in the `.env` file and the restart policy is mentioned.</Tip>
+
+<Note>
+To enable desktop app support for your self-hosted Hoppscotch instance, make sure you expose the web app server which is a part of the frontend container. You can do this by running the following command:
+```bash
+docker run -p 3000:3000 -p 3200:3200 --env-file .env --restart unless-stopped hoppscotch/hoppscotch-frontend
+```
+</Note>
 
 Open [admin dashboard](http://localhost:3100) or [`PORT 3100`](http://localhost:3100) in the browser to [setup and access](/documentation/self-host/enterprise-edition/setup-and-access) the Hoppscotch instance.
 
@@ -244,7 +251,7 @@ After pulling the container, start Hoppscotch by running the container:
 docker run -p 3000:3000 -p 3100:3100 -p 3170:3170 --env-file .env --restart unless-stopped hoppscotch/hoppscotch-enterprise
 ```
 
-- Ensure that the environment variables are configured in the `.env` file and the restart policy is mentioned.
+<Tip>Ensure that the environment variables are configured in the `.env` file and the restart policy is mentioned.</Tip>
 
 Open [admin dashboard](http://localhost:3100) or [`PORT 3100`](http://localhost:3100) in the browser to [setup and access](/documentation/self-host/community-edition/setup-and-access) the Hoppscotch instance.
 
