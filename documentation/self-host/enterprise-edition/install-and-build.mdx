@@ -154,6 +154,15 @@ VITE_APP_PRIVACY_POLICY_LINK=https://docs.hoppscotch.io/support/privacy
 
 # Set to `true` for subpath based access
 ENABLE_SUBPATH_BASED_ACCESS=false
+
+# Optional: Local Proxy Server Config
+# Enables a local proxy server for routing API requests.
+# This will only work if ENABLE_SUBPATH_BASED_ACCESS is set to `true`.
+LOCAL_PROXY_SERVER_ENABLE=false
+
+# Optional: Route all API requests via a proxy server for added security.
+# Set your proxy server URL here, or remove this variable to send requests directly.
+PROXY_APP_URL=https://proxy.hoppscotch.io
 ```
 
 Let's understand the major environment variables:
