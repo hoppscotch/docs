@@ -100,7 +100,7 @@ When using OAuth 2.0 with Hoppscotch Cloud, the **callback URL** is fixed to `ht
 
 ## Digest
 
-Digest Auth is a way to verify your identity without transmitting plain text passwords. Instead of sending your credentials directly as plain-text, it uses a challenge-response system to keep your information safe. When you attempt to access a restricted resource, the server responds with a `401 Unauthorized` status and a `WWW-Authenticate` header. This header contains essential information, including a unique challenge that you will use to generate a valid response.
+Digest Auth is a way to verify your identity without transmitting plain-text passwords. Instead of sending your credentials directly as plain-text, it uses a challenge-response system to keep your information safe. When you attempt to access a restricted resource, the server responds with a `401 Unauthorized` status and a `WWW-Authenticate` header. This header contains essential information, including a unique challenge that you will use to generate a valid response.
 
 To configure Digest Auth in Hoppscotch, start by entering your **Username** and **Password**. For added security, you can also provide optional parameters like Realm and Nonce from the `WWW-Authenticate` header. Choose the appropriate **Algorithm** for hashing and define the **Quality of Protection (QoP)** to further secure your requests. You can also specify parameters such as **Nonce Count**, **Client Nonce**, and **Opaque** to further bolster the authentication process.
 
