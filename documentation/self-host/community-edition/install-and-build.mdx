@@ -279,7 +279,7 @@ Database migration not found. Please check the documentation for assistance: htt
 It means the user is trying to start the backend (or AIO) service before the database has all the relevant tables in it. In order to run the migration to populate the database run the following command.
 
 ```bash
-docker run -it --entrypoint sh --env-file .env <container_name>
+docker run -it --entrypoint sh --env-file .env <image_name>
 ```
 
 Making sure to pass in the `.env` file containing the right `.env` variables for the instance. On executing the aforementioned command will result in a shell being opened inside a instance of the container following which user can execute a database migration normally with
