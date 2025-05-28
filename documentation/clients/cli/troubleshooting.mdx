@@ -55,11 +55,9 @@ hopp test  [-e <non-existent-env-file-path>] <non-existent-collection-file-path>
 - The supplied server URL doesn't conform to URL semantics (received `ERR_INVALID_URL` as the error code from the network call). For instance, missing a protocol (e.g., `http://` or `https://`), having an invalid structure, or containing illegal characters.
 - Couldn't find the server because the domain name couldn't be resolved (received `ENOTFOUND` as the error code from the network call). For instance, a typo in the domain name.
 
-
 ```bash 
 hopp test  [-e <environment-id>] <collection-id> [--token <access_token>] [--server <invalid-server-url>]
 ```
-
 
 ## `SERVER_CONNECTION_REFUSED`
 > **Unable to connect to the server. Please check your network connection or server instance URL and try again.**

@@ -24,6 +24,15 @@ Hoppscotch environment provides support for two types of variables
     
 <Tip>Secret variables values will not be exported when an environment is exported.</Tip>
 
+{/* initial and current values */}
+
+## Types of Values in an Environment
+
+An environment variable can have two types of values:
+
+1. **Initial Value** - The initial value of the variable when it is created. This value is used when the environment is first loaded.
+2. **Current Value** - The current value of the variable, which can be modified at any time. This value is used when the environment is active.
+
 ## Shared Environment Access
 
 |  | Environment Variable | Secret Variable |
@@ -56,7 +65,6 @@ Create a copy of an existing environment to modify or test different configurati
 3. From the dropdown menu, select **Duplicate**. A new environment with the suffix `- Duplicate` will be created.
 
 <Note> Secret variable values will not be copied to the duplicated environment. </Note>
-
 
 <CardGroup cols={1}>
   <Card title="Creating environment variables from client" iconType="light" icon="circle-arrow-right" href="/documentation/getting-started/rest/environment-variables">
