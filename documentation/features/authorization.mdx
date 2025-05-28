@@ -111,6 +111,15 @@ AWS Signature is a method used to authenticate API requests made to AWS services
 
 To set up `AWS Signature` in Hoppscotch, enter your AWS **Access Key** and **Secret Key** to sign your requests. For advanced configuration, you can also provide details like the **AWS Region** where your service is hosted (like _us-east-1_), the **Service Name** of the specific AWS service you're accessing (such as _s3 or dynamodb_), and a **Service Token** if you're using temporary security credentials.
 
+## JWT
+
+JWT (JSON Web Token) is a compact and secure way to transmit information between parties as a JSON object. It is commonly used for authentication and information exchange in web applications. In Hoppscotch, you can easily configure JWT authentication by selecting `JWT` from the **Authorization** tab.
+You can then enter your **JWT Token** directly, or if you have a JWT secret, you can use it to generate the token. This token will be included in the request header as:
+
+```
+Authorization: Bearer <your_jwt_token>
+```
+
 ---
 
 # Managing Authorization at the Collection Level
