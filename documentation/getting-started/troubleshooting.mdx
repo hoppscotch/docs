@@ -8,7 +8,7 @@ If you're facing issues with Hoppscotch, you can try the following steps to reso
 
 ## Connectivity
 
-If Hoppscotch fails to send your request, it could be because you may be experiencing connectivity issues. Check your connection by attempting to open a page in your web browser.
+If Hoppscotch fails to send your request, it could be because you are experiencing connectivity issues. Check your connection by attempting to open a page in your web browser.
 
 ## Firewalls
 
@@ -26,7 +26,7 @@ It could also be possible that Hoppscotch might be making invalid requests to yo
 
 CORS or Cross-Origin Resource Sharing is a security mechanism built into modern web browsers. It may cause the following error when testing API endpoints or some other API endpoints with Hoppscotch.
 
-This is because the API not sending the proper API headers (`Access-Control-Allow-Origin`) and can be solved in two ways.
+This is because the API is not sending the proper API headers (`Access-Control-Allow-Origin`) and can be solved in two ways.
 
 1. Ask whoever manages the API to add CORS support.
 2. Use Middleware like [ProxyScotch](https://github.com/hoppscotch/proxyscotch) for hosted APIs & the [Hoppscotch Browser Extension](https://github.com/hoppscotch/hoppscotch-extension) for locally served APIs, and enable it in the "**Interceptor**" section of "**Settings**".
