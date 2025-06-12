@@ -75,6 +75,8 @@ The RESTful APIs designed for User Management enable **admins** to perform a wid
 | Update User Details | Allows admins to update the details of an existing user. | PATCH | `<base-url>/v1/infra/users/{uid}` |
 | Manage Admin Status | Enables admins to add or remove admin status for an existing user. | PATCH | `<base-url>/v1/infra/users/{uid}/admin-status` | 
 | Fetch User's involvement in Workspaces | Retrieves workspace details that a user is part of, including their role. | GET | `<base-url>/v1/infra/users/{uid}/workspaces` |
+| Deactivate User Account | Allows admins to deactivate a user account, preventing them from accessing the instance until reactivated. | POST | `<base-url>/v1/infra/users/{uid}/deactivate` |
+| Reactivate User Account | Allows admins to activate a user account that was previously deactivated. | POST | `<base-url>/v1/infra/users/{uid}/reactivate` |
 
 <Info> To interact with the **User Management APIs**, ensure that your backend service is running, either on your local machine or on a server. The API documentation is accessible at the `/api-docs` endpoint relative to your backend service URL. For example, if your backend is running locally, you can access the API docs at [http://localhost:3170/api-docs](http://localhost:3170/api-docs). You can also retrieve the OpenAPI v3 JSON format at [http://localhost:3170/api-docs-json](http://localhost:3170/api-docs-json). </Info>
 
