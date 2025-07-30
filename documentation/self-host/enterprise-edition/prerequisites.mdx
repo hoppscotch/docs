@@ -74,7 +74,7 @@ Verify Git installation by running the following command in your terminal:
 git --version
 ```
 
-## Email delivery
+## Email delivery (optional)
 
 Hoppscotch comes with support for easy integrations with 3rd party SMTP providers. You will need emails so that you can invite your team to use Hoppscotch and for emails to work, you will need to set up proper SMTP configuration as described below.
 
@@ -116,17 +116,16 @@ postgresql://username:password@url:5432/dbname
 ```
 ## ClickHouse
 
-Hoppscotch uses ClickHouse to store all audit logs. You can use a locally hosted ClickHouse instance via [Docker](https://hub.docker.com/r/clickhouse/clickhouse-server) or a [managed instance](https://clickhouse.com/cloud). Ensure that the values for the following environment variables are assigned properly.
+Hoppscotch uses ClickHouse to store all audit logs. You can use a locally hosted ClickHouse instance via [Docker](https://hub.docker.com/r/clickhouse/clickhouse-server) or a [managed instance](https://clickhouse.com/cloud). Ensure that the values for the following are assigned properly in admin dashboard.
 
 ```bash
 #ClickHouse Config
-ALLOW_AUDIT_LOGS=false # set to true to enable audit logging
 CLICKHOUSE_HOST=**************
 CLICKHOUSE_USER=default
 CLICKHOUSE_PASSWORD=''
 ```
 
-You can disable audit logging from your instance of Hoppscotch by setting the `ALLOW_AUDIT_LOGS` environment variable to `false`. You can read more about audit logs [here](/guides/articles/audit-logs).
+You can enable/disable audit logging from your instance of Hoppscotch from admin dashboard. You can read more about audit logs [here](/guides/articles/audit-logs).
 
 ## OAuth
 
@@ -141,7 +140,7 @@ You also need to configure an OAuth provider to enable third-party authenticatio
 
 ### Choosing OAuth Providers
 
-Hoppscotch provides you with the ability to choose which authentication providers you want to use in the app. You can do this by specifying the required providers in the environment variable
+Hoppscotch allows you to choose which authentication providers to enable for your workspace during the onboarding flow in the admin dashboard. You can easily select from options like Google, GitHub, Microsoft, SAML, Open ID Connect and Email directly through the setup interface.
 
 ```yaml
 VITE_ALLOWED_AUTH_PROVIDERS=GOOGLE,GITHUB,MICROSOFT,EMAIL,SAML,OIDC
@@ -181,7 +180,7 @@ OIDC_SCOPE=openid profile email
 
 To configure the third-party authentication, you will need to generate a valid OAuth client ID and client secret for the OAuth provider of your choice. You will also need to provide a valid callback URL for the OAuth provider.
 
-For example, if you are using GitHub as your OAuth provider, you will need to generate a valid OAuth client ID and client secret for GitHub. You will also need to provide a valid callback URL for GitHub. The environment variables for the GitHub OAuth provider will look like something shown below:
+For example, if you are using GitHub as your OAuth provider, you will need to generate a valid OAuth client ID and client secret for GitHub. You will also need to provide a valid callback URL for GitHub. The credentials for the GitHub OAuth provider can be entered during onboarding in the admin dashboard, and will look like the following:
 
 ```yaml
 GITHUB_CLIENT_ID=*****

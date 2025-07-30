@@ -66,7 +66,7 @@ Verify Git installation by running the following command in your terminal:
 git --version
 ```
 
-## Email delivery
+## Email delivery (optional)
 
 Hoppscotch comes with support for easy integrations with 3rd party SMTP providers. You will need emails so that you can invite your team to use Hoppscotch and for emails to work, you will need to set up proper SMTP configuration as described below.
 
@@ -118,7 +118,7 @@ You also need to configure an OAuth provider to enable third-party authenticatio
 
 ### Choosing OAuth Providers
 
-Hoppscotch provides you with the ability to choose which authentication providers you want to use in the app. You can do this by specifying the required providers in the environment variable
+Hoppscotch allows you to choose which authentication providers to enable for your workspace during the onboarding flow in the admin dashboard. You can easily select from options like Google, GitHub, Microsoft, and Email directly through the setup interface.
 
 ```yaml
 VITE_ALLOWED_AUTH_PROVIDERS=GOOGLE,GITHUB,MICROSOFT,EMAIL
@@ -128,7 +128,7 @@ VITE_ALLOWED_AUTH_PROVIDERS=GOOGLE,GITHUB,MICROSOFT,EMAIL
 
 To configure the third-party authentication, you will need to generate a valid OAuth client ID and client secret for the OAuth provider of your choice. You will also need to provide a valid callback URL for the OAuth provider.
 
-For example, if you are using GitHub as your OAuth provider, you will need to generate a valid OAuth client ID and client secret for GitHub. You will also need to provide a valid callback URL for GitHub. The environment variables for the GitHub OAuth provider will look like something shown below:
+For example, if you are using GitHub as your OAuth provider, you will need to generate a valid OAuth client ID and client secret for GitHub. You will also need to provide a valid callback URL for GitHub. The credentials for the GitHub OAuth provider can be entered during onboarding in the admin dashboard, and will look like the following:
 
 ```yaml
 GITHUB_CLIENT_ID=*****
