@@ -36,14 +36,15 @@ The Users section empowers you to effectively control user-related actions. It s
 Admins can easily bring new users to their Hoppscotch instance by sending them invitations. Depending on whether SMTP is configured, the process differs slightly. Here's how you can invite users:
 
 #### - With SMTP Configured
-When SMTP is enabled (`MAILER_SMTP_ENABLE=true`) in your environment file and the required SMTP configurations for email login are correctly set, follow these steps to invite a new user:
+When SMTP is enabled from the admin dashboard and the required SMTP configurations are correctly set, follow these steps to invite a new user:
 1. Go to the **Users** section within the Admin Dashboard.
 2. Select the **Invite User** button to open the invitation modal.
 3. Input the email address of the user you want to invite and click **Add User** to send an invitation.
 4. An email containing an invite link (`http://localhost:3000`) will be sent to the invitee. They can use this link to log in to Hoppscotch web app.
 5. Alternatively, you can copy the invite link and share it through other platforms with the new user, but make sure the user signs in using the email address specified during the invitation process.
+
 #### - Without SMTP Configured
-If SMTP is disabled (`MAILER_SMTP_ENABLE=false`) in your environment file, the invitation process is slightly different:
+If SMTP is disabled from the admin dashboard, the invitation process is slightly different:
 1. Go to the **Users** section within the Admin Dashboard.
 2. Select the **Invite User** button to open the invitation modal.
 3. Input the email address of the user you want to invite and click **Add User**.
