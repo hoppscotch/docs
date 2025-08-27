@@ -117,10 +117,10 @@ Follow the steps below to deploy Hoppscotch on your DigitalOcean Kubernetes clus
     # Go to helm charts directory
     cd helm-charts
     
-    # Install the chart for community edition
+    # Install the chart for Community Edition
     helm install community-hoppscotch ./charts/shc
     
-    # Install the chart for enterprise edition
+    # Install the chart for Enterprise Edition
     helm install enterprise-hoppscotch ./charts/she
     ```
   </Step>
@@ -162,10 +162,10 @@ Below are some commands to help you with ongoing management tasks for your deplo
 To apply changes to the configuration (for example, modifying the `values.yaml` file), use the following command to upgrade the deployment:
 
 ```bash
-# Upgrade the chart for community edition
+# Upgrade the chart for Community Edition
 helm upgrade community-hoppscotch ./charts/shc -f ./charts/values.yaml
 
-# Upgrade the chart for enterprise edition
+# Upgrade the chart for Enterprise Edition
 helm upgrade enterprise-hoppscotch ./charts/she -f ./charts/values.yaml
 ```
 
@@ -174,10 +174,10 @@ helm upgrade enterprise-hoppscotch ./charts/she -f ./charts/values.yaml
 To uninstall Hoppscotch and clean up the resources, you can remove both community and enterprise editions: 
 
 ```bash
-# Uninstall the community edition
+# Uninstall the Community Edition
 helm uninstall community-hoppscotch
 
-# Uninstall the enterprise edition
+# Uninstall the Enterprise Edition
 helm uninstall enterprise-hoppscotch
 ```
 

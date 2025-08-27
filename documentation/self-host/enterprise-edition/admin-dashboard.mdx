@@ -23,7 +23,7 @@ Get insights into your organization's usage of Hoppscotch.
 
 ## Manage users
 
-<Info>In Hoppscotch enterprise edition, a user needs to be explicitly invited by the admin to create an account on the platform.</Info>
+<Info>In Hoppscotch Enterprise Edition, a user needs to be explicitly invited by the admin to create an account on the platform.</Info>
 
 The Users section empowers you to effectively control user-related actions. It streamlines the process of user management, making it simple to oversee the user base.
 
@@ -32,10 +32,10 @@ The Users section empowers you to effectively control user-related actions. It s
 - Admin Privileges: Elevate users to administrative roles for increased permissions.
 - User Deletion: Delete users when necessary.
 
-### Invite Users to your Hoppscotch Instance
+### Invite Users
 Admins can easily bring new users to their Hoppscotch instance by sending them invitations. Depending on whether SMTP is configured, the process differs slightly. Here's how you can invite users:
 
-#### - With SMTP Configured
+#### With SMTP
 When SMTP is enabled from the admin dashboard and the required SMTP configurations are correctly set, follow these steps to invite a new user:
 1. Go to the **Users** section within the Admin Dashboard.
 2. Select the **Invite User** button to open the invitation modal.
@@ -43,7 +43,7 @@ When SMTP is enabled from the admin dashboard and the required SMTP configuratio
 4. An email containing an invite link (`http://localhost:3000`) will be sent to the invitee. They can use this link to log in to Hoppscotch web app.
 5. Alternatively, you can copy the invite link and share it through other platforms with the new user, but make sure the user signs in using the email address specified during the invitation process.
 
-#### - Without SMTP Configured
+#### Without SMTP
 If SMTP is disabled from the admin dashboard, the invitation process is slightly different:
 1. Go to the **Users** section within the Admin Dashboard.
 2. Select the **Invite User** button to open the invitation modal.
@@ -56,14 +56,46 @@ Within the **Users** section, admins can view a list of all users who have been 
 - **Invited By:** The email address of the user who sent the invitation
 - **Invited on:** The date and time when the invitation was sent.
 
-<Icon icon="right-to-bracket" iconType="solid" /> **You can also consider the following actions:**
+**You can also consider the following actions:**
 
 - **Copy Invite Link:** If you need to resend the invitation, you can easily `copy` the invite link and share it with the user via any communication platform.
 - **Revoke Invitation:** If you wish to cancel an invitation, simply click the `Revoke Invitation` button next to the specific user invite in the **Action** column. This will remove the pending invite from the list and prevent the user from accessing your Hoppscotch instance using that link.
 
-### APIs for User Management
+## Manage Workspaces
 
-The RESTful APIs designed for User Management enable **admins** to perform a wide range of user-related actions, such as inviting new users, deleting existing ones, and updating user details. These APIs provide **admins** with the ability to efficiently manage user accounts and permissions. The table below introduces **nine** key APIs that empower **admins** with greater control over user management.
+In the Manage Workspace section, you can efficiently handle workspace-related operations, ensuring that collaborations and projects run smoothly.
+
+- Workspace Creation: Establish new workspaces tailored to specific projects or departments.
+- Workspace Editing: Modify workspace details and configurations as needed.
+- Workspace Deletion: Disband workspaces that are no longer relevant.
+- User Memberships: View and manage the users associated with each workspace.
+
+## Infra-tokens
+
+InfraTokens are special UUID tokens that provide a secure way for admins to interface with Self-Hosted APIs. They are exclusively accessible to admins, ensuring that only authorized personnel can manage sensitive operations. Unlike Personal Access Tokens, which are tied to individual users, InfraTokens are scoped at the instance level, granting access to all admins within the instance.
+
+#### Generate an InfraToken
+
+Follow these steps to create a new InfraToken:
+
+1. After logging into your Self-Hosted instance using your admin credentials, you can access the **“Infra Tokens”** under the “Settings” section from your admin dashboard.
+2. Click on **"Generate new token."**
+3. Enter a title for the token and select an expiration date. Available options include 7 days, 30 days, 60 days, 90 days, or no expiry.
+4. After providing the necessary details, confirm the creation. **The new InfraToken will be displayed once, make sure to copy it securely** to your clipboard for immediate use.
+5. If you decide that you no longer need the token, you can delete it by navigating back to **“Infra Tokens"** section.
+
+<Note> The details of the admin who created the InfraToken are stored for audit purposes. All admins can view and manage these tokens. </Note>
+
+#### How to use InfraTokens
+InfraTokens are to be used as **Bearer tokens**. When making requests to the User Management APIs, include the `InfraToken` in the `Authorization` header as follows:
+
+```bash
+Bearer <Your_InfraToken>
+```
+
+#### APIs for User Management
+
+The RESTful APIs designed for User Management enable admins to perform a wide range of user-related actions, such as inviting new users, deleting existing ones, and updating user details. These APIs provide admins with the ability to efficiently manage user accounts and permissions. The table below introduces nine key APIs that give admins greater control over user management.
 
 | User Activity | Description | Method | Endpoint | 
 | --- | --- | --- | --- | 
@@ -81,39 +113,7 @@ The RESTful APIs designed for User Management enable **admins** to perform a wid
 
 <Info> To interact with the **User Management APIs**, ensure that your backend service is running, either on your local machine or on a server. The API documentation is accessible at the `/api-docs` endpoint relative to your backend service URL. For example, if your backend is running locally, you can access the API docs at [http://localhost:3170/api-docs](http://localhost:3170/api-docs). You can also retrieve the OpenAPI v3 JSON format at [http://localhost:3170/api-docs-json](http://localhost:3170/api-docs-json). </Info>
 
-### Infra-tokens
-
-InfraTokens are special UUID tokens that provide a secure way for admins to interface with Self-Hosted APIs. They are exclusively accessible to admins, ensuring that only authorized personnel can manage sensitive operations. Unlike Personal Access Tokens, which are tied to individual users, InfraTokens are scoped at the instance level, granting access to all admins within the instance.
-
-#### Steps to Generate an InfraToken
-
-Follow these steps to create a new InfraToken:
-
-1. After logging into your Self-Hosted instance using your admin credentials, you can access the **“Infra Tokens”** under the “Settings” section from your admin dashboard.
-2. Click on **"Generate new token."**
-3. Enter a title for the token and select an expiration date. Available options include 7 days, 30 days, 60 days, 90 days, or no expiry.
-4. After providing the necessary details, confirm the creation. **The new InfraToken will be displayed once, make sure to copy it securely** to your clipboard for immediate use.
-5. If you decide that you no longer need the token, you can delete it by navigating back to **“Infra Tokens"** section.
-
-<Note> The details of the admin who created the InfraToken are stored for audit purposes. All admins can view and manage these tokens. </Note>
-
-#### How to Use InfraTokens
-InfraTokens are to be used as **Bearer tokens**. When making requests to the User Management APIs, include the `InfraToken` in the `Authorization` header as follows:
-
-```bash
-Bearer <Your_InfraToken>
-```
-
-## Manage Workspaces
-
-In the Manage Workspace section, you can efficiently handle workspace-related operations, ensuring that collaborations and projects run smoothly.
-
-- Workspace Creation: Establish new workspaces tailored to specific projects or departments.
-- Workspace Editing: Modify workspace details and configurations as needed.
-- Workspace Deletion: Disband workspaces that are no longer relevant.
-- User Memberships: View and manage the users associated with each workspace.
-
-### APIs for Workspace Management
+#### APIs for Workspace Management
 
 We've introduced new **APIs** to make **workspace management** and **collaboration** easier for **admins**. These APIs enable quick actions like creating new workspaces, updating existing workspace details, and deleting workspaces as needed. Check out the table below for **fourteen** APIs that give admins a greater control over managing Hoppscotch workspaces.
 

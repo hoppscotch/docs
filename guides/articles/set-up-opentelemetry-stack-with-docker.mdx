@@ -1,0 +1,200 @@
+---
+sidebarTitle: OpenTelemetry Integration
+title: Set Up OpenTelemetry Stack with Docker
+description: A guide to setting up the OpenTelemetry stack using Docker.
+---
+
+This guide will help you set up the **OpenTelemetry Collector** on your own server and connect it with **Hoppscotch**.
+
+Hoppscotch will send telemetry data (traces and metrics) to your **OpenTelemetry Collector** instance. From the **Hoppscotch Admin Dashboard**, you can easily configure the connection to your deployed Collector.
+
+<Frame>
+    <img src="/images/OpenTelemetry.png" /> 
+</Frame>
+
+Once connected, you can integrate with observability tools such as Jaeger (for traces), Prometheus (for metrics), and Grafana (for dashboards).
+
+# Architecture Overview
+
+1. **Hoppscotch** sends telemetry data to your **OpenTelemetry Collector**.
+2. The **Collector** processes this data and exports it to your preferred backends:
+    - Jaeger (traces)
+    - Prometheus (metrics)
+    - Grafana (visualizations, via Prometheus)
+3. You can also enable debugging by exporting logs directly to the console.
+
+<AccordionGroup>
+    <Accordion title="Step 1: Configure OpenTelemetry Collector">
+        Create a configuration file named `otel-collector-config.yaml`:
+        
+        ```bash
+        receivers:
+        otlp:
+            protocols:
+            grpc:
+                endpoint: 0.0.0.0:4317
+            http:
+                endpoint: 0.0.0.0:4318
+        
+        processors:
+        batch:
+            timeout: 1s
+            send_batch_size: 1024
+        memory_limiter:
+            limit_mib: 512
+            check_interval: 1s
+        
+        exporters:
+        # Export traces to Jaeger via OTLP (using gRPC)
+        otlp/jaeger:
+            endpoint: jaeger:4317
+            tls:
+            insecure: true
+        
+        # Export metrics to Prometheus
+        prometheus:
+            endpoint: "0.0.0.0:8889"
+        
+        # Debug exporter - logs telemetry data to console
+        debug:
+            verbosity: detailed
+            sampling_initial: 5
+            sampling_thereafter: 200
+        
+        service:
+        pipelines:
+            traces:
+            receivers: [otlp]
+            processors: [memory_limiter, batch]
+            exporters: [otlp/jaeger, debug]
+        
+            metrics:
+            receivers: [otlp]
+            processors: [memory_limiter, batch]
+            exporters: [prometheus, debug]
+        
+        ```
+    </Accordion>
+    <Accordion title="Step 2: Configure Prometheus">
+        Create a file named `prometheus.yml`:
+        
+        ```bash
+        global:
+        scrape_interval: 5s
+        evaluation_interval: 5s
+        
+        scrape_configs:
+        - job_name: "otel-collector"
+            static_configs:
+            - targets: ["otel-collector:8889"]
+            scrape_interval: 5s
+        
+        - job_name: "prometheus"
+            static_configs:
+            - targets: ["localhost:9090"]
+        
+        ```
+    </Accordion>
+    <Accordion title="Step 3: Configure Grafana Data Source">
+        Provision Grafana with Prometheus as a data source.
+        
+        Create `grafana/provisioning/datasources.yaml`:
+        
+        ```bash
+        apiVersion: 1
+        
+        datasources:
+        - name: Prometheus
+            type: prometheus
+            access: proxy
+            url: http://prometheus:9090
+            isDefault: true
+        
+        ```
+    </Accordion>
+    <Accordion title="Step 4: Docker Compose Setup">
+        Use the following `docker-compose.yaml` to deploy everything:
+        
+        ```bash
+        version: "3.8"
+        
+        services:
+        # OpenTelemetry Collector
+        otel-collector:
+            image: otel/opentelemetry-collector-contrib:0.92.0
+            container_name: otel-collector
+            command: ["--config=/etc/otel-collector-config.yaml"]
+            volumes:
+            - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+            ports:
+            - "4317:4317" # OTLP gRPC receiver
+            - "4318:4318" # OTLP HTTP receiver
+            - "8889:8889" # Prometheus metrics
+            depends_on:
+            - jaeger
+            - prometheus
+            networks:
+            - observability
+        
+        # Jaeger (for traces)
+        jaeger:
+            image: jaegertracing/all-in-one:latest
+            container_name: jaeger
+            ports:
+            - "16686:16686" # Jaeger UI
+            environment:
+            - COLLECTOR_OTLP_ENABLED=true
+            networks:
+            - observability
+        
+        # Prometheus (for metrics)
+        prometheus:
+            image: prom/prometheus:latest
+            container_name: prometheus
+            ports:
+            - "9090:9090"
+            volumes:
+            - ./prometheus.yml:/etc/prometheus/prometheus.yml
+            networks:
+            - observability
+        
+        # Grafana (for dashboards)
+        grafana:
+            image: grafana/grafana:latest
+            container_name: grafana
+            ports:
+            - "3000:3000"
+            environment:
+            - GF_SECURITY_ADMIN_PASSWORD=***** # replace with a secure password
+            volumes:
+            - grafana-storage:/var/lib/grafana
+            - ./grafana/provisioning:/etc/grafana/provisioning
+            networks:
+            - observability
+        
+        volumes:
+        grafana-storage:
+        
+        networks:
+        observability:
+            driver: bridge
+        
+        ```
+    </Accordion>
+    <Accordion title="Step 5: Run the Stack">
+        Start the observability stack:
+        
+        ```bash
+        docker-compose up -d
+        ```
+        
+        - **Jaeger UI**: [http://localhost:16686](http://localhost:16686/)
+        - **Prometheus**: [http://localhost:9090](http://localhost:9090/)
+        - **Grafana**: [http://localhost:3000](http://localhost:3000/)
+    </Accordion>
+    <Accordion title="Step 6: Connect Hoppscotch">
+        From the **Hoppscotch Admin Dashboard**, configure the OpenTelemetry Collector endpoint (**HTTP**).
+    </Accordion>
+</AccordionGroup>
+
+Once connected, Hoppscotch will begin sending telemetry data, which you can observe in **Jaeger**, **Prometheus**, and **Grafana**.
