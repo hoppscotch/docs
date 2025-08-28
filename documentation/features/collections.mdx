@@ -54,10 +54,16 @@ To export a collection, click on the "**Export**" button on the collection's opt
 
 Collection properties enable you to define settings that universally apply to all requests within the collection.
 
-Authorization details and headers can be specified at the collection level. Subfolders and individual requests within the collection can either inherit these properties or define their custom authentication and headers.
+At the collection level, you can configure:
+
+- Authorization
+- Headers
+- Variables
+
+Subfolders and individual requests within the collection inherit these properties by default and can override them when needed.
 
 To set collection properties:
 
 1. Right-click on a collection or a subfolder within a collection to open its properties.
-2. Specify the authorization and headers that all nested requests or folders should adhere to.
-3. If a subfolder should inherit the properties of a parent collection, specify the authorization as "inherit" and leave the headers.
+2. Specify the authorization, headers, and variables that all nested requests or folders should adhere to.
+3. If a subfolder should inherit the properties of a parent collection, specify the authorization as "inherit" and leave headers unchanged. Variables inherit automatically—override by redefining the same variable in the child.
