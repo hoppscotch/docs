@@ -201,11 +201,11 @@ description: Write pre-request scripts and build tests.
     hopp.env.global.setInitial("baseURL", "https://httpbin.org");
     ```
 
-    ## The `hopp.request` Namespace
+    ## `hopp.request` Namespace
 
     Request manipulation with immutable properties and dedicated mutation functions.
 
-    ### Read-only Properties
+    #### Read-only Properties
 
     ### `hopp.request.url`
 
@@ -255,7 +255,7 @@ description: Write pre-request scripts and build tests.
     const auth = hopp.request.auth;
     ```
 
-    ### Mutation Functions (Pre-request Phase Only)
+    #### Mutation Functions (Pre-request Phase Only)
 
     ### `hopp.request.setUrl(url: string)`
 
@@ -326,7 +326,7 @@ description: Write pre-request scripts and build tests.
     Sets the body of the request.
 
     ```javascript
-    hopp.request.setBody({ content: '{"key": "value"}' });
+    hopp.request.setBody({ body: '{"key": "value"}' });
     ```
 
     ### `hopp.request.setAuth(auth: Partial<HoppRESTAuth>)`
@@ -337,7 +337,7 @@ description: Write pre-request scripts and build tests.
     hopp.request.setAuth({ authType: "bearer", token: "token" });
     ```
 
-    ### Request Variables
+    #### Request Variables
 
     ### `hopp.request.variables.get(key: string)`
 
@@ -357,11 +357,11 @@ description: Write pre-request scripts and build tests.
 
     > Please note that only updates to request variables get persisted and reflected in the UI while the remaining are specific to the session.
 
-    ## The `hopp.response` Namespace
+    ## `hopp.response` Namespace
 
     Response access with multiple data formats and comprehensive metadata.
 
-    ### Response Metadata
+    #### Response Metadata
 
     ### `hopp.response.statusCode`
 
@@ -421,7 +421,7 @@ description: Write pre-request scripts and build tests.
     const bytes = hopp.response.body.bytes();
     ```
 
-    ## The `hopp.cookies` Namespace
+    ## `hopp.cookies` Namespace
 
     Domain-aware cookie management with comprehensive CRUD operations.
 
@@ -473,9 +473,9 @@ description: Write pre-request scripts and build tests.
     hopp.cookies.clear("example.com");
     ```
 
-    ## The `hopp.test` and `hopp.expect` Testing Framework
+    ## `hopp.test` and `hopp.expect` Testing Framework
 
-    Comprehensive testing API with custom assertions for API testing.
+    Comprehensive testing API with custom assertions and Chai.js-powered BDD assertions for advanced API testing.
 
     ### `hopp.test(testName: string, testFunction: () => void)`
 
@@ -489,13 +489,13 @@ description: Write pre-request scripts and build tests.
 
     ### `hopp.expect(actual: any)`
 
-    Returns an expectation object for assertions.
+    Returns an expectation object for assertions. Hoppscotch extends the testing framework with comprehensive Chai.js BDD assertion support, enabling advanced testing patterns with 50+ assertion methods.
 
     ```javascript
     hopp.expect(value).toBe(expected);
     ```
 
-    ### Basic Custom Assertions
+    #### Basic Custom Assertions
 
     ### `hopp.expect(value).toBe(expected: any)`
 
@@ -529,7 +529,7 @@ description: Write pre-request scripts and build tests.
     hopp.expect([1,2,3]).toInclude(2);
     ```
 
-    ### HTTP Status Code Level Assertions
+    #### HTTP Status Code Level Assertions
 
     ### `hopp.expect(statusCode).toBeLevel2xx()`
 
@@ -563,7 +563,7 @@ description: Write pre-request scripts and build tests.
     hopp.expect(500).toBeLevel5xx();
     ```
 
-    ### Negation Support
+    #### Negation Support
 
     All assertions support `.not` for negation.
 
@@ -575,9 +575,220 @@ description: Write pre-request scripts and build tests.
     hopp.expect(200).not.toBeLevel4xx();
     ```
 
-    ## The `pm` Namespace - Postman Compatibility Layer
+    ## Chai.js Assertion Support
 
-    Postman API compatibility for seamless migration (foundational and expanding):
+    Hoppscotch includes comprehensive Chai.js BDD assertion support through `hopp.expect()` for native scripts and `pm.expect()` for Postman compatibility, enabling advanced testing patterns with 50+ assertion methods.
+
+    ### Type Assertions
+
+    Check value types and instances:
+
+    ```javascript
+    // Basic type checking
+    hopp.test("Type validation", () => {
+      hopp.expect(hopp.response.statusCode).to.be.a('number')
+      hopp.expect(hopp.response.body.asJSON()).to.be.an('object')
+      hopp.expect([1, 2, 3]).to.be.an.instanceOf(Array)
+      hopp.expect(new Date()).to.be.an.instanceOf(Date)
+    })
+    ```
+
+    ### Equality Assertions
+
+    Test for strict and deep equality:
+
+    ```javascript
+    hopp.test("Equality checks", () => {
+      hopp.expect(hopp.response.statusCode).to.equal(200)
+      hopp.expect(hopp.response.body.asJSON()).to.eql({ userId: 1, name: 'John' })
+      hopp.expect(hopp.response.statusCode).to.deep.equal(200)
+    })
+    ```
+
+    ### Property Assertions
+
+    Validate object properties and nested structures:
+
+    ```javascript
+    hopp.test("Response structure", () => {
+      const data = hopp.response.body.asJSON()
+      hopp.expect(data).to.have.property('userId')
+      hopp.expect(data).to.have.own.property('email')
+      hopp.expect(data).to.have.nested.property('profile.name')
+      hopp.expect(data).to.have.all.keys('id', 'name', 'email')
+      hopp.expect(data).to.have.any.keys('id', 'name')
+    })
+    ```
+
+    ### Collection and Array Assertions
+
+    Validate arrays and collections:
+
+    ```javascript
+    hopp.test("Array validation", () => {
+      const tags = hopp.response.body.asJSON().tags
+      hopp.expect(tags).to.have.lengthOf(3)
+      hopp.expect(tags).to.include('nodejs')
+      hopp.expect(tags).to.have.members(['nodejs', 'javascript', 'api'])
+      hopp.expect(tags).to.have.ordered.members(['api', 'javascript', 'nodejs'])
+    })
+    ```
+
+    ### Numeric Comparisons
+
+    Perform numeric comparisons and range checks:
+
+    ```javascript
+    hopp.test("Numeric assertions", () => {
+      const responseTime = hopp.response.responseTime
+      hopp.expect(responseTime).to.be.below(500)
+      hopp.expect(responseTime).to.be.above(0)
+      hopp.expect(responseTime).to.be.within(0, 1000)
+      hopp.expect(3.14159).to.be.closeTo(3.14, 0.01)
+    })
+    ```
+
+    ### String Assertions
+
+    Validate string content and patterns:
+
+    ```javascript
+    hopp.test("String validation", () => {
+      const contentType = hopp.response.headers['content-type']
+      hopp.expect(contentType).to.include('application/json')
+      hopp.expect(contentType).to.match(/^application\/json/)
+      hopp.expect('hello').to.have.lengthOf(5)
+    })
+    ```
+
+    ### Boolean State Assertions
+
+    Check boolean values and states:
+
+    ```javascript
+    hopp.test("Boolean checks", () => {
+      hopp.expect(true).to.be.true
+      hopp.expect(false).to.be.false
+      hopp.expect(1).to.be.ok
+      hopp.expect(null).to.be.null
+      hopp.expect(undefined).to.be.undefined
+      hopp.expect({}).to.exist
+      hopp.expect([]).to.not.be.empty
+    })
+    ```
+
+    ### Complex Assertion Chains
+
+    Combine multiple assertions for comprehensive validation:
+
+    ```javascript
+    hopp.test("Complex validation", () => {
+      const data = hopp.response.body.asJSON()
+      hopp.expect(data)
+        .to.be.an('object')
+        .and.have.property('userId')
+        .that.is.a('number')
+        .and.is.above(0)
+    })
+    ```
+
+    ### Real-World Example: API Pagination
+
+    ```javascript
+    hopp.test("Pagination metadata validation", () => {
+      const data = hopp.response.body.asJSON()
+      
+      // Validate pagination structure
+      hopp.expect(data).to.have.all.keys('items', 'page', 'total', 'hasMore')
+      hopp.expect(data.items).to.be.an.instanceOf(Array)
+      hopp.expect(data.items).to.have.lengthOf.at.most(50)
+      
+      // Validate each item
+      data.items.forEach(item => {
+        hopp.expect(item).to.have.all.keys('id', 'name', 'createdAt')
+        hopp.expect(item.id).to.be.a('string')
+      })
+      
+      // Store next page cursor
+      if (data.hasMore) {
+        hopp.env.active.set('nextPage', String(data.page + 1))
+      }
+    })
+    ```
+
+    ### Complete Assertion Reference
+
+    **Type assertions:**
+    - `.a(type)` / `.an(type)` - Check value type
+    - `.instanceof(constructor)` - Check instance type
+
+    **Equality assertions:**
+    - `.equal(value)` / `.eq(value)` - Strict equality (===)
+    - `.eql(value)` - Deep equality
+
+    **Property assertions:**
+    - `.property(name)` - Has property
+    - `.own.property(name)` - Has own property (not inherited)
+    - `.nested.property(path)` - Has nested property (e.g., 'a.b.c')
+
+    **Collection assertions:**
+    - `.include(value)` / `.contain(value)` - Contains value
+    - `.members(array)` - Has members (order-independent)
+    - `.ordered.members(array)` - Has members in order
+    - `.keys(...keys)` - Has keys
+    - `.lengthOf(n)` - Length equals n
+    - `.lengthOf.at.least(n)` - Minimum length
+    - `.lengthOf.at.most(n)` - Maximum length
+
+    **Comparison assertions:**
+    - `.above(n)` / `.gt(n)` - Greater than
+    - `.below(n)` / `.lt(n)` - Less than
+    - `.at.least(n)` / `.gte(n)` - Greater than or equal
+    - `.at.most(n)` / `.lte(n)` - Less than or equal
+    - `.within(min, max)` - Within range
+    - `.closeTo(expected, delta)` - Approximately equal
+
+    **Boolean assertions:**
+    - `.ok` - Truthy
+    - `.true` - Strictly true
+    - `.false` - Strictly false
+    - `.null` - Strictly null
+    - `.undefined` - Strictly undefined
+    - `.exist` - Not null or undefined
+    - `.empty` - Empty (string, array, object)
+
+    **String assertions:**
+    - `.match(regex)` - Matches regular expression
+    - `.string(substring)` - Contains substring
+
+    **Function assertions:**
+    - `.throw()` / `.throw(ErrorType)` - Throws error
+    - `.respondTo(method)` - Has method
+
+    **Object state assertions:**
+    - `.extensible` - Object.isExtensible()
+    - `.sealed` - Object.isSealed()
+    - `.frozen` - Object.isFrozen()
+
+    **Modifiers:**
+    - `.not` - Negation
+    - `.deep` - Deep comparison
+    - `.own` - Own properties only
+    - `.ordered` - Order matters
+    - `.nested` - Nested property access
+    - `.all` - All items/keys
+    - `.any` - Any items/keys
+    - `.to` / `.be` / `.is` / `.that` / `.and` / `.have` / `.with` - Language chains for readability
+
+    ## `pm` Namespace - Postman Compatibility Layer
+
+    Postman API compatibility for seamless migration with experimental Postman collection import support (v2.0/v2.1). The `pm` namespace provides `pm.expect()` with full Chai.js assertion support for Postman-compatible testing.
+
+    <Info>
+      **Experimental Script Import:** When importing Postman collections, Hoppscotch can now import pre-request scripts and test scripts (experimental feature requiring user consent). This enables you to migrate your existing Postman workflows including their scripting logic.
+    </Info>
+
+    ### Core APIs
 
     ```javascript
     // Environment and variable management
@@ -624,7 +835,114 @@ description: Write pre-request scripts and build tests.
     pm.info.requestId: string
     ```
 
-    ## The `pw` Namespace - Legacy Compatibility
+    ### Postman Chai.js Assertions
+
+    Use `pm.expect()` with full Chai.js BDD assertion support for Postman-compatible scripts:
+
+    ```javascript
+    // Basic assertions
+    pm.test("Status code is 200", () => {
+      pm.expect(pm.response.code).to.equal(200)
+      pm.expect(pm.response.responseTime).to.be.below(500)
+    })
+
+    // Response body validation
+    pm.test("Response structure", () => {
+      const jsonData = pm.response.json()
+      pm.expect(jsonData).to.have.property('success')
+      pm.expect(jsonData.success).to.be.true
+      pm.expect(jsonData.data).to.be.an('array')
+    })
+
+    // Array validation
+    pm.test("Array contains expected items", () => {
+      const items = pm.response.json().items
+      pm.expect(items).to.have.lengthOf.at.least(1)
+      pm.expect(items).to.include('apple')
+      pm.expect(items).to.have.members(['apple', 'banana', 'cherry'])
+    })
+
+    // Header validation
+    pm.test("Headers are correct", () => {
+      pm.expect(pm.response.headers.get('content-type')).to.include('application/json')
+    })
+    ```
+
+    ### Postman Response Assertions
+
+    Postman-specific response validation methods:
+
+    ```javascript
+    pm.test("Response validation", () => {
+      pm.expect(pm.response.to.have.status(200))
+      pm.expect(pm.response.to.have.header('content-type'))
+      pm.expect(pm.response.to.have.body())
+      pm.expect(pm.response.to.have.jsonBody())
+      pm.expect(pm.response.to.be.ok) // 2xx status
+      pm.expect(pm.response.to.be.json)
+    })
+
+    pm.test("JSON body validation", () => {
+      pm.expect(pm.response.to.have.jsonBody('userId'))
+      pm.expect(pm.response.to.have.jsonBody('profile.name'))
+      pm.expect(pm.response.to.have.jsonSchema({
+        type: 'object',
+        required: ['userId', 'email'],
+        properties: {
+          userId: { type: 'number' },
+          email: { type: 'string' }
+        }
+      }))
+    })
+    ```
+
+    ### OAuth Token Handling Example
+
+    ```javascript
+    pm.test("OAuth token handling", () => {
+      const response = pm.response.json()
+      const expiresIn = response.expires_in // 3600 seconds
+      const expiryTime = Date.now() + (expiresIn * 1000)
+
+      // Auto-converts number to string
+      pm.environment.set('token_expiry', expiryTime)
+      pm.environment.set('access_token', response.access_token)
+
+      // Verify storage
+      pm.expect(pm.environment.get('access_token')).to.equal(response.access_token)
+    })
+    ```
+
+    ### PM-Specific Response Assertions
+
+    The following assertions are specific to the Postman compatibility layer:
+
+    - `pm.response.to.have.status(code)` - Status code check
+    - `pm.response.to.have.header(name)` - Header existence
+    - `pm.response.to.have.body()` - Has response body
+    - `pm.response.to.have.jsonBody()` - JSON body exists
+    - `pm.response.to.have.jsonBody(path)` - JSON property exists
+    - `pm.response.to.have.jsonSchema(schema)` - Validates JSON schema
+    - `pm.response.to.be.ok` - 2xx status code
+    - `pm.response.to.be.success` - Alias for ok
+    - `pm.response.to.be.json` - JSON content type
+
+    ### Unsupported Postman Features
+
+    The following Postman features are not currently supported:
+
+    - `pm.sendRequest()`
+    - `pm.visualizer`
+    - `pm.collectionVariables`
+    - `pm.iterationData`
+    - `pm.execution.setNextRequest()`
+    - Legacy patterns like global `responseBody` variable, `require()`, etc.
+
+    <Note>
+      These limitations are documented in error messages when attempting to use unsupported APIs. The supported version range for Postman collections is v2.0/v2.1.
+    </Note>
+
+    ## `pw` Namespace - Legacy Compatibility
 
     Maintained for backwards compatibility with existing scripts:
 
@@ -756,7 +1074,7 @@ description: Write pre-request scripts and build tests.
     pw.env.set("btoa", btoa("Hoppscotch"));
     ```
 
-    ## `pw.env.unset("variable)`
+    ## `pw.env.unset("variable")`
 
     `pw.env.unset()` can be used to remove the value of the variable present in the current active environment
 

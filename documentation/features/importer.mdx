@@ -47,8 +47,12 @@ Import data from other tools into Hoppscotch. You can import data from the follo
 4. Click on the "**Choose file**" button and select the JSON file you exported in step 1.
 5. Click on the "**Import**" button.
 
+<Info>
+  **Experimental Script Import:** When importing Postman collections (v2.0/v2.1), Hoppscotch can now import pre-request scripts and test scripts as an experimental feature. You'll be prompted to consent to this import during the process. This enables seamless migration of your existing Postman workflows including their scripting logic with Chai.js-powered assertions through the `pm` namespace compatibility layer.
+</Info>
+
 ### <Icon icon="download" iconType="solid" />  What's Imported
-- **Collections:** Query parameters from Postman are imported as request parameters and path parameters are imported as request variables. Request bodies, headers, and basic authorization are also imported. Pre-request scripts, test cases, Advanced authorization setups, and collection-level settings aren't imported.
+- **Collections:** Query parameters from Postman are imported as request parameters and path parameters are imported as request variables. Request bodies, headers, and basic authorization are also imported. **Pre-request scripts and test cases** can now be imported (experimental, requires consent). Advanced authorization setups and collection-level settings aren't imported.
 - **Environments:** Imports both regular and secret environment variables directly.
 
 ## Import from Insomnia
