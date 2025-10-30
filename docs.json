@@ -109,6 +109,7 @@
               "documentation/features/widgets",
               "documentation/features/authorization",
               "documentation/features/ai-features",
+              "documentation/features/mock",
               "documentation/features/rest-api-testing",
               "documentation/features/graphql-api-testing",
               "documentation/features/realtime-api-testing"

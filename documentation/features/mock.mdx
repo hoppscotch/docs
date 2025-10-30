@@ -1,0 +1,151 @@
+---
+sidebarTitle: Mock
+title: API Mocking
+description: Create mock servers to simulate API endpoints and iterate on your API design without touching a backend.
+---
+
+Hoppscotch API Mocking lets you stand up mock servers that return predictable responses to HTTP requests. It's ideal for prototyping, front‑end development, contract-first API design, demos, and testing failure/latency scenarios, now built right into Hoppscotch.
+
+## What you can do
+
+- Spin up mock servers without writing code
+- Define routes by method and path (with path params and queries)
+- Return custom status codes, headers, and bodies
+- Choose between static and dynamic responses (with [Variables](/documentation/features/variables))
+- Simulate latency and flaky behaviors for realism
+- Organize and reuse mocks with [Collections](/documentation/features/collections) and [Environments](/documentation/features/environments)
+- Collaborate via [Workspaces](/documentation/features/workspaces)
+
+## Create a mock server
+
+You can create a mock server from scratch or from an existing Collection.
+
+1) New mock server
+	 - Click "New"
+     - Select source collection
+     - Provide a mock server name
+	 - Choose a response delay
+
+2) From a Collection
+	 - Select a Collection menu, then click "Configure Mock Server"
+     - Provide a mock server name
+	 - Choose a response delay
+	 - Each request/example becomes an initial mock route you can refine
+
+Once created, you'll get a mock server URL you can call from your app or your Hoppscotch requests.
+
+<Tip>Keep the mock server URL in an Environment variable, for example `{{MOCK_BASE_URL}}`, so you can swap between mock and real servers easily.</Tip>
+
+## Define routes and responses
+
+A mock server is made of one or more routes. Each route matches an incoming request and returns a configured response.
+
+Route fields:
+- Method: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, `OPTIONS`
+- Path: Supports path params and query strings
+- Matching: Optional header and query matchers to choose the correct example
+- Response: Status code, headers, body, and artificial latency
+
+### Example route
+
+Request
+
+```
+GET /users/42
+```
+
+Response
+
+```json
+{
+	"id": 42,
+	"name": "Jane Doe",
+	"role": "admin"
+}
+```
+
+### Dynamic responses with variables
+
+Use Hoppscotch variables to make responses dynamic and realistic.
+
+- Timestamps: `{{timestamp}}`
+- UUIDs: `{{uuid}}`
+- Environment values: `{{ENV_NAME}}`
+
+Example dynamic body:
+
+```json
+{
+	"requestId": "{{uuid}}",
+	"generatedAt": "{{timestamp}}",
+	"region": "{{REGION}}"
+}
+```
+
+You can also reference variables in headers, for example `X-Request-ID: {{uuid}}`.
+
+## Latency, errors, and headers
+
+Control the realism of your mocks by tuning:
+- Status: 2xx, 3xx, 4xx, 5xx
+- Headers: `Content-Type`, `Cache-Control`, custom headers
+- Delay: Add fixed or ranged latency (for example, 250–1500 ms)
+
+<Tip>Simulate network timeouts by setting a delay higher than your client's timeout to test retry logic.</Tip>
+
+## Using mocks with Collections and Environments
+
+- Save your mock routes alongside requests in a Collection for easy reuse
+- Store the mock server base URL in an Environment, for example `{{MOCK_BASE_URL}}`
+- Switch between mock and real backends by toggling the Environment variable
+
+Example request target:
+
+```
+{{MOCK_BASE_URL}}/orders?limit=10
+```
+
+## Collaboration and sharing
+
+Mocks live in your workspace, so teammates can:
+- View and edit routes and examples
+- Fork Collections and iterate on contracts
+- Use the same Environments to keep URLs and tokens in sync
+
+## Best practices
+
+- Keep contracts first: define mocks before building the backend
+- Add negative cases early (400/401/403/409/429/500) to harden clients
+- Use example names that describe intent (for example, “empty list”, “invalid token”)
+- Centralize variables (for example, `{{MOCK_BASE_URL}}`, `{{REGION}}`) in Environments
+- Review and version mocks with your Collection changes
+
+## Troubleshooting
+
+- 404 from mock: Ensure the method and path match exactly (including base path), and check example matching rules
+- Wrong example returned: Inspect header/query matchers and example priorities
+- CORS errors in the browser: Add `Access-Control-Allow-Origin: *` (or your origin) to the response headers
+- Timeouts: Reduce mock delay or increase your client timeout
+
+## FAQs
+
+### How do mocks differ from live endpoints?
+Mocks return predefined responses based on your rules. They don't execute business logic or touch data stores.
+
+### Can I generate mocks from my existing requests?
+Yes. You can bootstrap routes from saved requests or examples in a Collection and refine them.
+
+### Can I parametrize responses without code?
+Yes. Use Hoppscotch variables (UUID, timestamp, and Environment values) directly in response bodies and headers.
+
+### Can I self‑host mock servers?
+Yes. See [Self‑host](/documentation/self-host/getting-started) for details on deploying Hoppscotch in your own infrastructure.
+
+## Related
+
+- [Collections](/documentation/features/collections)
+- [Environments](/documentation/features/environments)
+- [Variables](/documentation/features/variables)
+- [Tests](/documentation/features/tests)
+- [Workspaces](/documentation/features/workspaces)
+
