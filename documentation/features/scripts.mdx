@@ -438,7 +438,17 @@ description: Write pre-request scripts and build tests.
     Sets a cookie for a domain.
 
     ```javascript
-    hopp.cookies.set("example.com", { name: "sessionId", value: "abc123", domain: "example.com" });
+    hopp.cookies.set("example.com", {
+      name: "session_id",
+      value: "abc123",
+      domain: "api.example.com",
+      path: "/api",
+      expires: new Date(Date.now() + 86400000).toISOString(), // 24 hours from now
+      maxAge: 86400, // 24 hours in seconds
+      httpOnly: true,
+      secure: true,
+      sameSite: "Lax",
+    });
     ```
 
     ### `hopp.cookies.has(domain: string, cookieName: string)`
@@ -1030,6 +1040,8 @@ description: Write pre-request scripts and build tests.
       value: "abc123",
       domain: "api.example.com",
       path: "/api",
+      expires: new Date(Date.now() + 86400000).toISOString(), // 24 hours from now
+      maxAge: 86400, // 24 hours in seconds
       httpOnly: true,
       secure: true,
       sameSite: "Lax",
