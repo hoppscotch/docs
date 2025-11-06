@@ -1,0 +1,282 @@
+---
+sidebarTitle: Observability
+title: Observability
+description: Monitor and improve your Hoppscotch instance with OpenTelemetry integration.
+---
+
+Observability support helps you understand what's happening inside your self-hosted Hoppscotch instance. With OpenTelemetry integration, you can track performance, diagnose issues faster, and gain insights into how your APIs are being used.
+
+This feature provides real-time visibility into your application's health, making it easier to maintain a reliable service for your team.
+
+## What is Observability?
+
+Observability gives you the ability to understand your system's internal state by analyzing the data it produces. Instead of guessing why something went wrong, you can see exactly what happened and when.
+
+With Hoppscotch's observability integration, you get access to:
+
+- **Traces**: Follow the complete journey of each API request through your system
+- **Metrics**: Monitor performance indicators like response times and request volumes
+- **Logs**: Access detailed records of events with full context
+
+## Why Use Observability?
+
+Implementing observability in your Hoppscotch instance helps you:
+
+- **Spot Issues Quickly**: Identify performance bottlenecks and errors as they happen
+- **Reduce Downtime**: Cut the time it takes to find and fix problems
+- **Understand Usage**: See how your team uses the platform and which APIs are most active
+- **Improve Performance**: Make data-driven decisions about optimizing your instance
+- **Debug with Confidence**: Get complete context when investigating issues
+
+## How It Works
+
+Hoppscotch uses OpenTelemetry, an industry-standard framework for collecting observability data. OpenTelemetry is vendor-neutral, meaning you can use it with your preferred monitoring tools.
+
+Here's how the data flows:
+
+1. **Your Hoppscotch instance** generates observability data as users make API requests
+2. **OpenTelemetry Collector** receives and processes this data
+3. **Storage backends** like Jaeger (traces) and Prometheus (metrics) store the data
+4. **Visualization tools** like Grafana display dashboards and insights
+
+This setup gives you complete visibility without vendor lock-in.
+
+## Key Features
+
+### Distributed Tracing
+
+Track every API request from start to finish, even as it moves through different parts of your system. See exactly how long each step takes and where delays occur.
+
+- View the complete path of every request
+- Identify slow database queries or external API calls
+- Understand dependencies between different services
+
+### Real-Time Metrics
+
+Monitor your instance's health with up-to-the-minute performance data:
+
+- Request rates and response times
+- Error rates and success percentages
+- System resource usage (CPU, memory)
+- Database performance indicators
+- Custom business metrics that matter to your team
+
+### Contextual Logging
+
+Access detailed logs that include trace IDs, making it easy to find all related information when investigating an issue:
+
+- Searchable structured logs
+- Automatic correlation with traces and metrics
+- Configurable log levels for different environments
+- Long-term retention for compliance and analysis
+
+### Intelligent Alerting
+
+Set up alerts to notify you when something needs attention:
+
+- Define thresholds for key metrics
+- Receive notifications through your preferred channels
+- Create custom alert rules based on your needs
+- Prevent alert fatigue with smart grouping
+
+## Getting Started
+
+### Prerequisites
+
+Before enabling observability, make sure you have:
+
+- Hoppscotch Enterprise Edition deployed
+- Admin access to your instance
+- Basic familiarity with Docker or Kubernetes (depending on your deployment)
+
+### Setup Options
+
+You can deploy the observability stack in two ways:
+
+#### Option 1: Docker Deployment
+
+Best for smaller instances or teams getting started. This approach is quick to set up and works well for most use cases.
+
+- Simple configuration
+- Fast deployment
+- Lower resource requirements
+- Ideal for single-server setups
+
+<Tip>Check out our detailed guide: [Set Up OpenTelemetry Stack with Docker](/guides/articles/set-up-opentelemetry-stack-with-docker)</Tip>
+
+#### Option 2: Kubernetes Deployment
+
+Recommended for larger organizations with high-traffic instances requiring high availability and automatic scaling.
+
+- Automatic scaling based on load
+- High availability and fault tolerance
+- Advanced monitoring capabilities
+- Better suited for production environments
+
+### Configuration Steps
+
+1. **Deploy the OpenTelemetry Collector**
+   
+   Set up the Collector to receive data from your Hoppscotch instance. You can use our example configuration or customize it for your needs.
+
+2. **Connect Storage Backends**
+   
+   Choose where to store your observability data:
+   - Jaeger for distributed traces
+   - Prometheus for metrics
+   - Your preferred log management solution
+
+3. **Configure Hoppscotch**
+   
+   From the Admin Dashboard, navigate to the Observability settings and enter your Collector endpoint details.
+
+4. **Set Up Visualization**
+   
+   Deploy Grafana or your preferred tool to create dashboards and visualize your data.
+
+## Understanding Your Data
+
+### Traces
+
+Traces show you the complete story of each request:
+
+- **Request Entry**: When the request arrived at Hoppscotch
+- **Processing Steps**: Each operation performed (authentication, validation, etc.)
+- **External Calls**: Requests to databases or other APIs
+- **Response**: When and how the request completed
+
+Each step includes timing information, making it easy to spot slow operations.
+
+### Metrics
+
+Metrics give you quantitative insights:
+
+- **HTTP Metrics**: Request counts, status codes, response times
+- **System Metrics**: CPU usage, memory consumption, disk I/O
+- **Database Metrics**: Query performance, connection pool status
+- **Business Metrics**: Active users, API calls per workspace, collection sizes
+
+### Correlation
+
+All observability data is linked together. When you're investigating an issue, you can:
+
+- Start with a metric spike and drill down to individual traces
+- Click on a trace to see all related logs
+- Follow connections between different services
+
+## Best Practices
+
+### Start Simple
+
+Don't try to monitor everything at once. Begin with:
+
+1. HTTP request metrics
+2. Error tracking
+3. Basic system health indicators
+
+Add more advanced monitoring as you become comfortable with the basics.
+
+### Set Meaningful Thresholds
+
+Create alerts based on what matters to your team:
+
+- Response times exceeding your SLA
+- Error rates above acceptable levels
+- Resource utilization that could impact performance
+
+### Regular Review
+
+Schedule time to review your observability data:
+
+- Weekly: Check for trends in usage and performance
+- Monthly: Review and adjust alert thresholds
+- Quarterly: Assess what metrics are most valuable
+
+### Optimize Performance
+
+Observability itself uses resources. Balance insight with overhead:
+
+- Use sampling for high-volume traces
+- Set appropriate retention periods
+- Monitor the monitoring infrastructure
+
+## Privacy and Security
+
+Your observability data may contain sensitive information. Hoppscotch automatically:
+
+- Sanitizes authentication tokens and credentials
+- Encrypts data in transit
+- Supports access controls for observability tools
+- Maintains audit trails of who accessed what data
+
+You can further customize what data is collected and retained based on your privacy requirements.
+
+## Performance Impact
+
+The observability features are designed to have minimal impact on your instance:
+
+- Less than 5% increase in request latency
+- Approximately 3% additional CPU usage
+- Around 50MB extra memory per service
+
+These overheads are typically insignificant compared to the benefits of having comprehensive monitoring.
+
+## Data Retention
+
+Configure how long to keep observability data:
+
+- **Traces**: Typically 7-30 days (detailed request information)
+- **Metrics**: Usually 30-90 days (aggregated performance data)
+- **Logs**: 30-90 days or longer for compliance needs
+
+Adjust these based on your storage capacity and regulatory requirements.
+
+## Troubleshooting
+
+### Data Not Appearing
+
+If you don't see data in your observability tools:
+
+1. Verify the Collector is running and accessible
+2. Check the endpoint configuration in Admin Dashboard
+3. Review Collector logs for connection errors
+4. Ensure firewall rules allow traffic between components
+
+### High Resource Usage
+
+If the observability stack is using too many resources:
+
+1. Reduce trace sampling rate
+2. Adjust batch sizes in the Collector configuration
+3. Consider deploying the Collector on dedicated infrastructure
+4. Review and optimize retention policies
+
+### Missing Traces
+
+If some traces are incomplete:
+
+1. Verify all services are configured correctly
+2. Check for network issues between components
+3. Review sampling configuration
+4. Ensure trace context is properly propagated
+
+## Getting Help
+
+If you need assistance with observability:
+
+- Review the [OpenTelemetry Stack Setup Guide](/guides/articles/set-up-opentelemetry-stack-with-docker)
+- Contact Hoppscotch Enterprise Support for dedicated help
+- Join our community forums to discuss with other users
+
+<Info>Observability is available exclusively in Hoppscotch Enterprise Edition. [Learn more about Enterprise Edition](/documentation/self-host/enterprise-edition/getting-started) or [contact us](/support/getting-started/contact) for a demo.</Info>
+
+## Next Steps
+
+Now that you understand observability, you can:
+
+- Set up the OpenTelemetry stack for your instance
+- Create custom dashboards for your team's needs
+- Configure alerts for critical metrics
+- Explore advanced features like performance profiling
+
+Monitor your instance effectively and maintain a reliable, high-performance API development platform for your organization.

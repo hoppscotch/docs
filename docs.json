@@ -142,6 +142,7 @@
                   "documentation/self-host/enterprise-edition/user-provisioning",
                   "documentation/self-host/enterprise-edition/activity-logs",
                   "documentation/self-host/enterprise-edition/user-groups",
+                  "documentation/self-host/enterprise-edition/observability",
                   "documentation/self-host/enterprise-edition/deploy-and-upgrade",
                   "documentation/self-host/enterprise-edition/telemetry"
                 ]
