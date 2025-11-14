@@ -84,6 +84,34 @@ Example dynamic body:
 
 You can also reference variables in headers, for example `X-Request-ID: {{uuid}}`.
 
+## Save a response as an Example
+
+In Hoppscotch, you can save responses as examples to quickly populate mock routes with realistic data. Examples capture both the request configuration and its actual response, making it easy to convert real API behavior into mock endpoints.
+
+**To save a response as an example:**
+
+1. Navigate to the right-sidebar and select the collection with your request
+2. Choose the request and click **"Send"**
+3. In the response section, click the **"Save as Example"** icon
+4. The example will be stored in the request's history within the collection
+
+**Using examples in mock servers:**
+
+- When creating a mock server from a Collection, each saved example automatically becomes a mock route
+- Examples preserve the exact response status, headers, and body you received
+- You can edit examples to adjust the mock response (modify status codes, add headers, introduce delays)
+- Multiple examples for the same request let you simulate different scenarios (success, errors, edge cases)
+
+**Example workflow:**
+
+1. Call your API endpoint and receive a response
+2. Save that response as an example
+3. Create a mock server from the collection
+4. The mock route now returns the exact response you captured
+5. Edit the example to add delays or modify data for testing
+
+<Tip>Use examples to quickly bootstrap realistic mock data from your actual API, then refine them to test edge cases and failure scenarios.</Tip>
+
 ## Latency, errors, and headers
 
 Control the realism of your mocks by tuning:
