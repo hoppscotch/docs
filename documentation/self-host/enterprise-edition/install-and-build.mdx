@@ -219,7 +219,7 @@ docker exec -it <container_id> /bin/sh
 Once inside the container, run the migration using:
 
 ```bash
-pnpm dlx prisma migrate deploy
+pnpm exec prisma migrate deploy
 ```
 
 Should the user ever encounter the following error:
@@ -237,7 +237,7 @@ docker run -it --entrypoint sh --env-file .env <container_name>
 Making sure to pass in the `.env` file containing the right `.env` variables for the instance. On executing the aforementioned command will result in a shell being opened inside a instance of the container following which user can execute a database migration normally with
 
 ```bash
-pnpm dlx prisma migrate deploy
+pnpm exec prisma migrate deploy
 ```
 
 Once the database has been successfully run and the database populated with tables the backend containers ( or AIO container) can be started normally.
