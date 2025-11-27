@@ -1,0 +1,301 @@
+---
+sidebarTitle: Downgrading and Restoring Backups
+title: Downgrading and Restoring Backups
+description: If an update causes issues with Hoppscotch Desktop, you can downgrade to a previous version and restore your data from an automatic backup. This guide will walk you through the entire process safely.
+---
+
+If an update causes issues with Hoppscotch Desktop, you can downgrade to a previous version and restore your data from an automatic backup. This guide will walk you through the entire process safely.
+
+## Understanding automatic backups
+
+Hoppscotch Desktop automatically creates backups when you first launch a new version. These backups are stored in version-specific folders, making it easy to identify which backup corresponds to which app version.
+
+<Note>
+  The automatic backup system was introduced in version 25.8.0. However, the system becomes most effective starting from version 25.9.0, as that's when a backup of your 25.8.0 data would be created.
+</Note>
+
+The backup system keeps up to 3 recent version backups automatically. Older backups are removed to save disk space.
+
+### Backup locations
+
+**macOS:**
+`~/Library/Application Support/io.hoppscotch.desktop/backup/`
+Or in Finder: Go → Go to Folder → paste the path above
+
+**Windows:**
+`C:\Users\<username>\AppData\Roaming\io.hoppscotch.desktop\backup\`
+Replace `<username>` with your Windows username
+
+**Linux:**
+`~/.config/io.hoppscotch.desktop/backup/`
+
+### Backup naming
+
+Backups are named with the format `backup-by-v{VERSION}`. For example:
+- `backup-by-v25.11.0`
+- `backup-by-v25.10.0`
+- `backup-by-v25.9.0`
+
+<Warning>
+  The backup created by version 25.11.0 contains your data from **before** that version ran. This means `backup-by-v25.11.0` captures your data state from whatever version you were using before upgrading to 25.11.0 (not necessarily 25.10.0 if you skipped versions).
+</Warning>
+
+### What gets backed up?
+
+The backup includes:
+- Collections and requests
+- Environment variables
+- Settings and preferences
+- History
+- Custom configurations
+- And more
+
+The backup excludes:
+- The `latest/` directory (your current working data)
+- Other backup folders (to prevent recursion)
+- Log files
+
+## When to use this guide
+
+You should consider downgrading and restoring if:
+- The new version crashes or fails to launch
+- Your collections or environments are not loading correctly
+- Sync is behaving unexpectedly
+- You're experiencing data corruption
+- A specific feature you depend on is broken
+
+## Downgrading to a previous version
+
+### Step 1: Identify the version to restore
+
+Navigate to your backup directory and check which backup folders exist. The backup folder names tell you which versions you can restore to.
+
+For example, if you see `backup-by-v25.11.0`, you can restore to the previous version you were using before 25.11.0 by downloading that version and using this backup. It's advised to know which version you were on before updating.
+
+To check your backup directory:
+
+**macOS:** Open Terminal and run:
+```bash
+ls ~/Library/Application\ Support/io.hoppscotch.desktop/backup/
+```
+
+**Windows:** Open Command Prompt and run:
+```powershell
+dir %APPDATA%\io.hoppscotch.desktop\backup
+```
+
+**Linux:** Open Terminal and run:
+```bash
+ls ~/.config/io.hoppscotch.desktop/backup/
+```
+
+### Step 2: Download the previous version
+
+Visit the [Hoppscotch releases page](https://github.com/hoppscotch/releases) and download the version you want to restore to.
+
+Make sure to download the correct installer for your operating system:
+- **macOS:** `.dmg` file (for Apple Silicon or Intel, depending on your Mac)
+- **Windows:** `.exe` file (standard installer) or portable version
+- **Linux:** `.AppImage` or `.deb` file depending on your distribution
+
+<Note>
+  The version number in the backup folder name indicates which version created that backup, so download the version **before** that number. For example, to use `backup-by-v25.11.0`, download version 25.10.0.
+</Note>
+
+### Step 3: Log out of your account
+
+Before downgrading, it's recommended to log out of your Hoppscotch account to prevent sync conflicts during the restoration process. This makes sure that the cloud sync doesn't try to merge or overwrite data during the transition.
+
+1. Open Hoppscotch Desktop
+2. Click on your profile icon in the top right corner
+3. Select "Log out"
+4. Confirm the logout
+
+### Step 4: Close Hoppscotch Desktop completely
+
+Make sure Hoppscotch Desktop is not running before proceeding:
+
+**macOS:**
+- Quit the application (Cmd+Q)
+- Check the menu bar and quit if it's running in the background
+
+**Windows:**
+- Close the application window
+- Check the system tray and exit if it's running there
+
+**Linux:**
+- Close the application
+- Run `killall hoppscotch` if needed to make sure it's fully closed
+
+### Step 5: Backup your current configuration
+
+Before making changes, create a safety backup of your current configuration directory by renaming it. This allows you to revert if something goes wrong.
+
+**macOS:**
+```bash
+mv ~/Library/Application\ Support/io.hoppscotch.desktop ~/Library/Application\ Support/io.hoppscotch.desktop.backup
+```
+
+**Windows:** In File Explorer:
+1. Press `Win+R`, type `%APPDATA%` and press Enter
+2. Find the folder named `io.hoppscotch.desktop`
+3. Right-click and select "Rename"
+4. Rename it to `io.hoppscotch.desktop.backup`
+
+Or via Command Prompt:
+```powershell
+ren %APPDATA%\io.hoppscotch.desktop io.hoppscotch.desktop.backup
+```
+
+**Linux:**
+```bash
+mv ~/.config/io.hoppscotch.desktop ~/.config/io.hoppscotch.desktop.backup
+```
+
+### Step 6: Restore the backup
+
+Copy the backup folder contents to create a fresh configuration directory. This becomes your new active configuration.
+
+**macOS:**
+```bash
+cp -r ~/Library/Application\ Support/io.hoppscotch.desktop.backup/backup/backup-by-v25.11.0 ~/Library/Application\ Support/io.hoppscotch.desktop
+```
+*Replace `v25.11.0` with the actual backup version you want to restore.*
+
+**Windows:** In File Explorer:
+1. Navigate to `%APPDATA%\io.hoppscotch.desktop.backup\backup\`
+2. Find the backup folder you want to restore (e.g., `backup-by-v25.11.0`)
+3. Copy this entire folder
+4. Navigate back to `%APPDATA%\`
+5. Paste the folder and rename it to `io.hoppscotch.desktop`
+
+Or via Command Prompt:
+```powershell
+xcopy %APPDATA%\io.hoppscotch.desktop.backup\backup\backup-by-v25.11.0 %APPDATA%\io.hoppscotch.desktop /E /I
+```
+
+**Linux:**
+```bash
+cp -r ~/.config/io.hoppscotch.desktop.backup/backup/backup-by-v25.11.0 ~/.config/io.hoppscotch.desktop
+```
+*Replace `v25.11.0` with the actual backup version you want to restore.*
+
+### Step 7: Install the previous version
+
+Run the installer you downloaded in Step 2. The installer will replace the current version with the older version.
+
+**macOS:**
+1. Open the `.dmg` file
+2. Drag Hoppscotch to Applications (replace if prompted)
+
+**Windows:**
+1. Run the `.exe` installer
+2. Follow the installation wizard
+3. Allow it to replace the existing installation
+
+**Linux:**
+If you're using Linux, we assume you know how to install applications on your system. For reference:
+
+For `.AppImage`:
+```bash
+chmod +x Hoppscotch-*.AppImage
+./Hoppscotch-*.AppImage
+```
+
+For `.deb`:
+```bash
+sudo dpkg -i hoppscotch-desktop_*.deb
+```
+
+### Step 8: Verify the restoration
+
+Launch Hoppscotch Desktop and verify that everything is working correctly:
+1. Open Hoppscotch Desktop
+2. Check the version number on the splash screen during launch, or click "Help & Feedback" in the bottom right corner to view the version
+3. Verify your collections are present and accessible
+4. Check your environments and variables
+5. Review your settings and preferences
+6. Test a few API requests to make sure functionality is working
+
+If something doesn't look right, you can repeat the process or restore from a different backup.
+
+### Step 9: Export important data
+
+Before logging back into your account, export any critical collections or environments as a safety measure. This creates an additional backup that you can import later if needed.
+
+Refer to the [Collections documentation](/documentation/features/collections) and [Environments documentation](/documentation/features/environments) for detailed instructions on exporting and importing data.
+
+### Step 10: Log back in and sync
+
+Once you've verified everything works and created exports, you can log back into your account:
+1. Click on the profile icon or go to Settings
+2. Select "Log in"
+3. Enter your credentials
+4. Wait for the sync process to complete
+
+After sync completes, verify that all your data is present.
+If you notice any missing data, you can import from the exports you created in Step 9. Refer to the [Collections documentation](/documentation/features/collections) and [Environments documentation](/documentation/features/environments) for detailed instructions on importing data.
+
+## Troubleshooting
+
+### The backup folder doesn't exist
+
+If you don't see a backup folder, it might mean:
+- You're running version 25.8.0 or older (backups were introduced in 25.8.0)
+- You haven't updated past version 25.8.0 yet (you need to launch at least 25.9.0 to create your first backup)
+- The backup was created but later deleted due to disk space or manual deletion
+- This is a fresh installation
+
+In this case, you may need to rely on cloud sync or any manual exports you've created.
+
+### The restored data looks incomplete
+
+If your restored data seems incomplete:
+- Check that you copied the entire backup folder, not just some files
+- Verify you're using the correct backup version
+- Try restoring from a different backup if available
+- Check the logs for any errors during restoration
+
+### Log locations
+
+If you need to check logs for troubleshooting, they are stored at:
+
+**macOS:**
+`~/Library/Logs/io.hoppscotch.desktop/io.hoppscotch.desktop.log`
+
+**Windows:**
+`C:\Users\<username>\AppData\Local\io.hoppscotch.desktop\logs\io.hoppscotch.desktop.log`
+or
+`C:\Users\<username>\AppData\Roaming\io.hoppscotch.desktop\logs\io.hoppscotch.desktop.log`
+
+**Linux:**
+`~/.local/share/io.hoppscotch.desktop/logs/io.hoppscotch.desktop.log`
+
+To view logs:
+
+**macOS/Linux:**
+```bash
+tail -f ~/Library/Logs/io.hoppscotch.desktop/io.hoppscotch.desktop.log
+```
+
+**Windows:** Open the file in Notepad or any text editor.
+
+## Cleaning up
+
+After successfully downgrading and verifying everything works, you can optionally clean up the backup you created in Step 5:
+
+**macOS:**
+```bash
+rm -rf ~/Library/Application\ Support/io.hoppscotch.desktop.backup
+```
+
+**Windows:** Delete the `io.hoppscotch.desktop.backup` folder from `%APPDATA%\`
+
+**Linux:**
+```bash
+rm -rf ~/.config/io.hoppscotch.desktop.backup
+```
+
+<Note>
+  Only do this after you're completely satisfied with the restoration and have verified all your data is intact.
+</Note>
