@@ -843,6 +843,9 @@ description: Write pre-request scripts and build tests.
     pm.info.eventName: string  // "pre-request" or "post-request"
     pm.info.requestName: string
     pm.info.requestId: string
+
+    // Asynchronous requests
+    pm.sendRequest(request: string | Object, callback: (err: any, res: any) => void): void
     ```
 
     ### Postman Chai.js Assertions
@@ -937,11 +940,25 @@ description: Write pre-request scripts and build tests.
     - `pm.response.to.be.success` - Alias for ok
     - `pm.response.to.be.json` - JSON content type
 
+    ### Sending Requests
+
+    The `pm.sendRequest` method allows you to send HTTP requests asynchronously from your scripts. This is useful for chaining requests or fetching data from other APIs.
+
+    ```javascript
+    pm.sendRequest("https://postman-echo.com/get", (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        pm.expect(res).to.have.property('code', 200);
+        pm.expect(res).to.have.property('status', 'OK');
+      }
+    });
+    ```
+
     ### Unsupported Postman Features
 
     The following Postman features are not currently supported:
 
-    - `pm.sendRequest()`
     - `pm.visualizer`
     - `pm.collectionVariables`
     - `pm.iterationData`
