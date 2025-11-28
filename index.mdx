@@ -4,7 +4,7 @@ title: Hoppscotch Documentation
 description: Find user guides, quickstarts, tutorials, use cases, code samples, and more.
 ---
 
-import { PrimaryButton, HeroCard } from '/snippets/components.mdx';
+import { PrimaryButton } from '/snippets/components.mdx';
 
 <img className="block dark:hidden" src="/images/hero-light.png" />
 <img className="hidden dark:block" src="/images/hero-dark.png" />
@@ -21,14 +21,20 @@ It was built from the ground up with ease of use and accessibility in mind provi
 **Quick Start**
 
 <CardGroup>
-  <HeroCard
+  <Card
     title="Hoppscotch Cloud"
-    description="Everything you need to get started with Hoppscotch, hosted by us."
     href="https://hoppscotch.io"
-  />
-  <HeroCard
+  >
+    <sub>
+      Everything you need to get started with Hoppscotch, hosted by us.
+    </sub>
+  </Card>
+  <Card
     title="Hoppscotch Self-Host"
-    description="Deploy your own instance of Hoppscotch on your own infrastructure."
     href="/documentation/self-host/getting-started"
-  />
+    >
+      <sub>
+        Deploy your own instance of Hoppscotch on your own infrastructure.
+      </sub>
+    </Card>
 </CardGroup>

@@ -10,17 +10,6 @@ export const PrimaryButton = ({ label, href }) => {
   );
 };
 
-export const HeroCard = ({ imgDark, imgLight, title, description, href }) => {
-  return (
-    <a className="border-b pb-8 cursor-pointer border-gray-500 dark:border-gray-800 hover:!border-primary dark:hover:!border-primary-light" href={href}>
-      <img src={imgLight} className="block dark:hidden w-full pointer-events-none" />
-      <img src={imgDark} className="hidden dark:block w-full pointer-events-none" />
-      <h1 className="mt-4 font-semibold text-gray-900 dark:text-white">{title}</h1>
-      <h2 className="mt-1 text-gray-600 dark:text-gray-400 text-sm leading-6">{description}</h2>
-    </a>
-  )
-}
-
 export const Banner = () => {
   return (
     <div className="flex not-prose bg-primary-dark" style={{ borderRadius: '1rem' }}>
