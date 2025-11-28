@@ -955,6 +955,10 @@ description: Write pre-request scripts and build tests.
     });
     ```
 
+    <Note>
+      It is recommended to use the Agent interceptor on the Web App and the Native interceptor on the Desktop App for `fetch()`, `hopp.fetch()` and `pm.sendRequest()` usages.
+    </Note>
+
     ### Unsupported Postman Features
 
     The following Postman features are not currently supported:
