@@ -104,7 +104,9 @@ Saved examples can be used to create [mock servers](/documentation/features/mock
 
 ## Filter Response Body
 
-To extract specific data points from the response body, you can apply filter using [JSONPath](https://github.com/JSONPath-Plus/JSONPath) syntax.
+To extract specific data points from the response body, you can apply filters using [jq](https://jqlang.github.io/jq/) syntax. jq is a powerful and flexible command-line JSON processor that allows you to slice, filter, map, and transform JSON data with ease.
+
+<Warning>**Migration Notice:** JSONPath has been replaced with jq for JSON response filtering. If you have existing JSONPath filters, you'll need to migrate them to jq syntax. Refer to the [jq manual](https://jqlang.github.io/jq/manual/) for detailed documentation on jq syntax and features.</Warning>
 
 ## **Download Response**
 
