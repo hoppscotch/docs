@@ -6,11 +6,11 @@ description: 'Telemetry and data sharing in Hoppscotch Enterprise Edition'
 
 Telemetry in Hoppscotch Self-Host refers to anonymous data shared with Hoppscotch. This helps identify the usage patterns of Hoppscotch.
 
-# Data Collected by Hoppscotch
+# Data collected by Hoppscotch
 
 Hoppscotch does not capture any data from your APIs. All captured data is anonymous and pertains to instance usage.
 
-## Instance Usage
+## Instance usage
 
 The instance usage ping is sent once a week to indicate that the instance is operational. You can disable this event by navigating to the settings page and turning off data sharing settings.
 
@@ -42,7 +42,7 @@ The instance usage ping is sent once a week to indicate that the instance is ope
 }
 
 ```
-## Instance Usage for Billing
+## Instance usage for billing
 
 The Hoppscotch Enterprise edition sends an additional event to our licensing server to assist with billing. This event is triggered every 12 hours. The licensing server verifies the instance's license and we send the license status and number of seats used as query parameters. Once the license key is validated, the server returns a signed/encrypted text, which the enterprise instance uses to verify the source of the validation and converts it and stores it as a JSON similar to the one below.
 
