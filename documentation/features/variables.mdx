@@ -4,9 +4,9 @@ title: Variables
 description: Dynamic placeholders for your API interactions.
 ---
 
-Hoppscotch provides you the ability to create and use variable throughout the app. This helps you reuse values throughout Hoppscotch just by invoking the variable name.
+Hoppscotch provides you the ability to create and use variables throughout the app. This helps you reuse values throughout Hoppscotch just by invoking the variable name.
 
-Hoppscotch considers an objects within an angular brackets as a variable `<<variable>>`
+Hoppscotch considers an object within angular brackets as a variable, e.g. `<<variable>>`.
 
 ## Variable Scopes
 
@@ -18,7 +18,7 @@ Hoppscotch provides you different variables scopes, allowing you to use differen
 4. **Predefined Variables:** are automatically generated at runtime and can be accessed globally throughout Hoppscotch using the `$` symbol, such as `$guid` or `$timestamp`.
 5. **Collection Variables:** are scoped to individual collection and child folders, perfect for sharing base URLs, tokens and defaults across a set of requests without leaking to other workspaces.
 
-The scope of each variable can be identified from the color of the variable name. If a variable with same name exist it is resolved in the order of priority.
+The scope of each variable can be identified from the color of the variable name. If a variable with the same name exists, it is resolved in the order of priority.
 
 | Variable Scope | Color | Priority |
 | -------------- | ----- | -------- |
@@ -33,10 +33,10 @@ The scope of each variable can be identified from the color of the variable name
 
 1. **A regular variable**: allows users to reference the variable throughout Hoppscotch, and anyone can see the value associated with the variable.
    In a workspace, regular environment variable-value pairs will be synced to the server, making them available to all workspace members.
-   However, you have the option to choose whether to sync a regular variable value present in your personal workspace
+   However, you have the option to choose whether to sync a regular variable value present in your personal workspace.
 2. **A secret variable:** enables users to specify secrets and reference the values as variables. The values of secret variables in any workspace will never be synced to the server or shared with any workspace members.
    It is expected that in a collaborative workspace the user will populate the value of the variable at runtime.
-   All secret variable values in Hoppscotch will be masked using asterisks (\*\*\*). Secret Variables cannot be scoped to a request and can only be scoped in an environment or globally
+   All secret variable values in Hoppscotch will be masked using asterisks (\*\*\*). Secret Variables cannot be scoped to a request and can only be scoped in an environment or globally.
 
 <Note>
   {" "}

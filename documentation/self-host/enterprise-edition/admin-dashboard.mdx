@@ -12,7 +12,7 @@ The Admin Dashboard serves as the central hub for managing your workspace and us
 
 ## Dashboard
 
-The Dashboard section provides an overview of essential metrics and statistics regarding users, workspace, and activity. This snapshot allows you to track the usage and performance of your platform.
+The Dashboard section provides an overview of essential metrics and statistics regarding users, workspaces, and activity. This snapshot allows you to track the usage and performance of your platform.
 
 Get insights into your organization's usage of Hoppscotch.
 
@@ -124,15 +124,15 @@ We've introduced new **APIs** to make **workspace management** and **collaborati
 | View Workspace Details | List details about a specific workspace like name, members, roles, and pending invites.  | GET |`<base-url>/v1/infra/workspaces/{id}` |
 | Delete a workspace | Remove an existing workspace using its ID. | DELETE | `<base-url>/v1/infra/workspaces/{id}` |
 | Update details for an existing workspace. | Modify settings and preferences for an existing workspace. | PATCH | `<base-url>/v1/infra/workspaces/{id}` |
-| List Members of a Workspace | Retrieves a list of all members in a specific workspace. | GET | `<base-url>/v1/infra/workspaces/{id}/ members` |
-| Get Workspace Owners count |  Fetches number of Workspace members with "OWNER" permissions | GET | `<base-url>/v1/infra/workspaces/{id}/ owners-count` |
-| Get Workspace Editors count |  Fetches number of Workspace members with "EDITOR" permissions  | GET | `<base-url>/v1/infra/workspaces/{id}/ editors-count` |
-| Get Workspace Viewers count |  Fetches number of Workspace members with "VIEWER" permissions  | GET | `<base-url>/v1/infra/workspaces/{id}/ viewers-count` |
-| Add User to a workspace | Add a user and assign roles (Owner, Editor, and Viewer) in a workspace. | POST | `<base-url>/v1/infra/workspaces/{id}/ user` |
-| Change User roles in a workspace | Update the role (Owner, Editor, and Viewer) of a user within a workspace | PATCH | `<base-url>/v1/infra/workspaces/{id}/ user/{uid}/role` |
-| Remove User from a workspace | Remove a user from a workspace using their ID | DELETE | `<base-url>/v1/infra/workspaces/{id}/ user/{uid}` |
-| View all pending workspace invites. | List all pending invites for workspace access. | GET | `<base-url>/v1/infra/workspaces/{id}/ invitations` |
-| Delete pending workspace invites. | Revoke Workspace invitations using invitation IDs. | DELETE | `<base-url>/v1/infra/workspaces/{id}/ invitations/{invitation_id}` |
+| List Members of a Workspace | Retrieves a list of all members in a specific workspace. | GET | `<base-url>/v1/infra/workspaces/{id}/members` |
+| Get Workspace Owners count |  Fetches number of Workspace members with "OWNER" permissions | GET | `<base-url>/v1/infra/workspaces/{id}/owners-count` |
+| Get Workspace Editors count |  Fetches number of Workspace members with "EDITOR" permissions  | GET | `<base-url>/v1/infra/workspaces/{id}/editors-count` |
+| Get Workspace Viewers count |  Fetches number of Workspace members with "VIEWER" permissions  | GET | `<base-url>/v1/infra/workspaces/{id}/viewers-count` |
+| Add User to a workspace | Add a user and assign roles (Owner, Editor, and Viewer) in a workspace. | POST | `<base-url>/v1/infra/workspaces/{id}/user` |
+| Change User roles in a workspace | Update the role (Owner, Editor, and Viewer) of a user within a workspace | PATCH | `<base-url>/v1/infra/workspaces/{id}/user/{uid}/role` |
+| Remove User from a workspace | Remove a user from a workspace using their ID | DELETE | `<base-url>/v1/infra/workspaces/{id}/user/{uid}` |
+| View all pending workspace invites. | List all pending invites for workspace access. | GET | `<base-url>/v1/infra/workspaces/{id}/invitations` |
+| Delete pending workspace invites. | Revoke Workspace invitations using invitation IDs. | DELETE | `<base-url>/v1/infra/workspaces/{id}/invitations/{invitation_id}` |
 
 <Info> To interact with the **Workspace Management APIs**, ensure that your backend service is running, either on your local machine or on a server. The API documentation is accessible at the `/api-docs` endpoint relative to your backend service URL. For example, if your backend is running locally, you can access the API docs at [http://localhost:3170/api-docs](http://localhost:3170/api-docs). You can also retrieve the OpenAPI v3 JSON format at [http://localhost:3170/api-docs-json](http://localhost:3170/api-docs-json). </Info>
 

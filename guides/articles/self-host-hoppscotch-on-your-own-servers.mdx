@@ -19,7 +19,7 @@ Before you start ensure that your system or environment meets the following requ
 - [Docker](https://docs.docker.com/engine/install) (v20+) - Docker should be properly installed and configured for containerization of your Hoppscotch instance.
 - [Git](https://git-scm.com/download) - Required for version control and managing Hoppscotch source code.
 
-Visit our [documentation](https://docs.hoppscotch.io/documentation/self-host/community-edition/prerequisites) for a detailed guide on installing the prerequisite softwares.
+Visit our [documentation](https://docs.hoppscotch.io/documentation/self-host/community-edition/prerequisites) for a detailed guide on installing the prerequisite software.
 
 ## Configuring the Environment
 
@@ -163,7 +163,7 @@ Similarly, you can follow the specific setup instructions for other OAuth provid
 
 Subpath access allows you to host multiple services under a single domain by assigning each service a specific subpath.
 
-When `ENABLE_SUBPATH_BASED_ACCESS=true`, you can access all three services (Hoppscotch App, Admin Dashboard, Hoppscotch Backend) on the same domain using different routes. If subpath access is disabled **(`ENABLE_SUBPATH_BASED_ACCESS=false`)**,  you will need to access the services on different ports.
+When `ENABLE_SUBPATH_BASED_ACCESS=true`, you can access all three services (Hoppscotch App, Admin Dashboard, Hoppscotch Backend) on the same domain using different routes. If subpath access is disabled **(`ENABLE_SUBPATH_BASED_ACCESS=false`)**, you will need to access the services on different ports.
 
 <Warning>
 By default, the AIO container exposes the app on port 80. This can cause conflicts if you're running on a host system where port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, try setting `HOPP_AIO_ALTERNATE_PORT` to bind the app to a non-privileged port.

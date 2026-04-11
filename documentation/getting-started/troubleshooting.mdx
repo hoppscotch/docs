@@ -26,7 +26,7 @@ It could also be possible that Hoppscotch might be making invalid requests to yo
 
 CORS or Cross-Origin Resource Sharing is a security mechanism built into modern web browsers. It may cause the following error when testing API endpoints or some other API endpoints with Hoppscotch.
 
-This is because the API not sending the proper API headers (`Access-Control-Allow-Origin`) and can be solved in the following ways:
+This is because the API is not sending the proper API headers (`Access-Control-Allow-Origin`) and can be solved in the following ways:
 
 1. Use the [Hoppscotch Desktop App](/documentation/clients/desktop) which is not subject to CORS restrictions.
 2. Use middleware like the Proxy mode, [Proxy Interceptor](https://github.com/hoppscotch/proxyscotch), or the [Hoppscotch Browser Extension](https://github.com/hoppscotch/hoppscotch-extension), and enable it in the "**Interceptor**" section of "**Settings**".
