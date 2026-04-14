@@ -4,4 +4,79 @@ title: Changelog
 description: Stay up to date with the latest Hoppscotch releases, new features, bug fixes, and performance improvements across the web, desktop, and CLI clients.
 ---
 
-- Section moved to [GitHub Releases page](https://github.com/hoppscotch/hoppscotch/releases).
+For a full list of releases, visit the [GitHub Releases page](https://github.com/hoppscotch/hoppscotch/releases).
+
+## 2026.3.0 & 2026.3.1
+
+_Released: March 27 – April 10, 2026_
+
+### New features
+
+- **Cloud for organizations on desktop** — The desktop app now supports cloud-connected organizations, so you can access your org workspaces directly from the [desktop client](/documentation/clients/desktop/overview).
+- **User workspace memberships in admin dashboard** — Admins can now view which workspaces a user belongs to from the [admin dashboard](/documentation/self-host/enterprise-edition/admin-dashboard), making it easier to manage team access.
+- **Optional SMTP authentication and TLS settings** — Self-hosted deployments can now configure `MAILER_SMTP_IGNORE_TLS` and run SMTP without authentication, giving you more flexibility when setting up [email for your instance](/documentation/self-host/enterprise-edition/prerequisites).
+
+### Updates
+
+- **Keyboard shortcuts on non-English layouts** — Shortcuts now work correctly regardless of your keyboard layout, including numpad support for tab switching. See [keyboard shortcuts](/documentation/features/shortcuts) for the full list.
+- **Clipboard shortcuts on Linux (desktop)** — The desktop app on Linux now includes a native Edit menu, restoring copy, paste, and other clipboard shortcuts.
+- **OAuth2 code challenge method** — Your PKCE code challenge method selection now persists correctly when using [OAuth2 authorization](/documentation/features/authorization).
+- **OpenAPI import improvements** — Importing OpenAPI specs now uses the operation title as a fallback name, and response examples are populated correctly. Learn more about [importing collections](/documentation/features/importer).
+
+### Bug fixes
+
+- Newly created folders now appear immediately in the save-as dialog when organizing [collections](/documentation/features/collections).
+- Fixed an issue where request history entries could lose fields when restored.
+- Team collections now load the full folder tree when importing a workspace.
+- File attachments are now handled correctly when generating HAR exports.
+- Tooltips on icon-only buttons inside popovers are restored.
+- Fixed an infinite retry loop that could occur when authentication tokens expired permanently.
+- Resolved several security hardening fixes across the platform.
+
+## 2026.2.0 & 2026.2.1
+
+_Released: February 23 – March 4, 2026_
+
+### New features
+
+- **API documentation versioning** — You can now publish multiple versions of your [API documentation](/documentation/features/documentation), letting consumers reference the exact version they need.
+- **Organization switcher** — A new dropdown-based switcher makes it easy to move between organizations from anywhere in the app. See [workspaces](/documentation/features/workspaces).
+- **URL encode/decode context menu** — Right-click any URL or parameter value to quickly encode or decode it, right from the context menu.
+- **Search and pagination in admin teams list** — Self-hosted admins can now search and paginate the teams list in the [admin dashboard](/documentation/self-host/enterprise-edition/admin-dashboard).
+
+### Updates
+
+- **Legacy interceptor system deprecated** — The legacy interceptor has been deprecated in favor of the current [interceptor](/documentation/features/interceptor). If you're still using it, now is a good time to switch.
+- **Improved responsive layout for realtime pages** — [Realtime API testing](/documentation/features/realtime-api-testing) pages now handle smaller screens and overflow content more gracefully.
+
+### Bug fixes
+
+- Secret environment variables are now correctly resolved in basic auth headers.
+- [Mock servers](/documentation/features/mock) now load reliably on initialization and workspace changes.
+- Fixed a scrollbar appearing in the URL input on Firefox.
+- Modal dialogs now display at the correct width on more screen sizes.
+- Opening a request from search results no longer causes a TypeError.
+- Variable tooltips with long values no longer overflow the viewport.
+- Fixed a corrupted sandbox state that could cause the app to hang.
+- CLI scripts with module prefixes now execute correctly.
+- Resolved a database connection leak in self-hosted infrastructure config operations.
+- Auth cookie expiration now uses the correct duration format.
+
+## 2026.1.0 & 2026.1.1
+
+_Released: January 20 – February 5, 2026_
+
+### New features
+
+- **jq for JSON response filtering** — Response filtering now uses jq instead of JSONPath, giving you a more expressive way to query JSON responses. Learn more about [response handling](/documentation/getting-started/rest/response-handling).
+- **Web Crypto API in scripting sandbox** — [Scripts](/documentation/features/scripts) now have access to the Web Crypto API, enabling cryptographic operations like hashing and signing directly in your pre-request and test scripts.
+- **User roles in member stack tooltips** — Hovering over team member avatars now shows their role, making it easier to identify who has what access in your [workspace](/documentation/features/workspaces).
+- **Full request path in tab tooltips** — Tab tooltips now display the complete request path, so you can distinguish between similarly named requests.
+
+### Bug fixes
+
+- Fixed a performance issue that could cause the app to hang when highlighting very large responses.
+- Prevented duplicate request IDs when duplicating requests.
+- Resolved memory leaks in the experimental scripting sandbox.
+- Fixed broken scrolling on the latest Chrome versions.
+- The support menu no longer triggers accidentally inside code editors.
