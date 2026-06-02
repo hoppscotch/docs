@@ -6,6 +6,34 @@ description: Stay up to date with the latest Hoppscotch releases, new features, 
 
 For a full list of releases, visit the [GitHub Releases page](https://github.com/hoppscotch/hoppscotch/releases).
 
+## 2026.5.0
+
+_Released: May 22 – June 2, 2026_
+
+### New features
+
+- **OpenAPI 3.1 collection export** — You can now export [collections](/documentation/features/collections) as OpenAPI 3.1 specs, making it easier to share APIs with external tools.
+- **Collection-level pre-request and test scripts** — Define [pre-request and test scripts](/documentation/features/scripts) at the collection level so every request inside inherits the same setup and assertions.
+- **Configurable proxy URL** — Self-hosted admins can now set the proxy URL from environment variables or directly in the [admin dashboard](/documentation/self-host/enterprise-edition/admin-dashboard).
+- **Zoom level control on desktop** — The [desktop client](/documentation/clients/desktop/overview) now includes a zoom level setting so you can scale the UI to your preference.
+- **Mongolian translation** — Hoppscotch is now available in Mongolian. See the full list of [supported languages](/documentation/i18n).
+
+### Updates
+
+- **Improved syncing engine** — The sync system has been refactored to reduce duplication across clients, improving reliability across web and desktop [workspaces](/documentation/features/workspaces).
+- **Desktop keyboard layout handling** — Keyboard layout detection has been reworked for more predictable [shortcut behavior](/documentation/features/shortcuts) across platforms.
+- **Security hardening** — Additional security patches have been applied across the dependency chain in this release.
+
+### Bug fixes
+
+- **Published docs access control** — Public documentation links now revalidate the publisher's access before serving live data from team [collections](/documentation/features/collections), preventing data exposure when a member is removed after publishing.
+- **Secret variables stay local** — Values of secret [environment variables](/documentation/features/environments) no longer leak to the backend during sync.
+- **OpenAPI re-import preserves structure** — Re-importing an OpenAPI spec now keeps your existing folder tree intact. See [importing collections](/documentation/features/importer).
+- **Proxy settings load before requests** — Requests now wait for proxy settings to be ready before firing, avoiding misrouted calls on first load.
+- **Script imports preserved** — Pre-request and test [scripts](/documentation/features/scripts) now retain their imports correctly, including on WebKit-based browsers.
+- **Desktop fixes** — Resolved type mismatches and shell import issues in the desktop app for a smoother startup.
+- **Backend validation fixes** — Corrected validation on REST user request updates and class validator decorator usages.
+
 ## 2026.3.0 & 2026.3.1
 
 _Released: March 27 – April 10, 2026_
