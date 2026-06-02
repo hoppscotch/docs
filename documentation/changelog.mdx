@@ -6,6 +6,47 @@ description: Stay up to date with the latest Hoppscotch releases, new features, 
 
 For a full list of releases, visit the [GitHub Releases page](https://github.com/hoppscotch/hoppscotch/releases).
 
+## 2026.4.0, 2026.4.1 & 2026.5.0
+
+_Released: April 30 – May 28, 2026_
+
+### New features
+
+- **OpenAPI 3.1 collection export** — You can now export collections as OpenAPI 3.1 (JSON or YAML), and re-import them while preserving folder structure, the seeded `baseUrl`, and duplicate `(path, method)` requests. Learn more about [importing and exporting collections](/documentation/features/importer).
+- **Collection-level pre-request and test scripts** — Attach pre-request and test scripts at the collection level so every request inside inherits them. See [scripts](/documentation/features/scripts).
+- **Zoom level control on desktop** — A new Display section in [desktop settings](/documentation/clients/desktop/overview) lets you set the app zoom to 100%, 110%, 125%, or 150%. Your choice persists across restarts.
+- **Manual update check on desktop** — The desktop app now includes a settings page with a manual update check, so you can confirm you're on the latest build.
+- **Keyboard layout strategy for non-QWERTY users** — A new desktop setting lets you choose how [keyboard shortcuts](/documentation/features/shortcuts) map to non-QWERTY layouts.
+- **Configurable proxy URL** — Self-hosted admins can now set the proxy URL through environment variables or the [admin dashboard](/documentation/self-host/enterprise-edition/admin-dashboard) without rebuilding.
+- **SMTP OAuth2 authentication** — Self-hosted deployments can now authenticate outgoing email over SMTP using OAuth2. See [prerequisites](/documentation/self-host/enterprise-edition/prerequisites).
+- **Configurable webapp-server timeouts** — Self-hosted operators can tune webapp-server request and idle timeouts via environment variables. See the [self-host docs](/documentation/self-host).
+- **Mongolian translation** — Hoppscotch is now available in Mongolian (Монгол), joining the list of [supported languages](/documentation/features/customization).
+
+### Updates
+
+- **API documentation publishing UX** — The publishing flow for [API documentation](/documentation/features/documentation) has been polished with clearer states and better feedback.
+- **Translations** — Missing Spanish and Turkish strings have been filled in, and Chinese translations were refined for accuracy.
+- **Accessibility** — Icon-only sidebar links now expose proper aria-labels for screen readers.
+- **Variable hover tooltip** — Long-value tooltips are clickable again and stay open while you interact with them. See [variables](/documentation/features/variables).
+- **Authorization Code flow** — OAuth2 [authorization](/documentation/features/authorization) now accepts `id_token` responses from compliant identity providers.
+
+### Bug fixes
+
+- Fixed a security advisory ([GHSA-c3fq-x5hm-p482](https://github.com/hoppscotch/hoppscotch/security/advisories/GHSA-c3fq-x5hm-p482)) where published API docs with autoSync could continue to expose a team's private collection data after the publisher lost team access. The endpoint now verifies the publisher still has access before serving live data and falls back to the last stored snapshot otherwise.
+- Secret environment [variables](/documentation/features/variables) no longer leak their resolved values to the backend.
+- The mass-assignment vulnerability on the self-hosted onboarding endpoint has been closed, and the endpoint has been hardened against malformed payloads.
+- Pre-request and test [scripts](/documentation/features/scripts) on the experimental sandbox now preserve top-level imports and run on WebKit (Safari, macOS desktop).
+- The desktop app no longer shows a blank screen on older macOS versions.
+- Magic-link sign-in has been restored for cloud organization users.
+- Proxy settings are now loaded before the first request is issued, so requests on launch use the correct proxy.
+- The `$randomUUID` predefined variable now produces RFC 4122–compliant UUIDs.
+- Postman collection [imports](/documentation/features/importer) now handle non-string values without errors.
+- Mock server environments now use the correct domain URL on first run. See [mock servers](/documentation/features/mock).
+- Subfolder creation in [team collections](/documentation/features/collections) now respects write-access permissions.
+- GraphQL history responses preserve their string contract after reload.
+- Publishing API docs from a personal workspace no longer fails environment validation.
+- Patched several upstream CVEs (including `axios` and `quinn-proto`) and shipped routine dependency security updates.
+
 ## 2026.3.0 & 2026.3.1
 
 _Released: March 27 – April 10, 2026_
