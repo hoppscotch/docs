@@ -12,7 +12,7 @@ REST usually uses the Hypertext Transfer Protocol (HTTP) to set up communication
 
 1. The client sends a request to the server.
 2. The server authenticates the client and ensures that the client is authorized to request the information.
-3. The server accepts the requests and processes them.
+3. The server accepts the request and processes it.
 4. The server responds with a code to tell the client if the request was successful or not and sends the requested information if the request was successful.
 
 Whenever a client requests information, the server always sends back a status code to indicate the status of the request. These are called HTTP status codes and are grouped into five types.
@@ -42,12 +42,11 @@ REST APIs also support HTTP methods to do operations on data. Hoppscotch support
 
 ## Using Hoppscotch to test your REST APIs
 
-Hoppscotch provides you with a minimal yet robust platform to test your REST APIs. The REST platform is the default platform you see when you open Hoppscotch.
+Hoppscotch provides a minimal yet robust platform to test your REST APIs. The REST platform is the default platform you see when you open Hoppscotch.
 
 You can enter the API endpoint and choose the HTTP method according to your needs from the dropdown menu. Once it is configured, click on the "**Send**" button and you will see the response returned by the server. It's that simple.
 
-Now try it yourself, copy the below API endpoint, and create a request.
-
+Now try it yourself: copy the API endpoint below and create a request.
 ```
 https://echo.hoppscotch.io
 ```
@@ -70,4 +69,4 @@ If you have more than one environment, select the environment whose variables yo
 
 Hoppscotch has support for various types of authentication mechanisms such as Basic Auth, Bearer Token, OAuth 2.0, and API Key. You can configure this using the Authorization tab on the request section of Hoppscotch.
 
-These are just a few of the amazing set of features that Hoppscotch provides you to make your life easier as a developer. In addition to this, Hoppscotch supports features such as collections to save your requests, pre-requests to add dynamic behavior to your requests and so much more.
+These are just a few of the many feature that Hoppscotch provides you to make your life easier as a developer. In addition to this, Hoppscotch supports features such as collections to save your requests, pre-requests to add dynamic behavior to your requests and so much more.
