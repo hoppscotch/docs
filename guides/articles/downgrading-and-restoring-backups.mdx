@@ -31,13 +31,14 @@ Replace `<username>` with your Windows username
 
 ### Backup naming
 
-Backups are named with the format `backup-by-v{VERSION}`. For example:
-- `backup-by-v25.11.0`
-- `backup-by-v25.10.0`
-- `backup-by-v25.9.0`
+Backups are named `backup-by-vX.Y.Z`, where `X.Y.Z` is the desktop version that created the backup.
+
+<Note>
+  Backup folder names use the shortened desktop version number, which maps to the full release number. See [version numbering](/documentation/clients/desktop/overview#version-numbering) for how the two relate.
+</Note>
 
 <Warning>
-  The backup created by version 25.11.0 contains your data from **before** that version ran. This means `backup-by-v25.11.0` captures your data state from whatever version you were using before upgrading to 25.11.0 (not necessarily 25.10.0 if you skipped versions).
+  A backup named for a version contains your data from **before** that version ran. So `backup-by-vX.Y.Z` captures your data state from whatever version you were using before you upgraded to `X.Y.Z`, which is not necessarily the one immediately prior if you skipped versions.
 </Warning>
 
 ### What gets backed up?
@@ -70,7 +71,7 @@ You should consider downgrading and restoring if:
 
 Navigate to your backup directory and check which backup folders exist. The backup folder names tell you which versions you can restore to.
 
-For example, if you see `backup-by-v25.11.0`, you can restore to the previous version you were using before 25.11.0 by downloading that version and using this backup. It's advised to know which version you were on before updating.
+For example, if you see `backup-by-vX.Y.Z`, you can restore to the version you were using before `X.Y.Z` by downloading that earlier version and using this backup. It's advised to know which version you were on before updating.
 
 To check your backup directory:
 
@@ -91,7 +92,9 @@ ls ~/.config/io.hoppscotch.desktop/backup/
 
 ### Step 2: Download the previous version
 
-Visit the [Hoppscotch releases page](https://github.com/hoppscotch/releases) and download the version you want to restore to.
+Visit the [Hoppscotch releases page](https://github.com/hoppscotch/releases/releases) and download the version you want to restore to.
+
+If you only need the latest version, the [official download page](https://hoppscotch.com/download) has every platform in one place.
 
 Make sure to download the correct installer for your operating system:
 - **macOS:** `.dmg` file (for Apple Silicon or Intel, depending on your Mac)
@@ -99,7 +102,7 @@ Make sure to download the correct installer for your operating system:
 - **Linux:** `.AppImage` or `.deb` file depending on your distribution
 
 <Note>
-  The version number in the backup folder name indicates which version created that backup, so download the version **before** that number. For example, to use `backup-by-v25.11.0`, download version 25.10.0.
+  The version in the backup folder name is the one that created that backup, so download the version you ran **before** it. To use `backup-by-vX.Y.Z`, download the release that preceded `X.Y.Z`.
 </Note>
 
 ### Step 3: Log out of your account
@@ -158,27 +161,27 @@ Copy the backup folder contents to create a fresh configuration directory. This 
 
 **macOS:**
 ```bash
-cp -r ~/Library/Application\ Support/io.hoppscotch.desktop.backup/backup/backup-by-v25.11.0 ~/Library/Application\ Support/io.hoppscotch.desktop
+cp -r ~/Library/Application\ Support/io.hoppscotch.desktop.backup/backup/backup-by-vX.Y.Z ~/Library/Application\ Support/io.hoppscotch.desktop
 ```
-*Replace `v25.11.0` with the actual backup version you want to restore.*
+*Replace `X.Y.Z` with the actual backup version you want to restore.*
 
 **Windows:** In File Explorer:
 1. Navigate to `%APPDATA%\io.hoppscotch.desktop.backup\backup\`
-2. Find the backup folder you want to restore (e.g., `backup-by-v25.11.0`)
+2. Find the backup folder you want to restore (e.g., `backup-by-vX.Y.Z`)
 3. Copy this entire folder
 4. Navigate back to `%APPDATA%\`
 5. Paste the folder and rename it to `io.hoppscotch.desktop`
 
 Or via Command Prompt:
 ```powershell
-xcopy %APPDATA%\io.hoppscotch.desktop.backup\backup\backup-by-v25.11.0 %APPDATA%\io.hoppscotch.desktop /E /I
+xcopy %APPDATA%\io.hoppscotch.desktop.backup\backup\backup-by-vX.Y.Z %APPDATA%\io.hoppscotch.desktop /E /I
 ```
 
 **Linux:**
 ```bash
-cp -r ~/.config/io.hoppscotch.desktop.backup/backup/backup-by-v25.11.0 ~/.config/io.hoppscotch.desktop
+cp -r ~/.config/io.hoppscotch.desktop.backup/backup/backup-by-vX.Y.Z ~/.config/io.hoppscotch.desktop
 ```
-*Replace `v25.11.0` with the actual backup version you want to restore.*
+*Replace `X.Y.Z` with the actual backup version you want to restore.*
 
 ### Step 7: Install the previous version
 
