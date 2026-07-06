@@ -164,6 +164,34 @@ By default, the AIO container exposes the app on port 80. This can cause conflic
 port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, try setting `HOPP_AIO_ALTERNATE_PORT` to bind the app to a non-privileged port.
 </Warning>
 
+### Configuring Nginx with subpath access
+The AIO Container has an Nginx process running within it. If the host server is already running its own Nginx process at the root, ensure the AIO port has been altered and the host passes requests to the new target port with proper reverse proxy configurations as shown below:
+
+```nginx
+server {
+    listen 80;
+    server_name your.domain.com;
+
+    # Increase client body limit if uploading large collections
+    # client_max_body_size 25M;
+
+    location / {
+        proxy_pass http://localhost:3000; # Ensure this matches your HOPP_AIO_ALTERNATE_PORT
+        proxy_http_version 1.1;
+
+        # Necessary for WebSockets support (Real-time features)
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+
+        # Passes the original host and IP information to the container
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
 ## Migrations
 
 Once the instance of Hoppscotch is up, you need to run migrations on the database to ensure that it has the relevant tables. Depending on how Hoppscotch was set up, the method to run the migrations changes.
