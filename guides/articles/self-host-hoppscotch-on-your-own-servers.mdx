@@ -33,9 +33,6 @@ Create a `.env` file in your working directory, copy the example environment var
 # Prisma Config
 DATABASE_URL=postgresql://postgres:testpass@hoppscotch-db:5432/hoppscotch
 
-# (Optional) By default, the AIO container (when in subpath access mode) exposes the endpoint on port 80. Use this setting to specify a different port if needed.
-HOPP_AIO_ALTERNATE_PORT=80
-
 # Sensitive Data Encryption Key while storing in Database (32 character)
 DATA_ENCRYPTION_KEY=********************************
 
@@ -66,6 +63,12 @@ VITE_APP_PRIVACY_POLICY_LINK=https://docs.hoppscotch.io/support/privacy
 
 # Set to `true` for subpath based access
 ENABLE_SUBPATH_BASED_ACCESS=false
+
+#-----------------------Container Runtime Config---------------------#
+
+# (Optional) Caddy's in-container HTTP port. Defaults to 80 when unset.
+# Set a free port (for example 8000) to run the container under a non-root UID.
+# HOPP_ALTERNATE_PORT=8000
 ```
 
 ### 1. Database Configuration
@@ -166,7 +169,7 @@ Subpath access allows you to host multiple services under a single domain by ass
 When `ENABLE_SUBPATH_BASED_ACCESS=true`, you can access all three services (Hoppscotch App, Admin Dashboard, Hoppscotch Backend) on the same domain using different routes. If subpath access is disabled **(`ENABLE_SUBPATH_BASED_ACCESS=false`)**, you will need to access the services on different ports.
 
 <Warning>
-By default, the AIO container exposes the app on port 80. This can cause conflicts if you're running on a host system where port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, try setting `HOPP_AIO_ALTERNATE_PORT` to bind the app to a non-privileged port.
+By default, the AIO container exposes the app on port 80. This can cause conflicts if you're running on a host system where port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, set `HOPP_ALTERNATE_PORT` to bind the app to a non-privileged port — see [running under a non-root user](/documentation/self-host/community-edition/install-and-build#running-under-a-non-root-user) for the full details.
 </Warning>
 
 ## Installing dependencies, running migrations & building the image

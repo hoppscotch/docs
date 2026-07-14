@@ -20,9 +20,6 @@ Before you get started with the installation, you need to configure the environm
 # Get your license key from https://enterprise.hoppscotch.com
 ENTERPRISE_LICENSE_KEY=***************************************
 
-# (Optional) By default, the AIO container (when in subpath access mode) exposes the endpoint on port 80. Use this setting to specify a different port if needed.
-HOPP_AIO_ALTERNATE_PORT=80
-
 # Prisma Config
 DATABASE_URL=postgresql://username:password@url:5432/dbname # or replace with your database URL
 
@@ -74,22 +71,28 @@ LOCAL_PROXY_SERVER_ENABLE=false
 # Optional: Route all API requests via a proxy server for added security.
 # Set your proxy server URL here, or remove this variable to send requests directly.
 PROXY_APP_URL=https://proxy.hoppscotch.io
+
+#-----------------------Container Runtime Config---------------------#
+
+# (Optional) Caddy's in-container HTTP port. Defaults to 80 when unset.
+# Set a free port (for example 8000) to run the container under a non-root UID.
+# HOPP_ALTERNATE_PORT=8000
 ```
 
 Let's understand the major environment variables:
 
 1. `ENTERPRISE_LICENSE_KEY`: The license key required to use Hoppscotch Enterprise.
 2. `DATABASE_URL`: This is where you add your Postgres database URL.
-3. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that lets you specify an alternate port for the AIO container's endpoint when operating in subpath access mode. By default, this endpoint is exposed on port 80.
-4. `HORIZONTAL_SCALING`: Set to true to enable horizontal scaling, which uses Redis for managing pub-sub and state across instances.
-5. `DATA_ENCRYPTION_KEY`: A 32-character key used for encrypting sensitive data stored in the database.
-6. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, frontend app and the bundle server that are allowed to interact with the desktop app.
-7. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from.
-8. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`.
-9. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance.
-10. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance.
-11. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance.
-12. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy.
+3. `HORIZONTAL_SCALING`: Set to true to enable horizontal scaling, which uses Redis for managing pub-sub and state across instances.
+4. `DATA_ENCRYPTION_KEY`: A 32-character key used for encrypting sensitive data stored in the database.
+5. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, frontend app and the bundle server that are allowed to interact with the desktop app.
+6. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from.
+7. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`.
+8. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance.
+9. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance.
+10. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance.
+11. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy.
+12. `HOPP_ALTERNATE_PORT`: An optional variable that changes the HTTP port Caddy listens on inside the container, which is `80` by default. Set it to run under a non-root user, or when port `80` is already taken. See [running under a non-root user](#running-under-a-non-root-user).
 
 Third-party auth configs have to be obtained from the respective providers. You can choose and configure the auth providers by following the [configuring OAuth guide](/documentation/self-host/enterprise-edition/prerequisites#oauth).
 
@@ -185,8 +188,31 @@ When using AIO, when subpath access is set to true the services can be accessed 
 
 <Warning>
 By default, the AIO container exposes the app on port 80. This can cause conflicts if you're running on a host system where
-port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, try setting `HOPP_AIO_ALTERNATE_PORT` to bind the app to a non-privileged port.
+port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, set `HOPP_ALTERNATE_PORT` to bind the app to a non-privileged port. See [running under a non-root user](#running-under-a-non-root-user).
 </Warning>
+
+## Running under a non-root user
+
+The images listen on port `80`, which a non-root user can't bind. To run under a non-root UID — OpenShift's restricted SCC, rootless Docker, Podman — set `HOPP_ALTERNATE_PORT` to a free port at or above `1024`, run the container with GID `0`, and update your published port mapping to match:
+
+```bash
+docker run --user 1000:0 -p 3000:8000 -e HOPP_ALTERNATE_PORT=8000 --env-file .env --restart unless-stopped hoppscotch/hoppscotch-enterprise
+```
+
+On OpenShift the restricted SCC assigns the UID and GID `0` for you; just set the variable and point your Service and Route at the port you chose. If you deploy with the provided `docker-compose.yml`, the container side of the port mapping already follows `HOPP_ALTERNATE_PORT`.
+
+The port must not collide with one the image already uses, or the container exits at startup naming the conflict. Port `9159` is the local proxy server, which the backend starts when `LOCAL_PROXY_SERVER_ENABLE` is `true`:
+
+| Image                     | Reserved ports         |
+| ------------------------- | ---------------------- |
+| AIO (subpath access mode) | `8080`, `3200`, `9159` |
+| Frontend                  | `3000`, `3200`         |
+| Backend                   | `3170`, `8080`, `9159` |
+| Admin                     | `3100`                 |
+
+<Note>The container needs a writable root filesystem, and the non-root UID must belong to GID `0`.</Note>
+
+<Warning>The ClickHouse container used for [audit logs](/guides/articles/audit-logs) is the official `clickhouse/clickhouse-server` image, which expects to run as its own UID and is not arbitrary-UID safe. On OpenShift, use a managed or externally hosted ClickHouse instead of running it alongside Hoppscotch under the restricted SCC.</Warning>
 
 ## Migrations
 

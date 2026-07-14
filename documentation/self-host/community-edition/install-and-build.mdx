@@ -19,9 +19,6 @@ Before you get started with the installation, you need to configure the environm
 # Prisma Config
 DATABASE_URL=postgresql://username:password@url:5432/dbname # or replace with your database URL
 
-# (Optional) By default, the AIO container (when in subpath access mode) exposes the endpoint on port 80. Use this setting to specify a different port if needed.
-HOPP_AIO_ALTERNATE_PORT=80
-
 # Sensitive Data Encryption Key while storing in Database (32 character)
 DATA_ENCRYPTION_KEY=********************************
 
@@ -52,20 +49,26 @@ VITE_APP_PRIVACY_POLICY_LINK=https://docs.hoppscotch.io/support/privacy
 
 # Set to `true` for subpath based access
 ENABLE_SUBPATH_BASED_ACCESS=false
+
+#-----------------------Container Runtime Config---------------------#
+
+# (Optional) Caddy's in-container HTTP port. Defaults to 80 when unset.
+# Set a free port (for example 8000) to run the container under a non-root UID.
+# HOPP_ALTERNATE_PORT=8000
 ```
 
 Let's understand the major environment variables:
 
 1. `DATABASE_URL`: This is where you add your Postgres database URL.
-2. `HOPP_AIO_ALTERNATE_PORT`: This is an optional variable that lets you specify an alternate port for the AIO container's endpoint when operating in subpath access mode. By default, this endpoint is exposed on port 80.
-3. `DATA_ENCRYPTION_KEY`: A 32-character key used for encrypting sensitive data stored in the database.
-4. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, frontend app and the bundle server that are allowed to interact with the desktop app.
-5. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from.
-6. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`.
-7. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance.
-8. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance.
-9. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance.
-10. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy.
+2. `DATA_ENCRYPTION_KEY`: A 32-character key used for encrypting sensitive data stored in the database.
+3. `WHITELISTED_ORIGINS`: URLs of Hoppscotch backend, admin dashboard, frontend app and the bundle server that are allowed to interact with the desktop app.
+4. `VITE_BASE_URL`: This is the URL where your deployment will be accessible from.
+5. `VITE_SHORTCODE_BASE_URL`: A URL to generate shortcodes for sharing, can be the same as `VITE_BASE_URL`.
+6. `VITE_BACKEND_GQL_URL`: The URL for GraphQL within the instance.
+7. `VITE_BACKEND_WS_URL`: The URL for WebSockets within the instance.
+8. `VITE_BACKEND_API_URL`: The URL for REST APIs within the instance.
+9. `VITE_APP_TOS_LINK` and `VITE_APP_PRIVACY_POLICY_LINK` are optional and are used to configure the links to the Terms & Conditions and Privacy Policy.
+10. `HOPP_ALTERNATE_PORT`: An optional variable that changes the HTTP port Caddy listens on inside the container, which is `80` by default. Set it to run under a non-root user, or when port `80` is already taken. See [running under a non-root user](#running-under-a-non-root-user).
 
 Third-party auth configs have to be obtained from the respective providers. You can choose and configure the auth providers by following the [configuring OAuth guide](/documentation/self-host/community-edition/prerequisites#oauth).
 
@@ -161,8 +164,29 @@ When using AIO, when subpath access is set to true the services can be accessed 
 
 <Warning>
 By default, the AIO container exposes the app on port 80. This can cause conflicts if you're running on a host system where
-port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, try setting `HOPP_AIO_ALTERNATE_PORT` to bind the app to a non-privileged port.
+port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, set `HOPP_ALTERNATE_PORT` to bind the app to a non-privileged port. See [running under a non-root user](#running-under-a-non-root-user).
 </Warning>
+
+## Running under a non-root user
+
+The images listen on port `80`, which a non-root user can't bind. To run under a non-root UID — OpenShift's restricted SCC, rootless Docker, Podman — set `HOPP_ALTERNATE_PORT` to a free port at or above `1024`, run the container with GID `0`, and update your published port mapping to match:
+
+```bash
+docker run --user 1000:0 -p 3000:8000 -e HOPP_ALTERNATE_PORT=8000 --env-file .env --restart unless-stopped hoppscotch/hoppscotch
+```
+
+On OpenShift the restricted SCC assigns the UID and GID `0` for you; just set the variable and point your Service and Route at the port you chose. If you deploy with the provided `docker-compose.yml`, the container side of the port mapping already follows `HOPP_ALTERNATE_PORT`.
+
+The port must not collide with one the image already uses, or the container exits at startup naming the conflict:
+
+| Image                     | Reserved ports |
+| ------------------------- | -------------- |
+| AIO (subpath access mode) | `8080`, `3200` |
+| Frontend                  | `3000`, `3200` |
+| Backend                   | `3170`, `8080` |
+| Admin                     | `3100`         |
+
+<Note>The container needs a writable root filesystem, and the non-root UID must belong to GID `0`.</Note>
 
 ## Migrations
 
