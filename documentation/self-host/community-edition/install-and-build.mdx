@@ -163,13 +163,12 @@ When using AIO, when subpath access is set to true the services can be accessed 
 | Hoppscotch Backend   | `/backend` |
 
 <Warning>
-By default, the AIO container exposes the app on port 80. This can cause conflicts if you're running on a host system where
-port 80 is privileged, such as with Rootless Docker, Podman, or hardened environments like OpenShift. If you experience issues on these setups, set `HOPP_ALTERNATE_PORT` to bind the app to a non-privileged port. See [running under a non-root user](#running-under-a-non-root-user).
+By default, the AIO container serves the app on port `80`. Ports below `1024` are privileged, so a non-root user can't bind them — a common restriction in rootless Docker, Podman, and hardened environments like OpenShift. On those setups, set `HOPP_ALTERNATE_PORT` to bind the app to a port at or above `1024`. See [running under a non-root user](#running-under-a-non-root-user).
 </Warning>
 
 ## Running under a non-root user
 
-The images listen on port `80`, which a non-root user can't bind. To run under a non-root UID — OpenShift's restricted SCC, rootless Docker, Podman — set `HOPP_ALTERNATE_PORT` to a free port at or above `1024`, run the container with GID `0`, and update your published port mapping to match:
+By default the images serve on port `80` inside the container (the HTTP port Caddy binds), which a non-root user can't bind since ports below `1024` are privileged. To run under a non-root UID — OpenShift's restricted SCC, rootless Docker, Podman — set `HOPP_ALTERNATE_PORT` to a free port at or above `1024`, run the container with GID `0`, and update your published port mapping to match:
 
 ```bash
 docker run --user 1000:0 -p 3000:8000 -e HOPP_ALTERNATE_PORT=8000 --env-file .env --restart unless-stopped hoppscotch/hoppscotch
