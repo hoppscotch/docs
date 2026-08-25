@@ -95,9 +95,9 @@ Collections in your personal workspace. Read behavior differs sharply between Cl
 | `list_user_collections` | All | List your root-level personal collections, either REST or GraphQL. |
 | `get_user_collection` | All | Get one personal collection's envelope, meaning its ID, title, parent, and data. Nested requests and child collections are not included. |
 | `create_user_collection` | All | Create a personal collection at the root or under a parent. |
-| `update_user_collection` | All | Rename a personal collection or modify its data. |
-| `delete_user_collection` | All | Delete a personal collection and everything inside it. This cannot be undone. |
-| `duplicate_user_collection` | `standard`, `full` | Duplicate a personal collection. |
+| `update_user_collection` | All | Rename a personal collection or modify its data. Targets a REST collection unless you pass `type` as `GQL`. |
+| `delete_user_collection` | All | Delete a personal collection and everything inside it. This cannot be undone. Targets a REST collection unless you pass `type` as `GQL`. |
+| `duplicate_user_collection` | `standard`, `full` | Duplicate a personal collection. Targets a REST collection unless you pass `type` as `GQL`. |
 | `move_user_collection` | `standard`, `full` | Move a personal collection under a different parent, or to the root. |
 | `import_user_collection` | All | Import personal collections from Hoppscotch export JSON. |
 | `export_user_collection` | All | Export one personal collection, or all of a given type, as JSON. |
@@ -203,7 +203,9 @@ Every tool carries four MCP annotation hints: `readOnlyHint`, `destructiveHint`,
 
 `execute_request` and `validate_response` are marked both destructive and open-world, because the target host is arbitrary and may perform any write the credentials in the request allow.
 
-The hints are derived from each tool's name prefix, which makes them coarser than they look. `update_team_member_role`, and every `rename_` and `update_` tool, carry `destructiveHint: false`. A host that prompts only on the destructive hint will not ask before a role change or before data is overwritten.
+The hints are derived from each tool's name prefix, which makes them coarser than they look. Twenty-four tools are marked `destructiveHint: true`, sixteen of them in `core`. The thirteen that write without being marked destructive are every `create_`, `import_`, and `duplicate_` tool, plus `reauth` and `invite_team_member`.
+
+That last one is the sharp edge. An invitation is additive in shape, so it advertises `destructiveHint: false`, yet it accepts a role of `OWNER`. A host that prompts only on the destructive hint will not ask before an ownership grant. `invite_team_member` is not in the default profile, so reaching it takes `standard` or `full`.
 
 ## Next steps
 
