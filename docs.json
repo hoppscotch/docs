@@ -86,6 +86,14 @@
                   "documentation/clients/cli/overview",
                   "documentation/clients/cli/troubleshooting"
                 ]
+              },
+              {
+                "group": "MCP server",
+                "pages": [
+                  "documentation/clients/mcp-server/overview",
+                  "documentation/clients/mcp-server/tools",
+                  "documentation/clients/mcp-server/troubleshooting"
+                ]
               }
             ]
           },
