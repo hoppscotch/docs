@@ -1,0 +1,217 @@
+---
+sidebarTitle: Tools
+title: Hoppscotch MCP Server Tools
+description: Reference for all 53 Hoppscotch MCP server tools, the profile that includes each one, and how they behave on Cloud and self-hosted instances.
+---
+
+All 53 tools are listed here. How many your host actually sees comes down to `HOPPSCOTCH_TOOL_PROFILE`, which defaults to `core` and exposes 39 of them.
+
+Each table carries a **Profiles** column telling you where that tool is available, and "All" means every profile, `minimal` included. CRUD is shorthand for the four basic operations on a resource: create, read, update, and delete.
+
+| Profile | Tools | Notes |
+| --- | --- | --- |
+| `minimal` | 22 | Collection and environment CRUD, plus `reauth`. |
+| `core` | 39 | The default. Adds request CRUD, request execution, code generation, `list_teams`, and `get_team_info`. |
+| `standard` | 38 | Adds team administration and advanced collection operations. **Removes** request execution, response validation, code generation, and request CRUD. |
+| `full` | 53 | Everything. |
+
+<Note>`core` and `standard` are separate branches of `full`, not a ladder. Switching from `core` to `standard` **loses** `execute_request`, `validate_response`, `generate_code`, `generate_documentation`, and all eleven request CRUD tools. Choose `full` if you need both sides.</Note>
+
+The profile gates discovery and execution together. A tool outside your profile is invisible to the host and refused even if an agent names it directly.
+
+## Cloud behavior
+
+Against a self-hosted instance, Community or Enterprise, every tool works. Cloud is where it gets uneven. The personal workspace is gated there for now, but the gate lives in this server rather than the backend, and it was only ever applied to some tools. What you get therefore depends on the tool you call:
+
+| On Cloud | Tools | What you see |
+| --- | --- | --- |
+| Returns an error | `list_user_collections`, `get_user_collection`, `export_user_collection`, `list_user_requests` | A message saying the operation is not supported on Cloud, suggesting team collections instead. |
+| Returns an error | `create_user_environment`, `update_user_environment`, `delete_user_environment` | A message saying personal environments are not supported on Cloud. |
+| Returns an empty result | `list_user_environments` | An empty list. This is not an error, so an agent may read it as "you have no environments". |
+| Returns an error | `search_team_requests` | The backend rejects the query with `bug/team/no_require_team_role`, surfaced as an error. |
+| Runs normally | `create_user_collection`, `update_user_collection`, `delete_user_collection`, `import_user_collection`, `duplicate_user_collection`, `move_user_collection`, `create_user_request`, `update_user_request`, `delete_user_request`, `move_user_request` | The call succeeds. |
+
+<Warning>Personal collection and request **writes are not blocked on Cloud, but the matching reads are.** An agent can create a personal collection and then be unable to list it back, because `create_user_collection` runs while `list_user_collections` returns an error. Personal *environment* writes behave differently and do return an error. Use team workspaces on Cloud to avoid this entirely.</Warning>
+
+Variable substitution is affected by the same gap. `execute_request` and `validate_response` read personal environments only, so on Cloud every `environmentId` you pass is rejected as not found. See [Request execution](#request-execution).
+
+## Teams
+
+Team discovery and administration. `list_teams` and `get_team_info` are read-only and ship in `core`. Every other tool here is team administration and requires `standard` or `full`.
+
+<Warning>Both read-only tools return each member's user ID, display name, and **email address** along with their role. `list_teams` does this for every team you belong to, and it is in the default profile, so asking an agent to list your teams sends your colleagues' email addresses into the model's context.</Warning>
+
+<Note>`remove_team_member` and `update_team_member_role` identify a member by **user ID**, while `invite_team_member` uses an **email address**. Read the user ID from `get_team_info` first. Removing or demoting a team's only owner is refused before the call is sent, though that check is a convenience: the backend is authoritative, and if membership cannot be read the call proceeds and the backend rejects it.</Note>
+
+| Tool | Profiles | Description |
+| --- | --- | --- |
+| `list_teams` | `core`, `standard`, `full` | List the teams you belong to, with each team's members. |
+| `get_team_info` | `core`, `standard`, `full` | Get one team's details, with its members. |
+| `create_team` | `standard`, `full` | Create a team. |
+| `rename_team` | `standard`, `full` | Rename a team. |
+| `delete_team` | `standard`, `full` | Delete a team. This cannot be undone. |
+| `leave_team` | `standard`, `full` | Leave a team you are a member of. |
+| `invite_team_member` | `standard`, `full` | Invite someone to a team by email address. Accepts `OWNER` with no extra confirmation. |
+| `revoke_team_invitation` | `standard`, `full` | Revoke a pending invitation. |
+| `remove_team_member` | `standard`, `full` | Remove a member from a team. Takes a user ID, not an email address. |
+| `update_team_member_role` | `standard`, `full` | Change a member's role to `OWNER`, `EDITOR`, or `VIEWER`. Takes a user ID, not an email address. |
+
+## Team collections
+
+Collections inside a team workspace. These work on both Cloud and self-hosted, except `search_team_requests`.
+
+| Tool | Profiles | Description |
+| --- | --- | --- |
+| `list_team_collections` | All | List a team's root-level collections. Pagination is cursor-based, with no per-call limit. |
+| `get_team_collection` | All | Get a team collection and its direct children. The backend returns about 10 children per response, so a larger collection is truncated. |
+| `create_team_collection` | All | Create a team collection at the root or under a parent. |
+| `update_team_collection` | All | Rename a team collection or modify its data. |
+| `delete_team_collection` | All | Delete a team collection and everything inside it. This cannot be undone. |
+| `duplicate_team_collection` | `standard`, `full` | Duplicate a team collection. |
+| `move_team_collection` | `standard`, `full` | Move a team collection under a different parent. |
+| `import_team_collection` | `standard`, `full` | Import a team collection from Hoppscotch export JSON. |
+| `export_team_collection` | All | Export a team collection as a full JSON tree. **Omitting the collection ID exports the entire team workspace** into the conversation, so check the size first. |
+| `search_team_requests` | `standard`, `full` | Search a team's requests by title. Returns each match's ID and title with its parent collection, not the full request JSON, and only the first page of around ten matches, with no cursor to page further. |
+
+## Team environments
+
+Environment variables scoped to a team workspace. These work on both Cloud and self-hosted.
+
+| Tool | Profiles | Description |
+| --- | --- | --- |
+| `list_team_environments` | All | List a team's environments. Values marked secret are masked. |
+| `create_team_environment` | All | Create a team environment with variables. |
+| `update_team_environment` | All | Rename a team environment or replace its variables. Supplying variables replaces the whole list rather than merging. Without `HOPPSCOTCH_DEFAULT_TEAM_ID`, you must pass both the name and the complete list. |
+| `delete_team_environment` | All | Delete a team environment. This cannot be undone. |
+
+<Note>Reading an environment masks every secret value as `<secret hidden>`, and an update **replaces the entire variable list**. Listing an environment and submitting it back would therefore write the mask over the real secret, so the server refuses that write. To keep a secret unchanged, omit that variable from the update. To change it, pass the real new value.</Note>
+
+## Personal collections
+
+Collections in your personal workspace. Read behavior differs sharply between Cloud and self-hosted. See [Cloud behavior](#cloud-behavior).
+
+| Tool | Profiles | Description |
+| --- | --- | --- |
+| `list_user_collections` | All | List your root-level personal collections, either REST or GraphQL. |
+| `get_user_collection` | All | Get one personal collection's envelope, meaning its ID, title, parent, and data. Nested requests and child collections are not included. |
+| `create_user_collection` | All | Create a personal collection at the root or under a parent. |
+| `update_user_collection` | All | Rename a personal collection or modify its data. |
+| `delete_user_collection` | All | Delete a personal collection and everything inside it. This cannot be undone. |
+| `duplicate_user_collection` | `standard`, `full` | Duplicate a personal collection. |
+| `move_user_collection` | `standard`, `full` | Move a personal collection under a different parent, or to the root. |
+| `import_user_collection` | All | Import personal collections from Hoppscotch export JSON. |
+| `export_user_collection` | All | Export one personal collection, or all of a given type, as JSON. |
+
+## Personal environments
+
+Environment variables scoped to your personal workspace. Not supported on Cloud. See [Cloud behavior](#cloud-behavior).
+
+| Tool | Profiles | Description |
+| --- | --- | --- |
+| `list_user_environments` | All | List your personal environments. Values marked secret are masked. |
+| `create_user_environment` | All | Create a personal environment with variables. |
+| `update_user_environment` | All | Rename a personal environment or replace its variables. Supplying variables replaces the whole list rather than merging. |
+| `delete_user_environment` | All | Delete a personal environment. This cannot be undone. |
+
+## Team requests
+
+Individual requests stored inside a team collection.
+
+<Warning>The read tools here return each request's **full stored JSON**, including any headers, body, and authentication saved with it. Unlike environment listings, request reads are **not** redacted, so a credential stored in a saved request reaches the model exactly as stored.</Warning>
+
+| Tool | Profiles | Description |
+| --- | --- | --- |
+| `list_team_requests` | `core`, `full` | List the requests in a team collection, with each request's full stored JSON. Returns one page per call, sized by the backend at around ten. Omit the cursor for the first page, then pass the returned cursor for the next. |
+| `get_team_request` | `core`, `full` | Get one team request by ID. |
+| `create_team_request` | `core`, `full` | Create a request in a team collection. |
+| `update_team_request` | `core`, `full` | Rename a team request or modify its data. |
+| `delete_team_request` | `core`, `full` | Delete a team request. This cannot be undone. |
+| `move_team_request` | `core`, `full` | Move a team request into a different collection. |
+
+## Personal requests
+
+Individual requests stored inside a personal collection. See [Cloud behavior](#cloud-behavior).
+
+| Tool | Profiles | Description |
+| --- | --- | --- |
+| `list_user_requests` | `core`, `full` | List the requests in a personal collection. |
+| `create_user_request` | `core`, `full` | Create a personal request, either REST or GraphQL. |
+| `update_user_request` | `core`, `full` | Rename a personal request or modify its data. |
+| `delete_user_request` | `core`, `full` | Delete a personal request. This cannot be undone. |
+| `move_user_request` | `core`, `full` | Move a personal request into a different collection. |
+
+## Request execution
+
+The tools that send real HTTP traffic. Both refuse targets on your own machine or a private network, and both cap the response body, as described in [Overview](/documentation/clients/mcp-server/overview#security). The 30 second timeout is a default that a call can override with its own `timeout` argument, between 1,000 and 120,000 milliseconds.
+
+| Tool | Profiles | Description |
+| --- | --- | --- |
+| `execute_request` | `core`, `full` | Send an HTTP request and return the response. Takes a raw method and URL, not a stored request ID. |
+| `validate_response` | `core`, `full` | Send a request and check the response against criteria such as status, headers, body, and response time. |
+
+<Warning>`validate_response` does **not** validate against a JSON Schema. The `jsonSchema` field is a deprecated alias of `jsonObject`, and both perform the same check: whether the body parses as a JSON object or array. Passing a schema document does not compare the response to it, and no error tells you the schema was ignored. Use `jsonObject: true` for the check that actually happens.</Warning>
+
+## Code generation
+
+Turn a request definition into code or documentation.
+
+| Tool | Profiles | Description |
+| --- | --- | --- |
+| `generate_code` | `core`, `full` | Generate a snippet in curl, JavaScript, Python, Go, or Rust. Credentials are live unless you pass `redactCredentials: true`. |
+| `generate_documentation` | `core`, `full` | Generate Markdown API documentation. Pass `includeExamples: true` to add code examples. Credentials are masked unless you pass `redactCredentials: false`. |
+
+<Warning>Credential masking is **best-effort, not a guarantee.** It covers the structured `auth` object, credential-looking header names and query parameters, and JSON or form-encoded body fields. An XML, plain-text, multipart, or binary body is left untouched, and a credential in an unrecognized field is not masked. Read the output before sharing it, even with masking enabled.</Warning>
+
+## Session
+
+Sign-in control.
+
+| Tool | Profiles | Description |
+| --- | --- | --- |
+| `reauth` | All | Discard the cached token and start a fresh browser sign-in. Use it to switch accounts or recover a bad session. With `HOPPSCOTCH_ACCESS_TOKEN` set it cannot change the token in use, because that token is always used as-is, but it still clears the cached session in `~/.config/hoppscotch-mcp/auth.json`. |
+
+## Variable substitution
+
+`execute_request` and `validate_response` substitute `{{variable}}` references from your personal environments. The behavior has several edges.
+
+- Substitution applies to the URL, header **values**, and the body. It does **not** apply to the `auth` block or to header names.
+- The `auth` block handles bearer, basic, and API key authentication. For anything else, set the `Authorization` header yourself as a normal header.
+- Only personal environments are read. Passing a team environment ID is rejected. On Cloud, personal environments are unavailable, so **any** `environmentId` is rejected.
+- These tools do not inherit authentication from a parent collection. They use only the `auth` you pass in the call.
+- When you select an environment, an unresolved `{{placeholder}}` in the URL, the body, or a header value fails the call. **When you select no environment, an unresolved `{{placeholder}}` is sent rather than failing the call**, because there is nothing to resolve it against. In a URL path the braces are percent-encoded on the wire.
+- The unresolved-placeholder check covers the same three places substitution does, so two locations are outside it entirely. A placeholder in a header **name** is never substituted or checked, and the call then fails before anything is sent, because braces are not legal in a header name. A placeholder in the `auth` block is also never substituted or checked, and what reaches the wire depends on the authentication type. A bearer token is sent as written, Basic credentials are base64-encoded, an API key added to the query is percent-encoded into the URL, and an API key whose **name** is a placeholder fails the same way a placeholder header name does.
+- Values marked secret substitute into a request to any origin by default. Set `HOPPSCOTCH_SECRET_ALLOWED_ORIGINS` to restrict which origins may receive them.
+
+### What scrubbing covers
+
+Secrets that a request substituted are scrubbed from the response body, headers, and error text before the model sees them. The scrubber works by matching the forms a secret takes when it is sent: the raw value, its JSON-escaped form, and the percent-encoded forms a URL produces for it. It does not match base64 or any other re-encoding.
+
+Matching on forms is what makes this best-effort. Either end of the request can produce something the forms miss:
+
+- **Your request can drop part of the value.** Everything after a `#` becomes a URL fragment and never leaves your machine, so the target only ever receives the part before it. When it echoes that prefix back, nothing matches.
+- **The target can change what it received** before echoing it, by decoding a percent-escape, turning a `+` back into a space, or splitting the value at a delimiter. Again, nothing matches.
+
+Narrower still is what gets tracked at all. Only values flagged secret go into the scrub set, so a plain variable, a credential in the `auth` block, and anything typed straight into a header are never candidates. And the set is per-request: it holds the secrets that particular call substituted, not everything sitting in the environment.
+
+<Warning>**Do not rely on response scrubbing for confidentiality.** It is a safety net for values the server itself substituted, not a guarantee that no credential reaches the model. `HOPPSCOTCH_SECRET_ALLOWED_ORIGINS` does not close the gap either: it gates which origins may receive values flagged secret, and has no bearing on plain variables, `auth` block credentials, or hand-written headers.</Warning>
+
+## Annotations
+
+Every tool carries four MCP annotation hints: `readOnlyHint`, `destructiveHint`, `idempotentHint`, and `openWorldHint`. Hosts may use them to decide whether to ask you before running a tool.
+
+<Warning>These are hints for your host, not a server-side guard. The server has **no confirmation step**. A `delete_` tool or a team-membership change takes effect on the first call. Whether you get a prompt is your host's decision.</Warning>
+
+`execute_request` and `validate_response` are marked both destructive and open-world, because the target host is arbitrary and may perform any write the credentials in the request allow.
+
+The hints are derived from each tool's name prefix, which makes them coarser than they look. `update_team_member_role`, and every `rename_` and `update_` tool, carry `destructiveHint: false`. A host that prompts only on the destructive hint will not ask before a role change or before data is overwritten.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Overview" iconType="light" icon="circle-arrow-right" href="/documentation/clients/mcp-server/overview">
+    Installation, host setup, authentication, and configuration.
+  </Card>
+  <Card title="Troubleshooting" iconType="light" icon="circle-arrow-right" href="/documentation/clients/mcp-server/troubleshooting">
+    Errors you may see, what causes them, and how to fix them.
+  </Card>
+</CardGroup>
