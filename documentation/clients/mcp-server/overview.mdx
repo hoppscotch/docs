@@ -89,7 +89,7 @@ Register the server with your host. The command and arguments are the same every
   </Tab>
 </Tabs>
 
-<Note>Only Claude Desktop publishes a fixed configuration path. For any other host, check its own documentation.</Note>
+<Note>Claude Code and Codex register the server through their own CLI, so you never need to know where they keep their configuration. Claude Desktop has no such command, which is why its file path is given above. For any other host, check its own documentation.</Note>
 
 ### Pointing at a self-hosted instance
 
@@ -254,7 +254,7 @@ Below, CRUD is shorthand for the four basic operations on a resource: create, re
 
 | Profile | Tools | Contents |
 | --- | --- | --- |
-| `minimal` | 22 | Collection and environment CRUD for personal and team workspaces, plus `reauth`. |
+| `minimal` | 22 | Collection and environment CRUD for personal and team workspaces, collection import and export, plus `reauth`. |
 | `core` (default) | 39 | Everything in `minimal`, plus request CRUD, request execution, code generation, and read-only team discovery. |
 | `standard` | 38 | Everything in `minimal`, plus team administration and advanced collection operations such as duplicate, move, import, and search. |
 | `full` | 53 | Every tool. |
