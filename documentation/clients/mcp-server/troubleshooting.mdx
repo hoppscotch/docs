@@ -105,21 +105,13 @@ Header names and the `auth` block sit outside both substitution and the check, a
 
 ## `ENVIRONMENT_NOT_FOUND`
 
-> **Environment `'<id>'` not found for this account. Only personal environments are available here (team environments and Cloud user environments are not).**
+> **Environment `'<id>'` not found for this account. Only personal environments are available here; team environments are not.**
 
 `execute_request` and `validate_response` read personal environments only.
 
-### Case I
-
-**Reason:** You passed a team environment ID. Team environments are not readable by these tools on any backend.
+**Reason:** The ID is not one of the signed-in account's personal environments. It may name a team environment, belong to another account, or not exist at all.
 
 **Fix:** Pass a personal environment ID, or put the values directly in the request.
-
-### Case II
-
-**Reason:** You are on Hoppscotch Cloud. Personal environments are gated there for now, so the lookup list is always empty and **every** `environmentId` produces this error.
-
-**Fix:** Pass no `environmentId` and put the values directly in the request, or use a self-hosted instance.
 
 ## `AUTH_PAT_INVALID`
 
@@ -174,7 +166,9 @@ Several terse backend codes get translated into a fuller sentence, with the orig
 | `auth/fail` | Authentication failed or the session expired. Run the `reauth` tool (or retry to trigger sign-in) and try again. |
 | `bug/team/no_require_team_role` | This operation is unavailable on this backend (the required team-role guard is not configured server-side). Known Cloud limitation for `search_team_requests`. |
 | `team_invite/member_has_invite` | That user already has a pending invitation to this team. |
-| `email/failed` | The invitation could not be sent — the email is not a registered Hoppscotch account (Cloud requires invitees to already have an account). |
+| `email/failed` | The invitation could not be sent — the email is not a registered Hoppscotch account (Cloud requires invitees to already have an account). See the note below. |
+
+<Note>That last message is this server's own wording for the backend's terse `email/failed`, not a diagnosis from the backend. The code itself says only that sending the invitation email failed, so treat the missing-account explanation as the likely cause rather than a confirmed one.</Note>
 
 ### Case I
 
@@ -226,19 +220,15 @@ Several terse backend codes get translated into a fuller sentence, with the orig
 
 **Fix:** Run the `reauth` tool to adopt the new identity, or restart the server.
 
-## Not supported on Hoppscotch Cloud
+## `get_user_collection` on Hoppscotch Cloud
 
-> **`"<operation>"` is not supported on Hoppscotch Cloud as of now. Use team collections instead, or switch to a self-hosted instance.**
+> **`"get_user_collection"` does not work on Hoppscotch Cloud as of now: the backend fails to serialize the collection's `data` field, which errors the whole query. This is server-side, so the tool is expected to start working without an update here. Use `"list_user_collections"` meanwhile, which returns the same collections on Cloud.**
 
-**Reason:** This server gates the personal workspace on Cloud. The gate is applied client-side by the server, not returned by the backend, which is why only some tools are affected: `list_user_collections`, `get_user_collection`, `export_user_collection`, and `list_user_requests`. Personal environment writes return a comparable error.
+**Reason:** The check was added after Cloud's `userCollection` resolver failed to serialize the `data` field, which fails the whole query. The server refuses the call up front rather than handing back a broken response.
 
-`list_user_requests` uses a different second sentence, recommending team requests rather than team collections:
+**Fix:** For root-level collections, use `list_user_collections`. For a known collection ID, including a nested one, use `export_user_collection`, which works on Cloud but returns export JSON rather than the collection envelope.
 
-> **`"list_user_requests"` is not supported on Hoppscotch Cloud as of now. Use team requests instead, or switch to a self-hosted instance.**
-
-**Fix:** Use team collections and team environments on Cloud, or run a self-hosted instance.
-
-Personal collection and request writes are not gated, so `create_user_collection` succeeds while `list_user_collections` returns this error. An agent can create something it cannot then read back. See [Cloud behavior](/documentation/clients/mcp-server/tools#cloud-behavior) for the per-tool detail.
+<Note>The sentence "the tool is expected to start working without an update here" is wrong for this release. The server rejects every Cloud call before it queries the backend, so a backend fix alone cannot make the tool work. A later MCP server release has to remove the check.</Note>
 
 ## `bug/team/no_require_team_role`
 

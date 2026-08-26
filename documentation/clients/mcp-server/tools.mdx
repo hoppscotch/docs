@@ -21,19 +21,16 @@ The profile gates discovery and execution together. A tool outside your profile 
 
 ## Cloud behavior
 
-Against a self-hosted instance, Community or Enterprise, every tool works. Cloud is where it gets uneven. The personal workspace is gated there for now, but the gate lives in this server rather than the backend, and it was only ever applied to some tools. What you get therefore depends on the tool you call:
+Against a self-hosted instance, Community or Enterprise, every tool works. On Cloud, this server refuses one tool, and one other is unavailable because of a backend limitation:
 
-| On Cloud | Tools | What you see |
+| On Cloud | Tool | What you see |
 | --- | --- | --- |
-| Returns an error | `list_user_collections`, `get_user_collection`, `export_user_collection`, `list_user_requests` | A message saying the operation is not supported on Cloud, suggesting team collections instead. |
-| Returns an error | `create_user_environment`, `update_user_environment`, `delete_user_environment` | A message saying personal environments are not supported on Cloud. |
-| Returns an empty result | `list_user_environments` | An empty list. This is not an error, so an agent may read it as "you have no environments". |
-| Returns an error | `search_team_requests` | The backend rejects the query with `bug/team/no_require_team_role`, surfaced as an error. |
-| Runs normally | `create_user_collection`, `update_user_collection`, `delete_user_collection`, `import_user_collection`, `duplicate_user_collection`, `move_user_collection`, `create_user_request`, `update_user_request`, `delete_user_request`, `move_user_request` | The call succeeds. |
+| Refused by this server | `get_user_collection` | An error explaining that the backend cannot serialize the collection's `data` field, which fails the whole query. Use `list_user_collections` for root-level collections, or `export_user_collection` for a known ID. |
+| Rejected by the backend | `search_team_requests` | The backend rejects the query with `bug/team/no_require_team_role`. This comes from upstream, not from a check in this server. |
 
-<Warning>Personal collection and request **writes are not blocked on Cloud, but the matching reads are.** An agent can create a personal collection and then be unable to list it back, because `create_user_collection` runs while `list_user_collections` returns an error. Personal *environment* writes behave differently and do return an error. Use team workspaces on Cloud to avoid this entirely.</Warning>
+Those are the two tools unavailable on Cloud. No other tool carries a Cloud-specific check in this server. Apart from `get_user_collection`, the personal collection, request, and environment tools are all available there, reads included.
 
-Variable substitution is affected by the same gap. `execute_request` and `validate_response` read personal environments only, so on Cloud every `environmentId` you pass is rejected as not found. See [Request execution](#request-execution).
+`execute_request` and `validate_response` read personal environments only, so passing a team environment ID is rejected on either deployment. See [Request execution](#request-execution).
 
 ## Teams
 
@@ -88,7 +85,7 @@ Environment variables scoped to a team workspace. These work on both Cloud and s
 
 ## Personal collections
 
-Collections in your personal workspace. Read behavior differs sharply between Cloud and self-hosted. See [Cloud behavior](#cloud-behavior).
+Collections in your personal workspace. `get_user_collection` is the only one refused on Cloud. See [Cloud behavior](#cloud-behavior).
 
 | Tool | Profiles | Description |
 | --- | --- | --- |
@@ -104,7 +101,7 @@ Collections in your personal workspace. Read behavior differs sharply between Cl
 
 ## Personal environments
 
-Environment variables scoped to your personal workspace. Not supported on Cloud. See [Cloud behavior](#cloud-behavior).
+Environment variables scoped to your personal workspace. These work on Cloud and self-hosted alike.
 
 | Tool | Profiles | Description |
 | --- | --- | --- |
@@ -130,7 +127,7 @@ Individual requests stored inside a team collection.
 
 ## Personal requests
 
-Individual requests stored inside a personal collection. See [Cloud behavior](#cloud-behavior).
+Individual requests stored inside a personal collection. These work on Cloud and self-hosted alike.
 
 | Tool | Profiles | Description |
 | --- | --- | --- |
@@ -176,7 +173,7 @@ Sign-in control.
 
 - Substitution applies to the URL, header **values**, and the body. It does **not** apply to the `auth` block or to header names.
 - The `auth` block handles bearer, basic, and API key authentication. For anything else, set the `Authorization` header yourself as a normal header.
-- Only personal environments are read. Passing a team environment ID is rejected. On Cloud, personal environments are unavailable, so **any** `environmentId` is rejected.
+- Only personal environments are read. Passing a team environment ID is rejected.
 - These tools do not inherit authentication from a parent collection. They use only the `auth` you pass in the call.
 - When you select an environment, an unresolved `{{placeholder}}` in the URL, the body, or a header value fails the call. **When you select no environment, an unresolved `{{placeholder}}` is sent rather than failing the call**, because there is nothing to resolve it against. In a URL path the braces are percent-encoded on the wire.
 - The unresolved-placeholder check covers the same three places substitution does, so two locations are outside it entirely. A placeholder in a header **name** is never substituted or checked, and the call then fails before anything is sent, because braces are not legal in a header name. A placeholder in the `auth` block is also never substituted or checked, and what reaches the wire depends on the authentication type. A bearer token is sent as written, Basic credentials are base64-encoded, an API key added to the query is percent-encoded into the URL, and an API key whose **name** is a placeholder fails the same way a placeholder header name does.

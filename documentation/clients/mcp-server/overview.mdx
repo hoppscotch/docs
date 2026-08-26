@@ -267,20 +267,19 @@ For which profile includes which tool, see [Tools](/documentation/clients/mcp-se
 
 ## Cloud and self-hosted
 
-Point it at a self-hosted instance, Community or Enterprise, and everything works. Cloud is the uneven one. Its personal workspace is gated there for now, but that gate lives in this server rather than in the backend, and it was never applied to every tool, so the result is not a clean on or off.
+All 53 tools are available against a self-hosted instance, Community or Enterprise. On Cloud, this server refuses `get_user_collection`, and the backend rejects `search_team_requests`. Every other personal-workspace tool is available there, reads included.
 
 | Capability | Cloud | Self-hosted |
 | --- | --- | --- |
-| Team collections, requests, and environments | Supported | Supported |
+| Other team collection, request, and environment tools | Supported | Supported |
 | Team administration | Supported | Supported |
 | Request execution and response validation | Supported | Supported |
 | Code and documentation generation | Supported | Supported |
-| Personal collections and requests, reading | Not supported | Supported |
-| Personal collections and requests, writing | **Runs** | Supported |
-| Personal environments | Not supported | Supported |
+| Other personal collection, request, and environment tools | Supported | Supported |
+| `get_user_collection` | Not supported | Supported |
 | `search_team_requests` | Not supported | Supported |
 
-<Warning>On Cloud, personal collection and request **writes are not blocked, but the matching reads are.** An agent can create a personal collection and then be unable to list it back. Use team workspaces on Cloud.</Warning>
+<Note>`get_user_collection` is the one personal-workspace tool that refuses to run on Cloud. The check was added after Cloud's `userCollection` resolver failed to serialize the `data` field, which fails the whole query. For root-level collections use `list_user_collections`; for a known ID, including a nested one, use `export_user_collection`, which works on Cloud but returns export JSON rather than the collection envelope.</Note>
 
 For the exact behavior of every affected tool, see [Cloud behavior](/documentation/clients/mcp-server/tools#cloud-behavior).
 
