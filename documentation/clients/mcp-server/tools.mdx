@@ -81,7 +81,7 @@ Environment variables scoped to a team workspace. These work on both Cloud and s
 | `update_team_environment` | All | Rename a team environment or replace its variables. Supplying variables replaces the whole list rather than merging. Without `HOPPSCOTCH_DEFAULT_TEAM_ID`, you must pass both the name and the complete list. |
 | `delete_team_environment` | All | Delete a team environment. This cannot be undone. |
 
-<Note>Reading an environment masks every secret value as `<secret hidden>`, and an update **replaces the entire variable list**. Listing an environment and submitting it back would therefore write the mask over the real secret, so the server refuses that write. To keep a secret unchanged, omit that variable from the update. To change it, pass the real new value.</Note>
+<Note>Reading an environment masks every secret value as `<secret hidden>`, and an update **replaces the entire variable list**. Listing an environment and submitting it back would therefore write the mask over the real secret, so the server refuses that write. To leave a secret alone, omit the `variables` field entirely, which keeps every variable as it is. If you send `variables` at all, it replaces the whole list, so include every variable you mean to keep and give the secret its real value.</Note>
 
 ## Personal collections
 
@@ -200,7 +200,7 @@ Every tool carries four MCP annotation hints: `readOnlyHint`, `destructiveHint`,
 
 `execute_request` and `validate_response` are marked both destructive and open-world, because the target host is arbitrary and may perform any write the credentials in the request allow.
 
-The hints are derived from each tool's name prefix, which makes them coarser than they look. Twenty-four tools are marked `destructiveHint: true`, sixteen of them in `core`. The thirteen that write without being marked destructive are every `create_`, `import_`, and `duplicate_` tool, plus `reauth` and `invite_team_member`.
+The hints come from each tool's name prefix, with a few hand-written exceptions, which makes them coarser than they look. Twenty-five tools are marked `destructiveHint: true`, seventeen of them in `core`. The twelve that write without being marked destructive are every `create_`, `import_`, and `duplicate_` tool, plus `invite_team_member`.
 
 That last one is the sharp edge. An invitation is additive in shape, so it advertises `destructiveHint: false`, yet it accepts a role of `OWNER`. A host that prompts only on the destructive hint will not ask before an ownership grant. `invite_team_member` is not in the default profile, so reaching it takes `standard` or `full`.
 

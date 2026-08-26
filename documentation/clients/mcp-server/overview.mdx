@@ -305,7 +305,7 @@ Set `HOPPSCOTCH_ALLOW_PRIVATE_HOSTS=true` only to test a local or self-hosted AP
 
 Every tool does carry four MCP annotation hints, `readOnlyHint`, `destructiveHint`, `idempotentHint`, and `openWorldHint`, and a host is free to prompt you based on them. Whether it bothers is the host's call, not this server's.
 
-Do not lean on them too hard. They are assigned from the tool-name prefix, which makes them blunter than they appear: `invite_team_member` is additive in shape, so it advertises `destructiveHint: false`, yet it accepts a role of `OWNER`. A host that only prompts on the destructive hint will let an ownership grant through without asking. That one needs `standard` or `full`. Shrink the surface with `HOPPSCOTCH_TOOL_PROFILE=minimal`, and check [Tools](/documentation/clients/mcp-server/tools) for what each profile holds.
+Do not lean on them too hard. They are assigned from the tool-name prefix, with a few hand-written exceptions, which makes them blunter than they appear: `invite_team_member` is additive in shape, so it advertises `destructiveHint: false`, yet it accepts a role of `OWNER`. A host that only prompts on the destructive hint will let an ownership grant through without asking. That one needs `standard` or `full`. Shrink the surface with `HOPPSCOTCH_TOOL_PROFILE=minimal`, and check [Tools](/documentation/clients/mcp-server/tools) for what each profile holds.
 
 ### Secret variables
 

@@ -145,7 +145,7 @@ Header names and the `auth` block sit outside both substitution and the check, a
 
 **Reason:** Reading an environment masks every secret value as `<secret hidden>`. Supplying variables on an update replaces the whole list, so an agent that lists an environment and submits it back would write the mask over the real secret. The server refuses instead of overwriting.
 
-**Fix:** Omit the secret variable from the update to leave it unchanged, or pass its real value to change it. Omitting the entire variables list also leaves every variable as it is.
+**Fix:** Omit the `variables` field entirely, which leaves every variable as it is. If you send `variables`, it replaces the whole list, so include every variable you mean to keep and give the secret its real value rather than the mask.
 
 ## `updateTeamEnvironment` requires both name and variables
 
