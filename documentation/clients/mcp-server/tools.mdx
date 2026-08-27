@@ -10,7 +10,7 @@ Each table carries a **Profiles** column telling you where that tool is availabl
 
 | Profile | Tools | Notes |
 | --- | --- | --- |
-| `minimal` | 22 | Collection and environment CRUD, collection import and export, plus `reauth`. |
+| `minimal` | 22 | Collection and environment CRUD, personal collection import, team and personal collection export, plus `reauth`. |
 | `core` | 39 | The default. Adds request CRUD, request execution, code generation, `list_teams`, and `get_team_info`. |
 | `standard` | 38 | Adds team administration and advanced collection operations. **Removes** request execution, response validation, code generation, and request CRUD. |
 | `full` | 53 | Everything. |
@@ -92,8 +92,8 @@ Collections in your personal workspace. `get_user_collection` is the only one re
 | `list_user_collections` | All | List your root-level personal collections, either REST or GraphQL. |
 | `get_user_collection` | All | Get one personal collection's envelope, meaning its ID, title, parent, and data. Nested requests and child collections are not included. |
 | `create_user_collection` | All | Create a personal collection at the root or under a parent. |
-| `update_user_collection` | All | Rename a personal collection or modify its data. Targets a REST collection unless you pass `type` as `GQL`. |
-| `delete_user_collection` | All | Delete a personal collection and everything inside it. This cannot be undone. Targets a REST collection unless you pass `type` as `GQL`. |
+| `update_user_collection` | All | Rename a personal collection or modify its data. The `type` argument is accepted for compatibility but ignored; the collection ID determines the target. |
+| `delete_user_collection` | All | Delete a personal collection and everything inside it. This cannot be undone. The `type` argument is accepted for compatibility but ignored; the collection ID determines the target. |
 | `duplicate_user_collection` | `standard`, `full` | Duplicate a personal collection. Targets a REST collection unless you pass `type` as `GQL`. |
 | `move_user_collection` | `standard`, `full` | Move a personal collection under a different parent, or to the root. |
 | `import_user_collection` | All | Import personal collections from Hoppscotch export JSON. |
@@ -118,7 +118,7 @@ Individual requests stored inside a team collection.
 
 | Tool | Profiles | Description |
 | --- | --- | --- |
-| `list_team_requests` | `core`, `full` | List the requests in a team collection, with each request's full stored JSON. Returns one page per call, sized by the backend at around ten. Omit the cursor for the first page, then pass the returned cursor for the next. |
+| `list_team_requests` | `core`, `full` | List the requests in a team collection, with each request's full stored JSON. Returns one page per call, sized by the backend at around ten. Omit the cursor for the first page, then pass the last row's `id` as the cursor for the next. Nothing in the response carries a cursor field. |
 | `get_team_request` | `core`, `full` | Get one team request by ID. |
 | `create_team_request` | `core`, `full` | Create a request in a team collection. |
 | `update_team_request` | `core`, `full` | Rename a team request or modify its data. |
@@ -176,7 +176,7 @@ Sign-in control.
 - Only personal environments are read. Passing a team environment ID is rejected.
 - These tools do not inherit authentication from a parent collection. They use only the `auth` you pass in the call.
 - When you select an environment, an unresolved `{{placeholder}}` in the URL, the body, or a header value fails the call. **When you select no environment, an unresolved `{{placeholder}}` is sent rather than failing the call**, because there is nothing to resolve it against. In a URL path the braces are percent-encoded on the wire.
-- The unresolved-placeholder check covers the same three places substitution does, so two locations are outside it entirely. A placeholder in a header **name** is never substituted or checked, and the call then fails before anything is sent, because braces are not legal in a header name. A placeholder in the `auth` block is also never substituted or checked, and what reaches the wire depends on the authentication type. A bearer token is sent as written, Basic credentials are base64-encoded, an API key added to the query is percent-encoded into the URL, and an API key whose **name** is a placeholder fails the same way a placeholder header name does.
+- The unresolved-placeholder check covers the same three places substitution does, so two locations are outside it entirely. A placeholder in a header **name** is never substituted or checked, and the call then fails before anything is sent, because braces are not legal in a header name. A placeholder in the `auth` block is also never substituted or checked, and what reaches the wire depends on the authentication type. A bearer token is sent as written, Basic credentials are base64-encoded, an API key added to the query is percent-encoded into the URL, and an API key whose **name** is a placeholder fails the same way a placeholder header name does, but only in the default header placement. Added to the query instead, the name is percent-encoded and goes out as written.
 - Values marked secret substitute into a request to any origin by default. Set `HOPPSCOTCH_SECRET_ALLOWED_ORIGINS` to restrict which origins may receive them.
 
 ### What scrubbing covers

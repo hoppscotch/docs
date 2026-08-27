@@ -141,7 +141,7 @@ If the server does not appear at all, see [Troubleshooting](/documentation/clien
 
 ## Authentication
 
-You do not configure a token. The server signs you in through your browser the first time an agent calls a tool.
+The first tool call that reaches your Hoppscotch account signs you in. The server uses `HOPPSCOTCH_ACCESS_TOKEN` if you set one, then a cached session, and opens your browser only when neither is available. Tools that never touch your account, such as `generate_code`, `generate_documentation`, and `execute_request` with no `environmentId`, do not sign you in at all.
 
 <Steps>
   <Step title="A local callback server starts">
@@ -158,7 +158,7 @@ You do not configure a token. The server signs you in through your browser the f
   </Step>
 </Steps>
 
-From then on, refreshes happen on their own before anything expires: through the backend on self-hosted, and through a stored Firebase refresh token on Cloud, where sessions run about an hour. You are only sent back to the browser if a refresh fails.
+From then on, refreshes happen on their own before anything expires: through the backend on self-hosted, and through a stored Firebase refresh token on Cloud, where sessions run about an hour. You are sent back to the browser when a refresh fails, and equally when there is no cached session, when the cached one belongs to a different account, or when the credentials needed to refresh are missing.
 
 <Warning>Automatic refresh applies only to the browser-login session cached in `auth.json`. A token you supply through `HOPPSCOTCH_ACCESS_TOKEN` is used exactly as given and is **never refreshed**. It keeps whatever expiry it was issued with, about an hour for a Cloud token and about a day for a self-hosted one, and stops working once that passes. Plan to rotate it.</Warning>
 
@@ -170,7 +170,7 @@ One identity per operating-system user, shared by every MCP host process you run
 
 ### Running without a browser
 
-CI runners, containers, and SSH sessions have no browser, so device login has nothing to open. Rather than hang, the server spots these environments and fails straight away with guidance.
+CI runners and SSH sessions have no browser, so device login has nothing to open. Rather than hang, the server spots them and fails straight away with guidance. Detection keys on `CI`, on `SSH_CONNECTION` or `SSH_TTY`, and on Linux with neither `DISPLAY` nor `WAYLAND_DISPLAY`, so a container that sets none of those is not caught.
 
 Work around it in three steps:
 
@@ -254,9 +254,9 @@ Below, CRUD is shorthand for the four basic operations on a resource: create, re
 
 | Profile | Tools | Contents |
 | --- | --- | --- |
-| `minimal` | 22 | Collection and environment CRUD for personal and team workspaces, collection import and export, plus `reauth`. |
+| `minimal` | 22 | Collection and environment CRUD for personal and team workspaces, personal collection import, team and personal collection export, plus `reauth`. |
 | `core` (default) | 39 | Everything in `minimal`, plus request CRUD, request execution, code generation, and read-only team discovery. |
-| `standard` | 38 | Everything in `minimal`, plus team administration and advanced collection operations such as duplicate, move, import, and search. |
+| `standard` | 38 | Everything in `minimal`, plus team administration, advanced collection operations such as duplicate, move, import, and search, and read-only team discovery through `list_teams` and `get_team_info`. |
 | `full` | 53 | Every tool. |
 
 <Note>`core` and `standard` are **separate branches** of `full`, not a ladder. `standard` is not a superset of `core`. Moving from `core` to `standard` **removes request execution, response validation, code generation, and request CRUD**, and adds team administration in their place. Use `full` if you need both.</Note>
