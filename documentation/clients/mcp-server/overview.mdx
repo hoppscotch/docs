@@ -158,7 +158,7 @@ The first tool call that reaches your Hoppscotch account signs you in. The serve
   </Step>
 </Steps>
 
-From then on, refreshes happen on their own before anything expires: through the backend on self-hosted, and through a stored Firebase refresh token on Cloud, where sessions run about an hour. You are sent back to the browser when a refresh fails, and equally when there is no cached session, when the cached one belongs to a different account, or when the credentials needed to refresh are missing.
+From then on, refreshes happen on their own before anything expires: through the backend on self-hosted, and through a stored Firebase refresh token on Cloud, where sessions run about an hour. Browser login starts again when there is no usable cached session, meaning no stored token, or an expired one with no refresh credential to renew it. A cached token belonging to a **different** account is refused rather than replaced, with an error telling you to run `reauth` to switch identities.
 
 <Warning>Automatic refresh applies only to the browser-login session cached in `auth.json`. A token you supply through `HOPPSCOTCH_ACCESS_TOKEN` is used exactly as given and is **never refreshed**. It keeps whatever expiry it was issued with, about an hour for a Cloud token and about a day for a self-hosted one, and stops working once that passes. Plan to rotate it.</Warning>
 
@@ -170,7 +170,7 @@ One identity per operating-system user, shared by every MCP host process you run
 
 ### Running without a browser
 
-CI runners and SSH sessions have no browser, so device login has nothing to open. Rather than hang, the server spots them and fails straight away with guidance. Detection keys on `CI`, on `SSH_CONNECTION` or `SSH_TTY`, and on Linux with neither `DISPLAY` nor `WAYLAND_DISPLAY`, so a container that sets none of those is not caught.
+CI runners and SSH sessions have no browser, so device login has nothing to open. Rather than hang, the server spots them and fails straight away with guidance. Detection keys on a truthy `CI`, on `SSH_CONNECTION` or `SSH_TTY`, or, on Linux, on the absence of both `DISPLAY` and `WAYLAND_DISPLAY`. That last rule catches Linux containers as well. Only a non-Linux environment showing none of those signals slips through, and there the call waits out `HOPPSCOTCH_AUTH_TIMEOUT_MS` on a browser that never opens. `HOPPSCOTCH_FORCE_BROWSER_LOGIN=true` overrides the heuristic in the other direction.
 
 Work around it in three steps:
 
