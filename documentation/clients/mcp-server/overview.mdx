@@ -158,11 +158,11 @@ The first tool call that reaches your Hoppscotch account signs you in. The serve
   </Step>
 </Steps>
 
-From then on, refreshes happen on their own before anything expires: through the backend on self-hosted, and through a stored Firebase refresh token on Cloud, where sessions run about an hour. Browser login starts again when there is no usable cached session, meaning no stored token, or an expired one with no refresh credential to renew it. A cached token belonging to a **different** account is refused rather than replaced, with an error telling you to run `reauth` to switch identities.
+From then on, refreshes happen on their own before anything expires: through the backend on self-hosted, and through a stored Firebase refresh token on Cloud, where sessions run about an hour. Browser login starts again when there is no usable cached session: no stored token, a stored token issued for a different `HOPPSCOTCH_SERVER_URL`, or an expired token that has no refresh credential or whose refresh fails. A cached token belonging to a **different** account is refused rather than replaced, with an error telling you to run `reauth` to switch identities.
 
 <Warning>Automatic refresh applies only to the browser-login session cached in `auth.json`. A token you supply through `HOPPSCOTCH_ACCESS_TOKEN` is used exactly as given and is **never refreshed**. It keeps whatever expiry it was issued with, about an hour for a Cloud token and about a day for a self-hosted one, and stops working once that passes. Plan to rotate it.</Warning>
 
-You get five minutes to finish signing in. That is how long the local callback stays open, it is fixed in the code, and no environment variable moves it. `HOPPSCOTCH_AUTH_TIMEOUT_MS` is a different clock: it decides how long one tool call waits before handing you the login URL and asking you to try again. Pushing it past `300000` buys you nothing, since the callback shuts first.
+You get five minutes to finish signing in. That is how long the local callback stays open. `HOPPSCOTCH_AUTH_TIMEOUT_MS` is a different clock: it decides how long one tool call waits before handing you the login URL and asking you to try again. Pushing it past `300000` buys you nothing, since the callback shuts first.
 
 <Warning>On macOS and Linux, `auth.json` is written with owner-only permissions (`0600`). **On Windows these permissions are not enforced.** Treat the file as a live credential and keep it somewhere only you can read.</Warning>
 
@@ -170,7 +170,7 @@ One identity per operating-system user, shared by every MCP host process you run
 
 ### Running without a browser
 
-CI runners and SSH sessions have no browser, so device login has nothing to open. Rather than hang, the server spots them and fails straight away with guidance. Detection keys on a truthy `CI`, on `SSH_CONNECTION` or `SSH_TTY`, or, on Linux, on the absence of both `DISPLAY` and `WAYLAND_DISPLAY`. That last rule catches Linux containers as well. Only a non-Linux environment showing none of those signals slips through, and there the call waits out `HOPPSCOTCH_AUTH_TIMEOUT_MS` on a browser that never opens. `HOPPSCOTCH_FORCE_BROWSER_LOGIN=true` overrides the heuristic in the other direction.
+CI runners and SSH sessions have no browser, so device login has nothing to open. Rather than hang, the server spots them and fails straight away with guidance. Detection keys on `CI` being set to any non-empty value (`false` and `0` included), on `SSH_CONNECTION` or `SSH_TTY`, or, on Linux, on the absence of both `DISPLAY` and `WAYLAND_DISPLAY`. That last rule catches Linux containers as well. Only a non-Linux environment showing none of those signals slips through, and there the call waits out `HOPPSCOTCH_AUTH_TIMEOUT_MS` on a browser that never opens. `HOPPSCOTCH_FORCE_BROWSER_LOGIN=true` overrides the heuristic in the other direction.
 
 Work around it in three steps:
 
@@ -216,7 +216,7 @@ The login step separately inspects `CI`, `SSH_CONNECTION`, `SSH_TTY`, `DISPLAY`,
 
 ### Hardening
 
-Both are off by default, so behavior is unchanged unless you set them.
+Both are off by default.
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
@@ -279,7 +279,7 @@ All 53 tools are available against a self-hosted instance, Community or Enterpri
 | `get_user_collection` | Not supported | Supported |
 | `search_team_requests` | Not supported | Supported |
 
-<Note>`get_user_collection` is the one personal-workspace tool that refuses to run on Cloud. The check was added after Cloud's `userCollection` resolver failed to serialize the `data` field, which fails the whole query. For root-level collections use `list_user_collections`; for a known ID, including a nested one, use `export_user_collection`, which works on Cloud but returns export JSON rather than the collection envelope.</Note>
+<Note>`get_user_collection` is the one personal-workspace tool that refuses to run on Cloud. Cloud's `userCollection` resolver fails to serialize the `data` field, which fails the whole query, so the server refuses the call up front. For root-level collections use `list_user_collections`; for a known ID, including a nested one, use `export_user_collection`, which works on Cloud but returns export JSON rather than the collection envelope.</Note>
 
 For the exact behavior of every affected tool, see [Cloud behavior](/documentation/clients/mcp-server/tools#cloud-behavior).
 

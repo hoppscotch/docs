@@ -206,7 +206,7 @@ Several terse backend codes get translated into a fuller sentence, with the orig
 
 > **Browser device-login is unavailable (headless/CI/SSH environment detected). Set HOPPSCOTCH_ACCESS_TOKEN to a Hoppscotch JWT for non-interactive auth, or set HOPPSCOTCH_FORCE_BROWSER_LOGIN=true if a browser is actually available here.**
 
-**Reason:** The server detected a continuous integration runner, an SSH session, or a machine with no display. Device login cannot complete there, so it fails immediately instead of hanging for five minutes.
+**Reason:** The server detected a continuous integration runner, an SSH session, or a machine with no display. Device login cannot complete there, so it fails immediately instead of waiting out `HOPPSCOTCH_AUTH_TIMEOUT_MS` (60 seconds by default) for a browser that never opens.
 
 **Fix:** Complete a device login once on a machine with a browser, copy the `accessToken` value from `~/.config/hoppscotch-mcp/auth.json`, and set it as `HOPPSCOTCH_ACCESS_TOKEN` in the headless environment. If a browser really is available and detection got it wrong, set `HOPPSCOTCH_FORCE_BROWSER_LOGIN=true`.
 
@@ -218,19 +218,19 @@ Several terse backend codes get translated into a fuller sentence, with the orig
 
 **Reason:** The session is one identity per operating-system user, shared by every MCP host process. Another process signed in as a different account while this server was running. Rather than silently acting as the wrong account, the server refuses.
 
-**Fix:** On a browser-login session, run the `reauth` tool to adopt the new identity, or restart the server. With `HOPPSCOTCH_ACCESS_TOKEN` set, the identity comes from that token, so change or unset it and restart the MCP process.
+**Fix:** Run the `reauth` tool, which discards the stored session and opens a fresh browser sign-in, or restart the server.
 
 ## `get_user_collection` on Hoppscotch Cloud
 
 > **`"get_user_collection"` does not work on Hoppscotch Cloud as of now: the backend fails to serialize the collection's `data` field, which errors the whole query. The check lives in this server, so re-enabling it needs an update here. Use `"list_user_collections"` for root-level collections, or `"export_user_collection"` for a known ID.**
 
-**Reason:** The check was added after Cloud's `userCollection` resolver failed to serialize the `data` field, which fails the whole query. The server refuses the call up front rather than handing back a broken response.
+**Reason:** Cloud's `userCollection` resolver fails to serialize the `data` field, which fails the whole query, so the server refuses the call up front.
 
 **Fix:** For root-level collections, use `list_user_collections`. For a known collection ID, including a nested one, use `export_user_collection`, which works on Cloud but returns export JSON rather than the collection envelope.
 
 <Note>The refusal is enforced by this MCP server before it queries Cloud. After the backend is fixed, a later MCP server release still has to remove the check.</Note>
 
-## `bug/team/no_require_team_role`
+## `search_team_requests` on Hoppscotch Cloud
 
 > **GraphQL error: This operation is unavailable on this backend (the required team-role guard is not configured server-side). Known Cloud limitation for `search_team_requests`. (bug/team/no_require_team_role)**
 
@@ -256,7 +256,7 @@ Several terse backend codes get translated into a fuller sentence, with the orig
 
 **Reason:** The server could not launch a browser, though the environment was not detected as headless.
 
-**Fix:** The login URL is written to the server's error output. Copy it from your host's MCP logs and open it manually.
+**Fix:** Once `HOPPSCOTCH_AUTH_TIMEOUT_MS` (60 seconds by default) elapses, the tool result itself returns the login URL; it is also written to the server's error output. Open it manually, then retry the call.
 
 ## Login timed out
 
