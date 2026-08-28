@@ -1,0 +1,277 @@
+---
+sidebarTitle: Troubleshooting
+title: Hoppscotch MCP Server Troubleshooting
+description: Resolve Hoppscotch MCP server errors with this reference of error codes, messages, and causes covering sign-in, request execution, and Cloud limits.
+---
+
+Below are the errors the MCP server surfaces, what causes each one, and how to resolve it. How they look depends on your host, which does the presenting, but the message text itself does not change.
+
+Some diagnostic output goes to the server's standard error stream rather than into the conversation. If an error is unclear, check your host's MCP server logs.
+
+## The server does not appear in your host
+
+**Reason:** The host could not start the server, so no tools are registered and no error reaches the conversation.
+
+**Fix:** Work through these in order.
+
+1. Confirm Node.js v22 or higher is on the `PATH` the host uses. A host launched from the desktop may not inherit your shell's `PATH`.
+2. Restart the host completely after editing its configuration. Most hosts read MCP configuration only at startup.
+3. Run `npx @hoppscotch/mcp-server` in a terminal. It should start and wait. A dependency or Node.js version problem shows up here immediately.
+4. Check the host's MCP logs. Startup failures and the configuration warnings below are written to standard error, not to the conversation.
+
+## A tool you expected is missing
+
+**Reason:** `HOPPSCOTCH_TOOL_PROFILE` selects which tools exist. The profile gates discovery and execution together, so a tool outside it is invisible to the host and refused even if an agent names it directly.
+
+### Case I
+
+**Reason:** The tool is not in your profile. The default is `core`, which excludes team administration and the advanced collection operations. Switching to `standard` removes request execution, code generation, and request CRUD instead.
+
+A call to a tool outside your profile is refused with the literal message `Unknown tool: <name>`, which is the same message a tool that does not exist would produce. The message does not tell you which of the two happened.
+
+**Fix:** Check [Tools](/documentation/clients/mcp-server/tools) for which profiles include the tool, then set `HOPPSCOTCH_TOOL_PROFILE` accordingly. Use `full` if you need tools from both `core` and `standard`.
+
+### Case II
+
+**Reason:** `HOPPSCOTCH_TOOL_PROFILE` is set to a value the server does not recognize. It falls back to `core` and writes a warning to its error output.
+
+**Fix:** Check the spelling against `minimal`, `core`, `standard`, and `full`. The warning naming the bad value is in your host's MCP logs.
+
+## `SSRFBlockedError`
+
+The target of `execute_request` or `validate_response` was refused before any connection was made.
+
+### Case I
+
+> **Blocked request to a private/internal address (`<target>`). execute_request refuses loopback, link-local, cloud-metadata, and private network targets by default. Set HOPPSCOTCH_ALLOW_PRIVATE_HOSTS=true to allow them (e.g. testing a self-hosted or local API).**
+
+**Reason:** The URL resolved to an address the guard blocks. This covers loopback, private networks, link-local, carrier-grade NAT, cloud-metadata endpoints such as `169.254.169.254`, and other special-use ranges, across IPv4 and IPv6.
+
+**Fix:** If you are deliberately testing a local or self-hosted API, set `HOPPSCOTCH_ALLOW_PRIVATE_HOSTS=true` in your host's `env` block.
+
+<Warning>Setting `HOPPSCOTCH_ALLOW_PRIVATE_HOSTS=true` skips the address checks for **every** `execute_request` and `validate_response` call, not just the one you intended. An agent acting on untrusted input can then reach your internal network and return what it finds into the conversation. Enable it only when you control the input. The restriction to `http` and `https` still applies, and login and backend traffic are unaffected.</Warning>
+
+### Case II
+
+> **Could not resolve `'<host>'` to verify it is not an internal address — blocking. Retry if this is a transient DNS error, or set HOPPSCOTCH_ALLOW_PRIVATE_HOSTS=true for intentional local targets.**
+
+**Reason:** Name resolution failed, so the guard could not confirm the address is external. It fails closed, meaning it blocks rather than allowing an unverified target.
+
+**Fix:** Check the hostname for typos and confirm the machine can resolve it. Retry if the failure was transient. For a hostname that only resolves on your private network, set `HOPPSCOTCH_ALLOW_PRIVATE_HOSTS=true`.
+
+### Case III
+
+> **Unsupported URL scheme `'<protocol>'` — only http/https are allowed.**
+
+**Reason:** The URL used a scheme other than `http` or `https`, such as `file:` or `ftp:`.
+
+**Fix:** Supply an `http` or `https` URL.
+
+## `SecretEgressBlockedError`
+
+You set `HOPPSCOTCH_SECRET_ALLOWED_ORIGINS`, and a request referencing a secret environment value targeted an origin that is not on the list. The request was not sent.
+
+<Note>This error only occurs when `HOPPSCOTCH_SECRET_ALLOWED_ORIGINS` is set. Leaving it unset means no restriction, and secrets substitute into a request to any origin.</Note>
+
+<Warning>Each entry must be an absolute origin such as `https://api.example.com`. An entry that does not parse as one, such as a bare `api.example.com`, is **discarded without any warning**. If every entry is discarded the list ends up empty, which refuses secrets to all origins rather than allowing them. Setting the variable to an empty value has the same effect and is the supported way to deny all.</Warning>
+
+### Case I
+
+> **Refusing to substitute secret environment variable(s) {`<keys>`} into a request to `<origin>`: that origin is not allowlisted for secrets. Add it to HOPPSCOTCH_SECRET_ALLOWED_ORIGINS (comma-separated origins).**
+
+**Reason:** The target origin was checked before substitution and is not allowlisted.
+
+**Fix:** Add the origin to `HOPPSCOTCH_SECRET_ALLOWED_ORIGINS` if it should receive secrets. Otherwise remove the secret reference from the request.
+
+### Case II
+
+> **Refusing to send secret environment variable(s) {`<keys>`}: after substitution the request targets `<origin>`, which is not allowlisted for secrets. Check HOPPSCOTCH_SECRET_ALLOWED_ORIGINS.**
+
+**Reason:** The URL itself contained a variable, so the final origin was only known after substitution, and that origin is not allowlisted. This second check catches a request whose destination is decided by a variable.
+
+**Fix:** Confirm the variable resolves to the origin you expect, then add that origin to the allowlist if it should receive secrets.
+
+## `UnresolvedPlaceholderError`
+
+> **Unresolved variable placeholder(s): `{{name}}`. Provide them via the selected environment or remove them; the request was not sent.**
+
+**Reason:** You selected an environment, and the request still contained a `{{variable}}` that the environment does not define. The server checks the URL, the header values, and the body.
+
+**Fix:** Add the variable to the selected environment, correct the spelling, or remove the reference.
+
+<Warning>This check runs **only when you select an environment**, and only on the URL, the body, and header **values**. With no `environmentId`, an unresolved `{{variable}}` is not an error and goes out on the wire. Select an environment if you want unresolved variables to fail instead.</Warning>
+
+Header names and the `auth` block sit outside both substitution and the check, and they fail differently. Braces are not legal in a header name, so a placeholder there kills the call before anything is sent. In the `auth` block it depends on the type: a bearer token goes out as written, Basic credentials are base64-encoded first, an API key added to the query is percent-encoded into the URL, and an API key whose *name* is a placeholder fails just like a placeholder header name, though only in the default header placement, since a query-placed key is percent-encoded and sent as written. Keep variables in header values or the request body if you want them resolved.
+
+## `ENVIRONMENT_NOT_FOUND`
+
+> **Environment `'<id>'` not found for this account. Only personal environments are available here; team environments are not.**
+
+`execute_request` and `validate_response` read personal environments only.
+
+**Reason:** The ID is not one of the signed-in account's personal environments. It may name a team environment, belong to another account, or not exist at all.
+
+**Fix:** Pass a personal environment ID, or put the values directly in the request.
+
+## `AUTH_PAT_INVALID`
+
+> **Authentication failed. The configured access token looks like a Personal Access Token (pat-...), which only works with Hoppscotch REST API endpoints, not GraphQL queries. Use device-login instead (unset the token), or copy the JWT from `~/.config/hoppscotch-mcp/auth.json`.**
+
+**Reason:** `HOPPSCOTCH_ACCESS_TOKEN` was set to a Hoppscotch personal access token. This server talks to the GraphQL API, which personal access tokens cannot authenticate against.
+
+**Fix:** Unset `HOPPSCOTCH_ACCESS_TOKEN` and use browser device login, or set it to a JWT copied from the `accessToken` field of `~/.config/hoppscotch-mcp/auth.json`.
+
+<Note>The server does **not** refuse a `pat-` token up front. It writes a warning to its error output once, then uses the token anyway. This error appears only **after** a request has already been sent and the backend rejected it. Most hosts do not surface that stderr warning, so the first visible sign is usually a failed tool call.</Note>
+
+## `MISSING_TEAM_ID`
+
+> **Team ID is required. Either provide teamId parameter or set HOPPSCOTCH_DEFAULT_TEAM_ID**
+
+**Reason:** A team-scoped tool was called without a team ID, and no default is configured.
+
+**Fix:** Set `HOPPSCOTCH_DEFAULT_TEAM_ID` in your host's `env` block, or ask the agent to call `list_teams` first and pass the ID explicitly.
+
+## `COLLECTION_NOT_FOUND`
+
+> **User collection `"<id>"` not found or not accessible.**
+
+**Reason:** The collection ID does not exist, or it belongs to an account other than the signed-in one.
+
+**Fix:** Confirm the ID and the signed-in account. Use `reauth` to switch accounts.
+
+## Refusing to write the secret-redaction placeholder
+
+> **Refusing to write the secret-redaction placeholder ("`<secret hidden>`") as the value of variable "`<key>`". This placeholder is what a secret variable shows when read back; writing it would overwrite the real secret. To leave a secret unchanged, omit that variable (or the entire variables list) from the update; to change it, pass the new real value.**
+
+**Reason:** Reading an environment masks every secret value as `<secret hidden>`. Supplying variables on an update replaces the whole list, so an agent that lists an environment and submits it back would write the mask over the real secret. The server refuses instead of overwriting.
+
+**Fix:** Omit the `variables` field entirely, which leaves every variable as it is. If you send `variables`, it replaces the whole list, so include every variable you mean to keep and give the secret its real value rather than the mask.
+
+## `updateTeamEnvironment` requires both name and variables
+
+> **updateTeamEnvironment requires both name and variables when HOPPSCOTCH_DEFAULT_TEAM_ID is not configured. Either pass both fields, or set HOPPSCOTCH_DEFAULT_TEAM_ID so the server can look up the current values.**
+
+**Reason:** A partial update needs the current values, and the tool takes no team ID with which to look them up.
+
+**Fix:** Pass both `name` and the complete variables list, or set `HOPPSCOTCH_DEFAULT_TEAM_ID` so the server can read the current values itself.
+
+## `GRAPHQL_ERROR` and `GRAPHQL_REQUEST_ERROR`
+
+These are the general wrappers the server uses when a call to the Hoppscotch backend fails. Both arrive as a `HoppscotchError` carrying a code, and sometimes an HTTP status.
+
+Several terse backend codes get translated into a fuller sentence, with the original code kept in parentheses, so anything you search for still contains the raw code.
+
+| Backend code | Message you see |
+| --- | --- |
+| `auth/fail` | Authentication failed or the session expired. Run the `reauth` tool (or retry to trigger sign-in) and try again. |
+| `bug/team/no_require_team_role` | This operation is unavailable on this backend (the required team-role guard is not configured server-side). Known Cloud limitation for `search_team_requests`. |
+| `team_invite/member_has_invite` | That user already has a pending invitation to this team. |
+| `email/failed` | The invitation could not be sent — the email is not a registered Hoppscotch account (Cloud requires invitees to already have an account). |
+
+<Note>That last message is this server's own wording for the backend's terse `email/failed`, not a diagnosis from the backend. The code itself says only that sending the invitation email failed, so treat the missing-account explanation as the likely cause rather than a confirmed one.</Note>
+
+### Case I
+
+> **GraphQL error: Authentication failed or the session expired. Run the `reauth` tool (or retry to trigger sign-in) and try again. (auth/fail)**
+
+**Reason:** Code `GRAPHQL_ERROR`. The session is no longer accepted by the backend.
+
+**Fix:** The server already clears the stored token and retries once, so a transient expiry usually resolves itself. If the error persists on a browser-login session, run the `reauth` tool; deleting `~/.config/hoppscotch-mcp/auth.json` is a fallback, not the first step. With `HOPPSCOTCH_ACCESS_TOKEN` set, `reauth` returns that same token untouched, so rotate the token or unset the variable and restart the MCP process.
+
+### Case II
+
+> **GraphQL error: `<messages>`**
+
+**Reason:** Code `GRAPHQL_ERROR`. The backend accepted the request and returned some other error, typically a permission problem or a rejected argument.
+
+**Fix:** Read the embedded message. Check that the signed-in account has the required role on the team or resource.
+
+### Case III
+
+> **GraphQL request failed (HTTP `<status>`)**
+
+**Reason:** Code `GRAPHQL_REQUEST_ERROR`. The HTTP call itself failed. Only the status is reported, because the underlying error text embeds the query and variables and is deliberately not surfaced.
+
+**Fix:** A `401` means the session is no longer valid. On a browser-login session, run `reauth`. With `HOPPSCOTCH_ACCESS_TOKEN` set, `reauth` hands back the same token, so rotate it or unset the variable and restart the MCP process. A `5xx` points at the backend. For a self-hosted instance, confirm `HOPPSCOTCH_SERVER_URL` is the frontend URL and that `/backend` is routed correctly.
+
+### Case IV
+
+> **GraphQL request failed: `<message>`**
+
+**Reason:** Code `GRAPHQL_REQUEST_ERROR` from a network, DNS, or timeout failure. No response was received.
+
+**Fix:** Check connectivity to the instance and the value of `HOPPSCOTCH_SERVER_URL`.
+
+## Browser device-login is unavailable
+
+> **Browser device-login is unavailable (headless/CI/SSH environment detected). Set HOPPSCOTCH_ACCESS_TOKEN to a Hoppscotch JWT for non-interactive auth, or set HOPPSCOTCH_FORCE_BROWSER_LOGIN=true if a browser is actually available here.**
+
+**Reason:** The server detected a continuous integration runner, an SSH session, or a machine with no display. Device login cannot complete there, so it fails immediately instead of hanging for five minutes.
+
+**Fix:** Complete a device login once on a machine with a browser, copy the `accessToken` value from `~/.config/hoppscotch-mcp/auth.json`, and set it as `HOPPSCOTCH_ACCESS_TOKEN` in the headless environment. If a browser really is available and detection got it wrong, set `HOPPSCOTCH_FORCE_BROWSER_LOGIN=true`.
+
+<Warning>A token set through `HOPPSCOTCH_ACCESS_TOKEN` is never refreshed and keeps the expiry it was issued with, about an hour on Cloud and about a day on self-hosted. A headless setup needs external rotation, not a one-time copy.</Warning>
+
+## Signed-in account changed
+
+> **Signed-in account changed: the token stored at `~/.config/hoppscotch-mcp/auth.json` belongs to a different account than this session authenticated as. Run the `reauth` tool to switch accounts.**
+
+**Reason:** The session is one identity per operating-system user, shared by every MCP host process. Another process signed in as a different account while this server was running. Rather than silently acting as the wrong account, the server refuses.
+
+**Fix:** On a browser-login session, run the `reauth` tool to adopt the new identity, or restart the server. With `HOPPSCOTCH_ACCESS_TOKEN` set, the identity comes from that token, so change or unset it and restart the MCP process.
+
+## `get_user_collection` on Hoppscotch Cloud
+
+> **`"get_user_collection"` does not work on Hoppscotch Cloud as of now: the backend fails to serialize the collection's `data` field, which errors the whole query. The check lives in this server, so re-enabling it needs an update here. Use `"list_user_collections"` for root-level collections, or `"export_user_collection"` for a known ID.**
+
+**Reason:** The check was added after Cloud's `userCollection` resolver failed to serialize the `data` field, which fails the whole query. The server refuses the call up front rather than handing back a broken response.
+
+**Fix:** For root-level collections, use `list_user_collections`. For a known collection ID, including a nested one, use `export_user_collection`, which works on Cloud but returns export JSON rather than the collection envelope.
+
+<Note>The refusal is enforced by this MCP server before it queries Cloud. After the backend is fixed, a later MCP server release still has to remove the check.</Note>
+
+## `bug/team/no_require_team_role`
+
+> **GraphQL error: This operation is unavailable on this backend (the required team-role guard is not configured server-side). Known Cloud limitation for `search_team_requests`. (bug/team/no_require_team_role)**
+
+**Reason:** `search_team_requests` is unavailable on Hoppscotch Cloud. The backend rejects the query with this code, and the server translates it into the sentence above while keeping the raw code in the text.
+
+**Fix:** Browse with `list_team_collections` and `list_team_requests` instead, or run the search against a self-hosted instance.
+
+## Response truncated
+
+> **[response truncated at HOPPSCOTCH_MAX_RESPONSE_BYTES]**
+
+**Reason:** The response body went past the buffering cap, 5,000,000 bytes by default. Rather than fail the call, the server appends this marker as a plain line of text so neither you nor the agent mistakes a partial body for a complete one. You will also see it when output was clamped during secret redaction.
+
+**Fix:** Narrow the request with filters, pagination, or a range header. Raise `HOPPSCOTCH_MAX_RESPONSE_BYTES` only if you need the whole body, keeping in mind that the entire response is returned into the model's context.
+
+## Request timed out
+
+**Reason:** The target did not respond in time. The limit is the call's own `timeout` argument when one was supplied, and `HOPPSCOTCH_TIMEOUT` otherwise, which defaults to 30,000 milliseconds.
+
+**Fix:** Confirm the endpoint is reachable. A single call can pass `timeout` between 1,000 and 120,000 milliseconds without any change to your configuration. Raise `HOPPSCOTCH_TIMEOUT` to change the default for every call.
+
+## Browser does not open
+
+**Reason:** The server could not launch a browser, though the environment was not detected as headless.
+
+**Fix:** The login URL is written to the server's error output. Copy it from your host's MCP logs and open it manually.
+
+## Login timed out
+
+**Reason:** The browser sign-in was not completed within five minutes, so the local callback closed.
+
+**Fix:** Retry the tool call and complete the sign-in within five minutes. `HOPPSCOTCH_AUTH_TIMEOUT_MS` controls only how long a single tool call waits before returning the login URL to you. It does not extend the five-minute callback window.
+
+## SSL certificate errors on self-hosted
+
+**Reason:** Your instance presents a self-signed certificate or one issued by a private certificate authority that Node.js does not trust.
+
+**Fix:** Point Node.js at your certificate authority bundle with `NODE_EXTRA_CA_CERTS=/path/to/ca.pem` in the server environment.
+
+<Warning>Do **not** set `NODE_TLS_REJECT_UNAUTHORIZED=0`. It disables certificate verification for the entire process, including Cloud token exchange and every request `execute_request` makes to public hosts, not only your self-hosted instance.</Warning>
+
+## Still stuck
+
+Report a bug by [opening a new issue](https://github.com/hoppscotch/hoppscotch-mcp-server/issues/new/choose) on the MCP server repository.

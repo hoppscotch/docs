@@ -1,0 +1,339 @@
+---
+sidebarTitle: Overview
+title: Hoppscotch MCP Server
+description: Connect AI agents to Hoppscotch with the MCP server. Includes install steps, host setup for Claude and Codex, authentication, and configuration.
+---
+
+The Model Context Protocol (MCP) is an open standard that lets an AI assistant call external tools through a running server. Whatever application you run the assistant in, such as Claude Desktop, is the **host**.
+
+Hoppscotch ships an MCP server of its own. It hands the host your collections, requests, environments, and teams, so an agent can read and change them for you. It also sends real HTTP requests: ask it to test an endpoint and it runs the request, brings the response back into the conversation, and can check the result against criteria you describe.
+
+Everything happens over stdio, so the host launches the server as a local process and talks to it over standard input and output. It ships as a command-line binary. There is no library to import.
+
+For the AI features built into the Hoppscotch app itself, see [AI features](/documentation/features/ai-features).
+
+## Pre-requisites
+
+- **Node.js v22 or higher**
+- An MCP host, such as Claude Desktop, Claude Code, or Codex
+- A Hoppscotch account on [Cloud](https://hoppscotch.io) or a self-hosted instance
+
+## Installing the MCP server
+
+You usually do not install anything. The registration in [Connecting your MCP host](#connecting-your-mcp-host) goes through `npx`, which fetches and runs the current version on demand, and your host starts it for you.
+
+If you would rather have it on disk, install it globally. That also gives you the `hoppscotch-mcp` binary:
+
+```bash
+npm install -g @hoppscotch/mcp-server
+```
+
+Building from source works too:
+
+```bash
+git clone https://github.com/hoppscotch/hoppscotch-mcp-server.git
+cd hoppscotch-mcp-server
+pnpm install
+pnpm run build
+```
+
+<Note>Released builds carry the Firebase Web API key that Cloud sign-in needs. A build from source does not. To use Cloud from a source build, set `HOPPSCOTCH_FIREBASE_API_KEY` at build time or in your host's `env` block, where the runtime value takes precedence. Self-hosted instances do not use Firebase and need nothing extra.</Note>
+
+## Connecting your MCP host
+
+Register the server with your host. The command and arguments are the same everywhere. Only the registration syntax changes.
+
+<Tabs>
+  <Tab title="Claude Code">
+    Register it for every project on your machine:
+
+    ```bash
+    claude mcp add -s user hoppscotch -- npx -y @hoppscotch/mcp-server
+    ```
+
+    Drop `-s user` to register it for the current project only. Claude Code also reads a project-scoped `.mcp.json` using the same `mcpServers` shape shown in the Claude Desktop tab.
+  </Tab>
+
+  <Tab title="Codex">
+    Register it from your terminal:
+
+    ```bash
+    codex mcp add hoppscotch -- npx -y @hoppscotch/mcp-server
+    ```
+  </Tab>
+
+  <Tab title="Claude Desktop">
+    Edit `~/Library/Application Support/Claude/claude_desktop_config.json` on macOS, or `%APPDATA%\Claude\claude_desktop_config.json` on Windows:
+
+    ```json
+    {
+      "mcpServers": {
+        "hoppscotch": {
+          "command": "npx",
+          "args": ["-y", "@hoppscotch/mcp-server"]
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Other hosts">
+    Any host that can run a stdio MCP server works. Register it with whatever syntax your host uses, supplying:
+
+    | Field | Value |
+    | --- | --- |
+    | Command | `npx` |
+    | Arguments | `-y`, `@hoppscotch/mcp-server` |
+
+    Configuration file locations and formats vary between hosts, so check your host's own documentation for where to put this.
+  </Tab>
+</Tabs>
+
+<Note>Claude Code and Codex register the server through their own CLI, so you never need to know where they keep their configuration. Claude Desktop has no such command, which is why its file path is given above. For any other host, check its own documentation.</Note>
+
+### Pointing at a self-hosted instance
+
+Set `HOPPSCOTCH_SERVER_URL` when you register the server. Every variable in [Configuration](#configuration) is set the same way.
+
+<Tabs>
+  <Tab title="Claude Code">
+    ```bash
+    claude mcp add -s user hoppscotch \
+      -e HOPPSCOTCH_SERVER_URL=https://your-hoppscotch.example.com \
+      -- npx -y @hoppscotch/mcp-server
+    ```
+  </Tab>
+
+  <Tab title="Codex">
+    ```bash
+    codex mcp add hoppscotch \
+      --env HOPPSCOTCH_SERVER_URL=https://your-hoppscotch.example.com \
+      -- npx -y @hoppscotch/mcp-server
+    ```
+  </Tab>
+
+  <Tab title="Config file">
+    ```json
+    {
+      "mcpServers": {
+        "hoppscotch": {
+          "command": "npx",
+          "args": ["-y", "@hoppscotch/mcp-server"],
+          "env": {
+            "HOPPSCOTCH_SERVER_URL": "https://your-hoppscotch.example.com"
+          }
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Note>Claude Code takes environment variables with `-e`, Codex with `--env`. Both expect them before the `--` that separates the registration from the command to run.</Note>
+
+### Confirming it is connected
+
+Restart the host after registering. Most hosts read MCP configuration only at startup.
+
+In Claude Code and Codex, run the `/mcp` command. It should list `hoppscotch` as **Enabled**. Then try a prompt such as "list all collections in my Hoppscotch workspace", which triggers the sign-in described below.
+
+If the server does not appear at all, see [Troubleshooting](/documentation/clients/mcp-server/troubleshooting#the-server-does-not-appear-in-your-host).
+
+## Authentication
+
+The first tool call that reaches your Hoppscotch account signs you in. The server uses `HOPPSCOTCH_ACCESS_TOKEN` if you set one, then a cached session, and opens your browser only when neither is available. Tools that never touch your account, such as `generate_code`, `generate_documentation`, and `execute_request` with no `environmentId`, do not sign you in at all.
+
+<Steps>
+  <Step title="A local callback server starts">
+    A temporary HTTP listener comes up on a random port, bound to loopback, so it accepts connections from your own machine and nowhere else.
+  </Step>
+  <Step title="Your browser opens the device-login page">
+    You land on `<HOPPSCOTCH_SERVER_URL>/device-login`, carrying a redirect back to that local port and a random single-use value that ties the answer to this request.
+  </Step>
+  <Step title="You sign in">
+    Once you do, the page hands your tokens to the local callback.
+  </Step>
+  <Step title="The session is cached">
+    Those tokens land in `~/.config/hoppscotch-mcp/auth.json` and get reused, so later calls skip the browser entirely.
+  </Step>
+</Steps>
+
+From then on, refreshes happen on their own before anything expires: through the backend on self-hosted, and through a stored Firebase refresh token on Cloud, where sessions run about an hour. Browser login starts again when there is no usable cached session, meaning no stored token, or an expired one with no refresh credential to renew it. A cached token belonging to a **different** account is refused rather than replaced, with an error telling you to run `reauth` to switch identities.
+
+<Warning>Automatic refresh applies only to the browser-login session cached in `auth.json`. A token you supply through `HOPPSCOTCH_ACCESS_TOKEN` is used exactly as given and is **never refreshed**. It keeps whatever expiry it was issued with, about an hour for a Cloud token and about a day for a self-hosted one, and stops working once that passes. Plan to rotate it.</Warning>
+
+You get five minutes to finish signing in. That is how long the local callback stays open, it is fixed in the code, and no environment variable moves it. `HOPPSCOTCH_AUTH_TIMEOUT_MS` is a different clock: it decides how long one tool call waits before handing you the login URL and asking you to try again. Pushing it past `300000` buys you nothing, since the callback shuts first.
+
+<Warning>On macOS and Linux, `auth.json` is written with owner-only permissions (`0600`). **On Windows these permissions are not enforced.** Treat the file as a live credential and keep it somewhere only you can read.</Warning>
+
+One identity per operating-system user, shared by every MCP host process you run and kept across restarts. There is no way to pick an identity per call. Should the token on disk change to a different account mid-session, the server stops rather than quietly acting as someone else, and `reauth` is how you switch or refresh.
+
+### Running without a browser
+
+CI runners and SSH sessions have no browser, so device login has nothing to open. Rather than hang, the server spots them and fails straight away with guidance. Detection keys on a truthy `CI`, on `SSH_CONNECTION` or `SSH_TTY`, or, on Linux, on the absence of both `DISPLAY` and `WAYLAND_DISPLAY`. That last rule catches Linux containers as well. Only a non-Linux environment showing none of those signals slips through, and there the call waits out `HOPPSCOTCH_AUTH_TIMEOUT_MS` on a browser that never opens. `HOPPSCOTCH_FORCE_BROWSER_LOGIN=true` overrides the heuristic in the other direction.
+
+Work around it in three steps:
+
+1. Complete a device login once on a machine that does have a browser.
+2. Copy the `accessToken` value out of `~/.config/hoppscotch-mcp/auth.json`.
+3. Set `HOPPSCOTCH_ACCESS_TOKEN` to it in the headless environment.
+
+Treat what you copied as short-lived. Nothing refreshes it, and it carries whatever expiry it was issued with, roughly an hour on Cloud and a day on self-hosted, so plan the rotation.
+
+<Note>`HOPPSCOTCH_ACCESS_TOKEN` must be a Hoppscotch **JWT**, the token type issued by device login. A Hoppscotch personal access token (`pat-...`) works only against REST endpoints, not the GraphQL API this server uses, so it **will not work here.**</Note>
+
+If a browser is available but detection gets it wrong, set `HOPPSCOTCH_FORCE_BROWSER_LOGIN=true`.
+
+## Configuration
+
+The server reads twelve `HOPPSCOTCH_` configuration variables, and most setups need none of them. Cloud is the default, and browser login handles authentication.
+
+The login step separately inspects `CI`, `SSH_CONNECTION`, `SSH_TTY`, `DISPLAY`, and `WAYLAND_DISPLAY` to decide whether a browser can be opened. You do not set these yourself, but their presence changes behavior. See [Running without a browser](#running-without-a-browser).
+
+### Commonly set
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `HOPPSCOTCH_SERVER_URL` | `https://hoppscotch.io` | Frontend URL of your instance. Omit for Cloud. The API URL and the Cloud or self-hosted mode are both derived from it. |
+| `HOPPSCOTCH_TOOL_PROFILE` | `core` | Which tools are exposed. One of `minimal`, `core`, `standard`, or `full`. See [Tool profiles](#tool-profiles). |
+| `HOPPSCOTCH_DEFAULT_TEAM_ID` | none | Team ID used by team-scoped tools when the call omits one. |
+
+### Headless and non-interactive use
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `HOPPSCOTCH_ACCESS_TOKEN` | none | A Hoppscotch JWT that skips browser login. A `pat-...` token does not work. |
+| `HOPPSCOTCH_FORCE_BROWSER_LOGIN` | `false` | Set `true` to attempt browser login even when a headless environment is detected. |
+| `HOPPSCOTCH_AUTH_TIMEOUT_MS` | `60000` | How long one tool call waits for sign-in before returning the login URL and retry guidance. The local callback stays open for up to five minutes, a fixed window with no override, so values above `300000` have no effect. |
+
+### Request execution
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `HOPPSCOTCH_TIMEOUT` | `30000` | Default request timeout in milliseconds. A call can override it with its own `timeout` between 1,000 and 120,000. This variable itself is only checked for being positive, so set it deliberately. |
+| `HOPPSCOTCH_MAX_RESPONSE_BYTES` | `5000000` | Cap on the response body the server buffers. Larger responses are truncated and flagged. |
+| `HOPPSCOTCH_ALLOW_PRIVATE_HOSTS` | `false` | Set `true` to let `execute_request` and `validate_response` reach addresses on your own machine or private network. Only on trusted input. See [Security](#security). |
+
+### Hardening
+
+Both are off by default, so behavior is unchanged unless you set them.
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `HOPPSCOTCH_SECRET_ALLOWED_ORIGINS` | none | Comma-separated origins allowed to receive secret environment values through `{{variable}}` substitution. **Unset means no restriction**, so secrets substitute freely. Set it to opt in, after which a secret referenced in a request to any other origin is refused. An origin is scheme, host, and port with no path, for example `https://api.example.com,https://staging.example.com:8443`. An entry that is not an absolute URL is discarded without warning, so `api.example.com` contributes nothing and can leave the list empty. |
+| `HOPPSCOTCH_STRICT_ENV` | `false` | Set `true` to ignore trust-sensitive variables that a working-directory `.env` file introduces. See [Hardening a .env setup](#hardening-a-env-setup). |
+
+### Building from source
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `HOPPSCOTCH_FIREBASE_API_KEY` | baked in at build | Firebase Web API key used for Cloud sign-in. Released builds bake it in, so you normally never set this. Set it when building from source and using Cloud. Not used by self-hosted instances. |
+
+### Hardening a .env setup
+
+By default the server honors a `.env` file in its working directory for every variable above except `HOPPSCOTCH_STRICT_ENV` itself, which is read from the real environment before the `.env` loads so that a `.env` cannot switch it off. If your host opens repositories you do not control, a `.env` committed to one of them could repoint the backend, widen the tool surface, or allowlist an origin that may receive your secrets.
+
+Set `HOPPSCOTCH_STRICT_ENV=true` in your host's `env` block to close that off. Eleven trust-sensitive variables are then ignored when a `.env` introduces them, and must come from the real process environment instead:
+
+| Group | Variables |
+| --- | --- |
+| Auth target and credential | `HOPPSCOTCH_SERVER_URL`, `HOPPSCOTCH_ACCESS_TOKEN`, `HOPPSCOTCH_FIREBASE_API_KEY` |
+| Security toggles | `HOPPSCOTCH_ALLOW_PRIVATE_HOSTS`, `HOPPSCOTCH_SECRET_ALLOWED_ORIGINS`, `HOPPSCOTCH_TOOL_PROFILE` |
+| Login behavior | `HOPPSCOTCH_AUTH_TIMEOUT_MS`, `HOPPSCOTCH_FORCE_BROWSER_LOGIN` |
+| Write target and limits | `HOPPSCOTCH_DEFAULT_TEAM_ID`, `HOPPSCOTCH_MAX_RESPONSE_BYTES`, `HOPPSCOTCH_TIMEOUT` |
+
+A value you set in the real environment is preserved. Only a value the `.env` introduces is stripped. `HOPPSCOTCH_STRICT_ENV` itself is the switch and is not in the list.
+
+<Note>Strict mode protects these eleven variables. It does not sanitize the rest of the environment. A `.env` can still set unrelated variables that the server reads, such as `CI`, which makes the login step treat the machine as headless and refuse to open a browser.</Note>
+
+## Tool profiles
+
+There are 53 tools in total, and `HOPPSCOTCH_TOOL_PROFILE` decides how many of them your host ever sees. Whatever the profile leaves out is invisible to discovery and refused at call time, so an agent cannot reach a tool by naming it directly.
+
+Below, CRUD is shorthand for the four basic operations on a resource: create, read, update, and delete.
+
+| Profile | Tools | Contents |
+| --- | --- | --- |
+| `minimal` | 22 | Collection and environment CRUD for personal and team workspaces, personal collection import, team and personal collection export, plus `reauth`. |
+| `core` (default) | 39 | Everything in `minimal`, plus request CRUD, request execution, code generation, and read-only team discovery. |
+| `standard` | 38 | Everything in `minimal`, plus team administration, advanced collection operations such as duplicate, move, import, and search, and read-only team discovery through `list_teams` and `get_team_info`. |
+| `full` | 53 | Every tool. |
+
+<Note>`core` and `standard` are **separate branches** of `full`, not a ladder. `standard` is not a superset of `core`. Moving from `core` to `standard` **removes request execution, response validation, code generation, and request CRUD**, and adds team administration in their place. Use `full` if you need both.</Note>
+
+Set the variable to something it does not recognize and you get `core` back, plus a warning on the server's error output. It never falls through to `full`, so a one-character typo cannot hand an agent the destructive team-administration surface.
+
+For which profile includes which tool, see [Tools](/documentation/clients/mcp-server/tools).
+
+## Cloud and self-hosted
+
+All 53 tools are available against a self-hosted instance, Community or Enterprise. On Cloud, this server refuses `get_user_collection`, and the backend rejects `search_team_requests`. Every other personal-workspace tool is available there, reads included.
+
+| Capability | Cloud | Self-hosted |
+| --- | --- | --- |
+| Other team collection, request, and environment tools | Supported | Supported |
+| Team administration | Supported | Supported |
+| Request execution and response validation | Supported | Supported |
+| Code and documentation generation | Supported | Supported |
+| Other personal collection, request, and environment tools | Supported | Supported |
+| `get_user_collection` | Not supported | Supported |
+| `search_team_requests` | Not supported | Supported |
+
+<Note>`get_user_collection` is the one personal-workspace tool that refuses to run on Cloud. The check was added after Cloud's `userCollection` resolver failed to serialize the `data` field, which fails the whole query. For root-level collections use `list_user_collections`; for a known ID, including a nested one, use `export_user_collection`, which works on Cloud but returns export JSON rather than the collection envelope.</Note>
+
+For the exact behavior of every affected tool, see [Cloud behavior](/documentation/clients/mcp-server/tools#cloud-behavior).
+
+Which mode you land in comes from `HOPPSCOTCH_SERVER_URL`. Only `hoppscotch.io` and `www.hoppscotch.io` count as Cloud and route to `api.hoppscotch.io`. Anything else is treated as self-hosted, and calls go to `<your-url>/backend`.
+
+## Security
+
+This server acts with your Hoppscotch credentials and puts real HTTP requests on the wire. Here is what that means in practice, and where the defaults leave you exposed.
+
+### Request execution reaches the public internet
+
+`execute_request` and `validate_response` are general-purpose HTTP clients, and by default they refuse anything that resolves to your own machine or a private network instead of the open internet. That sweep covers loopback, private ranges, and the special-use ranges behind link-local addressing, carrier-grade NAT, and cloud metadata endpoints like `169.254.169.254`, in IPv4, IPv6, and the mixed forms. Protection of this kind is usually called an SSRF guard, short for server-side request forgery.
+
+A few details make it harder to slip past. If name resolution errors, the call is blocked rather than allowed through. The address that passed the check is pinned at connect time, so nothing can swap it out in between. And redirects are never followed, which stops a permitted host from bouncing your credentials somewhere else with a `3xx`.
+
+<Warning>These protections stop internal targets, not public ones. `execute_request` can still reach **any public host your machine can reach, using the credentials in the request**. Treat a request the agent composed with the same care as one you wrote.</Warning>
+
+Set `HOPPSCOTCH_ALLOW_PRIVATE_HOSTS=true` only to test a local or self-hosted API, and only on input you trust. It skips the private-address checks and the connect-time revalidation for these two tools. The restriction to `http` and `https` still applies, and the server's own traffic to your Hoppscotch backend is never affected either way. The response headers and up to `HOPPSCOTCH_MAX_RESPONSE_BYTES` of the body are returned into the model's context.
+
+### Destructive tools run immediately
+
+<Warning>The server implements **no confirmation step.** A `delete_` tool or a team-membership change takes effect on the first call. The default `core` profile includes `delete_team_collection`, `delete_team_environment`, and the personal equivalents, so an agent on a default install can delete a shared team collection. What `core` withholds is team *administration*, such as deleting a team or removing a member.</Warning>
+
+Every tool does carry four MCP annotation hints, `readOnlyHint`, `destructiveHint`, `idempotentHint`, and `openWorldHint`, and a host is free to prompt you based on them. Whether it bothers is the host's call, not this server's.
+
+Do not lean on them too hard. They are assigned from the tool-name prefix, with a few hand-written exceptions, which makes them blunter than they appear: `invite_team_member` is additive in shape, so it advertises `destructiveHint: false`, yet it accepts a role of `OWNER`. A host that only prompts on the destructive hint will let an ownership grant through without asking. That one needs `standard` or `full`. Shrink the surface with `HOPPSCOTCH_TOOL_PROFILE=minimal`, and check [Tools](/documentation/clients/mcp-server/tools) for what each profile holds.
+
+### Secret variables
+
+Environment values marked secret are masked in environment listings. When such a value is substituted into a request, the server also scrubs it from the response body, headers, and error text before the model sees it.
+
+Do not lean on that for confidentiality. Scrubbing matches the forms a secret takes when it is sent, so a target that reshapes the value before echoing it, or a value your request truncated on the way out, comes back unredacted. And only values flagged secret are tracked in the first place: a plain variable, a credential in the `auth` block, or anything typed straight into a header was never a candidate. [What scrubbing covers](/documentation/clients/mcp-server/tools#what-scrubbing-covers) has the exact behavior.
+
+Secrets substitute into requests to any origin unless you say otherwise. `HOPPSCOTCH_SECRET_ALLOWED_ORIGINS` is how you narrow that.
+
+### Generated code carries live credentials
+
+<Warning>`generate_code` returns a runnable snippet with **live credential values** by default. Pass `redactCredentials: true` to mask them. `generate_documentation` is the opposite and masks by default. Check which tool produced output before sharing it.</Warning>
+
+Masking only reaches so far. It handles the structured `auth` object, headers and query parameters whose names look credential-bearing, and JSON or form-encoded body fields. An XML, plain-text, multipart, or binary body it leaves alone entirely, and a credential sitting in a field it does not recognize stays put. Read what came out before you paste it anywhere, masked or not.
+
+### What the server does not do
+
+Past scrubbing the secret environment values it substituted, nothing redacts response bodies. Personal data and anything else sensitive in a response arrives in the model's context as-is, and applying a redaction or approval policy on top is the host's job.
+
+There is also no hosted or multi-tenant mode. Running this as a publicly reachable HTTP server is out of scope.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Tools" iconType="light" icon="circle-arrow-right" href="/documentation/clients/mcp-server/tools">
+    Every tool, what it does, and which profiles include it.
+  </Card>
+  <Card title="Troubleshooting" iconType="light" icon="circle-arrow-right" href="/documentation/clients/mcp-server/troubleshooting">
+    Errors you may see, what causes them, and how to fix them.
+  </Card>
+</CardGroup>
