@@ -84,6 +84,7 @@
                 "group": "CLI",
                 "pages": [
                   "documentation/clients/cli/overview",
+                  "documentation/clients/cli/ci-cd-integration",
                   "documentation/clients/cli/troubleshooting"
                 ]
               },
