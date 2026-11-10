@@ -1,0 +1,211 @@
+---
+title: "Run API Tests in CI/CD"
+description: "Run Hoppscotch collection tests automatically in GitHub Actions and GitLab CI, fail the build on broken APIs, and publish JUnit test reports."
+---
+
+Use the Hoppscotch CLI to run your API tests on every push or pull request. If any test fails, the CLI exits with a non-zero code and your pipeline stops, so broken APIs never reach production.
+
+This guide shows you how to:
+
+- Run a collection from a **file** stored in your repository.
+- Run a collection directly from your **Hoppscotch workspace** using its ID.
+- Keep secrets such as API keys and access tokens out of your repository.
+- Publish **JUnit reports** so test results appear in your CI tool.
+
+## Before you begin
+
+Make sure you have:
+
+- A Hoppscotch collection with test scripts (`pw.test()` and `pw.expect()`) in its requests.
+- Either an **exported collection file** (`.json`) committed to your repository, **or** the **Collection ID** of a collection in a team workspace.
+- For workspace collections: a **personal access token**. See [Personal access tokens](/documentation/features/pat).
+- A CI runner with **Node.js v22 or later**. The current Hoppscotch CLI requires Node.js v22.
+
+<Note>
+Collections in your **personal workspace** can't be run from the CLI by ID. Move the collection to a team workspace, or export it as a file.
+</Note>
+
+## How the CLI reports results to your pipeline
+
+| CLI result | Exit code | What your pipeline does |
+| --- | --- | --- |
+| All test cases passed | `0` | The job passes. |
+| One or more test cases failed | Non-zero | The job fails. |
+
+Non-200 responses don't fail the run on their own. A request only fails if a test script assertion fails, so add assertions such as `pw.expect(pw.response.status).toBe(200)` to the requests you want to guard.
+
+## Option 1: Run a collection file from your repository
+
+Use this option when your collection and environment files are versioned in Git alongside your code.
+
+### Step 1: Add the files to your repository
+
+1. In Hoppscotch, export your collection and save it as `tests/api-collection.json`.
+2. Export your environment and save it as `tests/api-environment.json`.
+3. Remove any secret values (API keys, passwords) from the environment file before you commit it. You'll add them in the pipeline in Step 2.
+
+### Step 2: Store secrets in your CI tool
+
+Store each secret value as a CI secret instead of in the environment file:
+
+- **GitHub:** **Settings** > **Secrets and variables** > **Actions** > **New repository secret**.
+- **GitLab:** **Settings** > **CI/CD** > **Variables** > **Add variable** (select **Mask variable**).
+
+### Step 3: Create the pipeline
+
+<Tabs>
+<Tab title="GitHub Actions">
+
+Create `.github/workflows/api-tests.yml`:
+
+```yaml
+name: API tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Hoppscotch CLI
+        run: npm i -g @hoppscotch/cli
+
+      - name: Add secrets to the environment file
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          jq --arg v "$API_KEY" \
+            '(.variables[] | select(.key == "api_key") | .value) = $v' \
+            tests/api-environment.json > tests/env-ci.json
+
+      - name: Run API tests
+        run: |
+          hopp test tests/api-collection.json \
+            -e tests/env-ci.json \
+            --reporter-junit hopp-junit-report.xml
+
+      - name: Upload the JUnit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hoppscotch-junit-report
+          path: hopp-junit-report.xml
+```
+
+</Tab>
+<Tab title="GitLab CI">
+
+Add this job to `.gitlab-ci.yml`:
+
+```yaml
+api-tests:
+  image: node:22
+  before_script:
+    - apt-get update && apt-get install -y jq
+    - npm i -g @hoppscotch/cli
+  script:
+    - >
+      jq --arg v "$API_KEY"
+      '(.variables[] | select(.key == "api_key") | .value) = $v'
+      tests/api-environment.json > tests/env-ci.json
+    - hopp test tests/api-collection.json -e tests/env-ci.json --reporter-junit hopp-junit-report.xml
+  artifacts:
+    when: always
+    reports:
+      junit: hopp-junit-report.xml
+```
+
+GitLab reads the JUnit report and shows each failed assertion in the merge request and in the pipeline's **Tests** tab.
+
+</Tab>
+</Tabs>
+
+<Tip>
+The `jq` step assumes your environment file uses the **single environment entry export format** (with a `variables` array) and contains a variable named `api_key`. Change the key name to match your environment.
+</Tip>
+
+## Option 2: Run a collection from your Hoppscotch workspace
+
+Use this option when your team edits collections in Hoppscotch and you always want the pipeline to run the latest version, without exporting files.
+
+### Step 1: Get the IDs and token
+
+1. Open the collection's **Properties** > **Details** tab and copy the **Collection ID**.
+2. Open the environment's **Properties** > **Details** tab and copy the **Environment ID**.
+3. Create a personal access token.
+
+<Tip>
+You can copy a ready-made command with both IDs filled in: open the collection's context menu, select **Run Collection**, and open the **CLI** tab.
+</Tip>
+
+### Step 2: Store the values as CI secrets
+
+Create these secrets in your CI tool:
+
+| Secret name | Value |
+| --- | --- |
+| `HOPP_TOKEN` | Your personal access token |
+| `HOPP_COLLECTION_ID` | The Collection ID |
+| `HOPP_ENVIRONMENT_ID` | The Environment ID |
+| `HOPP_SERVER_URL` | *Self-hosted only:* the URL of your Hoppscotch instance |
+
+### Step 3: Run the collection by ID
+
+Replace the **Run API tests** step from Option 1 with:
+
+```yaml
+      - name: Run API tests
+        env:
+          HOPP_TOKEN: ${{ secrets.HOPP_TOKEN }}
+          HOPP_COLLECTION_ID: ${{ secrets.HOPP_COLLECTION_ID }}
+          HOPP_ENVIRONMENT_ID: ${{ secrets.HOPP_ENVIRONMENT_ID }}
+        run: |
+          hopp test "$HOPP_COLLECTION_ID" \
+            -e "$HOPP_ENVIRONMENT_ID" \
+            --token "$HOPP_TOKEN" \
+            --reporter-junit hopp-junit-report.xml
+```
+
+You don't need the **Add secrets to the environment file** step for this option. If you self-host Hoppscotch, add `--server "$HOPP_SERVER_URL"` to the command.
+
+## Run data-driven tests
+
+To run the same collection with different inputs, add a CSV file and use iteration flags:
+
+```bash
+hopp test tests/api-collection.json \
+  -e tests/env-ci.json \
+  --iteration-count 3 \
+  --iteration-data tests/test-data.csv
+```
+
+Each CSV row replaces the matching environment variables for one iteration.
+
+## Troubleshooting pipeline runs
+
+| Problem | Likely cause | Fix |
+| --- | --- | --- |
+| The install step fails, or `hopp` crashes on start | The runner uses Node.js 20 or earlier | Set up Node.js 22 (`node-version: 22` or `image: node:22`). |
+| `TOKEN_EXPIRED` or `TOKEN_INVALID` | The access token in your CI secret expired or was deleted | Create a new token and update the `HOPP_TOKEN` secret. |
+| `INVALID_ID` | Wrong ID, the collection is in a personal workspace, or the token owner isn't in the team | Check the IDs, and use a team workspace collection. |
+| `INVALID_SERVER_URL` | `--server` points to the frontend URL or is missing `https://` | Use the backend URL of your self-hosted instance. |
+| Tests pass locally but fail in CI | A secret variable is empty in CI | Confirm the CI secret exists and the variable key matches. |
+| The job passes even though an API returns errors | The request has no assertion for the status code | Add `pw.expect(pw.response.status).toBe(200)` to the test script. |
+
+For the full list of CLI error codes, see [CLI troubleshooting](/documentation/clients/cli/troubleshooting).
+
+## Next steps
+
+- See every command and option in the [Hoppscotch CLI reference](/documentation/clients/cli/overview).
+- Learn to write test scripts with `pw.test()` and `pw.expect()` in [Tests](/documentation/getting-started/rest/tests).
